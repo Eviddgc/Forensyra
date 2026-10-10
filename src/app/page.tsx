@@ -13,7 +13,7 @@ import { EntryCard } from "@/components/entry-card";
 import { EmptyState } from "@/components/empty-state";
 import { CtaBand } from "@/components/cta-band";
 import { Logo } from "@/components/logo";
-import { HeroCanvas } from "@/components/hero-canvas";
+import { HeroScene } from "@/components/hero-scene";
 import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
 import { Counter } from "@/components/counter";
@@ -114,7 +114,7 @@ export default async function HomePage() {
     <>
       {/* ── Hero ─────────────────────────────────────────────────────── */}
       <section className="relative overflow-hidden border-b border-border">
-        <HeroCanvas className="absolute inset-0 h-full w-full opacity-90" />
+        <HeroScene className="absolute inset-0 h-full w-full opacity-90" />
         <div className="absolute inset-0 bg-grid opacity-[0.22]" />
         <div className="absolute inset-0 bg-radial-glow" />
         <div className="fx-scanlines pointer-events-none absolute inset-0 opacity-[0.22]" />
