@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArrowRight, Menu, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Container } from "@/components/container";
@@ -30,12 +30,27 @@ export function SiteHeader({
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const isActive = (href: string) =>
     pathname === href || pathname.startsWith(`${href}/`);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur-md">
+    <header
+      className={cn(
+        "sticky top-0 z-50 border-b transition-colors duration-300",
+        scrolled
+          ? "border-border/80 bg-background/90 shadow-[0_18px_40px_-30px] shadow-accent/50 backdrop-blur-xl"
+          : "border-border/70 bg-background/85 backdrop-blur-md",
+      )}
+    >
       <Container className="flex h-16 items-center justify-between gap-4">
         <Link
           href="/"
@@ -78,7 +93,7 @@ export function SiteHeader({
             href={applyUrl}
             target="_blank"
             rel="noreferrer"
-            className={btnPrimary}
+            className={cn(btnPrimary, "fx-shine")}
           >
             Apply
             <ArrowRight className="h-4 w-4" />
@@ -125,7 +140,7 @@ export function SiteHeader({
               href={applyUrl}
               target="_blank"
               rel="noreferrer"
-              className={cn(btnPrimary, "mt-3")}
+              className={cn(btnPrimary, "fx-shine mt-3")}
               onClick={() => setOpen(false)}
             >
               Apply to join
