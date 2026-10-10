@@ -21,10 +21,10 @@ export function Announcement({
         <span className="font-mono uppercase tracking-[0.2em] text-accent/80">
           Notice
         </span>
-        <span className="text-cyan-100/90">{text}</span>
+        <span className="text-ink/90">{text}</span>
         <Link
           href={link}
-          className="inline-flex items-center gap-1 font-semibold underline underline-offset-2 hover:text-white"
+          className="inline-flex items-center gap-1 font-semibold text-ink underline underline-offset-2 hover:text-accent-deep"
         >
           {linkLabel}
           <ArrowRight className="h-3.5 w-3.5" />

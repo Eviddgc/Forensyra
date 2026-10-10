@@ -2,9 +2,36 @@
 
 import { useEffect, useRef } from "react";
 
+type RGB = { r: number; g: number; b: number };
+
+/** Pastel stops mapped across the sphere's latitude (y from -1 to 1). */
+const STOPS: Array<[number, RGB]> = [
+  [-1, { r: 0.957, g: 0.663, b: 0.776 }], // pink
+  [-0.5, { r: 1.0, g: 0.725, b: 0.541 }], // peach
+  [0, { r: 1.0, g: 0.831, b: 0.475 }], // sun
+  [0.5, { r: 0.494, g: 0.859, b: 0.71 }], // mint
+  [1, { r: 0.718, g: 0.651, b: 0.961 }], // lavender
+];
+
+function pastelAt(y: number): RGB {
+  for (let i = 0; i < STOPS.length - 1; i++) {
+    const [y0, c0] = STOPS[i];
+    const [y1, c1] = STOPS[i + 1];
+    if (y >= y0 && y <= y1) {
+      const t = (y - y0) / (y1 - y0);
+      return {
+        r: c0.r + (c1.r - c0.r) * t,
+        g: c0.g + (c1.g - c0.g) * t,
+        b: c0.b + (c1.b - c0.b) * t,
+      };
+    }
+  }
+  return STOPS[STOPS.length - 1][1];
+}
+
 /**
  * True WebGL "evidence core" hero, built directly on three.js (loaded lazily on
- * the client so it never touches the server bundle). A glowing point-cloud
+ * the client so it never touches the server bundle). A pastel rainbow point-cloud
  * sphere wrapped in a wireframe shell, orbiting rings and satellites, a pulsing
  * core, and a starfield — all reacting to the pointer.
  *
@@ -50,9 +77,6 @@ export function HeroScene({ className }: { className?: string }) {
       const group = new THREE.Group();
       scene.add(group);
 
-      const cyan = new THREE.Color("#22d3ee");
-      const indigo = new THREE.Color("#818cf8");
-
       // Soft round sprite for glowing points.
       const dot = (() => {
         const size = 64;
@@ -70,8 +94,8 @@ export function HeroScene({ className }: { className?: string }) {
             size / 2,
           );
           g.addColorStop(0, "rgba(255,255,255,1)");
-          g.addColorStop(0.28, "rgba(200,250,255,0.85)");
-          g.addColorStop(1, "rgba(34,211,238,0)");
+          g.addColorStop(0.3, "rgba(255,255,255,0.85)");
+          g.addColorStop(1, "rgba(255,255,255,0)");
           ctx.fillStyle = g;
           ctx.fillRect(0, 0, size, size);
         }
@@ -80,10 +104,11 @@ export function HeroScene({ className }: { className?: string }) {
         return texture;
       })();
 
-      // 1 — point-cloud sphere (Fibonacci distribution).
+      // 1 — pastel rainbow point-cloud sphere (Fibonacci distribution).
       const count = 1700;
       const radius = 2.45;
       const positions = new Float32Array(count * 3);
+      const colors = new Float32Array(count * 3);
       for (let i = 0; i < count; i++) {
         const y = 1 - (i / (count - 1)) * 2;
         const ring = Math.sqrt(Math.max(0, 1 - y * y));
@@ -91,18 +116,23 @@ export function HeroScene({ className }: { className?: string }) {
         positions[i * 3] = Math.cos(theta) * ring * radius;
         positions[i * 3 + 1] = y * radius;
         positions[i * 3 + 2] = Math.sin(theta) * ring * radius;
+        const c = pastelAt(y);
+        colors[i * 3] = c.r;
+        colors[i * 3 + 1] = c.g;
+        colors[i * 3 + 2] = c.b;
       }
       const cloudGeo = new THREE.BufferGeometry();
       cloudGeo.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+      cloudGeo.setAttribute("color", new THREE.BufferAttribute(colors, 3));
       const cloudMat = new THREE.PointsMaterial({
-        color: cyan,
-        size: 0.085,
+        color: 0xffffff,
+        size: 0.09,
         map: dot,
         transparent: true,
         opacity: 0.95,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
         sizeAttenuation: true,
+        vertexColors: true,
       });
       const cloud = new THREE.Points(cloudGeo, cloudMat);
       group.add(cloud);
@@ -110,10 +140,10 @@ export function HeroScene({ className }: { className?: string }) {
       // 2 — wireframe shell.
       const shellGeo = new THREE.IcosahedronGeometry(2.62, 2);
       const shellMat = new THREE.MeshBasicMaterial({
-        color: cyan,
+        color: new THREE.Color("#3fa98a"),
         wireframe: true,
         transparent: true,
-        opacity: 0.12,
+        opacity: 0.16,
       });
       const shell = new THREE.Mesh(shellGeo, shellMat);
       group.add(shell);
@@ -121,34 +151,33 @@ export function HeroScene({ className }: { className?: string }) {
       // 3 — pulsing core + halo.
       const coreGeo = new THREE.SphereGeometry(1.02, 32, 32);
       const coreMat = new THREE.MeshBasicMaterial({
-        color: cyan,
+        color: new THREE.Color("#9b8bf0"),
         transparent: true,
-        opacity: 0.14,
+        opacity: 0.2,
       });
       const core = new THREE.Mesh(coreGeo, coreMat);
       group.add(core);
 
       const haloGeo = new THREE.SphereGeometry(1.45, 32, 32);
       const haloMat = new THREE.MeshBasicMaterial({
-        color: cyan,
+        color: new THREE.Color("#ffb98a"),
         transparent: true,
-        opacity: 0.06,
+        opacity: 0.12,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
       });
       group.add(new THREE.Mesh(haloGeo, haloMat));
 
       // 4 — orbit rings.
       const rings: import("three").Mesh[] = [];
       const ringSpecs = [
-        { r: 3.15, tube: 0.006, tilt: 0.5, color: indigo, opacity: 0.55, spin: 0.16 },
-        { r: 3.55, tube: 0.004, tilt: -0.7, color: cyan, opacity: 0.4, spin: -0.11 },
-        { r: 3.95, tube: 0.003, tilt: 0.28, color: indigo, opacity: 0.28, spin: 0.08 },
+        { r: 3.15, tube: 0.006, tilt: 0.5, color: "#ffb98a", opacity: 0.7, spin: 0.16 },
+        { r: 3.55, tube: 0.004, tilt: -0.7, color: "#8fc6f0", opacity: 0.55, spin: -0.11 },
+        { r: 3.95, tube: 0.003, tilt: 0.28, color: "#9b8bf0", opacity: 0.4, spin: 0.08 },
       ];
       for (const spec of ringSpecs) {
         const g = new THREE.TorusGeometry(spec.r, spec.tube, 8, 128);
         const m = new THREE.MeshBasicMaterial({
-          color: spec.color,
+          color: new THREE.Color(spec.color),
           transparent: true,
           opacity: spec.opacity,
         });
@@ -163,9 +192,10 @@ export function HeroScene({ className }: { className?: string }) {
       // 5 — orbiting satellites.
       const sats: import("three").Mesh[] = [];
       const satGeo = new THREE.SphereGeometry(0.05, 12, 12);
+      const satColors = ["#4ecb9a", "#9b8bf0", "#ffb98a", "#8fc6f0", "#f4a9c6", "#ffd479"];
       for (let i = 0; i < 6; i++) {
         const m = new THREE.MeshBasicMaterial({
-          color: i % 2 ? indigo : cyan,
+          color: new THREE.Color(satColors[i % satColors.length]),
         });
         const s = new THREE.Mesh(satGeo, m);
         s.userData.a = (i / 6) * Math.PI * 2;
@@ -190,13 +220,12 @@ export function HeroScene({ className }: { className?: string }) {
       const starGeo = new THREE.BufferGeometry();
       starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
       const starMat = new THREE.PointsMaterial({
-        color: cyan,
+        color: new THREE.Color("#b9b4d8"),
         size: 0.06,
         map: dot,
         transparent: true,
         opacity: 0.5,
         depthWrite: false,
-        blending: THREE.AdditiveBlending,
       });
       const stars = new THREE.Points(starGeo, starMat);
       scene.add(stars);
@@ -250,9 +279,9 @@ export function HeroScene({ className }: { className?: string }) {
         core.rotation.y += dt * 0.12;
         stars.rotation.y += dt * 0.01;
 
-        shellMat.opacity = 0.1 + Math.sin(t * 1.4) * 0.04;
-        coreMat.opacity = 0.1 + Math.sin(t * 1.8) * 0.06;
-        haloMat.opacity = 0.05 + Math.sin(t * 1.8) * 0.03;
+        shellMat.opacity = 0.14 + Math.sin(t * 1.4) * 0.04;
+        coreMat.opacity = 0.16 + Math.sin(t * 1.8) * 0.06;
+        haloMat.opacity = 0.1 + Math.sin(t * 1.8) * 0.04;
 
         for (const ring of rings) {
           ring.rotation.z += (ring.userData.spin as number) * dt;

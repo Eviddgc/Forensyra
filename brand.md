@@ -22,20 +22,27 @@ sounds across the website, GitHub, and social posts.
 
 ## Colour
 
-Dark "forensic lab" palette. Tokens live in `src/app/globals.css`.
+Soft light pastel palette. Tokens live in `src/app/globals.css`.
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| `background` | `#05070d` | Page background |
-| `surface` | `#0a0f1a` | Cards and panels |
-| `surface-2` | `#0f172a` | Raised surfaces |
-| `border` | `#1e293b` | Dividers and outlines |
-| `foreground` | `#e2e8f0` | Primary text |
-| `muted` | `#94a3b8` | Secondary text |
-| `accent` | `#22d3ee` | Brand accent (cyan) |
-| `accent-2` | `#818cf8` | Secondary accent (indigo) |
-| `success` | `#34d399` | Positive states |
-| `warning` | `#fbbf24` | Pinned / attention |
+| `background` | `#fbf7f0` | Page background (warm cream) |
+| `surface` | `#ffffff` | Cards and panels |
+| `surface-2` | `#f6f0e4` | Raised surfaces |
+| `border` | `#eae1d0` | Dividers and outlines |
+| `foreground` | `#3a3540` | Primary text (soft warm ink) |
+| `muted` | `#9a9186` | Secondary text |
+| `ink` | `#22352b` | Text placed on pastel fills |
+| `accent` | `#4ecb9a` | Brand accent (pastel mint) |
+| `accent-2` | `#9b8bf0` | Secondary accent (pastel lavender) |
+| `peach` | `#ffb98a` | Supporting pastel |
+| `sky` | `#8fc6f0` | Supporting pastel |
+| `pink` | `#f4a9c6` | Supporting pastel |
+| `sun` | `#ffd479` | Supporting pastel |
+| `accent-deep` | `#2e8f6e` | Accessible text on pastel mint |
+| `accent-2-deep` | `#7a63e0` | Accessible text on pastel lavender |
+| `success` | `#4ecb9a` | Positive states |
+| `warning` | `#f0b45a` | Pinned / attention |
 
 ## Type
 
