@@ -1,0 +1,19 @@
+import type { MetadataRoute } from "next";
+import { getSite } from "@/lib/site";
+
+export default function robots(): MetadataRoute.Robots {
+  const site = getSite();
+  const base = site.url.replace(/\/$/, "");
+
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: ["/admin", "/admin/"],
+      },
+    ],
+    sitemap: `${base}/sitemap.xml`,
+    host: base,
+  };
+}

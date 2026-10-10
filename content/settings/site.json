@@ -1,0 +1,21 @@
+{
+  "name": "FORENSYRA",
+  "descriptor": "Digital Evidence & DFIR Collective",
+  "tagline": "Where Digital Truth Takes Form.",
+  "motto": "Preserve the Trace. Prove the Story.",
+  "description": "FORENSYRA is a collective for students and early-career professionals in digital forensics, incident response, and evidence-led investigation. We learn together, practise on legal and authorised mock cases, build public projects, and grow into a strong DFIR team.",
+  "url": "https://forensyra.com",
+  "email": "forensyra@outlook.in",
+  "applyUrl": "https://forms.cloud.microsoft/r/DqtYq3HvNE",
+  "announcement": {
+    "enabled": true,
+    "text": "Applications are open — join the founding team and help build our first case file.",
+    "link": "/join",
+    "linkLabel": "Apply now"
+  },
+  "social": {
+    "github": "https://github.com/Eviddgc",
+    "linkedin": "",
+    "email": "forensyra@outlook.in"
+  }
+}

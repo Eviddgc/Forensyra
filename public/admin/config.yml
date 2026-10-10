@@ -1,0 +1,194 @@
+# Decap CMS configuration for Forensyra
+# Docs: https://decapcms.org/docs/
+#
+# Authentication is not set up yet. Decap saves content through GitHub, which
+# needs a one-time GitHub OAuth setup on Vercel. Until then, edit the Markdown
+# files directly on GitHub (also click-and-type) or run the local backend:
+#
+#   npx decap-server      (in one terminal)
+#   npm run dev           (in another)
+#
+# Then open http://localhost:3000/admin
+
+backend:
+  name: github
+  repo: Eviddgc/Forensyra
+  branch: main
+  # After you deploy the OAuth proxy (see README), uncomment and set its URL:
+  # base_url: https://your-oauth-proxy.vercel.app
+
+# Allows editing at http://localhost:3000/admin without GitHub login
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+site_url: https://forensyra.com
+display_url: https://forensyra.com
+logo_url: /logo.png
+
+collections:
+  - name: projects
+    label: "Projects (case files)"
+    label_singular: "Case file"
+    folder: "content/projects"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{status}}"
+    sortable_fields: ["date", "title", "status"]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Summary, widget: text, required: false }
+      - { name: date, label: Date, widget: datetime, required: false }
+      - { name: updated, label: "Last updated", widget: datetime, required: false }
+      - name: status
+        label: Status
+        widget: select
+        required: false
+        options: ["Planning", "Active", "In review", "Complete", "On hold"]
+      - { name: caseType, label: "Case type", widget: string, required: false, default: "Mock case" }
+      - { name: pinned, label: "Pin to top", widget: boolean, default: false }
+      - { name: tags, label: Tags, widget: list, required: false, default: [] }
+      - { name: evidence, label: Evidence items, widget: list, required: false, default: [] }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: writeups
+    label: "Write-ups"
+    label_singular: "Write-up"
+    folder: "content/writeups"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Summary, widget: text, required: false }
+      - { name: date, label: Date, widget: datetime, required: false }
+      - { name: status, label: Status, widget: string, required: false, default: "Draft" }
+      - { name: author, label: Author, widget: string, required: false }
+      - { name: pinned, label: "Pin to top", widget: boolean, default: false }
+      - { name: tags, label: Tags, widget: list, required: false, default: [] }
+      - name: links
+        label: Links
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: url, label: URL, widget: string }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: roadmap
+    label: "Roadmap"
+    label_singular: "Roadmap item"
+    folder: "content/roadmap"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{status}}"
+    sortable_fields: ["order", "date", "title"]
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Summary, widget: text, required: false }
+      - name: status
+        label: Status
+        widget: select
+        required: false
+        options: ["Upcoming", "Planned", "Active", "Complete", "On hold"]
+      - { name: date, label: Target date, widget: datetime, required: false }
+      - { name: order, label: "Sort order", widget: number, required: false, default: 999 }
+      - { name: pinned, label: "Pin to top", widget: boolean, default: false }
+      - { name: tags, label: Tags, widget: list, required: false, default: [] }
+      - { name: body, label: Notes, widget: markdown, required: false }
+
+  - name: team
+    label: "Team members"
+    label_singular: "Member"
+    folder: "content/team"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{role}}"
+    fields:
+      - { name: title, label: "Full name", widget: string }
+      - { name: role, label: "Role (display)", widget: string }
+      - name: roleId
+        label: "Role (link)"
+        widget: select
+        required: false
+        options:
+          - { label: "Lead Forensic Investigator", value: lead-forensic-investigator }
+          - { label: "Coordinator / Operations", value: coordinator-operations }
+          - { label: "Legal & Digital Evidence Advisor", value: legal-digital-evidence-advisor }
+          - { label: "Evidence Custodian & Chain-of-Custody", value: evidence-custodian-chain-of-custody }
+          - { label: "Endpoint Forensics Analyst", value: endpoint-forensics-analyst }
+          - { label: "Network Forensics Analyst", value: network-forensics-analyst }
+          - { label: "Memory & Malware Analysis Analyst", value: memory-malware-analysis-analyst }
+          - { label: "Threat Intelligence & OSINT Analyst", value: threat-intelligence-osint-analyst }
+          - { label: "Timeline & Forensic Reporting Analyst", value: timeline-forensic-reporting-analyst }
+          - { label: "Cloud Forensics Analyst", value: cloud-forensics-analyst }
+          - { label: "Multimedia Forensics Analyst", value: multimedia-forensics-analyst }
+          - { label: "AI Forensics & AI Security Analyst", value: ai-forensics-ai-security-analyst }
+          - { label: "Mobile Device Forensics Analyst", value: mobile-device-forensics-analyst }
+      - { name: phase, label: Phase, widget: number, required: false }
+      - { name: location, label: "City, country", widget: string, required: false }
+      - { name: description, label: Short bio, widget: text, required: false }
+      - name: links
+        label: Links
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: url, label: URL, widget: string }
+      - { name: body, label: "Full bio", widget: markdown, required: false }
+
+  - name: roles
+    label: "Roles"
+    label_singular: "Role"
+    folder: "content/roles"
+    create: false
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Summary, widget: text, required: false }
+      - { name: phase, label: Phase, widget: number, required: false }
+      - { name: order, label: "Sort order", widget: number, required: false, default: 999 }
+      - { name: tags, label: Tags, widget: list, required: false, default: [] }
+      - { name: body, label: Notes, widget: markdown, required: false }
+
+  - name: pages
+    label: "Pages"
+    label_singular: "Page"
+    folder: "content/pages"
+    create: false
+    fields:
+      - { name: title, label: Title, widget: string }
+      - { name: description, label: Summary, widget: text, required: false }
+      - { name: body, label: Body, widget: markdown }
+
+  - name: settings
+    label: "Site settings"
+    files:
+      - name: site
+        label: "Site"
+        file: "content/settings/site.json"
+        fields:
+          - { name: name, label: "Name", widget: string }
+          - { name: descriptor, label: "Descriptor", widget: string }
+          - { name: tagline, label: "Tagline", widget: string }
+          - { name: motto, label: "Motto", widget: string }
+          - { name: description, label: "Description", widget: text }
+          - { name: url, label: "Site URL", widget: string }
+          - { name: email, label: "Email", widget: string }
+          - { name: applyUrl, label: "Application form URL", widget: string }
+          - label: Announcement
+            name: announcement
+            widget: object
+            fields:
+              - { name: enabled, label: "Show banner", widget: boolean, default: false }
+              - { name: text, label: Text, widget: string, required: false }
+              - { name: link, label: "Link (e.g. /join)", widget: string, required: false }
+              - { name: linkLabel, label: "Link label", widget: string, required: false }
+          - label: Social
+            name: social
+            widget: object
+            fields:
+              - { name: github, label: GitHub, widget: string, required: false }
+              - { name: linkedin, label: LinkedIn, widget: string, required: false }
+              - { name: email, label: Email, widget: string, required: false }
