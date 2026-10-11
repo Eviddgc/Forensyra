@@ -104,7 +104,7 @@ export function Preloader() {
           <span className="absolute inset-0 animate-pulse-ring rounded-full border border-accent/40" />
           <div className="relative h-24 w-24 overflow-hidden rounded-full ring-1 ring-accent/40 shadow-[0_0_70px_-12px] shadow-accent/70">
             <Image
-              src="/logo.png"
+              src="/brand-mark.png"
               alt="FORENSYRA"
               fill
               sizes="96px"

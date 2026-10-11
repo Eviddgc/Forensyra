@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { Crown } from "@/components/crown";
 import { Reveal } from "@/components/reveal";
 import { btnOutlineDarkLg, btnPrimaryLg } from "@/lib/ui";
 import { cn } from "@/lib/utils";
@@ -60,8 +59,7 @@ export function JoinCta({
           </Reveal>
 
           <Reveal delay={120}>
-            <div className="flex items-center gap-5 lg:justify-end">
-              <Crown className="h-14 w-16 shrink-0 drop-shadow-[0_0_22px] drop-shadow-accent/60" />
+            <div className="flex items-center lg:justify-end">
               <p className="fx-accent-type text-3xl sm:text-4xl">
                 Real Cases
                 <br />

@@ -12,7 +12,7 @@ export function Logo({
 }) {
   return (
     <Image
-      src="/logo.png"
+      src="/brand-mark.png"
       alt="FORENSYRA emblem"
       width={size}
       height={size}

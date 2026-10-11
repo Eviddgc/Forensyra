@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { Crown } from "@/components/crown";
 import { Reveal } from "@/components/reveal";
 import { Counter } from "@/components/counter";
 import { btnOutlineDarkLg, btnPrimaryLg } from "@/lib/ui";
@@ -43,10 +42,10 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center xl:justify-end">
         <Image
-          src="/logo.png"
+          src="/brand-mark.png"
           alt=""
-          width={512}
-          height={512}
+          width={768}
+          height={768}
           preload
           sizes="(max-width: 1280px) 56vw, 22rem"
           className="h-[min(58vw,13rem)] w-auto opacity-[0.15] drop-shadow-[0_0_60px_rgba(230,182,79,0.45)] xl:mr-[3%] xl:h-[22rem] xl:translate-x-[3%] xl:opacity-95"
@@ -56,11 +55,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
       <Container className="relative z-10 py-16 sm:py-20 lg:py-20">
         <div className="max-w-2xl">
           <Reveal>
-            <Crown className="h-10 w-12 drop-shadow-[0_0_18px] drop-shadow-accent/60" />
-          </Reveal>
-
-          <Reveal delay={80}>
-            <p className="fx-eyebrow mt-6 text-accent">
+            <p className="fx-eyebrow text-accent">
               Digital Evidence × Deeper Truth
             </p>
           </Reveal>

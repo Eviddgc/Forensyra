@@ -1,6 +1,5 @@
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { Crown } from "@/components/crown";
 import { Reveal } from "@/components/reveal";
 
 interface Founder {
@@ -65,18 +64,13 @@ export function Leadership({
 
             <div className="relative mt-8 overflow-hidden rounded-3xl border border-border-gold bg-surface p-7 text-foreground">
               <div className="flex items-start justify-between gap-6">
-                <div className="flex items-center gap-5">
-                  <span className="flex h-16 w-16 shrink-0 items-center justify-center rounded-2xl border border-accent/40 bg-accent/10">
-                    <Crown className="h-8 w-10" />
-                  </span>
-                  <div>
-                    <p className="font-display text-2xl font-semibold leading-tight">
-                      {founder.name}
-                    </p>
-                    <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
-                      {founder.role}
-                    </p>
-                  </div>
+                <div>
+                  <p className="font-display text-2xl font-semibold leading-tight">
+                    {founder.name}
+                  </p>
+                  <p className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
+                    {founder.role}
+                  </p>
                 </div>
                 <span
                   aria-hidden="true"

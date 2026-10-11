@@ -28,7 +28,7 @@ public_folder: "/uploads"
 
 site_url: https://forensyra.com
 display_url: https://forensyra.com
-logo_url: /logo.png
+logo_url: /brand-mark.png
 
 collections:
   - name: projects

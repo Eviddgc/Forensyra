@@ -14,11 +14,13 @@ sounds across the website, GitHub, and social posts.
 
 ## Logo
 
-- Files: `Photos/Logo.png` (master), `public/logo.png` (web, 512px),
-  `src/app/icon.png` (favicon), `src/app/apple-icon.png`.
-- The mark is circular. Give it a little breathing room; do not stretch it,
-  recolour it, or place it on a busy background.
-- The site already uses it in the header, footer, and as the social/OG image.
+- Files: `Photos/fav_icon.png` (master, 4096px), `public/brand-mark.png` (web
+  mark, 768px — the header, footer, intro, and homepage hero all use this),
+  `src/app/icon.png` (favicon), `src/app/apple-icon.png` (touch icon).
+- The mark is circular and already sized to sit inside a circle — always show it
+  as-is. Do not stretch it, recolour it, or place it on a busy background.
+- There are no crown or other decorative emblem icons in the UI; the brand mark
+  is the only symbol used.
 
 ## Colour
 

@@ -1,6 +1,5 @@
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { Crown } from "@/components/crown";
 import { btnPrimary, btnSecondary } from "@/lib/ui";
 
 export function CtaBand({
@@ -30,8 +29,7 @@ export function CtaBand({
         />
         <div className="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-accent">
-              <Crown className="h-5 w-6 drop-shadow-[0_0_10px] drop-shadow-accent/60" />
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Join the collective
             </p>
             <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">

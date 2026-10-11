@@ -1,5 +1,4 @@
 import { Container } from "@/components/container";
-import { Crown } from "@/components/crown";
 
 export function PageHeader({
   eyebrow,
@@ -30,14 +29,11 @@ export function PageHeader({
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
 
       <Container className="relative py-16 sm:py-20">
-        <div className="flex items-center gap-3">
-          <Crown className="h-6 w-7 shrink-0 drop-shadow-[0_0_12px] drop-shadow-accent/60" />
-          {eyebrow ? (
-            <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
-              {eyebrow}
-            </p>
-          ) : null}
-        </div>
+        {eyebrow ? (
+          <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
+            {eyebrow}
+          </p>
+        ) : null}
 
         <h1 className="mt-4 max-w-3xl font-display text-4xl font-bold leading-[1.05] text-gradient-anim sm:text-5xl lg:text-6xl">
           {title}
