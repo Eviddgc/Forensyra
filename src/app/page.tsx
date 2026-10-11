@@ -3,7 +3,6 @@ import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { EmptyState } from "@/components/empty-state";
 import { CtaBand } from "@/components/cta-band";
-import { Logo } from "@/components/logo";
 import { HeroScene } from "@/components/hero-scene";
 import { Crown } from "@/components/crown";
 import { Ornament } from "@/components/ornament";
@@ -32,19 +31,6 @@ const MARQUEE_ITEMS = [
   "Multimedia Forensics",
   "Incident Response",
   "Reporting & Peer Review",
-];
-
-const ORBIT_CHIPS = [
-  { label: "Endpoint", className: "left-1/2 top-0 -translate-x-1/2 animate-float" },
-  {
-    label: "Memory",
-    className: "right-0 top-1/2 -translate-y-1/2 animate-float-slow",
-  },
-  {
-    label: "Network",
-    className: "bottom-0 left-1/2 -translate-x-1/2 animate-float-slow",
-  },
-  { label: "Cloud", className: "left-0 top-1/2 -translate-y-1/2 animate-float" },
 ];
 
 const EYEBROW = "font-mono text-xs uppercase tracking-[0.25em] text-accent";
@@ -77,39 +63,86 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* ── Immersive hero ───────────────────────────────────── */}
-      <section className="relative flex min-h-[100svh] items-center overflow-hidden border-b border-border">
-        <HeroScene className="absolute inset-0 h-full w-full opacity-90" />
+      {/* ── Grand royal hero ─────────────────────────────────── */}
+      <section className="relative flex min-h-[100svh] items-center justify-center overflow-hidden border-b border-border">
+        <HeroScene className="absolute inset-0 h-full w-full opacity-50" />
         <div className="absolute inset-0 bg-grid opacity-[0.22]" />
         <div className="absolute inset-0 bg-radial-glow" />
+
+        {/* Golden sunburst */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[120vmin] w-[120vmin] -translate-x-1/2 -translate-y-1/2 animate-spin-slower opacity-[0.35]"
+          style={{
+            background:
+              "repeating-conic-gradient(from 0deg, rgba(201,154,71,0.10) 0deg 4deg, transparent 4deg 16deg)",
+          }}
+        />
+
         <div className="fx-scanlines pointer-events-none absolute inset-0 opacity-[0.22]" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(130%_130%_at_50%_-15%,transparent_45%,var(--color-background)_96%)]" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_120%_at_50%_0%,transparent_40%,var(--color-background)_95%)]" />
 
-        <Container className="relative grid w-full gap-14 py-24 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-28">
-          <div className="animate-rise">
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accent opacity-70" />
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
-              </span>
-              <span className="font-mono text-[11px] uppercase tracking-[0.28em] text-accent">
-                Recruiting · Phase 1
-              </span>
-            </div>
+        {/* Contrast pool behind the wordmark */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-[58vmin] w-[82vmin] -translate-x-1/2 -translate-y-1/2 rounded-full"
+          style={{
+            background:
+              "radial-gradient(closest-side, rgba(13,27,42,0.78), transparent)",
+          }}
+        />
 
-            <h1 className="mt-6 font-display text-6xl font-bold leading-[1.02] text-gradient-anim sm:text-8xl">
+        {/* Royal double frame */}
+        <div className="pointer-events-none absolute inset-4 rounded-[28px] border border-accent/25 sm:inset-6" />
+        <div className="pointer-events-none absolute inset-6 rounded-[24px] border border-accent/15 sm:inset-9" />
+
+        {/* Corner diamonds */}
+        <span className="pointer-events-none absolute left-6 top-6 h-2 w-2 rotate-45 bg-accent/60 sm:left-9 sm:top-9" />
+        <span className="pointer-events-none absolute right-6 top-6 h-2 w-2 rotate-45 bg-accent/60 sm:right-9 sm:top-9" />
+        <span className="pointer-events-none absolute bottom-6 left-6 h-2 w-2 rotate-45 bg-accent/60 sm:bottom-9 sm:left-9" />
+        <span className="pointer-events-none absolute bottom-6 right-6 h-2 w-2 rotate-45 bg-accent/60 sm:bottom-9 sm:right-9" />
+
+        <Container className="relative z-10 max-w-5xl px-4 py-24 text-center sm:py-28">
+          <Reveal>
+            <Crown className="mx-auto h-14 w-16 animate-float drop-shadow-[0_0_20px] drop-shadow-accent/70" />
+          </Reveal>
+
+          <Reveal delay={80}>
+            <p className="mt-7 font-mono text-[11px] uppercase tracking-[0.45em] text-accent sm:text-xs">
+              {site.descriptor}
+            </p>
+          </Reveal>
+
+          <Reveal delay={140}>
+            <h1 className="mt-4 font-display text-6xl font-bold leading-[1.02] text-gradient-anim sm:text-8xl lg:text-9xl">
               <ScrambleText text={site.name} />
             </h1>
+          </Reveal>
 
-            <p className="font-display mt-6 max-w-xl text-2xl font-medium italic text-foreground sm:text-3xl">
+          <Reveal delay={200}>
+            <Ornament className="mx-auto mt-7 max-w-md" />
+          </Reveal>
+
+          <Reveal delay={240}>
+            <p className="font-display mt-7 text-2xl font-medium italic text-foreground sm:text-3xl">
               {site.tagline}
             </p>
-            <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-accent sm:text-sm">
+          </Reveal>
+
+          <Reveal delay={280}>
+            <p className="mt-3 font-mono text-xs uppercase tracking-[0.35em] text-accent sm:text-sm">
               {site.motto}
             </p>
-            <p className="mt-6 max-w-xl text-muted">{site.description}</p>
+          </Reveal>
 
-            <div className="mt-9 flex flex-wrap gap-3">
+          <Reveal delay={320}>
+            <p className="mx-auto mt-6 max-w-2xl text-muted">
+              {site.description}
+            </p>
+          </Reveal>
+
+          <Reveal delay={360}>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
               <a
                 href={site.applyUrl}
                 target="_blank"
@@ -126,8 +159,10 @@ export default async function HomePage() {
                 Explore the case board
               </Link>
             </div>
+          </Reveal>
 
-            <dl className="mt-12 grid max-w-xl grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4">
+          <Reveal delay={400}>
+            <dl className="mx-auto mt-12 grid max-w-3xl grid-cols-2 gap-x-6 gap-y-7 sm:grid-cols-4">
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <dt className="font-mono text-3xl font-semibold text-foreground">
@@ -141,47 +176,6 @@ export default async function HomePage() {
                 </div>
               ))}
             </dl>
-          </div>
-
-          {/* 3D emblem */}
-          <Reveal delay={160} className="relative mx-auto w-full max-w-md">
-            <TiltCard
-              spotlight={false}
-              intensity={12}
-              className="fx-holo fx-frame relative rounded-[28px] border border-accent/60 bg-surface/50 p-8 shadow-[0_50px_140px_-50px] shadow-accent/40 backdrop-blur-xl"
-            >
-              <div className="relative mx-auto flex h-64 w-64 items-center justify-center">
-                <span className="absolute h-64 w-64 animate-spin-slower rounded-full border border-dashed border-accent/20" />
-                <span className="absolute h-52 w-52 animate-spin-reverse rounded-full border border-accent-2/15" />
-                <span className="absolute h-64 w-64 animate-pulse-ring rounded-full border border-accent/25" />
-
-                <div className="absolute -inset-4 rounded-full bg-accent/10 blur-3xl" />
-
-                <Crown className="absolute left-1/2 top-2 h-10 w-12 -translate-x-1/2 animate-float drop-shadow-[0_0_12px] drop-shadow-accent/60" />
-
-                <Logo
-                  size={132}
-                  priority
-                  className="relative animate-core ring-2 ring-accent/40 shadow-[0_0_80px_-14px] shadow-accent/80"
-                />
-
-                {ORBIT_CHIPS.map((chip) => (
-                  <span
-                    key={chip.label}
-                    className={cn(
-                      "absolute z-10 rounded-full border border-border bg-background/90 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.15em] text-accent backdrop-blur",
-                      chip.className,
-                    )}
-                  >
-                    {chip.label}
-                  </span>
-                ))}
-              </div>
-
-              <p className="mt-6 text-center font-mono text-[11px] uppercase tracking-[0.35em] text-muted">
-                Preserve · Analyse · Prove
-              </p>
-            </TiltCard>
           </Reveal>
         </Container>
 

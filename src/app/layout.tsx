@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Announcement } from "@/components/announcement";
@@ -65,6 +65,11 @@ export const metadata: Metadata = {
   },
 };
 
+export const viewport: Viewport = {
+  colorScheme: "dark",
+  themeColor: "#0d1b2a",
+};
+
 export default function RootLayout({
   children,
 }: {
@@ -77,6 +82,12 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
+        >
+          Skip to content
+        </a>
         <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
         <noscript>
           {/* Without JS the intro can't dismiss itself and reveals can't run. */}
@@ -108,7 +119,7 @@ export default function RootLayout({
           descriptor={site.descriptor}
           applyUrl={site.applyUrl}
         />
-        <main className="relative flex-1">{children}</main>
+        <main id="main" className="relative flex-1">{children}</main>
         <SiteFooter
           name={site.name}
           descriptor={site.descriptor}

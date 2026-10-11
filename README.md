@@ -42,7 +42,7 @@ Node.js **20.9+** is required (this project was built on Node 24).
 | Join / apply | `/join` | `content/pages/join.md` + `site.json` |
 | Resources | `/resources` | `content/pages/resources.md` |
 | Contact | `/contact` | `src/app/contact/page.tsx` + `site.json` |
-| Content manager (CMS) | `/admin` | `public/admin/*` |
+| Content manager (CMS) | `/admin` | `content/admin/config.yml` + `public/admin/index.html` |
 
 ---
 
@@ -86,8 +86,9 @@ content/
   team/*.md            # members (role, roleId, phase, links…)
   roles/*.md           # the 13 roles (description, phase, order…)
   pages/*.md           # about, ethics, join, resources
+  admin/config.yml     # Decap CMS configuration (served at /admin/config.yml)
 public/
-  admin/               # Decap CMS (only used for /admin)
+  admin/index.html     # Decap CMS app shell (only used for /admin)
   uploads/             # media uploaded through the CMS
 ```
 
@@ -102,8 +103,11 @@ Every entry supports: `title`, `description`, `date`, `updated`, `status`,
 2. In Vercel, **Add New → Project** and import the repo. Next.js is detected
    automatically — no configuration needed.
 3. Deploy. You get a free `*.vercel.app` URL immediately.
-4. Add a **custom domain** later in Vercel → Settings → Domains, and update
-   `url` in `content/settings/site.json`.
+4. Add a **custom domain** later in Vercel → Settings → Domains, and either
+   update `url` in `content/settings/site.json` **or** set the
+   `NEXT_PUBLIC_SITE_URL` environment variable in Vercel (it overrides the
+   committed value, so previews and production always get correct canonical
+   URLs, sitemaps and OG tags).
 
 ### Enabling the CMS on Vercel (one-time GitHub OAuth)
 
@@ -114,7 +118,7 @@ Decap CMS saves content through GitHub, which needs an OAuth app:
    - Authorization callback URL: your OAuth proxy callback (step 2)
 2. Deploy a small OAuth proxy (e.g. a Vercel function) and give it the OAuth
    app's client ID and secret. (Any Decap-compatible GitHub OAuth proxy works.)
-3. In `public/admin/config.yml`, set `base_url:` to the proxy URL.
+3. In `content/admin/config.yml`, set `base_url:` to the proxy URL.
 4. Commit and redeploy — `/admin` now signs in with GitHub.
 
 Until this is done, edit the Markdown files directly on GitHub. Nothing about

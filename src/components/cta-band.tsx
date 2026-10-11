@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
+import { Crown } from "@/components/crown";
 import { btnPrimary, btnSecondary } from "@/lib/ui";
 
 export function CtaBand({
@@ -17,14 +18,23 @@ export function CtaBand({
 }) {
   return (
     <Container className="mt-20">
-      <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-8 sm:p-12">
+      <div className="fx-frame relative overflow-hidden rounded-3xl border border-border bg-surface p-8 sm:p-12">
         <div className="pointer-events-none absolute inset-0 bg-radial-glow opacity-70" />
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 animate-spin-slower opacity-[0.22]"
+          style={{
+            background:
+              "repeating-conic-gradient(from 0deg, rgba(201,154,71,0.16) 0deg 5deg, transparent 5deg 18deg)",
+          }}
+        />
         <div className="relative flex flex-col items-start gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div className="max-w-2xl">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+            <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] text-accent">
+              <Crown className="h-5 w-6 drop-shadow-[0_0_10px] drop-shadow-accent/60" />
               Join the collective
             </p>
-            <h2 className="font-display mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
               {title}
             </h2>
             <p className="mt-3 text-muted">{description}</p>

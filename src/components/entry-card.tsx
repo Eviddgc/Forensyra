@@ -17,7 +17,7 @@ export function EntryCard({
   return (
     <Link
       href={`${basePath}/${entry.slug}`}
-      className={cn(cardClass, "group flex h-full flex-col p-5")}
+      className={cn(cardClass, "fx-frame group relative flex h-full flex-col p-5")}
     >
       <div className="mb-3 flex items-center justify-between gap-3">
         <Badge variant="accent">{kind}</Badge>
@@ -29,7 +29,7 @@ export function EntryCard({
         </div>
       </div>
 
-      <h3 className="text-lg font-semibold tracking-tight text-foreground transition group-hover:text-accent">
+      <h3 className="font-display text-xl font-semibold leading-snug tracking-tight text-foreground transition group-hover:text-accent-2">
         {entry.title}
       </h3>
 
