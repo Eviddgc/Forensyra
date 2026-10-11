@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Announcement } from "@/components/announcement";
 import { SiteHeader } from "@/components/site-header";
@@ -16,6 +16,12 @@ const geistSans = Geist({
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
+});
+
+const playfair = Playfair_Display({
+  variable: "--font-playfair",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
 });
 
 const site = getSite();
@@ -68,7 +74,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable}`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
@@ -84,6 +90,7 @@ export default function RootLayout({
           aria-hidden="true"
           className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
         >
+          <div className="bg-damask absolute inset-0" />
           <div className="fx-orb animate-drift left-[-12%] top-[-14%] h-[44rem] w-[44rem] bg-accent/20" />
           <div className="fx-orb animate-float-slow right-[-14%] top-[16%] h-[36rem] w-[36rem] bg-accent-2/20" />
           <div className="fx-orb bottom-[-22%] left-[28%] h-[32rem] w-[32rem] bg-accent/10" />

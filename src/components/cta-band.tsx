@@ -24,7 +24,7 @@ export function CtaBand({
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Join the collective
             </p>
-            <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
+            <h2 className="font-display mt-3 text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
               {title}
             </h2>
             <p className="mt-3 text-muted">{description}</p>

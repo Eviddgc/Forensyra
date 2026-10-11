@@ -51,6 +51,9 @@ export function HeroScene({ className }: { className?: string }) {
     void (async () => {
       const THREE = await import("three");
       if (disposed) return;
+      const { RoomEnvironment } = await import(
+        "three/examples/jsm/environments/RoomEnvironment.js"
+      );
 
       let renderer: import("three").WebGLRenderer;
       try {
@@ -73,6 +76,18 @@ export function HeroScene({ className }: { className?: string }) {
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(48, 1, 0.1, 100);
       camera.position.set(0, 0, 7.2);
+
+      // Image-based lighting so the gold reads as real metal.
+      const pmrem = new THREE.PMREMGenerator(renderer);
+      const envMap = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+      scene.environment = envMap;
+
+      const key = new THREE.DirectionalLight(0xfff2d0, 1.6);
+      key.position.set(5, 6, 6);
+      scene.add(key);
+      const rim = new THREE.PointLight(0xc99a47, 1.1, 30);
+      rim.position.set(-5, -3, 5);
+      scene.add(rim);
 
       const group = new THREE.Group();
       scene.add(group);
@@ -150,10 +165,11 @@ export function HeroScene({ className }: { className?: string }) {
 
       // 3 — pulsing core + halo.
       const coreGeo = new THREE.SphereGeometry(1.02, 32, 32);
-      const coreMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color("#e6c17a"),
-        transparent: true,
-        opacity: 0.22,
+      const coreMat = new THREE.MeshStandardMaterial({
+        color: new THREE.Color("#c99a47"),
+        metalness: 1,
+        roughness: 0.22,
+        envMapIntensity: 1.35,
       });
       const core = new THREE.Mesh(coreGeo, coreMat);
       group.add(core);
@@ -280,7 +296,7 @@ export function HeroScene({ className }: { className?: string }) {
         stars.rotation.y += dt * 0.01;
 
         shellMat.opacity = 0.2 + Math.sin(t * 1.4) * 0.05;
-        coreMat.opacity = 0.18 + Math.sin(t * 1.8) * 0.06;
+        coreMat.envMapIntensity = 1.2 + Math.sin(t * 1.8) * 0.4;
         haloMat.opacity = 0.12 + Math.sin(t * 1.8) * 0.04;
 
         for (const ring of rings) {
@@ -332,6 +348,8 @@ export function HeroScene({ className }: { className?: string }) {
         for (const sat of sats) {
           (sat.material as import("three").Material).dispose();
         }
+        envMap.dispose();
+        pmrem.dispose();
         renderer.dispose();
       };
     })();

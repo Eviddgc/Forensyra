@@ -22,6 +22,7 @@
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
     monospace;
+  --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
 
   --animate-float: fx-float 7s ease-in-out infinite;
   --animate-float-slow: fx-float 11s ease-in-out infinite;
@@ -103,12 +104,30 @@
     );
 }
 
+/* Royal gold lattice (velvet damask) */
+.bg-damask {
+  background-image:
+    linear-gradient(
+      45deg,
+      rgba(201, 154, 71, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      -45deg,
+      rgba(201, 154, 71, 0.05) 1px,
+      transparent 1px
+    );
+  background-size: 44px 44px;
+}
+
 .text-gradient {
   background: linear-gradient(
     100deg,
-    var(--color-foreground) 0%,
-    var(--color-accent) 50%,
-    var(--color-accent-2) 100%
+    #f7ecc8 0%,
+    #e6c17a 25%,
+    #c99a47 50%,
+    #f0d49a 75%,
+    #f5ebdd 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -403,6 +422,19 @@
   transform: none;
 }
 
+/* Royal double-gold frame */
+.fx-frame {
+  position: relative;
+}
+.fx-frame::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  border: 1px solid color-mix(in oklab, var(--color-accent) 45%, transparent);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
 /* Frosted glass panel */
 .fx-glass {
   background: color-mix(in oklab, var(--color-surface) 70%, transparent);
@@ -479,10 +511,11 @@
 .text-gradient-anim {
   background: linear-gradient(
     100deg,
-    var(--color-foreground) 0%,
-    var(--color-accent) 45%,
-    var(--color-accent-2) 70%,
-    var(--color-foreground) 100%
+    #f7ecc8 0%,
+    #e6c17a 22%,
+    #c99a47 48%,
+    #f0d49a 72%,
+    #f5ebdd 100%
   );
   background-size: 220% auto;
   -webkit-background-clip: text;

@@ -14,6 +14,8 @@ import { EmptyState } from "@/components/empty-state";
 import { CtaBand } from "@/components/cta-band";
 import { Logo } from "@/components/logo";
 import { HeroScene } from "@/components/hero-scene";
+import { Crown } from "@/components/crown";
+import { Ornament } from "@/components/ornament";
 import { Reveal } from "@/components/reveal";
 import { TiltCard } from "@/components/tilt-card";
 import { Counter } from "@/components/counter";
@@ -132,11 +134,11 @@ export default async function HomePage() {
               </span>
             </div>
 
-            <h1 className="mt-6 font-mono text-5xl font-semibold leading-none tracking-[0.14em] text-gradient-anim sm:text-7xl">
+            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.04] text-gradient-anim sm:text-7xl">
               <ScrambleText text={site.name} />
             </h1>
 
-            <p className="mt-6 max-w-xl text-2xl font-medium text-foreground sm:text-3xl">
+            <p className="font-display mt-6 max-w-xl text-2xl font-medium italic text-foreground sm:text-3xl">
               {site.tagline}
             </p>
             <p className="mt-3 font-mono text-xs uppercase tracking-[0.3em] text-accent sm:text-sm">
@@ -183,7 +185,7 @@ export default async function HomePage() {
             <TiltCard
               spotlight={false}
               intensity={12}
-              className="fx-holo relative rounded-[28px] border border-border bg-surface/50 p-8 shadow-[0_50px_140px_-50px] shadow-accent/40 backdrop-blur-xl"
+              className="fx-holo fx-frame relative rounded-[28px] border border-accent/60 bg-surface/50 p-8 shadow-[0_50px_140px_-50px] shadow-accent/40 backdrop-blur-xl"
             >
               <div className="relative mx-auto flex h-64 w-64 items-center justify-center">
                 <span className="absolute h-64 w-64 animate-spin-slower rounded-full border border-dashed border-accent/20" />
@@ -191,6 +193,8 @@ export default async function HomePage() {
                 <span className="absolute h-64 w-64 animate-pulse-ring rounded-full border border-accent/25" />
 
                 <div className="absolute -inset-4 rounded-full bg-accent/10 blur-3xl" />
+
+                <Crown className="absolute left-1/2 top-2 h-10 w-12 -translate-x-1/2 animate-float drop-shadow-[0_0_12px] drop-shadow-accent/60" />
 
                 <Logo
                   size={132}
@@ -225,6 +229,10 @@ export default async function HomePage() {
           </span>
         </div>
       </section>
+
+      <div className="mx-auto max-w-xs">
+        <Ornament />
+      </div>
 
       {/* ── Values ───────────────────────────────────────────────────── */}
       <section className="py-16 sm:py-20">
@@ -444,6 +452,10 @@ export default async function HomePage() {
           </div>
         </Container>
       </section>
+
+      <div className="mx-auto max-w-xs">
+        <Ornament />
+      </div>
 
       <CtaBand
         title="Help build the definitive student DFIR team"
