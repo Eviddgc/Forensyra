@@ -7,8 +7,20 @@ import { Reveal } from "@/components/reveal";
 import { btnOutlineDarkLg, btnPrimaryLg } from "@/lib/ui";
 import { cn } from "@/lib/utils";
 
-/** Section 8 — full-width cinematic join CTA. */
-export function JoinCta({ applyUrl }: { applyUrl: string }) {
+/** Section 8 — full-width cinematic join CTA (reused by the About page). */
+export function JoinCta({
+  applyUrl,
+  eyebrow = "Join the Collective",
+  title = "Help build the definitive student DFIR team",
+  description = "Applications are open. Bring your curiosity, pick a role, and work on a real investigation with us.",
+  applyLabel = "Apply Now",
+}: {
+  applyUrl: string;
+  eyebrow?: string;
+  title?: string;
+  description?: string;
+  applyLabel?: string;
+}) {
   return (
     <section className="relative isolate overflow-hidden border-t border-border-gold bg-background">
       <Image
@@ -24,13 +36,12 @@ export function JoinCta({ applyUrl }: { applyUrl: string }) {
       <Container className="relative z-10 py-24 sm:py-32">
         <div className="grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
           <Reveal>
-            <p className="fx-eyebrow text-accent">Join the Collective</p>
+            <p className="fx-eyebrow text-accent">{eyebrow}</p>
             <h2 className="font-display mt-4 max-w-2xl text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
-              Help build the definitive student DFIR team
+              {title}
             </h2>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted">
-              Applications are open. Bring your curiosity, pick a role, and work
-              on a real investigation with us.
+              {description}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
               <a
@@ -39,7 +50,7 @@ export function JoinCta({ applyUrl }: { applyUrl: string }) {
                 rel="noreferrer"
                 className={cn(btnPrimaryLg, "fx-shine")}
               >
-                Apply Now
+                {applyLabel}
                 <ArrowRight className="h-4 w-4" />
               </a>
               <Link href="/contact" className={btnOutlineDarkLg}>

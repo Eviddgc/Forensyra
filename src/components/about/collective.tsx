@@ -1,0 +1,63 @@
+import Image from "next/image";
+import { Container } from "@/components/container";
+import { Reveal } from "@/components/reveal";
+
+/**
+ * Section 4 — "Our collective" editorial split on dark navy.
+ * Motto is highlighted on the left; a framed photograph with a mono caption
+ * sits on the right.
+ */
+export function Collective({
+  name,
+  descriptor,
+  motto,
+}: {
+  name: string;
+  descriptor: string;
+  motto: string;
+}) {
+  return (
+    <section className="bg-surface py-20 sm:py-28">
+      <Container>
+        <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-16">
+          <Reveal>
+            <p className="fx-eyebrow text-accent">Our Collective</p>
+            <h2 className="font-display mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+              What we are
+            </h2>
+            <p className="mt-6 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
+              {name} is a {descriptor} for students and early-career
+              professionals. We share knowledge, build projects together, and
+              grow into a strong team in digital forensics, incident response,
+              and evidence-led investigation.
+            </p>
+
+            <blockquote className="mt-8 border-l-2 border-accent pl-5">
+              <p className="font-display text-2xl font-medium italic leading-snug text-accent-2 sm:text-[1.75rem]">
+                {motto}
+              </p>
+            </blockquote>
+          </Reveal>
+
+          <Reveal delay={120}>
+            <figure className="fx-frame relative overflow-hidden rounded-3xl border border-border-gold bg-background">
+              <div className="fx-media relative aspect-[4/3] w-full lg:aspect-[4/5]">
+                <Image
+                  src="/images/project-screen.jpg"
+                  alt="A dark analysis screen with case evidence on a forensic workstation"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 42vw"
+                  className="object-cover object-center"
+                />
+              </div>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
+              <figcaption className="absolute inset-x-0 bottom-0 px-5 pb-5 font-mono text-[10px] uppercase tracking-[0.28em] text-accent-2">
+                Digital Evidence / Responsible Investigation
+              </figcaption>
+            </figure>
+          </Reveal>
+        </div>
+      </Container>
+    </section>
+  );
+}
