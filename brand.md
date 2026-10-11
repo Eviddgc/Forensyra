@@ -22,27 +22,23 @@ sounds across the website, GitHub, and social posts.
 
 ## Colour
 
-Soft light pastel palette. Tokens live in `src/app/globals.css`.
+Navy & gold luxury palette. Tokens live in `src/app/globals.css`.
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| `background` | `#fbf7f0` | Page background (warm cream) |
-| `surface` | `#ffffff` | Cards and panels |
-| `surface-2` | `#f6f0e4` | Raised surfaces |
-| `border` | `#eae1d0` | Dividers and outlines |
-| `foreground` | `#3a3540` | Primary text (soft warm ink) |
-| `muted` | `#9a9186` | Secondary text |
-| `ink` | `#22352b` | Text placed on pastel fills |
-| `accent` | `#4ecb9a` | Brand accent (pastel mint) |
-| `accent-2` | `#9b8bf0` | Secondary accent (pastel lavender) |
-| `peach` | `#ffb98a` | Supporting pastel |
-| `sky` | `#8fc6f0` | Supporting pastel |
-| `pink` | `#f4a9c6` | Supporting pastel |
-| `sun` | `#ffd479` | Supporting pastel |
-| `accent-deep` | `#2e8f6e` | Accessible text on pastel mint |
-| `accent-2-deep` | `#7a63e0` | Accessible text on pastel lavender |
-| `success` | `#4ecb9a` | Positive states |
-| `warning` | `#f0b45a` | Pinned / attention |
+| `background` | `#0d1b2a` | Page background (navy blue) |
+| `surface` | `#1b365d` | Cards and panels (ocean blue) |
+| `surface-2` | `#24446f` | Raised surfaces |
+| `border` | `#2e4a73` | Dividers and outlines |
+| `foreground` | `#f5ebdd` | Primary text (ivory) |
+| `muted` | `#93a3bb` | Secondary text |
+| `ink` | `#0d1b2a` | Text placed on gold fills |
+| `accent` | `#c99a47` | Brand accent (antique gold) |
+| `accent-2` | `#e6c17a` | Secondary accent (champagne gold) |
+| `accent-deep` | `#9a7524` | Accessible text on gold |
+| `accent-2-deep` | `#b98f3a` | Accessible text on champagne |
+| `success` | `#8fbf9f` | Positive states |
+| `warning` | `#e6c17a` | Pinned / attention |
 
 ## Type
 

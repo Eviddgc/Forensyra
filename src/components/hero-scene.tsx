@@ -4,13 +4,13 @@ import { useEffect, useRef } from "react";
 
 type RGB = { r: number; g: number; b: number };
 
-/** Pastel stops mapped across the sphere's latitude (y from -1 to 1). */
+/** Gold stops mapped across the sphere's latitude (y from -1 to 1). */
 const STOPS: Array<[number, RGB]> = [
-  [-1, { r: 0.957, g: 0.663, b: 0.776 }], // pink
-  [-0.5, { r: 1.0, g: 0.725, b: 0.541 }], // peach
-  [0, { r: 1.0, g: 0.831, b: 0.475 }], // sun
-  [0.5, { r: 0.494, g: 0.859, b: 0.71 }], // mint
-  [1, { r: 0.718, g: 0.651, b: 0.961 }], // lavender
+  [-1, { r: 0.722, g: 0.537, b: 0.184 }], // deep gold
+  [-0.5, { r: 0.788, g: 0.604, b: 0.278 }], // antique gold
+  [0, { r: 0.902, g: 0.757, b: 0.478 }], // champagne
+  [0.5, { r: 0.961, g: 0.922, b: 0.867 }], // ivory
+  [1, { r: 0.976, g: 0.894, b: 0.69 }], // light champagne
 ];
 
 function pastelAt(y: number): RGB {
@@ -140,10 +140,10 @@ export function HeroScene({ className }: { className?: string }) {
       // 2 — wireframe shell.
       const shellGeo = new THREE.IcosahedronGeometry(2.62, 2);
       const shellMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color("#3fa98a"),
+        color: new THREE.Color("#2f5a8a"),
         wireframe: true,
         transparent: true,
-        opacity: 0.16,
+        opacity: 0.22,
       });
       const shell = new THREE.Mesh(shellGeo, shellMat);
       group.add(shell);
@@ -151,18 +151,18 @@ export function HeroScene({ className }: { className?: string }) {
       // 3 — pulsing core + halo.
       const coreGeo = new THREE.SphereGeometry(1.02, 32, 32);
       const coreMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color("#9b8bf0"),
+        color: new THREE.Color("#e6c17a"),
         transparent: true,
-        opacity: 0.2,
+        opacity: 0.22,
       });
       const core = new THREE.Mesh(coreGeo, coreMat);
       group.add(core);
 
       const haloGeo = new THREE.SphereGeometry(1.45, 32, 32);
       const haloMat = new THREE.MeshBasicMaterial({
-        color: new THREE.Color("#ffb98a"),
+        color: new THREE.Color("#c99a47"),
         transparent: true,
-        opacity: 0.12,
+        opacity: 0.14,
         depthWrite: false,
       });
       group.add(new THREE.Mesh(haloGeo, haloMat));
@@ -170,9 +170,9 @@ export function HeroScene({ className }: { className?: string }) {
       // 4 — orbit rings.
       const rings: import("three").Mesh[] = [];
       const ringSpecs = [
-        { r: 3.15, tube: 0.006, tilt: 0.5, color: "#ffb98a", opacity: 0.7, spin: 0.16 },
-        { r: 3.55, tube: 0.004, tilt: -0.7, color: "#8fc6f0", opacity: 0.55, spin: -0.11 },
-        { r: 3.95, tube: 0.003, tilt: 0.28, color: "#9b8bf0", opacity: 0.4, spin: 0.08 },
+        { r: 3.15, tube: 0.006, tilt: 0.5, color: "#e6c17a", opacity: 0.8, spin: 0.16 },
+        { r: 3.55, tube: 0.004, tilt: -0.7, color: "#c99a47", opacity: 0.65, spin: -0.11 },
+        { r: 3.95, tube: 0.003, tilt: 0.28, color: "#7fa8d0", opacity: 0.45, spin: 0.08 },
       ];
       for (const spec of ringSpecs) {
         const g = new THREE.TorusGeometry(spec.r, spec.tube, 8, 128);
@@ -192,7 +192,7 @@ export function HeroScene({ className }: { className?: string }) {
       // 5 — orbiting satellites.
       const sats: import("three").Mesh[] = [];
       const satGeo = new THREE.SphereGeometry(0.05, 12, 12);
-      const satColors = ["#4ecb9a", "#9b8bf0", "#ffb98a", "#8fc6f0", "#f4a9c6", "#ffd479"];
+      const satColors = ["#e6c17a", "#c99a47", "#f5ebdd", "#7fa8d0", "#e6c17a", "#c99a47"];
       for (let i = 0; i < 6; i++) {
         const m = new THREE.MeshBasicMaterial({
           color: new THREE.Color(satColors[i % satColors.length]),
@@ -220,11 +220,11 @@ export function HeroScene({ className }: { className?: string }) {
       const starGeo = new THREE.BufferGeometry();
       starGeo.setAttribute("position", new THREE.BufferAttribute(starPos, 3));
       const starMat = new THREE.PointsMaterial({
-        color: new THREE.Color("#b9b4d8"),
+        color: new THREE.Color("#b9c4d8"),
         size: 0.06,
         map: dot,
         transparent: true,
-        opacity: 0.5,
+        opacity: 0.45,
         depthWrite: false,
       });
       const stars = new THREE.Points(starGeo, starMat);
@@ -279,9 +279,9 @@ export function HeroScene({ className }: { className?: string }) {
         core.rotation.y += dt * 0.12;
         stars.rotation.y += dt * 0.01;
 
-        shellMat.opacity = 0.14 + Math.sin(t * 1.4) * 0.04;
-        coreMat.opacity = 0.16 + Math.sin(t * 1.8) * 0.06;
-        haloMat.opacity = 0.1 + Math.sin(t * 1.8) * 0.04;
+        shellMat.opacity = 0.2 + Math.sin(t * 1.4) * 0.05;
+        coreMat.opacity = 0.18 + Math.sin(t * 1.8) * 0.06;
+        haloMat.opacity = 0.12 + Math.sin(t * 1.8) * 0.04;
 
         for (const ring of rings) {
           ring.rotation.z += (ring.userData.spin as number) * dt;

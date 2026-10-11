@@ -17,9 +17,9 @@ export default function OpengraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          backgroundColor: "#fbf7f0",
+          backgroundColor: "#0d1b2a",
           backgroundImage:
-            "radial-gradient(60% 55% at 20% 0%, rgba(78,203,154,0.22) 0%, rgba(251,247,240,0) 70%), radial-gradient(50% 50% at 90% 15%, rgba(155,139,240,0.20) 0%, rgba(251,247,240,0) 70%)",
+            "radial-gradient(60% 55% at 20% 0%, rgba(201,154,71,0.20) 0%, rgba(13,27,42,0) 70%), radial-gradient(50% 50% at 90% 15%, rgba(27,54,93,0.55) 0%, rgba(13,27,42,0) 70%)",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -30,11 +30,11 @@ export default function OpengraphImage() {
               width: 64,
               height: 64,
               borderRadius: 999,
-              border: "2px solid #4ecb9a",
+              border: "2px solid #c99a47",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#2e8f6e",
+              color: "#c99a47",
               fontSize: 28,
               fontWeight: 700,
             }}
@@ -44,7 +44,7 @@ export default function OpengraphImage() {
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div
               style={{
-                color: "#3a3540",
+                color: "#f5ebdd",
                 fontSize: 30,
                 fontWeight: 700,
                 letterSpacing: 6,
@@ -52,7 +52,7 @@ export default function OpengraphImage() {
             >
               {site.name}
             </div>
-            <div style={{ color: "#9a9186", fontSize: 20 }}>
+            <div style={{ color: "#93a3bb", fontSize: 20 }}>
               {site.descriptor}
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function OpengraphImage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
           <div
             style={{
-              color: "#3a3540",
+              color: "#f5ebdd",
               fontSize: 62,
               fontWeight: 700,
               letterSpacing: -1,
@@ -70,7 +70,7 @@ export default function OpengraphImage() {
           >
             {site.tagline}
           </div>
-          <div style={{ color: "#2e8f6e", fontSize: 26, letterSpacing: 3 }}>
+          <div style={{ color: "#e6c17a", fontSize: 26, letterSpacing: 3 }}>
             {site.motto}
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function OpengraphImage() {
         <div
           style={{
             display: "flex",
-            color: "#9a9186",
+            color: "#93a3bb",
             fontSize: 22,
             letterSpacing: 1,
           }}
