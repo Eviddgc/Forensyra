@@ -134,6 +134,7 @@ export function SiteHeader({
       {/* Mobile panel */}
       <div
         id="mobile-nav"
+        inert={!open}
         className={cn(
           "overflow-hidden border-b bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden",
           open

@@ -98,7 +98,7 @@ export default async function JoinPage() {
               </p>
               <Link
                 href="/ethics"
-                className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
+                className="mt-3 -mb-1 inline-flex items-center gap-1 py-1 text-sm font-medium text-accent hover:underline"
               >
                 Read the ethics rules
                 <ArrowRight className="h-3.5 w-3.5" />

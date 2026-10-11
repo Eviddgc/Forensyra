@@ -92,12 +92,12 @@ export function SiteFooter({
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Explore
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-1">
               {EXPLORE.map((item) => (
                 <li key={`${item.label}-${item.href}`}>
                   <Link
                     href={item.href}
-                    className="text-sm text-muted transition hover:text-foreground"
+                    className="block py-1 text-sm text-muted transition hover:text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -111,12 +111,12 @@ export function SiteFooter({
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Collective
             </p>
-            <ul className="mt-5 space-y-3">
+            <ul className="mt-4 space-y-1">
               {COLLECTIVE.map((item) => (
                 <li key={`${item.label}-${item.href}`}>
                   <Link
                     href={item.href}
-                    className="text-sm text-muted transition hover:text-foreground"
+                    className="block py-1 text-sm text-muted transition hover:text-foreground"
                   >
                     {item.label}
                   </Link>
@@ -136,7 +136,7 @@ export function SiteFooter({
             <NewsletterForm />
             <a
               href={`mailto:${email}`}
-              className="mt-4 inline-block text-xs text-muted transition hover:text-accent"
+              className="mt-2.5 inline-block py-1.5 text-xs text-muted transition hover:text-accent"
             >
               {email}
             </a>

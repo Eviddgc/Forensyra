@@ -53,7 +53,7 @@ export function FeaturedProjects({
             </p>
             <Link
               href="/projects"
-              className="group mt-7 inline-flex items-center gap-2 text-sm font-semibold text-light-ink transition hover:text-accent-deep"
+              className="group mt-6 -mb-1 inline-flex items-center gap-2 py-1 text-sm font-semibold text-light-ink transition hover:text-accent-deep"
             >
               View All Projects
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
