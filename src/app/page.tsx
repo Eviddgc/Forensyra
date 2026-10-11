@@ -1,15 +1,6 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Boxes,
-  FileText,
-  Fingerprint,
-  ShieldCheck,
-} from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { SectionHeading } from "@/components/section-heading";
-import { EntryCard } from "@/components/entry-card";
 import { EmptyState } from "@/components/empty-state";
 import { CtaBand } from "@/components/cta-band";
 import { Logo } from "@/components/logo";
@@ -21,33 +12,11 @@ import { TiltCard } from "@/components/tilt-card";
 import { Counter } from "@/components/counter";
 import { ScrambleText } from "@/components/scramble-text";
 import { Marquee } from "@/components/marquee";
+import { Badge } from "@/components/badge";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
-import { btnPrimary, btnSecondary, cardClass } from "@/lib/ui";
+import { btnPrimary, btnSecondary, chipClass } from "@/lib/ui";
 import { cn, phaseLabel } from "@/lib/utils";
-
-const VALUES = [
-  {
-    icon: ShieldCheck,
-    title: "Learn in the open",
-    body: "Everything we produce lives in a public GitHub organisation — notes, evidence handling, reports and tooling.",
-  },
-  {
-    icon: FileText,
-    title: "Practise on real workflows",
-    body: "We run legal, authorised mock cases using public sample evidence so members build genuine investigation skills.",
-  },
-  {
-    icon: Fingerprint,
-    title: "Own a specialisation",
-    body: "Thirteen defined roles, from memory and network to AI and cloud forensics, so you go deep instead of wide.",
-  },
-  {
-    icon: Boxes,
-    title: "Finish one strong case",
-    body: "We favour one complete, published investigation over many half-finished projects.",
-  },
-];
 
 const MARQUEE_ITEMS = [
   "Endpoint Forensics",
@@ -65,15 +34,6 @@ const MARQUEE_ITEMS = [
   "Reporting & Peer Review",
 ];
 
-const HUB = [
-  { href: "/projects", label: "Case Files", note: "Investigation projects" },
-  { href: "/writeups", label: "Write-ups", note: "Logs, tutorials, research" },
-  { href: "/team", label: "Team", note: "Members and roles" },
-  { href: "/roadmap", label: "Roadmap", note: "Present and upcoming plans" },
-  { href: "/roles", label: "Roles", note: "The 13 specialisations" },
-  { href: "/ethics", label: "Ethics", note: "How we work, legally" },
-];
-
 const ORBIT_CHIPS = [
   { label: "Endpoint", className: "left-1/2 top-0 -translate-x-1/2 animate-float" },
   {
@@ -87,6 +47,8 @@ const ORBIT_CHIPS = [
   { label: "Cloud", className: "left-0 top-1/2 -translate-y-1/2 animate-float" },
 ];
 
+const EYEBROW = "font-mono text-xs uppercase tracking-[0.25em] text-accent";
+
 export default async function HomePage() {
   const site = getSite();
   const [projects, writeups, roles, roadmap] = await Promise.all([
@@ -99,6 +61,7 @@ export default async function HomePage() {
   const featuredProjects = projects.slice(0, 2);
   const latestWriteups = writeups.slice(0, 3);
   const latestRoadmap = roadmap.slice(0, 3);
+  const leadWriteup = latestWriteups[0];
 
   const stats: Array<{
     value: number;
@@ -114,15 +77,15 @@ export default async function HomePage() {
 
   return (
     <>
-      {/* ── Hero ─────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden border-b border-border">
+      {/* ── Immersive hero ───────────────────────────────────── */}
+      <section className="relative flex min-h-[100svh] items-center overflow-hidden border-b border-border">
         <HeroScene className="absolute inset-0 h-full w-full opacity-90" />
         <div className="absolute inset-0 bg-grid opacity-[0.22]" />
         <div className="absolute inset-0 bg-radial-glow" />
         <div className="fx-scanlines pointer-events-none absolute inset-0 opacity-[0.22]" />
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(130%_130%_at_50%_-15%,transparent_45%,var(--color-background)_96%)]" />
 
-        <Container className="relative grid gap-14 py-20 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-28">
+        <Container className="relative grid w-full gap-14 py-24 lg:grid-cols-[1.08fr_0.92fr] lg:items-center lg:py-28">
           <div className="animate-rise">
             <div className="inline-flex items-center gap-2.5 rounded-full border border-accent/30 bg-accent/10 px-3.5 py-1.5">
               <span className="relative flex h-2 w-2">
@@ -134,7 +97,7 @@ export default async function HomePage() {
               </span>
             </div>
 
-            <h1 className="mt-6 font-display text-5xl font-bold leading-[1.04] text-gradient-anim sm:text-7xl">
+            <h1 className="mt-6 font-display text-6xl font-bold leading-[1.02] text-gradient-anim sm:text-8xl">
               <ScrambleText text={site.name} />
             </h1>
 
@@ -234,38 +197,296 @@ export default async function HomePage() {
         <Ornament />
       </div>
 
-      {/* ── Values ───────────────────────────────────────────────────── */}
+      {/* ── Modern bento grid ────────────────────────────────── */}
       <section className="py-16 sm:py-20">
         <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="What we are"
-              title="A student-led digital forensics collective"
-              description="We bring together people who want to understand how digital evidence really works — then prove it, together."
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-            {VALUES.map((value, index) => (
-              <Reveal key={value.title} delay={index * 90}>
-                <TiltCard
-                  intensity={7}
-                  className={cn(cardClass, "h-full bg-surface/80 p-5")}
+          <div className="grid gap-4 lg:grid-cols-6">
+            {/* Case files — large */}
+            <Reveal className="lg:col-span-4 lg:row-span-2">
+              <TiltCard
+                intensity={5}
+                className="fx-frame flex h-full flex-col bg-surface/70 p-6"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className={EYEBROW}>Case files</p>
+                    <h3 className="font-display mt-2 text-2xl font-semibold text-foreground sm:text-3xl">
+                      Projects in the field
+                    </h3>
+                    <p className="mt-2 max-w-md text-sm text-muted">
+                      Our flagship work: one complete, publicly documented
+                      investigation built by the whole team.
+                    </p>
+                  </div>
+                  <Link
+                    href="/projects"
+                    className={cn(btnSecondary, "px-3 py-1.5 text-xs")}
+                  >
+                    All projects
+                  </Link>
+                </div>
+
+                {featuredProjects.length > 0 ? (
+                  <div className="mt-5 grid flex-1 content-start gap-3 sm:grid-cols-2">
+                    {featuredProjects.map((entry) => (
+                      <Link
+                        key={entry.slug}
+                        href={`/projects/${entry.slug}`}
+                        className="group flex flex-col rounded-xl border border-border bg-background/60 p-4 transition hover:border-accent/50 hover:bg-surface-2"
+                      >
+                        <span className="flex items-center justify-between gap-2">
+                          <Badge variant="accent">
+                            {entry.caseType ?? "Case file"}
+                          </Badge>
+                          {entry.pinned ? (
+                            <Badge variant="warning">Pinned</Badge>
+                          ) : null}
+                        </span>
+                        <span className="mt-3 text-base font-semibold text-foreground transition group-hover:text-accent-2">
+                          {entry.title}
+                        </span>
+                        {entry.description ? (
+                          <span className="mt-1.5 line-clamp-3 text-sm text-muted">
+                            {entry.description}
+                          </span>
+                        ) : null}
+                        <span className="mt-auto inline-flex items-center gap-1 pt-4 text-xs font-medium text-accent opacity-0 transition group-hover:opacity-100">
+                          Open
+                          <ArrowUpRight className="h-3.5 w-3.5" />
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                ) : (
+                  <EmptyState
+                    title="The first case file is being assembled"
+                    description="Recruitment is opening the founding team. The mock case will be published here."
+                    className="mt-5"
+                  />
+                )}
+              </TiltCard>
+            </Reveal>
+
+            {/* Latest write-up */}
+            <Reveal delay={90} className="lg:col-span-2">
+              <TiltCard
+                intensity={6}
+                className="fx-frame flex h-full flex-col bg-surface/70 p-6"
+              >
+                <p className={EYEBROW}>Latest write-up</p>
+                {leadWriteup ? (
+                  <>
+                    <h3 className="font-display mt-2 text-xl font-semibold text-foreground">
+                      {leadWriteup.title}
+                    </h3>
+                    {leadWriteup.description ? (
+                      <p className="mt-2 line-clamp-4 text-sm text-muted">
+                        {leadWriteup.description}
+                      </p>
+                    ) : null}
+                    <Link
+                      href={`/writeups/${leadWriteup.slug}`}
+                      className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-medium text-accent"
+                    >
+                      Read
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </>
+                ) : (
+                  <p className="mt-2 text-sm text-muted">
+                    Write-ups are on the way.
+                  </p>
+                )}
+              </TiltCard>
+            </Reveal>
+
+            {/* Roadmap */}
+            <Reveal delay={120} className="lg:col-span-2">
+              <TiltCard
+                intensity={6}
+                className="flex h-full flex-col bg-surface/70 p-6"
+              >
+                <div className="flex items-start justify-between gap-3">
+                  <div>
+                    <p className={EYEBROW}>Roadmap</p>
+                    <h3 className="font-display mt-2 text-xl font-semibold text-foreground">
+                      What&apos;s next
+                    </h3>
+                  </div>
+                  <Link
+                    href="/roadmap"
+                    className="inline-flex items-center gap-1 text-xs font-medium text-accent"
+                  >
+                    Full
+                    <ArrowRight className="h-3 w-3" />
+                  </Link>
+                </div>
+                <ul className="mt-4 space-y-3.5">
+                  {latestRoadmap.length > 0 ? (
+                    latestRoadmap.map((item) => (
+                      <li key={item.slug} className="flex gap-2.5">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                        <span>
+                          <span className="block text-sm font-medium text-foreground">
+                            {item.title}
+                          </span>
+                          <span className="text-xs text-muted">
+                            {item.status ?? "Planned"}
+                          </span>
+                        </span>
+                      </li>
+                    ))
+                  ) : (
+                    <li className="text-sm text-muted">
+                      Roadmap milestones will appear here.
+                    </li>
+                  )}
+                </ul>
+              </TiltCard>
+            </Reveal>
+
+            {/* Roles — wide */}
+            <Reveal className="lg:col-span-4">
+              <TiltCard
+                intensity={5}
+                className="fx-frame flex h-full flex-col bg-surface/70 p-6"
+              >
+                <div className="flex flex-wrap items-start justify-between gap-3">
+                  <div>
+                    <p className={EYEBROW}>Thirteen roles</p>
+                    <h3 className="font-display mt-2 text-2xl font-semibold text-foreground sm:text-3xl">
+                      Find your specialisation
+                    </h3>
+                  </div>
+                  <Link
+                    href="/roles"
+                    className={cn(btnSecondary, "px-3 py-1.5 text-xs")}
+                  >
+                    All roles
+                  </Link>
+                </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {roles.slice(0, 13).map((role) => (
+                    <span
+                      key={role.slug}
+                      className={cn(chipClass, "px-3 py-1.5 text-xs")}
+                    >
+                      {role.title}
+                      <span className="ml-1.5 font-mono text-[10px] text-accent">
+                        {role.phase ? phaseLabel(role.phase) : ""}
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              </TiltCard>
+            </Reveal>
+
+            {/* About */}
+            <Reveal delay={90} className="lg:col-span-2">
+              <TiltCard
+                intensity={6}
+                className="flex h-full flex-col bg-surface/70 p-6"
+              >
+                <p className={EYEBROW}>About</p>
+                <h3 className="font-display mt-2 text-xl font-semibold text-foreground">
+                  A student-led collective
+                </h3>
+                <p className="mt-2 text-sm text-muted">
+                  We bring together people who want to understand how digital
+                  evidence really works — then prove it, together.
+                </p>
+                <Link
+                  href="/about"
+                  className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-medium text-accent"
                 >
-                  <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
-                    <value.icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-4 text-base font-semibold text-foreground">
-                    {value.title}
+                  Learn more
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </TiltCard>
+            </Reveal>
+
+            {/* Ethics */}
+            <Reveal delay={60} className="lg:col-span-2">
+              <TiltCard
+                intensity={6}
+                className="flex h-full flex-col bg-surface/70 p-6"
+              >
+                <p className={EYEBROW}>Ethics</p>
+                <h3 className="font-display mt-2 text-xl font-semibold text-foreground">
+                  How we work
+                </h3>
+                <p className="mt-2 text-sm text-muted">
+                  Legal practice cases only, public sample evidence, and no
+                  real victim data.
+                </p>
+                <Link
+                  href="/ethics"
+                  className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-medium text-accent"
+                >
+                  Our principles
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </TiltCard>
+            </Reveal>
+
+            {/* Team */}
+            <Reveal delay={30} className="lg:col-span-2">
+              <TiltCard
+                intensity={6}
+                className="flex h-full flex-col bg-surface/70 p-6"
+              >
+                <p className={EYEBROW}>Team</p>
+                <h3 className="font-display mt-2 text-xl font-semibold text-foreground">
+                  The founders
+                </h3>
+                <p className="mt-2 text-sm text-muted">
+                  Founded by Gopi Chand — Lead Forensic Investigator.
+                </p>
+                <Link
+                  href="/team"
+                  className="mt-auto inline-flex items-center gap-1 pt-5 text-sm font-medium text-accent"
+                >
+                  Meet the team
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              </TiltCard>
+            </Reveal>
+
+            {/* Join CTA */}
+            <Reveal delay={60} className="lg:col-span-2">
+              <Link
+                href={site.applyUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="h-full"
+              >
+                <TiltCard
+                  intensity={6}
+                  className="fx-holo flex h-full flex-col items-center justify-center bg-accent/10 p-6 text-center"
+                >
+                  <Crown className="h-9 w-11 drop-shadow-[0_0_10px] drop-shadow-accent/60" />
+                  <h3 className="font-display mt-3 text-xl font-semibold text-foreground">
+                    Join the collective
                   </h3>
-                  <p className="mt-2 text-sm text-muted">{value.body}</p>
+                  <p className="mt-1 text-sm text-muted">
+                    Applications are open.
+                  </p>
+                  <span
+                    className={cn(
+                      btnPrimary,
+                      "fx-shine mt-4 px-4 py-1.5 text-xs",
+                    )}
+                  >
+                    Apply now
+                  </span>
                 </TiltCard>
-              </Reveal>
-            ))}
+              </Link>
+            </Reveal>
           </div>
         </Container>
       </section>
 
-      {/* ── Specialities marquee ─────────────────────────────────────── */}
+      {/* ── Disciplines marquee ─────────────────────────────── */}
       <section className="border-y border-border bg-surface/30 py-10">
         <Container className="mb-6">
           <p className="text-center font-mono text-[11px] uppercase tracking-[0.3em] text-muted">
@@ -273,184 +494,6 @@ export default async function HomePage() {
           </p>
         </Container>
         <Marquee items={MARQUEE_ITEMS} />
-      </section>
-
-      {/* ── Hub ──────────────────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="One place for everything"
-              title="The Forensyra hub"
-              description="Our projects, write-ups, plans, and members all live here — updated as the collective grows."
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {HUB.map((item, index) => (
-              <Reveal key={item.href} delay={index * 70}>
-                <TiltCard intensity={6}>
-                  <Link
-                    href={item.href}
-                    className={cn(
-                      cardClass,
-                      "group flex h-full items-center justify-between bg-surface/80 p-5",
-                    )}
-                  >
-                    <span>
-                      <span className="block text-base font-semibold text-foreground transition group-hover:text-accent">
-                        {item.label}
-                      </span>
-                      <span className="mt-1 block text-xs text-muted">
-                        {item.note}
-                      </span>
-                    </span>
-                    <ArrowUpRight className="h-5 w-5 text-muted transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-accent" />
-                  </Link>
-                </TiltCard>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      {/* ── Featured case files ──────────────────────────────────────── */}
-      <section className="py-16 sm:py-20">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Case files"
-              title="Projects in the field"
-              description="Our flagship work: one complete, publicly documented investigation built by the whole team."
-              action={
-                <Link href="/projects" className={btnSecondary}>
-                  All projects
-                </Link>
-              }
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {featuredProjects.length > 0 ? (
-              featuredProjects.map((entry, index) => (
-                <Reveal key={entry.slug} delay={index * 90} className="h-full">
-                  <EntryCard
-                    entry={entry}
-                    basePath="/projects"
-                    kind={entry.caseType ?? "Case file"}
-                  />
-                </Reveal>
-              ))
-            ) : (
-              <EmptyState
-                title="The first case file is being assembled"
-                description="Recruitment is opening the founding team. The mock case will be published here."
-                className="md:col-span-2 lg:col-span-3"
-              />
-            )}
-          </div>
-        </Container>
-      </section>
-
-      {/* ── Roles + roadmap ──────────────────────────────────────────── */}
-      <section className="border-y border-border bg-surface/30 py-16 sm:py-20">
-        <Container className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <Reveal>
-            <SectionHeading
-              eyebrow="Thirteen roles"
-              title="Find your specialisation"
-              description="Every member owns a defined role, filled in phases so the team is never overloaded."
-            />
-            <div className="mt-6 flex flex-wrap gap-2">
-              {roles.slice(0, 13).map((role) => (
-                <span
-                  key={role.slug}
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-3 py-1 text-xs text-muted transition hover:border-accent/40 hover:text-foreground"
-                >
-                  {role.title}
-                  <span className="font-mono text-[10px] text-accent">
-                    {role.phase ? phaseLabel(role.phase) : ""}
-                  </span>
-                </span>
-              ))}
-            </div>
-            <Link href="/roles" className={cn(btnPrimary, "fx-shine mt-6")}>
-              View all roles
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </Reveal>
-
-          <Reveal delay={140}>
-            <div className="fx-holo rounded-2xl border border-border bg-background p-6">
-              <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-                Roadmap snapshot
-              </p>
-              <ul className="mt-5 space-y-4">
-                {latestRoadmap.length > 0 ? (
-                  latestRoadmap.map((item) => (
-                    <li key={item.slug} className="flex gap-3">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                      <span>
-                        <span className="block text-sm font-medium text-foreground">
-                          {item.title}
-                        </span>
-                        <span className="text-xs text-muted">
-                          {item.status ?? "Planned"}
-                        </span>
-                      </span>
-                    </li>
-                  ))
-                ) : (
-                  <li className="text-sm text-muted">
-                    Roadmap milestones will appear here.
-                  </li>
-                )}
-              </ul>
-              <Link
-                href="/roadmap"
-                className="mt-6 inline-flex items-center gap-1 text-sm font-medium text-accent hover:underline"
-              >
-                See the full roadmap
-                <ArrowRight className="h-3.5 w-3.5" />
-              </Link>
-            </div>
-          </Reveal>
-        </Container>
-      </section>
-
-      {/* ── Latest write-ups ─────────────────────────────────────────── */}
-      <section className="py-16 sm:py-20">
-        <Container>
-          <Reveal>
-            <SectionHeading
-              eyebrow="Lab notes"
-              title="Latest write-ups"
-              description="Investigation logs, tutorials, and research from across the collective."
-              action={
-                <Link href="/writeups" className={btnSecondary}>
-                  All write-ups
-                </Link>
-              }
-            />
-          </Reveal>
-          <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {latestWriteups.length > 0 ? (
-              latestWriteups.map((entry, index) => (
-                <Reveal key={entry.slug} delay={index * 90} className="h-full">
-                  <EntryCard
-                    entry={entry}
-                    basePath="/writeups"
-                    kind="Write-up"
-                  />
-                </Reveal>
-              ))
-            ) : (
-              <EmptyState
-                title="Write-ups are on the way"
-                description="As the team begins its first case, notes and tutorials will be published here."
-                className="md:col-span-2 lg:col-span-3"
-              />
-            )}
-          </div>
-        </Container>
       </section>
 
       <div className="mx-auto max-w-xs">

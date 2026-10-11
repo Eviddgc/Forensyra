@@ -246,14 +246,20 @@ export function HeroScene({ className }: { className?: string }) {
       const stars = new THREE.Points(starGeo, starMat);
       scene.add(stars);
 
-      // Pointer parallax.
+      // Pointer parallax + scroll-linked motion.
       const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
+      const scroll = { y: 0, ty: 0 };
       const onMove = (event: PointerEvent) => {
         pointer.tx = (event.clientX / window.innerWidth - 0.5) * 2;
         pointer.ty = (event.clientY / window.innerHeight - 0.5) * 2;
       };
+      const onScroll = () => {
+        scroll.ty = Math.min(1, window.scrollY / (window.innerHeight * 1.1));
+      };
       if (!reduce) {
         window.addEventListener("pointermove", onMove, { passive: true });
+        window.addEventListener("scroll", onScroll, { passive: true });
+        onScroll();
       }
 
       const resize = () => {
@@ -286,9 +292,16 @@ export function HeroScene({ className }: { className?: string }) {
         t += dt;
         pointer.x += (pointer.tx - pointer.x) * 0.05;
         pointer.y += (pointer.ty - pointer.y) * 0.05;
+        scroll.y += (scroll.ty - scroll.y) * 0.08;
 
-        group.rotation.y = t * 0.18 + pointer.x * 0.55;
-        group.rotation.x = Math.sin(t * 0.25) * 0.08 + pointer.y * 0.3;
+        group.rotation.y =
+          t * 0.18 + pointer.x * 0.55 + scroll.y * 1.4;
+        group.rotation.x =
+          Math.sin(t * 0.25) * 0.08 + pointer.y * 0.3 - scroll.y * 0.3;
+        group.position.y = -scroll.y * 0.9;
+        camera.position.z = 7.2 + scroll.y * 1.8;
+        camera.position.y = scroll.y * 0.5;
+        camera.lookAt(0, 0, 0);
 
         shell.rotation.y -= dt * 0.06;
         shell.rotation.x += dt * 0.02;
@@ -326,6 +339,7 @@ export function HeroScene({ className }: { className?: string }) {
       cleanup = () => {
         cancelAnimationFrame(raf);
         window.removeEventListener("pointermove", onMove);
+        window.removeEventListener("scroll", onScroll);
         resizeObserver.disconnect();
         if (canvas.parentNode === mount) mount.removeChild(canvas);
 
