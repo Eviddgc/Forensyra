@@ -21,9 +21,6 @@ const STATS: Array<{
 ];
 
 export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
-  const head = name.length > 4 ? name.slice(0, name.length - 4) : name;
-  const tail = name.length > 4 ? name.slice(-4) : "";
-
   return (
     <section
       id="top"
@@ -61,11 +58,8 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
           </Reveal>
 
           <Reveal delay={140}>
-            <h1 className="font-display mt-4 text-[clamp(3.25rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em] text-foreground">
-              {head}
-              {tail ? (
-                <span className="text-gradient-anim">{tail}</span>
-              ) : null}
+            <h1 className="fx-wordmark w-fit font-display mt-4 text-[clamp(3.25rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em]">
+              {name}
             </h1>
           </Reveal>
 

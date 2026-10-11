@@ -60,6 +60,16 @@ Navy & gold luxury palette. Tokens live in `src/app/globals.css`.
 - **Mono:** IBM Plex Mono — labels, stats, metadata, uppercase eyebrows.
 - Headings and display type scale fluidly with `clamp()`.
 
+### Hero wordmark
+
+The homepage `FORENSYRA` wordmark (`.fx-wordmark` in `globals.css`) is struck in
+gold foil: an ivory → champagne fill that turns gold across the final letters,
+with a specular band that sweeps left to right as the boot overlay clears and
+then glints softly on a slow loop. A warm halo flares as it lands and a gold
+hairline draws itself underneath. The reveal is gated on `.intro-seen`, so
+returning visitors get it immediately on load. `prefers-reduced-motion` (and
+no-JS) collapse it to the resting foil finish.
+
 ## Imagery
 
 - **No stock photography.** Heroes, page headers and section panels use the
