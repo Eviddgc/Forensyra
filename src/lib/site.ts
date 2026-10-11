@@ -19,6 +19,8 @@ export interface SiteSettings {
   social: {
     github: string;
     linkedin: string;
+    instagram: string;
+    youtube: string;
     email: string;
   };
 }

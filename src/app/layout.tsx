@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import { Announcement } from "@/components/announcement";
 import { SiteHeader } from "@/components/site-header";
@@ -8,20 +8,24 @@ import { Preloader } from "@/components/preloader";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { getSite } from "@/lib/site";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
+  display: "swap",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const plexMono = IBM_Plex_Mono({
+  variable: "--font-plex-mono",
   subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
   variable: "--font-playfair",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800", "900"],
+  display: "swap",
 });
 
 const site = getSite();
@@ -67,7 +71,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "dark",
-  themeColor: "#0d1b2a",
+  themeColor: "#071827",
 };
 
 export default function RootLayout({
@@ -79,7 +83,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable}`}
+      className={`${inter.variable} ${plexMono.variable} ${playfair.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
         <a
@@ -122,11 +126,9 @@ export default function RootLayout({
         <main id="main" className="relative flex-1">{children}</main>
         <SiteFooter
           name={site.name}
-          descriptor={site.descriptor}
-          motto={site.motto}
+          description={site.description}
           email={site.email}
-          github={site.social.github}
-          linkedin={site.social.linkedin}
+          social={site.social}
         />
       </body>
     </html>

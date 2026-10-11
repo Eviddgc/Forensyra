@@ -1,26 +1,37 @@
 @import "tailwindcss";
 
 @theme {
-  /* ── Navy & gold luxury palette ────────────────────────────────── */
-  --color-background: #0d1b2a; /* navy blue */
-  --color-surface: #1b365d; /* ocean blue */
-  --color-surface-2: #24446f;
-  --color-border: #2e4a73;
-  --color-foreground: #f5ebdd; /* ivory */
-  --color-muted: #93a3bb;
-  --color-ink: #0d1b2a; /* text on gold fills */
+  /* ── FORENSYRA navy & gold branding palette ────────────────────── */
+  --color-background: #071827; /* primary background */
+  --color-surface: #0d2238; /* secondary navy */
+  --color-surface-2: #122b46; /* card background */
+  --color-elevated: #193654; /* elevated surface */
+  --color-border: #1f3a5a; /* subtle navy border */
+  --color-border-gold: rgba(230, 182, 79, 0.28); /* branded hairline */
+  --color-foreground: #f5f4f0; /* primary text on dark */
+  --color-muted: #b7c4d2; /* secondary text on dark */
+  --color-ink: #071827; /* text on gold fills */
 
-  --color-accent: #c99a47; /* antique gold */
-  --color-accent-2: #e6c17a; /* champagne gold */
-  --color-accent-deep: #9a7524; /* text on gold */
-  --color-accent-2-deep: #b98f3a;
+  --color-accent: #e6b64f; /* brand gold */
+  --color-accent-2: #f5d58a; /* light gold */
+  --color-accent-deep: #a97f22; /* gold for text on light */
+  --color-accent-ink: #8a6417; /* accessible gold for small text on light */
+  --color-accent-2-deep: #c99a47;
 
-  --color-success: #8fbf9f;
-  --color-warning: #e6c17a;
+  /* Light editorial sections */
+  --color-light: #f3f5f6; /* light section background */
+  --color-light-2: #eceff2; /* second off-white surface */
+  --color-light-card: #ffffff; /* light card background */
+  --color-light-ink: #102741; /* primary text on light */
+  --color-light-muted: #4d5f75; /* secondary text on light */
+  --color-light-border: #dde3e9; /* light divider */
+
+  --color-success: #6fae86;
+  --color-warning: #e6b64f;
   --color-danger: #d98a8a;
 
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, SFMono-Regular, Menlo,
     monospace;
   --font-display: var(--font-playfair), "Playfair Display", Georgia, serif;
 
@@ -46,6 +57,7 @@
   html {
     color-scheme: dark;
     scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
   }
 
   body {
@@ -109,12 +121,12 @@
   background-image:
     linear-gradient(
       45deg,
-      rgba(201, 154, 71, 0.05) 1px,
+      rgba(230, 182, 79, 0.06) 1px,
       transparent 1px
     ),
     linear-gradient(
       -45deg,
-      rgba(201, 154, 71, 0.05) 1px,
+      rgba(230, 182, 79, 0.06) 1px,
       transparent 1px
     );
   background-size: 44px 44px;
@@ -123,11 +135,11 @@
 .text-gradient {
   background: linear-gradient(
     100deg,
-    #f7ecc8 0%,
-    #e6c17a 25%,
-    #c99a47 50%,
-    #f0d49a 75%,
-    #f5ebdd 100%
+    #f8eeca 0%,
+    #f5d58a 25%,
+    #e6b64f 50%,
+    #f2dca6 75%,
+    #f5f4f0 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
@@ -511,11 +523,11 @@
 .text-gradient-anim {
   background: linear-gradient(
     100deg,
-    #f7ecc8 0%,
-    #e6c17a 22%,
-    #c99a47 48%,
-    #f0d49a 72%,
-    #f5ebdd 100%
+    #f8eeca 0%,
+    #f5d58a 22%,
+    #e6b64f 48%,
+    #f2dca6 72%,
+    #f5f4f0 100%
   );
   background-size: 220% auto;
   -webkit-background-clip: text;
@@ -625,6 +637,105 @@
 }
 .intro-active {
   overflow: hidden;
+}
+
+/* ===================================================================
+   Homepage editorial layer
+   =================================================================== */
+
+/* Small uppercase mono section label */
+.fx-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+/* Cinematic navy overlay for photography */
+.fx-cinematic {
+  background-image: linear-gradient(
+      100deg,
+      #071827 6%,
+      rgba(7, 24, 39, 0.92) 34%,
+      rgba(7, 24, 39, 0.55) 62%,
+      rgba(7, 24, 39, 0.72) 100%
+    ),
+    linear-gradient(
+      to top,
+      #071827 0%,
+      rgba(7, 24, 39, 0.35) 30%,
+      rgba(7, 24, 39, 0) 65%
+    );
+}
+
+/* Light editorial card */
+.fx-card-light {
+  background: var(--color-light-card);
+  border: 1px solid var(--color-light-border);
+  box-shadow: 0 18px 40px -30px rgba(16, 39, 65, 0.45);
+  transition:
+    transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+.fx-card-light:hover {
+  transform: translateY(-6px);
+  border-color: rgba(230, 182, 79, 0.65);
+  box-shadow: 0 28px 60px -34px rgba(16, 39, 65, 0.5);
+}
+
+/* Circular arrow button */
+.fx-arrow-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: var(--color-ink);
+  transition:
+    transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1),
+    background-color 0.3s ease;
+}
+.fx-arrow-btn:hover {
+  transform: translateX(3px);
+  background: var(--color-accent-2);
+}
+
+/* Slow image zoom on hover (project media) */
+.fx-media img {
+  transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.fx-media:hover img {
+  transform: scale(1.06);
+}
+
+/* Thin gold rule */
+.fx-rule {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(230, 182, 79, 0.55),
+    transparent
+  );
+}
+
+/* Gentle curved section transition */
+.fx-curve {
+  display: block;
+  width: 100%;
+}
+
+/* Gold typographic accent (CTA) */
+.fx-accent-type {
+  font-family: var(--font-display);
+  font-style: italic;
+  line-height: 1.15;
+  background: linear-gradient(120deg, #f5d58a 0%, #e6b64f 55%, #f2dca6 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 @media (prefers-reduced-motion: reduce) {

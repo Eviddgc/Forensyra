@@ -42,3 +42,6 @@ next-env.d.ts
 
 # local brand masters (large); web copies live in public/ and src/app/
 /Photos
+
+# local review screenshots (generated, not part of the site)
+/screenshots

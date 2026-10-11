@@ -1,8 +1,15 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Container } from "@/components/container";
-import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { NewsletterForm } from "@/components/newsletter-form";
+import {
+  GitHubIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  YouTubeIcon,
+} from "@/components/brand-icons";
 
+/** Section 9 — footer. */
 const EXPLORE = [
   { href: "/about", label: "About" },
   { href: "/roles", label: "Roles" },
@@ -13,7 +20,7 @@ const EXPLORE = [
 
 const COLLECTIVE = [
   { href: "/roadmap", label: "Roadmap" },
-  { href: "/ethics", label: "Ethics" },
+  { href: "/writeups", label: "Research" },
   { href: "/resources", label: "Resources" },
   { href: "/join", label: "Join us" },
   { href: "/contact", label: "Contact" },
@@ -21,79 +28,73 @@ const COLLECTIVE = [
 
 export function SiteFooter({
   name,
-  descriptor,
-  motto,
+  description,
   email,
-  github,
-  linkedin,
+  social,
 }: {
   name: string;
-  descriptor: string;
-  motto: string;
+  description: string;
   email: string;
-  github?: string;
-  linkedin?: string;
+  social: {
+    github: string;
+    linkedin: string;
+    instagram: string;
+    youtube: string;
+  };
 }) {
   const year = new Date().getFullYear();
 
+  const socials = [
+    { href: social.github, label: "GitHub", Icon: GitHubIcon },
+    { href: social.linkedin, label: "LinkedIn", Icon: LinkedInIcon },
+    { href: social.instagram, label: "Instagram", Icon: InstagramIcon },
+    { href: social.youtube, label: "YouTube", Icon: YouTubeIcon },
+  ].filter((item) => item.href);
+
   return (
-    <footer className="mt-24 border-t border-border bg-surface/40">
-      <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-2">
+    <footer className="relative mt-24 border-t border-border-gold bg-surface">
+      <Container className="py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+          {/* Brand */}
+          <div className="lg:pr-6">
             <div className="flex items-center gap-3">
-              <Logo size={44} />
+              <Logo size={46} />
               <div>
-                <p className="font-mono text-sm font-semibold tracking-[0.22em] text-foreground">
+                <p className="font-display text-base font-semibold uppercase tracking-[0.18em] text-foreground">
                   {name}
                 </p>
-                <p className="text-xs text-muted">{descriptor}</p>
+                <p className="mt-0.5 text-[11px] text-muted">
+                  Digital Evidence for a Safer Tomorrow.
+                </p>
               </div>
             </div>
-            <p className="mt-5 max-w-sm text-sm text-muted">
-              {motto} A collaborative space for students and early-career
-              professionals learning digital forensics, incident response, and
-              evidence-led investigation.
-            </p>
-            <div className="mt-5 flex items-center gap-3">
-              {github ? (
-                <a
-                  href={github}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="GitHub"
-                  className="rounded-full border border-border p-2 text-muted transition hover:border-accent/50 hover:text-accent"
-                >
-                  <GitHubIcon className="h-4 w-4" />
-                </a>
-              ) : null}
-              {linkedin ? (
-                <a
-                  href={linkedin}
-                  target="_blank"
-                  rel="noreferrer"
-                  aria-label="LinkedIn"
-                  className="rounded-full border border-border p-2 text-muted transition hover:border-accent/50 hover:text-accent"
-                >
-                  <LinkedInIcon className="h-4 w-4" />
-                </a>
-              ) : null}
-              <a
-                href={`mailto:${email}`}
-                className="rounded-full border border-border px-3 py-2 text-xs text-muted transition hover:border-accent/50 hover:text-accent"
-              >
-                {email}
-              </a>
-            </div>
+            <p className="mt-5 max-w-sm text-sm text-muted">{description}</p>
+            {socials.length > 0 ? (
+              <div className="mt-6 flex items-center gap-2.5">
+                {socials.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={label}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition hover:border-accent/60 hover:text-accent"
+                  >
+                    <Icon className="h-4 w-4" />
+                  </a>
+                ))}
+              </div>
+            ) : null}
           </div>
 
+          {/* Explore */}
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Explore
             </p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-5 space-y-3">
               {EXPLORE.map((item) => (
-                <li key={item.href}>
+                <li key={`${item.label}-${item.href}`}>
                   <Link
                     href={item.href}
                     className="text-sm text-muted transition hover:text-foreground"
@@ -105,13 +106,14 @@ export function SiteFooter({
             </ul>
           </div>
 
+          {/* Collective */}
           <div>
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-muted">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Collective
             </p>
-            <ul className="mt-4 space-y-2.5">
+            <ul className="mt-5 space-y-3">
               {COLLECTIVE.map((item) => (
-                <li key={item.href}>
+                <li key={`${item.label}-${item.href}`}>
                   <Link
                     href={item.href}
                     className="text-sm text-muted transition hover:text-foreground"
@@ -122,17 +124,36 @@ export function SiteFooter({
               ))}
             </ul>
           </div>
+
+          {/* Newsletter */}
+          <div>
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+              Stay in the loop
+            </p>
+            <p className="mt-5 text-sm text-muted">
+              Get updates on new cases, write-ups, and opportunities.
+            </p>
+            <NewsletterForm />
+            <a
+              href={`mailto:${email}`}
+              className="mt-4 inline-block text-xs text-muted transition hover:text-accent"
+            >
+              {email}
+            </a>
+          </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-3 border-t border-border pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            {`\u00A9 ${year} ${name}. Preserve the Trace. Prove the Story.`}
-          </p>
-          <p className="font-mono">
-            Legal practice cases only · Public sample evidence · No real victim
-            data
+        <div className="fx-rule mt-12" />
+
+        <div className="mt-6 flex flex-col gap-4 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <p>© {year} {name}. Proud to be a student collective.</p>
+          <p className="font-mono tracking-[0.28em] text-accent/80">
+            LEARN / INVESTIGATE / BUILD
           </p>
         </div>
+        <p className="mt-3 text-[11px] text-muted/70">
+          Public sample evidence only. No real victim data.
+        </p>
       </Container>
     </footer>
   );

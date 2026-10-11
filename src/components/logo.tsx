@@ -4,11 +4,11 @@ import { cn } from "@/lib/utils";
 export function Logo({
   size = 40,
   className,
-  priority = false,
+  preload = false,
 }: {
   size?: number;
   className?: string;
-  priority?: boolean;
+  preload?: boolean;
 }) {
   return (
     <Image
@@ -16,8 +16,8 @@ export function Logo({
       alt="FORENSYRA emblem"
       width={size}
       height={size}
-      priority={priority}
-      className={cn("rounded-full ring-1 ring-border", className)}
+      preload={preload}
+      className={cn("rounded-full ring-1 ring-border-gold", className)}
     />
   );
 }

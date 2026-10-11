@@ -9,13 +9,15 @@
   "applyUrl": "https://forms.cloud.microsoft/r/DqtYq3HvNE",
   "announcement": {
     "enabled": true,
-    "text": "Applications are open — join the founding team and help build our first case file.",
+    "text": "Applications are open — join the founding team and help build the first student-led DFIR collective.",
     "link": "/join",
     "linkLabel": "Apply now"
   },
   "social": {
     "github": "https://github.com/Eviddgc",
     "linkedin": "",
+    "instagram": "",
+    "youtube": "",
     "email": "forensyra@outlook.in"
   }
 }

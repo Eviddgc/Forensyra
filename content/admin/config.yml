@@ -194,4 +194,6 @@ collections:
             fields:
               - { name: github, label: GitHub, widget: string, required: false }
               - { name: linkedin, label: LinkedIn, widget: string, required: false }
+              - { name: instagram, label: Instagram, widget: string, required: false }
+              - { name: youtube, label: YouTube, widget: string, required: false }
               - { name: email, label: Email, widget: string, required: false }
