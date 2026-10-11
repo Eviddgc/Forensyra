@@ -29,8 +29,8 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
       id="top"
       className="relative isolate flex min-h-[600px] items-center overflow-hidden bg-background lg:min-h-[680px]"
     >
-      {/* The hero's visual is our own emblem rather than stock photography, so
-          the first screen reads as unmistakably FORENSYRA. */}
+      {/* The hero's visual is the full FORENSYRA lockup rather than stock
+          photography, so the first screen reads as unmistakably FORENSYRA. */}
       <div className="bg-damask pointer-events-none absolute inset-0 opacity-70" />
       <div className="fx-orb pointer-events-none left-[-10%] top-[4%] h-[34rem] w-[34rem] bg-accent/15" />
       <div className="fx-orb pointer-events-none bottom-[-20%] right-[-8%] h-[30rem] w-[30rem] bg-accent-2/20" />
@@ -42,10 +42,10 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
 
       <div className="pointer-events-none absolute inset-0 flex items-center justify-center xl:justify-end">
         <Image
-          src="/brand-mark.png"
+          src="/brand-logo.webp"
           alt=""
-          width={768}
-          height={768}
+          width={1024}
+          height={1024}
           preload
           sizes="(max-width: 1280px) 56vw, 22rem"
           className="h-[min(58vw,13rem)] w-auto opacity-[0.15] drop-shadow-[0_0_60px_rgba(230,182,79,0.45)] xl:mr-[3%] xl:h-[22rem] xl:translate-x-[3%] xl:opacity-95"
