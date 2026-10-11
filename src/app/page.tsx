@@ -3,7 +3,6 @@ import { Hero } from "@/components/home/hero";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { EvidenceProcess } from "@/components/home/evidence-process";
 import { Benefits } from "@/components/home/benefits";
-import { Updates } from "@/components/home/updates";
 import { JoinCta } from "@/components/home/join-cta";
 import { WaveDivider } from "@/components/wave-divider";
 import { getSite } from "@/lib/site";
@@ -37,7 +36,6 @@ export default async function HomePage() {
       <FeaturedProjects projects={featured} />
       <EvidenceProcess />
       <Benefits applyUrl={site.applyUrl} />
-      <Updates applyUrl={site.applyUrl} />
       <JoinCta applyUrl={site.applyUrl} />
     </>
   );
