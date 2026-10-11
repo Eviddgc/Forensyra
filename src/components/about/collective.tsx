@@ -33,8 +33,9 @@ export function Collective({
             </p>
 
             <blockquote className="mt-8 border-l-2 border-accent pl-5">
-              <p className="font-display text-2xl font-medium italic leading-snug text-accent-2 sm:text-[1.75rem]">
-                {motto}
+              <p className="font-display text-xl italic leading-snug text-muted sm:text-2xl">
+                Our motto is simple:{" "}
+                <span className="font-medium text-accent-2">{motto}</span>
               </p>
             </blockquote>
           </Reveal>

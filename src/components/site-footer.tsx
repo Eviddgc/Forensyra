@@ -29,11 +29,13 @@ const COLLECTIVE = [
 export function SiteFooter({
   name,
   description,
+  motto,
   email,
   social,
 }: {
   name: string;
   description: string;
+  motto: string;
   email: string;
   social: {
     github: string;
@@ -63,9 +65,7 @@ export function SiteFooter({
                 <p className="font-display text-base font-semibold uppercase tracking-[0.18em] text-foreground">
                   {name}
                 </p>
-                <p className="mt-0.5 text-[11px] text-muted">
-                  Digital Evidence for a Safer Tomorrow.
-                </p>
+                <p className="mt-0.5 text-[11px] text-accent-2">{motto}</p>
               </div>
             </div>
             <p className="mt-5 max-w-sm text-sm text-muted">{description}</p>

@@ -94,7 +94,7 @@ export function Leadership({
 
           {/* At a glance + focus */}
           <Reveal delay={120}>
-            <p className="fx-eyebrow text-accent-ink">At a Glance</p>
+            <p className="fx-eyebrow text-accent-ink">{name}, at a glance</p>
 
             <dl className="mt-4 space-y-5 rounded-3xl border border-border-gold bg-surface p-7 text-foreground">
               {glance.map((item) => (
@@ -117,7 +117,7 @@ export function Leadership({
 
             <div className="mt-5 rounded-3xl border border-light-border bg-light-card p-6">
               <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-light-muted">
-                Focus
+                What we explore
               </p>
               <ul className="mt-4 flex flex-wrap gap-2">
                 {FOCUS.map((item) => (

@@ -1,10 +1,12 @@
 import {
+  ArrowRight,
   BookOpen,
   FolderGit2,
   ShieldCheck,
   TrendingUp,
   type LucideIcon,
 } from "lucide-react";
+import Link from "next/link";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 
@@ -51,33 +53,43 @@ export function Purpose() {
               alone — mostly theory, with no real case practice. We bring people
               together so they can:
             </p>
+            <Link
+              href="/ethics"
+              className="group mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent-ink transition hover:text-light-ink"
+            >
+              Learn more about our mission
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
           </Reveal>
 
-          <div className="grid gap-5 sm:grid-cols-2">
-            {CARDS.map((card, index) => (
-              <Reveal key={card.title} delay={index * 70}>
-                <div className="fx-card-light h-full rounded-2xl p-6">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#1d4f8a]/10 text-[#1d4f8a]">
-                    <card.Icon className="h-5 w-5" />
-                  </span>
-                  <h3 className="mt-5 text-base font-semibold text-light-ink">
-                    {card.title}
-                  </h3>
-                  <p className="mt-2 text-sm leading-relaxed text-light-muted">
-                    {card.text}
-                  </p>
-                </div>
-              </Reveal>
-            ))}
+          <div>
+            <div className="grid gap-5 sm:grid-cols-2">
+              {CARDS.map((card, index) => (
+                <Reveal key={card.title} delay={index * 70}>
+                  <div className="fx-card-light h-full rounded-2xl p-6">
+                    <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#1d4f8a]/10 text-[#1d4f8a]">
+                      <card.Icon className="h-5 w-5" />
+                    </span>
+                    <h3 className="mt-5 text-base font-semibold text-light-ink">
+                      {card.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-light-muted">
+                      {card.text}
+                    </p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+
+            <Reveal delay={140}>
+              <p className="mt-8 border-t border-light-border pt-8 text-[15px] leading-relaxed text-light-muted lg:mt-10">
+                For every member, the result is a stronger portfolio, better
+                internship and job chances, and a place on a team that stands
+                out.
+              </p>
+            </Reveal>
           </div>
         </div>
-
-        <Reveal delay={120}>
-          <p className="mt-12 max-w-4xl border-t border-light-border pt-8 text-[15px] leading-relaxed text-light-muted lg:mt-14">
-            For every member, the result is a stronger portfolio, better
-            internship and job chances, and a place on a team that stands out.
-          </p>
-        </Reveal>
       </Container>
     </section>
   );

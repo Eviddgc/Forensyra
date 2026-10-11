@@ -127,6 +127,7 @@ export default function RootLayout({
         <SiteFooter
           name={site.name}
           description={site.description}
+          motto={site.motto}
           email={site.email}
           social={site.social}
         />
