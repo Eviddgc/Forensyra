@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/container";
 
 export function PageHeader({
@@ -26,6 +27,20 @@ export function PageHeader({
         }}
       />
       <div className="fx-scanlines pointer-events-none absolute inset-0 opacity-[0.18]" />
+
+      {/* The emblem is the only hero visual on inner pages, so they read as
+          unmistakably FORENSYRA. */}
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center xl:justify-end">
+        <Image
+          src="/brand-mark.png"
+          alt=""
+          width={768}
+          height={768}
+          sizes="(max-width: 1280px) 52vw, 15rem"
+          className="h-[min(52vw,11rem)] w-auto opacity-[0.13] drop-shadow-[0_0_60px_rgba(230,182,79,0.4)] xl:mr-[3%] xl:h-[15rem] xl:translate-x-[3%] xl:opacity-90"
+        />
+      </div>
+
       <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
 
       <Container className="relative py-16 sm:py-20">
