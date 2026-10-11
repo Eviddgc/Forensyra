@@ -536,16 +536,41 @@
   animation: fx-gradient 8s ease infinite;
 }
 
-/* Hero wordmark — gold foil reveal.
-   The word is filled with a foil gradient (ivory into champagne gold) and a
-   soft specular band travels across it as the intro curtain lifts, then glints
-   on a long loop. `.intro-seen` is set on <html> before paint for returning
-   visitors, so the sweep starts straight away for them; for new visitors it
-   fires the moment the boot overlay clears. Without JS the word simply rests
-   in its foil finish. */
+/* Hero wordmark — gold foil struck one letter at a time.
+   The word is split into per-glyph spans (`.fx-letter`) so each letter can pivot
+   up out of the baseline on its own base, split-flap style, as the intro curtain
+   lifts. A glyph that carries a transform paints nothing while it sits inside a
+   `background-clip: text` ancestor — the clip is anchored to layout geometry — so
+   the foil finish is built from two grid-stacked faces that share the same glyph
+   spans: an ivory face, and a gold face masked by a word-wide ramp. `.intro-seen`
+   is set on <html> before paint for returning visitors, so they get the roll
+   straight away; for new visitors it fires the moment the boot overlay clears.
+   `prefers-reduced-motion` (and no-JS) collapse the word to its resting foil. */
 .fx-wordmark {
   position: relative;
   color: var(--color-foreground);
+  filter: drop-shadow(0 0 30px rgba(230, 182, 79, 0.32));
+}
+.fx-wordmark-stack {
+  display: grid;
+  justify-items: start;
+}
+.fx-wordmark-face {
+  grid-area: 1 / 1;
+}
+/* Word-wide ramp: ivory holds through the first letters, then gilds. */
+.fx-wordmark-face-foil {
+  pointer-events: none;
+  user-select: none;
+  -webkit-mask-image: linear-gradient(100deg, transparent 56%, #000 80%);
+  mask-image: linear-gradient(100deg, transparent 56%, #000 80%);
+}
+.fx-letter {
+  display: inline-block;
+  transform-origin: 50% 100%;
+}
+.fx-wordmark-face-foil .fx-letter {
+  color: var(--color-accent);
 }
 .fx-wordmark::after {
   content: "";
@@ -563,46 +588,32 @@
   );
 }
 
-@supports ((-webkit-background-clip: text) or (background-clip: text)) {
-  .fx-wordmark {
-    background-image:
-      linear-gradient(
-        100deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0) 43.5%,
-        rgba(255, 246, 214, 0.92) 50%,
-        rgba(255, 255, 255, 0) 56.5%,
-        rgba(255, 255, 255, 0) 100%
-      ),
-      linear-gradient(
-        100deg,
-        var(--color-foreground) 0%,
-        var(--color-foreground) 60%,
-        #efdcb0 68%,
-        var(--color-accent-2) 76%,
-        var(--color-accent) 88%,
-        #f7e8c2 100%
-      );
-    background-position:
-      166% 0,
-      0 0;
-    background-repeat: no-repeat, no-repeat;
-    background-size:
-      280% 100%,
-      100% 100%;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    filter: drop-shadow(0 0 30px rgba(230, 182, 79, 0.32));
-  }
+.intro-seen .fx-letter {
+  /* `backwards` (not `both`): the end keyframe is the identity, so letting the
+     letters fall back to their untransformed base style as they land keeps the
+     resting glyphs rasterised crisply. */
+  animation: fx-letter-roll 0.8s cubic-bezier(0.22, 0.9, 0.26, 1.06) backwards;
+  animation-delay: calc(var(--i, 0) * 52ms);
+}
+.intro-seen .fx-wordmark {
+  animation: fx-bloom 2.7s cubic-bezier(0.33, 0.7, 0.3, 1) 0.2s both;
+}
+.intro-seen .fx-wordmark::after {
+  animation: fx-foil-rule 1.1s cubic-bezier(0.33, 0.8, 0.25, 1) 1.5s both;
+}
 
-  .intro-seen .fx-wordmark {
-    animation:
-      fx-foil 16s cubic-bezier(0.34, 0.78, 0.24, 1) 0.15s infinite both,
-      fx-bloom 1.9s cubic-bezier(0.33, 0.7, 0.3, 1) 0.15s both;
+/* Each letter swings up out of the baseline, then settles. */
+@keyframes fx-letter-roll {
+  from {
+    opacity: 0;
+    transform: perspective(4.5em) rotateX(88deg);
   }
-  .intro-seen .fx-wordmark::after {
-    animation: fx-foil-rule 1.1s cubic-bezier(0.33, 0.8, 0.25, 1) 0.5s both;
+  45% {
+    opacity: 1;
+  }
+  to {
+    opacity: 1;
+    transform: perspective(4.5em) rotateX(0deg);
   }
 }
 
@@ -616,25 +627,6 @@
   }
   100% {
     filter: drop-shadow(0 0 30px rgba(230, 182, 79, 0.32));
-  }
-}
-
-/* Specular band sweeping across the word, then resting off-canvas. */
-@keyframes fx-foil {
-  0% {
-    background-position:
-      166% 0,
-      0 0;
-  }
-  9% {
-    background-position:
-      14% 0,
-      0 0;
-  }
-  100% {
-    background-position:
-      14% 0,
-      0 0;
   }
 }
 

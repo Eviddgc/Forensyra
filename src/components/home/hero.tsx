@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -21,6 +22,19 @@ const STATS: Array<{
 ];
 
 export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
+  // Per-glyph spans so the wordmark can roll in one letter at a time. Both
+  // faces below reuse these spans, which keeps the ivory and gold layers
+  // pixel-identical.
+  const glyphs = Array.from(name).map((letter, index) => (
+    <span
+      key={index}
+      className="fx-letter"
+      style={{ "--i": index } as CSSProperties}
+    >
+      {letter === " " ? "\u00A0" : letter}
+    </span>
+  ));
+
   return (
     <section
       id="top"
@@ -59,7 +73,15 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
 
           <Reveal delay={140}>
             <h1 className="fx-wordmark w-fit font-display mt-4 text-[clamp(3.25rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em]">
-              {name}
+              <span className="fx-wordmark-stack">
+                <span className="fx-wordmark-face">{glyphs}</span>
+                <span
+                  className="fx-wordmark-face fx-wordmark-face-foil"
+                  aria-hidden="true"
+                >
+                  {glyphs}
+                </span>
+              </span>
             </h1>
           </Reveal>
 

@@ -63,10 +63,13 @@ Navy & gold luxury palette. Tokens live in `src/app/globals.css`.
 ### Hero wordmark
 
 The homepage `FORENSYRA` wordmark (`.fx-wordmark` in `globals.css`) is struck in
-gold foil: an ivory → champagne fill that turns gold across the final letters,
-with a specular band that sweeps left to right as the boot overlay clears and
-then glints softly on a slow loop. A warm halo flares as it lands and a gold
-hairline draws itself underneath. The reveal is gated on `.intro-seen`, so
+gold foil — an ivory fill that gilds across the final letters — and it arrives
+one letter at a time: each glyph rolls up out of the baseline on its own base,
+split-flap style, left to right. A warm halo flares as the word lands and a gold
+hairline draws itself underneath. Because a transformed glyph paints nothing
+inside a `background-clip: text` ancestor, the foil is built from two
+grid-stacked faces sharing the same per-glyph spans: an ivory face and a gold
+face masked by a word-wide ramp. The reveal is gated on `.intro-seen`, so
 returning visitors get it immediately on load. `prefers-reduced-motion` (and
 no-JS) collapse it to the resting foil finish.
 
