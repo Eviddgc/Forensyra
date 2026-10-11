@@ -30,18 +30,28 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
       id="top"
       className="relative isolate flex min-h-[600px] items-center overflow-hidden bg-background lg:min-h-[680px]"
     >
-      <Image
-        src="/images/hero-forensics.jpg"
-        alt="A dark digital-forensics workstation with evidence under examination"
-        fill
-        preload
-        sizes="100vw"
-        className="object-cover object-[72%_center] opacity-65"
-      />
+      {/* The hero's visual is our own emblem rather than stock photography, so
+          the first screen reads as unmistakably FORENSYRA. */}
+      <div className="bg-damask pointer-events-none absolute inset-0 opacity-70" />
+      <div className="fx-orb pointer-events-none left-[-10%] top-[4%] h-[34rem] w-[34rem] bg-accent/15" />
+      <div className="fx-orb pointer-events-none bottom-[-20%] right-[-8%] h-[30rem] w-[30rem] bg-accent-2/20" />
+
       {/* Dark navy gradient + stronger overlay behind the text */}
       <div className="fx-cinematic pointer-events-none absolute inset-0" />
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(115%_110%_at_12%_45%,rgba(7,24,39,0.92),rgba(7,24,39,0.35)_45%,transparent_70%)]" />
       <div className="fx-scanlines pointer-events-none absolute inset-0 opacity-[0.28]" />
+
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center xl:justify-end">
+        <Image
+          src="/logo.png"
+          alt=""
+          width={512}
+          height={512}
+          preload
+          sizes="(max-width: 1280px) 56vw, 22rem"
+          className="h-[min(58vw,13rem)] w-auto opacity-[0.15] drop-shadow-[0_0_60px_rgba(230,182,79,0.45)] xl:mr-[3%] xl:h-[22rem] xl:translate-x-[3%] xl:opacity-95"
+        />
+      </div>
 
       <Container className="relative z-10 py-16 sm:py-20 lg:py-20">
         <div className="max-w-2xl">
