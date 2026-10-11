@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
+import { BrandPlate } from "@/components/brand-visual";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { cn } from "@/lib/utils";
@@ -65,14 +65,8 @@ export function FeaturedProjects({
               href={active.href}
               className="fx-media group relative block overflow-hidden rounded-[26px] border border-light-border shadow-[0_50px_90px_-55px_rgba(16,39,65,0.75)]"
             >
-              <div className="relative aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-[5/4]">
-                <Image
-                  src="/images/project-screen.jpg"
-                  alt=""
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover"
-                />
+              <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[5/4]">
+                <BrandPlate className="transition-transform duration-700 ease-out group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#071827] via-[#071827]/70 to-[#071827]/20" />
               </div>
 

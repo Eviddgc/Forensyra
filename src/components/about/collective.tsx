@@ -1,10 +1,10 @@
-import Image from "next/image";
+import { BrandPlate } from "@/components/brand-visual";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 
 /**
  * Section 4 — "Our collective" editorial split on dark navy.
- * Motto is highlighted on the left; a framed photograph with a mono caption
+ * Motto is highlighted on the left; a framed brand plate with a mono caption
  * sits on the right.
  */
 export function Collective({
@@ -41,15 +41,9 @@ export function Collective({
           </Reveal>
 
           <Reveal delay={120}>
-            <figure className="fx-frame relative overflow-hidden rounded-3xl border border-border-gold bg-background">
-              <div className="fx-media relative aspect-[4/3] w-full lg:aspect-[4/5]">
-                <Image
-                  src="/images/project-screen.jpg"
-                  alt="A dark analysis screen with case evidence on a forensic workstation"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 42vw"
-                  className="object-cover object-center"
-                />
+            <figure className="fx-frame group relative overflow-hidden rounded-3xl border border-border-gold bg-background">
+              <div className="relative aspect-[4/3] w-full overflow-hidden lg:aspect-[4/5]">
+                <BrandPlate className="transition-transform duration-700 ease-out group-hover:scale-[1.04]" />
               </div>
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/10 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 px-5 pb-5 font-mono text-[10px] uppercase tracking-[0.28em] text-accent-2">

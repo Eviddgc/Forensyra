@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -8,6 +7,7 @@ import {
   Share2,
   type LucideIcon,
 } from "lucide-react";
+import { BrandBackdrop } from "@/components/brand-visual";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { btnOutlineDarkLg } from "@/lib/ui";
@@ -48,14 +48,8 @@ const STEPS: Array<{
 export function EvidenceProcess() {
   return (
     <section className="relative isolate overflow-hidden bg-surface">
-      <Image
-        src="/images/evidence-mountain.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover object-center opacity-30"
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/95 via-background/85 to-background/95" />
+      <BrandBackdrop align="right" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/90" />
 
       <Container className="relative z-10 py-20 sm:py-28">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">

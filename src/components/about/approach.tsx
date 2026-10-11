@@ -1,4 +1,3 @@
-import Image from "next/image";
 import {
   ArrowRight,
   Feather,
@@ -7,6 +6,7 @@ import {
   Target,
   type LucideIcon,
 } from "lucide-react";
+import { BrandBackdrop } from "@/components/brand-visual";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 
@@ -46,14 +46,8 @@ const STEPS: Array<{
 export function Approach() {
   return (
     <section className="relative isolate overflow-hidden bg-surface">
-      <Image
-        src="/images/evidence-mountain.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover object-center opacity-35"
-      />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/95 via-background/88 to-background/95" />
+      <BrandBackdrop align="left" />
+      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/90 via-background/74 to-background/90" />
 
       <Container className="relative z-10 py-20 sm:py-28">
         <Reveal className="max-w-2xl">

@@ -28,24 +28,44 @@ Navy & gold luxury palette. Tokens live in `src/app/globals.css`.
 
 | Token | Hex | Use |
 | --- | --- | --- |
-| `background` | `#0d1b2a` | Page background (navy blue) |
-| `surface` | `#1b365d` | Cards and panels (ocean blue) |
-| `surface-2` | `#24446f` | Raised surfaces |
-| `border` | `#2e4a73` | Dividers and outlines |
-| `foreground` | `#f5ebdd` | Primary text (ivory) |
-| `muted` | `#93a3bb` | Secondary text |
-| `ink` | `#0d1b2a` | Text placed on gold fills |
-| `accent` | `#c99a47` | Brand accent (antique gold) |
-| `accent-2` | `#e6c17a` | Secondary accent (champagne gold) |
-| `accent-deep` | `#9a7524` | Accessible text on gold |
-| `accent-2-deep` | `#b98f3a` | Accessible text on champagne |
-| `success` | `#8fbf9f` | Positive states |
-| `warning` | `#e6c17a` | Pinned / attention |
+| `background` | `#071827` | Page background (deep navy) |
+| `surface` | `#0d2238` | Dark panels |
+| `surface-2` | `#122b46` | Cards on dark |
+| `elevated` | `#193654` | Elevated surface |
+| `border` | `#1f3a5a` | Dividers and outlines |
+| `border-gold` | `rgba(230,182,79,0.28)` | Branded hairline |
+| `foreground` | `#f5f4f0` | Primary text on dark |
+| `muted` | `#b7c4d2` | Secondary text on dark |
+| `ink` | `#071827` | Text placed on gold fills |
+| `accent` | `#e6b64f` | Brand gold |
+| `accent-2` | `#f5d58a` | Light gold |
+| `accent-deep` | `#a97f22` | Gold for text on light |
+| `accent-ink` | `#8a6417` | Accessible gold for small text on light |
+| `light` | `#f3f5f6` | Light section background |
+| `light-2` | `#eceff2` | Second off-white surface |
+| `light-card` | `#ffffff` | Light card background |
+| `light-ink` | `#102741` | Primary text on light |
+| `light-muted` | `#4d5f75` | Secondary text on light |
+| `light-border` | `#dde3e9` | Light divider |
+| `success` | `#6fae86` | Positive states |
+| `warning` | `#e6b64f` | Pinned / attention |
+| `danger` | `#d98a8a` | Errors |
 
 ## Type
 
-- **Sans:** Geist — body and headings.
-- **Mono:** Geist Mono — labels, hex/binary accents, uppercase eyebrows.
+- **Display:** Playfair Display — headings (`.font-display`).
+- **Sans:** Inter — body and UI.
+- **Mono:** IBM Plex Mono — labels, stats, metadata, uppercase eyebrows.
+- Headings and display type scale fluidly with `clamp()`.
+
+## Imagery
+
+- **No stock photography.** Heroes, page headers and section panels use the
+  brand mark itself, via `BrandBackdrop` and `BrandPlate` in
+  `src/components/brand-visual.tsx`.
+- Watermarks sit at or below ~10% opacity and always underneath the content;
+  plates hold the mark at 90% with a soft gold glow.
+- Never invent portraits, credentials or documentary case imagery.
 
 ## Voice
 

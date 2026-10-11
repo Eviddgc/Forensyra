@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { BrandBackdrop } from "@/components/brand-visual";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { btnOutlineDarkLg, btnPrimaryLg } from "@/lib/ui";
@@ -22,12 +22,9 @@ export function JoinCta({
 }) {
   return (
     <section className="relative isolate overflow-hidden border-t border-border-gold bg-background">
-      <Image
-        src="/images/cta-sunset.jpg"
-        alt=""
-        fill
-        sizes="100vw"
-        className="object-cover object-center opacity-50"
+      <BrandBackdrop
+        align="center"
+        emblemClassName="h-[min(90vw,30rem)] opacity-[0.09]"
       />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/45" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/25 to-background/70" />
