@@ -3,7 +3,6 @@ import { Hero } from "@/components/home/hero";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { EvidenceProcess } from "@/components/home/evidence-process";
 import { Benefits } from "@/components/home/benefits";
-import { JoinCta } from "@/components/home/join-cta";
 import { WaveDivider } from "@/components/wave-divider";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
@@ -35,8 +34,7 @@ export default async function HomePage() {
       <WaveDivider from="var(--color-background)" to="var(--color-light)" />
       <FeaturedProjects projects={featured} />
       <EvidenceProcess />
-      <Benefits applyUrl={site.applyUrl} />
-      <JoinCta applyUrl={site.applyUrl} />
+      <Benefits />
     </>
   );
 }

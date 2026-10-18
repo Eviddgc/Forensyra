@@ -21,9 +21,9 @@ export interface FeaturedProject {
 const FALLBACK: FeaturedProject = {
   slug: "case-file-001",
   href: "/projects/case-file-001",
-  title: "The Mock Cybercrime Investigation",
+  title: "The Data Leakage Investigation",
   description:
-    "Our flagship project — a complete mock cybercrime investigation, built from scratch. From evidence collection to final report.",
+    "A complete insider-threat investigation built on public evidence from NIST CFReDS — every role has a defined job, findings land in one final report.",
   status: "Planning",
   caseType: "Case File 001",
 };
@@ -122,3 +122,4 @@ export function FeaturedProjects({
     </section>
   );
 }
+

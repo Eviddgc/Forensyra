@@ -14,7 +14,7 @@ export function JoinCta({
   description = "Applications are open. Bring your curiosity, pick a role, and work on a real investigation with us.",
   applyLabel = "Apply Now",
 }: {
-  applyUrl: string;
+  applyUrl?: string;
   eyebrow?: string;
   title?: string;
   description?: string;
@@ -40,15 +40,12 @@ export function JoinCta({
               {description}
             </p>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a
-                href={applyUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(btnPrimaryLg, "fx-shine")}
-              >
-                {applyLabel}
-                <ArrowRight className="h-4 w-4" />
-              </a>
+              {applyUrl ? (
+                <Link href={applyUrl} className={cn(btnPrimaryLg, "fx-shine")}>
+                  {applyLabel}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              ) : null}
               <Link href="/contact" className={btnOutlineDarkLg}>
                 Talk to us
               </Link>

@@ -102,15 +102,10 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
 
           <Reveal delay={300}>
             <div className="mt-9 flex flex-wrap gap-3">
-              <a
-                href={applyUrl}
-                target="_blank"
-                rel="noreferrer"
-                className={cn(btnPrimaryLg, "fx-shine")}
-              >
+              <Link href={applyUrl} className={cn(btnPrimaryLg, "fx-shine")}>
                 Apply to Join
                 <ArrowRight className="h-4 w-4" />
-              </a>
+              </Link>
               <Link href="/projects" className={btnOutlineDarkLg}>
                 Explore the Case Board
               </Link>

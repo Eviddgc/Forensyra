@@ -9,7 +9,10 @@ export interface SiteSettings {
   description: string;
   url: string;
   email: string;
+  /** Where "Apply" buttons send people — the on-site form at /apply. */
   applyUrl: string;
+  /** External form, offered whenever the on-site form can't be used. */
+  applyFallbackUrl: string;
   announcement: {
     enabled: boolean;
     text: string;

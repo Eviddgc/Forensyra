@@ -36,6 +36,7 @@ export function PageHeader({
           alt=""
           width={768}
           height={768}
+          loading="eager"
           sizes="(max-width: 1280px) 52vw, 15rem"
           className="h-[min(52vw,11rem)] w-auto opacity-[0.13] drop-shadow-[0_0_60px_rgba(230,182,79,0.4)] xl:mr-[3%] xl:h-[15rem] xl:translate-x-[3%] xl:opacity-90"
         />

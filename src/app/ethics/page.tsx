@@ -1,11 +1,10 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import Link from "next/link";
-import { ShieldCheck } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
-import { PageHeader } from "@/components/page-header";
-import { Markdown } from "@/components/markdown";
-import { getEntry } from "@/lib/content";
+import { Reveal } from "@/components/reveal";
+import { EthicsHero } from "@/components/ethics-hero";
+import { EthicsContent } from "@/components/ethics-content";
+import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Ethics & Legal",
@@ -14,47 +13,98 @@ export const metadata: Metadata = {
 };
 
 export default async function EthicsPage() {
-  const page = await getEntry("pages", "ethics");
-  if (!page) notFound();
+  const site = getSite();
 
   return (
     <>
-      <PageHeader
-        eyebrow="Our standard"
-        title={page.title}
-        description={page.description}
+      {/* Sections 1–2 (announcement + navigation) and 9 (footer) are part of
+          the root layout so every page shares them. */}
+      <EthicsHero
+        description="How Forensyra works legally, ethically, and responsibly with digital evidence."
       />
 
-      <Container className="py-14">
-        <div className="grid gap-10 lg:grid-cols-[1.6fr_0.9fr]">
-          <Markdown html={page.content} />
+      <EthicsContent />
 
-          <aside className="space-y-4">
-            <div className="rounded-2xl border border-accent/30 bg-accent/5 p-6">
-              <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
-                <ShieldCheck className="h-5 w-5" />
-              </span>
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.25em] text-accent">
-                Non-negotiable
-              </p>
-              <ul className="mt-4 space-y-3 text-sm text-muted">
-                <li>Legal, authorised practice cases only</li>
-                <li>Public sample evidence only</li>
-                <li>No real victim data — ever</li>
-                <li>Privacy, consent, and integrity respected</li>
-              </ul>
-            </div>
+      {/* CTA banner */}
+      <Container className="pb-20 sm:pb-28">
+        <Reveal>
+          <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
+            {/* Mountain sunset backdrop — pure SVG. */}
+            <div className="absolute inset-0 bg-[#0a1a2c]" />
+            <svg
+              aria-hidden="true"
+              className="absolute inset-x-0 bottom-0 h-[70%] w-full"
+              viewBox="0 0 1440 320"
+              preserveAspectRatio="none"
+            >
+              <path
+                d="M0 220 C 240 140 420 260 720 180 C 1020 100 1200 240 1440 160 L 1440 320 L 0 320 Z"
+                fill="url(#eth-cta-a)"
+              />
+              <path
+                d="M0 260 C 260 190 480 290 760 230 C 1040 170 1220 270 1440 210 L 1440 320 L 0 320 Z"
+                fill="url(#eth-cta-b)"
+              />
+              <path
+                d="M0 220 C 240 140 420 260 720 180 C 1020 100 1200 240 1440 160"
+                stroke="rgba(230,182,79,0.3)"
+                strokeWidth="1"
+              />
+              <defs>
+                <linearGradient id="eth-cta-a" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#1b365d" />
+                  <stop offset="100%" stopColor="#0a1a2c" />
+                </linearGradient>
+                <linearGradient id="eth-cta-b" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#16304f" />
+                  <stop offset="100%" stopColor="#071827" />
+                </linearGradient>
+              </defs>
+            </svg>
+            <div className="absolute left-1/2 top-[30%] h-40 w-[36rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-3xl" />
+            <div className="fx-scanlines absolute inset-0 opacity-[0.12]" />
 
-            <div className="rounded-2xl border border-border bg-surface p-6 text-sm text-muted">
-              Questions about a case? Raise them with the Legal &amp; Digital
-              Evidence Advisor before any work begins.{" "}
-              <Link href="/contact" className="text-accent hover:underline">
-                Contact us
-              </Link>
-              .
+            <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:p-16">
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
+                  Join the Collective
+                </p>
+                <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+                  Build a responsible digital forensics community
+                </h2>
+                <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
+                  Join a team that values evidence integrity, ethical practice, and
+                  collaborative learning.
+                </p>
+                <div className="mt-8 flex flex-wrap gap-3">
+                  <a
+                    href={site.applyUrl}
+                    className="fx-shine inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2 hover:shadow-[0_18px_40px_-14px] hover:shadow-accent/70"
+                  >
+                    Apply now
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                  <a
+                    href="/contact"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#6aa0dc]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
+                  >
+                    Talk to us
+                  </a>
+                </div>
+              </div>
+
+              <div className="hidden lg:block">
+                <p className="fx-accent-type text-right text-3xl font-medium italic leading-snug xl:text-4xl">
+                  Real Cases
+                  <br />
+                  Real Skills
+                  <br />
+                  Real Impact
+                </p>
+              </div>
             </div>
-          </aside>
-        </div>
+          </section>
+        </Reveal>
       </Container>
     </>
   );

@@ -66,7 +66,7 @@ export function Purpose() {
             <div className="grid gap-5 sm:grid-cols-2">
               {CARDS.map((card, index) => (
                 <Reveal key={card.title} delay={index * 70}>
-                  <div className="fx-card-light h-full rounded-2xl p-6">
+                  <div className="fx-card-light h-full rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1 hover:border-accent/40">
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-[#1d4f8a]/10 text-[#1d4f8a]">
                       <card.Icon className="h-5 w-5" />
                     </span>
@@ -94,3 +94,4 @@ export function Purpose() {
     </section>
   );
 }
+

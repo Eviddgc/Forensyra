@@ -8,22 +8,32 @@ import {
   LinkedInIcon,
   YouTubeIcon,
 } from "@/components/brand-icons";
+import { ArrowUpRight, Mail, ShieldCheck } from "lucide-react";
 
-/** Section 9 — footer. */
+/** Section 9 — footer. Mirrors the new nav dropdown structure. */
 const EXPLORE = [
   { href: "/about", label: "About" },
-  { href: "/roles", label: "Roles" },
-  { href: "/team", label: "Team" },
   { href: "/projects", label: "Projects" },
   { href: "/writeups", label: "Write-ups" },
+  { href: "/roadmap", label: "Roadmap" },
+  { href: "/ethics", label: "Ethics" },
 ];
 
 const COLLECTIVE = [
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/writeups", label: "Research" },
+  { href: "/team", label: "The Collective" },
+  { href: "/roles", label: "Roles" },
   { href: "/resources", label: "Resources" },
   { href: "/join", label: "Join us" },
   { href: "/contact", label: "Contact" },
+  { href: "/apply", label: "Apply" },
+  { href: "/security", label: "Security" },
+];
+
+const LEARN = [
+  { href: "/resources", label: "Resources" },
+  { href: "/resources/datasets", label: "Practice Datasets" },
+  { href: "/resources/tools", label: "Tools" },
+  { href: "/writeups", label: "Write-ups" },
 ];
 
 export function SiteFooter({
@@ -54,23 +64,42 @@ export function SiteFooter({
   ].filter((item) => item.href);
 
   return (
-    <footer className="relative mt-24 border-t border-border-gold bg-surface">
-      <Container className="py-16">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          {/* Brand */}
-          <div className="lg:pr-6">
-            <div className="flex items-center gap-3">
-              <Logo size={46} />
+    <footer className="relative mt-24 overflow-hidden border-t border-border-gold bg-surface">
+      {/* Background atmosphere. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+        <div className="bg-damask absolute inset-0 opacity-[0.15]" />
+        <div className="fx-orb -left-[10%] -top-[20%] h-[24rem] w-[24rem] bg-accent/6" />
+        <div className="fx-orb -right-[10%] bottom-[-15%] h-[20rem] w-[20rem] bg-[#6aa0dc]/6" />
+        <div
+          className="absolute inset-0 opacity-[0.02]"
+          style={{
+            backgroundImage:
+              "linear-gradient(rgba(230,182,79,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(230,182,79,0.4) 1px, transparent 1px)",
+            backgroundSize: "50px 50px",
+          }}
+        />
+      </div>
+
+      <Container className="relative z-10 py-16 sm:py-20">
+        {/* Top brand + newsletter row. */}
+        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-16">
+          {/* Brand block. */}
+          <div>
+            <div className="flex items-center gap-4">
+              <Logo size={52} />
               <div>
-                <p className="font-display text-base font-semibold uppercase tracking-[0.18em] text-foreground">
+                <p className="font-display text-lg font-semibold uppercase tracking-[0.18em] text-foreground">
                   {name}
                 </p>
-                <p className="mt-0.5 text-[11px] text-accent-2">{motto}</p>
+                <p className="mt-1 text-[12px] text-accent-2">{motto}</p>
               </div>
             </div>
-            <p className="mt-5 max-w-sm text-sm text-muted">{description}</p>
+            <p className="mt-6 max-w-md text-sm leading-relaxed text-muted">
+              {description}
+            </p>
+
             {socials.length > 0 ? (
-              <div className="mt-6 flex items-center gap-2.5">
+              <div className="mt-8 flex items-center gap-3">
                 {socials.map(({ href, label, Icon }) => (
                   <a
                     key={label}
@@ -78,28 +107,63 @@ export function SiteFooter({
                     target="_blank"
                     rel="noreferrer"
                     aria-label={label}
-                    className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition hover:border-accent/60 hover:text-accent"
+                    className="group relative inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-background/60 text-muted transition-all duration-300 hover:border-accent/60 hover:bg-accent/10 hover:text-accent hover:shadow-[0_0_20px_-4px] hover:shadow-accent/40"
                   >
-                    <Icon className="h-4 w-4" />
+                    <Icon className="h-4 w-4 transition-transform duration-300 group-hover:scale-110" />
                   </a>
                 ))}
               </div>
             ) : null}
           </div>
 
+          {/* Newsletter + contact. */}
+          <div className="rounded-2xl border border-border-gold/40 bg-background/40 p-6 backdrop-blur-sm sm:p-8">
+            <div className="flex items-center gap-3">
+              <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
+                <Mail className="h-5 w-5" />
+              </span>
+              <div>
+                <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
+                  Stay in the loop
+                </p>
+                <p className="mt-0.5 text-sm text-muted">
+                  Get updates on new cases, write-ups, and opportunities.
+                </p>
+              </div>
+            </div>
+            <div className="mt-5">
+              <NewsletterForm />
+            </div>
+            <a
+              href={`mailto:${email}`}
+              className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted transition hover:text-accent"
+            >
+              {email}
+              <ArrowUpRight className="h-3 w-3" />
+            </a>
+          </div>
+        </div>
+
+        {/* Divider. */}
+        <div className="fx-rule mt-14 mb-12" />
+
+        {/* Link columns. */}
+        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {/* Explore */}
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Explore
             </p>
-            <ul className="mt-4 space-y-1">
+            <ul className="mt-5 space-y-2">
               {EXPLORE.map((item) => (
                 <li key={`${item.label}-${item.href}`}>
                   <Link
                     href={item.href}
-                    className="block py-1 text-sm text-muted transition hover:text-foreground"
+                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition hover:text-foreground"
                   >
-                    {item.label}
+                    <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+                      {item.label}
+                    </span>
                   </Link>
                 </li>
               ))}
@@ -111,42 +175,50 @@ export function SiteFooter({
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
               Collective
             </p>
-            <ul className="mt-4 space-y-1">
+            <ul className="mt-5 space-y-2">
               {COLLECTIVE.map((item) => (
                 <li key={`${item.label}-${item.href}`}>
                   <Link
                     href={item.href}
-                    className="block py-1 text-sm text-muted transition hover:text-foreground"
+                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition hover:text-foreground"
                   >
-                    {item.label}
+                    <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+                      {item.label}
+                    </span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Learn */}
           <div>
             <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-              Stay in the loop
+              Learn
             </p>
-            <p className="mt-5 text-sm text-muted">
-              Get updates on new cases, write-ups, and opportunities.
-            </p>
-            <NewsletterForm />
-            <a
-              href={`mailto:${email}`}
-              className="mt-2.5 inline-block py-1.5 text-xs text-muted transition hover:text-accent"
-            >
-              {email}
-            </a>
+            <ul className="mt-5 space-y-2">
+              {LEARN.map((item) => (
+                <li key={`${item.label}-${item.href}`}>
+                  <Link
+                    href={item.href}
+                    className="group inline-flex items-center gap-1.5 text-sm text-muted transition hover:text-foreground"
+                  >
+                    <span className="transition-transform duration-200 group-hover:translate-x-0.5">
+                      {item.label}
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
 
-        <div className="fx-rule mt-12" />
-
-        <div className="mt-6 flex flex-col gap-4 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
-          <p>© {year} {name}. Proud to be a student collective.</p>
+        {/* Bottom bar. */}
+        <div className="mt-14 flex flex-col gap-4 border-t border-border/50 pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex items-center gap-2">
+            <ShieldCheck className="h-3.5 w-3.5 text-success" />
+            <p>© {year} {name}. Proud to be a student collective.</p>
+          </div>
           <p className="font-mono tracking-[0.28em] text-accent/80">
             LEARN / INVESTIGATE / BUILD
           </p>

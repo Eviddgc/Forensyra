@@ -1,8 +1,6 @@
-import { ArrowRight, Briefcase, Star, TrendingUp, Users } from "lucide-react";
+import { Briefcase, Star, TrendingUp, Users } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
-import { btnPrimary } from "@/lib/ui";
-import { cn } from "@/lib/utils";
 
 /** Section 6 — why join the collective. */
 const CARDS = [
@@ -28,7 +26,7 @@ const CARDS = [
   },
 ];
 
-export function Benefits({ applyUrl }: { applyUrl: string }) {
+export function Benefits() {
   return (
     <section className="bg-light py-20 text-light-ink sm:py-28">
       <Container>
@@ -42,15 +40,6 @@ export function Benefits({ applyUrl }: { applyUrl: string }) {
               Together, we build skills, solve real cases, and grow into
               professionals.
             </p>
-            <a
-              href={applyUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(btnPrimary, "fx-shine mt-8 px-6 py-3 text-[15px]")}
-            >
-              Apply Now
-              <ArrowRight className="h-4 w-4" />
-            </a>
           </Reveal>
 
           <div className="grid gap-5 sm:grid-cols-2">
