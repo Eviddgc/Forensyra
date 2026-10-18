@@ -103,7 +103,17 @@ export default async function RootLayout({
       data-scroll-behavior="smooth"
       className={`${inter.variable} ${plexMono.variable} ${playfair.variable}`}
     >
-      <body className="flex min-h-screen flex-col bg-background text-foreground">
+      {/*
+        Browser extensions (Grammarly, password managers, translators) inject
+        attributes such as data-gr-ext-installed onto <body> before React
+        hydrates. suppressHydrationWarning is shallow — it only silences
+        mismatches on this element's own attributes, so genuine mismatches
+        anywhere inside the tree still surface as errors.
+      */}
+      <body
+        suppressHydrationWarning
+        className="flex min-h-screen flex-col bg-background text-foreground"
+      >
         <a
           href="#main"
           className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] focus:rounded-full focus:bg-accent focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-ink"
