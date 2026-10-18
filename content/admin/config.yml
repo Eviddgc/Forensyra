@@ -53,6 +53,22 @@ collections:
       - { name: pinned, label: "Pin to top", widget: boolean, default: false }
       - { name: tags, label: Tags, widget: list, required: false, default: [] }
       - { name: evidence, label: Evidence items, widget: list, required: false, default: [] }
+      - name: plan
+        label: "Investigation plan"
+        widget: list
+        required: false
+        summary: "{{fields.label}}"
+        fields:
+          - { name: label, label: "Step", widget: string }
+          - { name: detail, label: Detail, widget: text, required: false }
+      - { name: deliverables, label: Deliverables, widget: list, required: false, default: [] }
+      - name: links
+        label: Links
+        widget: list
+        required: false
+        fields:
+          - { name: label, label: Label, widget: string }
+          - { name: url, label: URL, widget: string }
       - { name: body, label: Body, widget: markdown }
 
   - name: writeups
@@ -133,6 +149,12 @@ collections:
       - { name: phase, label: Phase, widget: number, required: false }
       - { name: location, label: "City, country", widget: string, required: false }
       - { name: description, label: Short bio, widget: text, required: false }
+      - name: cover
+        label: "Photo (optional)"
+        widget: image
+        required: false
+        hint: "Square headshot, stored in public/uploads. Falls back to initials when empty."
+      - { name: joined, label: "Joined (YYYY-MM)", widget: string, required: false }
       - name: links
         label: Links
         widget: list
@@ -147,9 +169,14 @@ collections:
     label_singular: "Role"
     folder: "content/roles"
     create: false
+    summary: "{{title}}"
+    sortable_fields: ["order", "title"]
     fields:
       - { name: title, label: Title, widget: string }
       - { name: description, label: Summary, widget: text, required: false }
+      - { name: work, label: "What the role does", widget: text, required: false, hint: "One clear paragraph shown at the top of the role." }
+      - { name: responsibilities, label: Responsibilities, widget: list, required: false, default: [], hint: "One bullet per line." }
+      - { name: skills, label: "Skills & tools", widget: list, required: false, default: [] }
       - { name: phase, label: Phase, widget: number, required: false }
       - { name: order, label: "Sort order", widget: number, required: false, default: 999 }
       - { name: tags, label: Tags, widget: list, required: false, default: [] }
@@ -165,6 +192,31 @@ collections:
       - { name: description, label: Summary, widget: text, required: false }
       - { name: body, label: Body, widget: markdown }
 
+  - name: learn
+    label: "Learn library"
+    files:
+      - name: library
+        label: "Resources, datasets & tools"
+        file: "content/learn/library.json"
+        fields:
+          - name: groups
+            label: Groups
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { name: id, label: "ID (stable slug)", widget: string, hint: "Used by the site, e.g. tools, datasets, references. Don't change once set." }
+              - { name: label, label: "Group title", widget: string }
+              - { name: description, label: Description, widget: text, required: false }
+              - name: items
+                label: Items
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { name: label, label: "Title", widget: string }
+                  - { name: href, label: URL, widget: string }
+                  - { name: description, label: Description, widget: text, required: false }
+                  - { name: tags, label: Tags, widget: list, required: false, default: [] }
+
   - name: settings
     label: "Site settings"
     files:
@@ -179,7 +231,8 @@ collections:
           - { name: description, label: "Description", widget: text }
           - { name: url, label: "Site URL", widget: string }
           - { name: email, label: "Email", widget: string }
-          - { name: applyUrl, label: "Application form URL", widget: string }
+          - { name: applyUrl, label: "Apply link", widget: string, hint: "Internal path to the on-site form, e.g. /apply" }
+          - { name: applyFallbackUrl, label: "Fallback application form URL", widget: string, hint: "Used when the on-site form is unavailable (e.g. no JavaScript)." }
           - label: Announcement
             name: announcement
             widget: object

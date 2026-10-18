@@ -17,6 +17,12 @@ export interface EntryLink {
   url: string;
 }
 
+/** A labelled step, used by the case-file investigation plan. */
+export interface EntryStep {
+  label: string;
+  detail?: string;
+}
+
 export interface Entry {
   collection: Collection;
   slug: string;
@@ -32,11 +38,17 @@ export interface Entry {
   role?: string;
   roleId?: string;
   phase?: number | string;
+  /** Roles */
+  skills?: string[];
+  responsibilities?: string[];
+  work?: string;
   location?: string;
   joined?: string;
   /** Projects */
   caseType?: string;
   evidence: string[];
+  plan: EntryStep[];
+  deliverables: string[];
   /** Write-ups */
   author?: string;
   cover?: string;
@@ -81,9 +93,58 @@ function toArray(value: unknown): string[] {
   return [];
 }
 
+function parseSteps(value: unknown): EntryStep[] {
+  if (!Array.isArray(value)) return [];
+  return value
+    .map((item): EntryStep | null => {
+      if (typeof item === "string") {
+        return item.trim() ? { label: item.trim() } : null;
+      }
+      if (item && typeof item === "object") {
+        const record = item as Record<string, unknown>;
+        const label = String(record.label ?? record.title ?? "").trim();
+        if (!label) return null;
+        const detail = record.detail ? String(record.detail) : undefined;
+        return { label, ...(detail ? { detail } : {}) };
+      }
+      return null;
+    })
+    .filter((step): step is EntryStep => step !== null);
+}
+
+function slugifyHeading(text: string): string {
+  const plain = text
+    .replace(/<[^>]+>/g, "")
+    .replace(/&amp;/g, " and ")
+    .replace(/&[a-z]+;/gi, " ")
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/-{2,}/g, "-")
+    .replace(/^-|-$/g, "");
+  return plain.slice(0, 64);
+}
+
+/** Give h2/h3 headings stable ids so the table of contents can link to them. */
+function addHeadingIds(html: string): string {
+  const seen = new Map<string, number>();
+  return html.replace(
+    /<h([23])>([\s\S]*?)<\/h\1>/g,
+    (match, level: string, inner: string) => {
+      const base = slugifyHeading(inner);
+      if (!base) return match;
+      const count = seen.get(base) ?? 0;
+      seen.set(base, count + 1);
+      const id = count === 0 ? base : `${base}-${count + 1}`;
+      return `<h${level} id="${id}">${inner}</h${level}>`;
+    },
+  );
+}
+
 async function renderMarkdown(markdown: string): Promise<string> {
   const file = await remark().use(remarkHtml, { sanitize: false }).process(markdown);
-  return file.toString();
+  return addHeadingIds(file.toString());
 }
 
 async function parseFile(
@@ -110,10 +171,15 @@ async function parseFile(
     role: data.role ? String(data.role) : undefined,
     roleId: data.roleId ? String(data.roleId) : undefined,
     phase: data.phase ?? undefined,
+    skills: toArray(data.skills),
+    responsibilities: toArray(data.responsibilities),
+    work: data.work ? String(data.work) : undefined,
     location: data.location ? String(data.location) : undefined,
     joined: data.joined ? String(data.joined) : undefined,
     caseType: data.caseType ? String(data.caseType) : undefined,
     evidence: toArray(data.evidence),
+    plan: parseSteps(data.plan),
+    deliverables: toArray(data.deliverables),
     author: data.author ? String(data.author) : undefined,
     cover: data.cover ? String(data.cover) : undefined,
     links: parseLinks(data.links),
@@ -173,3 +239,5 @@ export async function getPinned(collection: Collection): Promise<Entry[]> {
 }
 
 export const ALL_COLLECTIONS = COLLECTIONS;
+
+

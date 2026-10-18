@@ -1,0 +1,371 @@
+{
+  "groups": [
+    {
+      "id": "start-here",
+      "label": "Start here",
+      "description": "New to digital forensics? These are the first doors to open.",
+      "items": [
+        {
+          "label": "Order of volatility (RFC 3227)",
+          "href": "https://datatracker.ietf.org/doc/html/rfc3227",
+          "description": "The rules for what to capture first — live memory before disk, disk before logs. Every investigation starts here.",
+          "tags": ["Standards", "Basics"]
+        },
+        {
+          "label": "NIST SP 800-86 — Guide to Integrating Forensic Techniques",
+          "href": "https://csrc.nist.gov/pubs/sp/800/86/final",
+          "description": "The canonical process for collecting, examining, analysing and reporting digital evidence.",
+          "tags": ["Standards", "NIST"]
+        },
+        {
+          "label": "DFIR Cheat Sheets (SANS)",
+          "href": "https://www.sans.org/posters/",
+          "description": "Free reference posters for Windows artefacts, memory, and incident response.",
+          "tags": ["Reference", "SANS"]
+        },
+        {
+          "label": "13Cubed — Digital Forensics",
+          "href": "https://www.13cubed.com/",
+          "description": "Accessible video walkthroughs of real forensic workflows, artefacts and tooling.",
+          "tags": ["Video", "Learning"]
+        }
+      ]
+    },
+    {
+      "id": "references",
+      "label": "References & community",
+      "description": "Hand-picked free resources for learning and practising digital forensics.",
+      "items": [
+        {
+          "label": "NIST Computer Forensics Tool Testing (CFTT)",
+          "href": "https://www.nist.gov/itl/ssd/software-quality-group/computer-forensics-tool-testing-program-cftt",
+          "description": "Reference datasets and methodology from the U.S. National Institute of Standards and Technology.",
+          "tags": ["Reference", "NIST"]
+        },
+        {
+          "label": "SANS Digital Forensics & Incident Response",
+          "href": "https://www.sans.org/digital-forensics-incident-response/",
+          "description": "Blogs, whitepapers, and training resources from the SANS Institute.",
+          "tags": ["Training", "Blog"]
+        },
+        {
+          "label": "The DFIR Report",
+          "href": "https://thedfirreport.com/",
+          "description": "Real-world intrusion write-ups with timelines, tooling and defender takeaways.",
+          "tags": ["Blog", "Threat intel"]
+        },
+        {
+          "label": "Forensic Focus",
+          "href": "https://www.forensicfocus.com/",
+          "description": "Interviews, news and discussion from the wider digital forensics community.",
+          "tags": ["Community", "News"]
+        },
+        {
+          "label": "DFIR Review",
+          "href": "https://dfir.review/",
+          "description": "A curated directory of digital forensics tools, techniques, and references.",
+          "tags": ["Directory", "Tools"]
+        },
+        {
+          "label": "Forensics Wiki",
+          "href": "https://forensicswiki.org/",
+          "description": "Community-maintained wiki covering forensic techniques, tools, and methodologies.",
+          "tags": ["Wiki", "Community"]
+        },
+        {
+          "label": "MITRE ATT&CK",
+          "href": "https://attack.mitre.org/",
+          "description": "Knowledge base of adversary tactics and techniques — essential for threat-informed analysis.",
+          "tags": ["Threat intel", "Framework"]
+        }
+      ]
+    },
+    {
+      "id": "datasets",
+      "label": "Practice datasets",
+      "description": "Public, legal evidence for hands-on labs — disk images, memory dumps and packet captures.",
+      "items": [
+        {
+          "label": "NIST CFReDS — Computer Forensic Reference Data Sets",
+          "href": "https://www.cfreds.nist.gov/",
+          "description": "Reference disk, memory and mobile images with published hash values. This is the source for our Case File 001.",
+          "tags": ["Disk", "Memory", "NIST", "Free"]
+        },
+        {
+          "label": "Digital Corpora — Digital Forensics",
+          "href": "https://digitalcorpora.org/",
+          "description": "Public disk images and memory dumps curated for forensics training.",
+          "tags": ["Disk images", "Memory dumps", "Free"]
+        },
+        {
+          "label": "UNB CIC datasets",
+          "href": "https://www.unb.ca/cic/datasets/",
+          "description": "Publicly available network traffic captures for intrusion-detection practice and protocol analysis labs.",
+          "tags": ["PCAP", "Network", "Free"]
+        },
+        {
+          "label": "Malware-Traffic-Analysis.net",
+          "href": "https://www.malware-traffic-analysis.net/",
+          "description": "Real packet captures of malware infections, with exercises — ideal for network forensics practice.",
+          "tags": ["PCAP", "Malware", "Free"]
+        },
+        {
+          "label": "VirusShare — curated malware samples",
+          "href": "https://virusshare.com/",
+          "description": "Malware corpora available to registered researchers — handle only inside isolated, authorised lab environments.",
+          "tags": ["Malware", "Research", "Registered"]
+        }
+      ]
+    },
+    {
+      "id": "tools",
+      "label": "DFIR tools",
+      "description": "The toolkit every analyst should know, grouped roughly by discipline.",
+      "items": [
+        {
+          "label": "Autopsy",
+          "href": "https://www.autopsy.com/",
+          "description": "Open-source digital forensics platform for disk imaging, timeline analysis and artefact extraction.",
+          "tags": ["Disk", "Free", "Open source"]
+        },
+        {
+          "label": "FTK Imager",
+          "href": "https://www.exterro.com/ftk-imager",
+          "description": "Forensic imaging tool from Exterro for creating and verifying disk and memory images.",
+          "tags": ["Imaging", "Free"]
+        },
+        {
+          "label": "Eric Zimmerman's Tools",
+          "href": "https://ericzimmerman.github.io/",
+          "description": "The de-facto standard suite of Windows artefact parsers — MFTECmd, PECmd, JLECmd, Registry Explorer and more.",
+          "tags": ["Windows", "Free", "Artefacts"]
+        },
+        {
+          "label": "KAPE",
+          "href": "https://www.kroll.com/en/services/cyber-risk/incident-response-litigation-support/kroll-artifact-parser-extractor-kape",
+          "description": "Kroll Artifact Parser and Extractor — targeted collection and processing of Windows artefacts.",
+          "tags": ["Windows", "Triage", "Free"]
+        },
+        {
+          "label": "Velociraptor",
+          "href": "https://docs.velociraptor.app/",
+          "description": "Endpoint visibility and digital forensics at scale, using VQL queries across many hosts.",
+          "tags": ["Endpoint", "Open source", "DFIR"]
+        },
+        {
+          "label": "Volatility 3",
+          "href": "https://github.com/volatilityfoundation/volatility3",
+          "description": "Memory forensics framework for analysing RAM dumps, processes and artefacts.",
+          "tags": ["Memory", "Free", "Open source"]
+        },
+        {
+          "label": "MemProcFS",
+          "href": "https://github.com/ufrisk/MemProcFS",
+          "description": "Present a memory dump as a virtual file system for fast, scriptable memory analysis.",
+          "tags": ["Memory", "Open source"]
+        },
+        {
+          "label": "Wireshark",
+          "href": "https://www.wireshark.org/",
+          "description": "The standard open-source packet analyser for network forensics and protocol investigation.",
+          "tags": ["Network", "Free", "Open source"]
+        },
+        {
+          "label": "YARA",
+          "href": "https://yara.readthedocs.io/",
+          "description": "Pattern-matching tool for identifying and classifying malware samples in forensic datasets.",
+          "tags": ["Malware", "Free", "Open source"]
+        },
+        {
+          "label": "CyberChef",
+          "href": "https://gchq.github.io/CyberChef/",
+          "description": "The cyber swiss-army knife — decode, decrypt, parse and transform data in the browser.",
+          "tags": ["Analysis", "Free", "Open source"]
+        },
+        {
+          "label": "Plaso (log2timeline)",
+          "href": "https://plaso.readthedocs.io/",
+          "description": "Super timeline generation across filesystems, logs and artefacts into a single chronology.",
+          "tags": ["Timeline", "Open source"]
+        },
+        {
+          "label": "Timesketch",
+          "href": "https://timesketch.org/",
+          "description": "Collaborative timeline analysis and annotation for investigations.",
+          "tags": ["Timeline", "Open source", "Collaboration"]
+        },
+        {
+          "label": "ALEAPP",
+          "href": "https://github.com/abrignoni/ALEAPP",
+          "description": "Android Logs Events And Protobuf Parser for mobile app artefact extraction.",
+          "tags": ["Mobile", "Android", "Open source"]
+        },
+        {
+          "label": "MobSF",
+          "href": "https://mobsf.github.io/docs/",
+          "description": "Mobile Security Framework — static and dynamic analysis of Android and iOS apps.",
+          "tags": ["Mobile", "Analysis", "Open source"]
+        },
+        {
+          "label": "REMnux / Flare VM",
+          "href": "https://remnux.org/",
+          "description": "Purpose-built Linux and Windows distributions for malware analysis and reverse engineering.",
+          "tags": ["Malware", "Lab", "Free"]
+        },
+        {
+          "label": "ExifTool",
+          "href": "https://exiftool.org/",
+          "description": "Read, write and edit metadata across virtually every file format — a metadata workhorse.",
+          "tags": ["Metadata", "Multimedia", "Free"]
+        }
+      ]
+    },
+    {
+      "id": "standards",
+      "label": "Standards & frameworks",
+      "description": "The rules of engagement that keep evidence admissible and the work defensible.",
+      "items": [
+        {
+          "label": "RFC 3227 — Guidelines for Evidence Collection and Archiving",
+          "href": "https://datatracker.ietf.org/doc/html/rfc3227",
+          "description": "Order of volatility: collect the most perishable evidence first.",
+          "tags": ["Standards", "IETF"]
+        },
+        {
+          "label": "NIST SP 800-86",
+          "href": "https://csrc.nist.gov/pubs/sp/800/86/final",
+          "description": "Guide to integrating forensic techniques into incident response.",
+          "tags": ["Standards", "NIST"]
+        },
+        {
+          "label": "ISO/IEC 27037",
+          "href": "https://www.iso.org/standard/44381.html",
+          "description": "International guidelines for identification, collection, acquisition and preservation of digital evidence.",
+          "tags": ["Standards", "ISO"]
+        },
+        {
+          "label": "ISO/IEC 27041 / 27042",
+          "href": "https://www.iso.org/standard/44406.html",
+          "description": "Assurance and analysis/interpretation of digital evidence.",
+          "tags": ["Standards", "ISO"]
+        },
+        {
+          "label": "SWGDE — Scientific Working Group on Digital Evidence",
+          "href": "https://www.swgde.org/documents/",
+          "description": "Practical, free guidance documents across forensic disciplines.",
+          "tags": ["Standards", "Guidance"]
+        },
+        {
+          "label": "ACPO Good Practice Guide for Digital Evidence",
+          "href": "https://www.digitalforensics.education/acpo-principles",
+          "description": "The four ACPO principles for handling digital evidence, widely referenced in practice.",
+          "tags": ["Standards", "Principles"]
+        },
+        {
+          "label": "NIST SP 800-101 — Mobile Device Forensics",
+          "href": "https://csrc.nist.gov/pubs/sp/800/101/r1/final",
+          "description": "Guidelines on mobile device forensics, acquisition methods and preservation.",
+          "tags": ["Standards", "Mobile"]
+        }
+      ]
+    },
+    {
+      "id": "reading",
+      "label": "Recommended reading",
+      "description": "The books and long-form references our members learn from.",
+      "items": [
+        {
+          "label": "File System Forensic Analysis — Brian Carrier",
+          "href": "https://www.pearson.com/en-us/subject-catalog/p/file-system-forensic-analysis/P200000009286",
+          "description": "The deep reference on FAT, NTFS, HFS+ and how filesystems leak evidence.",
+          "tags": ["Book", "Filesystem"]
+        },
+        {
+          "label": "The Art of Memory Forensics",
+          "href": "https://www.wiley.com/en-us/The+Art+of+Memory+Forensics-p-9781118825099",
+          "description": "Windows, Linux and Mac memory analysis — the memory forensics bible.",
+          "tags": ["Book", "Memory"]
+        },
+        {
+          "label": "Practical Malware Analysis",
+          "href": "https://nostarch.com/malware",
+          "description": "A hands-on guide to dissecting malicious software safely.",
+          "tags": ["Book", "Malware"]
+        },
+        {
+          "label": "Windows Forensic Analysis Toolkit — Harlan Carvey",
+          "href": "https://www.sciencedirect.com/book/9781597494721/windows-forensic-analysis-toolkit",
+          "description": "The practical field guide to Windows artefact analysis.",
+          "tags": ["Book", "Windows"]
+        },
+        {
+          "label": "Incident Response & Computer Forensics",
+          "href": "https://www.mhprofessional.com/incident-response-computer-forensics-third-edition-9780071798686-usa",
+          "description": "The end-to-end incident response lifecycle, from triage to reporting.",
+          "tags": ["Book", "IR"]
+        },
+        {
+          "label": "Digital Forensics and Incident Response — Gerard Johansen",
+          "href": "https://www.packtpub.com/product/digital-forensics-and-incident-response/9781803238678",
+          "description": "A practical introduction to incident response. Relevant to the T1486 ransomware scenario in Case File 002.",
+          "tags": ["Book", "IR"]
+        },
+        {
+          "label": "NIST SP 800-61 — Computer Security Incident Handling Guide",
+          "href": "https://csrc.nist.gov/pubs/sp/800/61/r2/final",
+          "description": "The canonical incident response lifecycle. Essential reading for Case File 002's ransomware scenario.",
+          "tags": ["Standards", "NIST", "IR"]
+        },
+        {
+          "label": "Plaso documentation",
+          "href": "https://plaso.readthedocs.io/en/latest/",
+          "description": "How to build super timelines from disparate artefacts — critical for Case File 003.",
+          "tags": ["Reference", "Timeline"]
+        }
+      ]
+    },
+    {
+      "id": "case-toolkit",
+      "label": "Case investigation toolkit",
+      "description": "Tools referenced directly by our published case files.",
+      "items": [
+        {
+          "label": "Autopsy — Case File 001 primary analysis",
+          "href": "https://www.autopsy.com/",
+          "description": "Full disk image analysis, artifact extraction and keyword search.",
+          "tags": ["Case 001", "Disk", "Open source"]
+        },
+        {
+          "label": "Bulk Extractor",
+          "href": "https://github.com/simsong/bulk_extractor",
+          "description": "Scan raw disk images for PII, documents, and other salient features without parsing the filesystem.",
+          "tags": ["Case 001", "Disk", "Open source"]
+        },
+        {
+          "label": "RegRipper",
+          "href": "https://github.com/keydet89/RegRipper3.0",
+          "description": "Parse Windows Registry hives for user activity, USB history and evidence of execution.",
+          "tags": ["Case 001", "Windows", "Open source"]
+        },
+        {
+          "label": "libewf / ewfacquire",
+          "href": "https://github.com/libyal/libewf",
+          "description": "Handle E01/Ex01 forensic image formats described in case briefs.",
+          "tags": ["Case 001", "Imaging", "Open source"]
+        },
+        {
+          "label": "Zeek",
+          "href": "https://zeek.org/",
+          "description": "Network security monitor that converts PCAP into structured logs for analysis.",
+          "tags": ["Case 002", "Network", "Open source"]
+        },
+        {
+          "label": "Ransomware decryption tools",
+          "href": "https://www.nomoreransom.org/en/decryption-tools.html",
+          "description": "Free decryption tools by ransomware family — relevant to the T1486 scenario in Case File 002.",
+          "tags": ["Case 002", "Ransomware", "Free"]
+        }
+      ]
+    }
+  ]
+}
