@@ -2,43 +2,149 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { ArrowRight, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { Logo } from "@/components/logo";
 import { Container } from "@/components/container";
-import { btnPrimary } from "@/lib/ui";
+import { OPEN_SEARCH_EVENT } from "@/components/command-palette";
 import { cn } from "@/lib/utils";
 
-/** Section 2 — primary navigation. */
-const PRIMARY = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/projects", label: "Projects" },
-  { href: "/team", label: "Team" },
-  { href: "/contact", label: "Contact" },
+interface NavLeaf {
+  id: string;
+  href: string;
+  label: string;
+  description: string;
+  disabled?: boolean;
+}
+
+interface NavItem {
+  href?: string;
+  label: string;
+  items: NavLeaf[] | null;
+}
+
+/** Navigation structure with dropdowns. Each item has a unique `id` for React keys. */
+const NAV: NavItem[] = [
+  { href: "/", label: "Home", items: null },
+
+  {
+    label: "About",
+    items: [
+      { id: "about-mission", href: "/about", label: "Mission", description: "Why we exist & what we stand for" },
+      { id: "about-roadmap", href: "/roadmap", label: "Roadmap", description: "Phases, milestones & what's next" },
+      { id: "about-ethics", href: "/ethics", label: "Ethics", description: "Rules of engagement & responsible use" },
+    ],
+  },
+
+  {
+    label: "Work",
+    items: [
+      { id: "work-projects", href: "/projects", label: "Projects", description: "Published case files & investigations" },
+      { id: "work-writeups", href: "/writeups", label: "Write-ups", description: "Case reports, lab notes, tutorials & research" },
+    ],
+  },
+
+  {
+    label: "Learn",
+    items: [
+      { id: "learn-library", href: "/resources", label: "Library", description: "Resources, datasets, tools & reading" },
+      { id: "learn-datasets", href: "/resources/datasets", label: "Practice Datasets", description: "Public evidence for hands-on labs" },
+      { id: "learn-tools", href: "/resources/tools", label: "DFIR Tools", description: "The analyst toolkit" },
+      { id: "learn-playground", href: "/playground", label: "Terminal Playground", description: "Explore by typing — and hash, for real" },
+    ],
+  },
+
+  {
+    label: "Team",
+    items: [
+      { id: "team-roles", href: "/roles", label: "13 Roles", description: "Specialisations across DFIR" },
+      { id: "team-members", href: "/team", label: "Members", description: "Current collective members" },
+      { id: "team-join", href: "/join", label: "Join", description: "How to apply & what to expect" },
+    ],
+  },
+
+  { href: "/contact", label: "Contact", items: null },
+
+  {
+    label: "Apply",
+    items: [
+      { id: "apply-team", href: "/apply", label: "Team Application", description: "Join the founding DFIR collective" },
+      { id: "apply-mentor", href: "/apply/mentor", label: "Mentor / Advisor", description: "Guide the team as a subject expert" },
+    ],
+  },
 ];
 
-const SECONDARY = [
-  { href: "/roles", label: "Roles" },
-  { href: "/writeups", label: "Write-ups" },
-  { href: "/roadmap", label: "Roadmap" },
-  { href: "/ethics", label: "Ethics" },
-  { href: "/resources", label: "Resources" },
-  { href: "/join", label: "Join us" },
-];
+/** Mobile-only dropdown for navigation sections. */
+function MobileDropdown({
+  label,
+  items,
+  active,
+  onClose,
+}: {
+  label: string;
+  items: Array<{ id: string; href: string; label: string; description: string; disabled?: boolean }>;
+  active: boolean;
+  onClose: () => void;
+}) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <details className="group">
+      <summary
+        className={cn(
+          "flex items-center justify-between px-3 py-2.5 text-sm font-medium transition rounded-xl",
+          active || open
+            ? "bg-accent/10 text-accent-2"
+            : "text-muted hover:bg-surface hover:text-foreground",
+        )}
+        onClick={(e) => {
+          e.preventDefault();
+          setOpen((v) => !v);
+        }}
+      >
+        {label}
+        <ChevronDown
+          className={cn(
+            "h-3.5 w-3.5 transition-transform duration-200",
+            open && "rotate-180",
+          )}
+        />
+      </summary>
+      <div className="mt-1 pl-2 space-y-1 border-l border-border/50 ml-1">
+        {items.map((item) => (
+          <Link
+            key={item.id}
+            href={item.href}
+            onClick={onClose}
+            aria-disabled={item.disabled}
+            className={cn(
+              "block px-3 py-2 rounded-xl text-sm transition",
+              item.disabled
+                ? "text-muted/60 cursor-not-allowed"
+                : "text-muted hover:bg-accent/10 hover:text-accent-2",
+            )}
+          >
+            <span className="block font-medium">{item.label}</span>
+            <span className="block text-[11px] text-muted/70">{item.description}</span>
+          </Link>
+        ))}
+      </div>
+    </details>
+  );
+}
 
 export function SiteHeader({
   name,
   descriptor,
-  applyUrl,
 }: {
   name: string;
   descriptor: string;
-  applyUrl: string;
 }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const dropdownRefs = useRef<Map<string, HTMLDivElement>>(new Map());
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -47,8 +153,26 @@ export function SiteHeader({
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    function onClickOutside(event: MouseEvent) {
+      dropdownRefs.current.forEach((ref, key) => {
+        if (ref && !ref.contains(event.target as Node)) {
+          setActiveDropdown((prev) => (prev === key ? null : prev));
+        }
+      });
+    }
+    document.addEventListener("mousedown", onClickOutside);
+    return () => document.removeEventListener("mousedown", onClickOutside);
+  }, []);
+
   const isActive = (href: string) =>
     href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
+
+  const isDropdownActive = (label: string) => {
+    const items = NAV.find((n) => n.label === label)?.items;
+    if (!items) return false;
+    return items.some((item) => isActive(item.href));
+  };
 
   return (
     <header className="sticky top-0 z-50">
@@ -73,61 +197,122 @@ export function SiteHeader({
             </span>
           </Link>
 
-          <nav
-            aria-label="Primary"
-            className="mx-auto hidden items-center gap-1 lg:flex"
-          >
-            {PRIMARY.map((item) => {
-              const active = isActive(item.href);
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  aria-current={active ? "page" : undefined}
-                  className={cn(
-                    "relative px-3 py-2 text-sm font-medium transition",
-                    active
-                      ? "text-accent-2"
-                      : "text-muted hover:text-foreground",
-                  )}
-                >
-                  {item.label}
-                  <span
-                    aria-hidden="true"
+          <nav aria-label="Primary" className="mx-auto hidden items-center gap-1 lg:flex">
+            {NAV.map((navItem) => {
+              const hasDropdown = Boolean(navItem.items);
+              const active = hasDropdown ? isDropdownActive(navItem.label) : isActive(navItem.href!);
+
+              if (!hasDropdown) {
+                return (
+                  <Link
+                    key={navItem.href}
+                    href={navItem.href!}
+                    aria-current={active ? "page" : undefined}
                     className={cn(
-                      "absolute inset-x-3 -bottom-0.5 h-px origin-center bg-gradient-to-r from-transparent via-accent to-transparent transition-transform duration-300",
-                      active ? "scale-x-100" : "scale-x-0",
+                      "relative px-3 py-2 text-sm font-medium transition",
+                      active
+                        ? "text-accent-2"
+                        : "text-muted hover:text-foreground",
                     )}
-                  />
-                </Link>
+                  >
+                    {navItem.label}
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "absolute inset-x-3 -bottom-0.5 h-px origin-center bg-gradient-to-r from-transparent via-accent to-transparent transition-transform duration-300",
+                        active ? "scale-x-100" : "scale-x-0",
+                      )}
+                    />
+                  </Link>
+                );
+              }
+
+              // Dropdown item
+              const dropdownKey = navItem.label;
+              const isOpen = activeDropdown === dropdownKey;
+
+              return (
+                <div key={dropdownKey} className="relative">
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={activeDropdown === dropdownKey}
+                    aria-controls={`${dropdownKey}-dropdown`}
+                    onClick={() => setActiveDropdown((prev) => (prev === dropdownKey ? null : dropdownKey))}
+                    className={cn(
+                      "relative px-3 py-2 text-sm font-medium transition flex items-center gap-1.5",
+                      active || isOpen
+                        ? "text-accent-2"
+                        : "text-muted hover:text-foreground",
+                    )}
+                  >
+                    {navItem.label}
+                    <ChevronDown
+                      className={cn(
+                        "h-3.5 w-3.5 transition-transform duration-200",
+                        isOpen && "rotate-180",
+                      )}
+                    />
+                  </button>
+
+                  {isOpen && (
+                    <div
+                      id={`${dropdownKey}-dropdown`}
+                      role="menu"
+                      className="absolute left-0 top-full mt-2 min-w-[220px] rounded-2xl border border-border bg-surface p-2 shadow-[0_30px_60px_-20px] shadow-black/90 animate-fade-in"
+                    >
+                      {navItem.items!.map((item) => (
+                        <Link
+                          key={item.id}
+                          href={item.href}
+                          onClick={() => setActiveDropdown(null)}
+                          aria-disabled={item.disabled}
+                          role="menuitem"
+                          className={cn(
+                            "flex items-start gap-3 px-3 py-2.5 rounded-xl text-sm transition",
+                            item.disabled
+                              ? "text-muted/60 cursor-not-allowed"
+                              : "text-muted hover:bg-accent/10 hover:text-accent-2",
+                          )}
+                        >
+                          <div>
+                            <span className="block font-medium">{item.label}</span>
+                            <span className="block text-[11px] text-muted/70">{item.description}</span>
+                          </div>
+                        </Link>
+                      ))}
+                    </div>
+                  )}
+                </div>
               );
             })}
           </nav>
 
-          <div className="ml-auto flex items-center gap-2 lg:ml-0">
-            <a
-              href={applyUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={cn(
-                btnPrimary,
-                "fx-shine hidden rounded-full px-4 py-2 text-[13px] sm:inline-flex",
-              )}
-            >
-              Apply to Join
-              <ArrowRight className="h-3.5 w-3.5" />
-            </a>
-            <button
-              type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              aria-controls="mobile-nav"
-              onClick={() => setOpen((value) => !value)}
-              className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:border-accent/60 hover:text-accent lg:hidden"
-            >
-              {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
-          </div>
+          <button
+            type="button"
+            onClick={() =>
+              window.dispatchEvent(new CustomEvent(OPEN_SEARCH_EVENT))
+            }
+            aria-label="Search the site (Command or Control + K)"
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-border bg-surface/40 px-3 text-muted transition hover:border-accent/60 hover:text-accent-2"
+          >
+            <Search className="h-4 w-4" />
+            <span className="hidden text-xs font-medium lg:inline">Search</span>
+            <kbd className="hidden rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-muted/80 lg:inline">
+              ⌘K
+            </kbd>
+          </button>
+
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((value) => !value)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border text-foreground transition hover:border-accent/60 hover:text-accent lg:hidden"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </Container>
       </div>
 
@@ -144,55 +329,40 @@ export function SiteHeader({
       >
         <Container className="py-4">
           <nav aria-label="Mobile" className="flex flex-col">
-            {PRIMARY.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={cn(
-                  "rounded-xl px-3 py-2.5 text-sm font-medium transition",
-                  isActive(item.href)
-                    ? "bg-accent/10 text-accent-2"
-                    : "text-muted hover:bg-surface hover:text-foreground",
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+            {NAV.map((navItem) => {
+              const hasDropdown = Boolean(navItem.items);
+              const active = hasDropdown ? isDropdownActive(navItem.label) : isActive(navItem.href!);
 
-          <p className="mt-4 px-3 font-mono text-[10px] uppercase tracking-[0.28em] text-muted/70">
-            The collective
-          </p>
-          <nav aria-label="More" className="mt-1 flex flex-col">
-            {SECONDARY.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                aria-current={isActive(item.href) ? "page" : undefined}
-                className={cn(
-                  "rounded-xl px-3 py-2.5 text-sm transition",
-                  isActive(item.href)
-                    ? "bg-accent/10 text-accent-2"
-                    : "text-muted hover:bg-surface hover:text-foreground",
-                )}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+              if (!hasDropdown) {
+                return (
+                  <Link
+                    key={navItem.href}
+                    href={navItem.href!}
+                    onClick={() => setOpen(false)}
+                    aria-current={active ? "page" : undefined}
+                    className={cn(
+                      "rounded-xl px-3 py-2.5 text-sm font-medium transition",
+                      active
+                        ? "bg-accent/10 text-accent-2"
+                        : "text-muted hover:bg-surface hover:text-foreground",
+                    )}
+                  >
+                    {navItem.label}
+                  </Link>
+                );
+              }
 
-          <a
-            href={applyUrl}
-            target="_blank"
-            rel="noreferrer"
-            className={cn(btnPrimary, "mt-4 w-full rounded-full py-3")}
-          >
-            Apply to Join
-            <ArrowRight className="h-4 w-4" />
-          </a>
+              return (
+                <MobileDropdown
+                  key={navItem.label}
+                  label={navItem.label}
+                  items={navItem.items!}
+                  active={active}
+                  onClose={() => setOpen(false)}
+                />
+              );
+            })}
+          </nav>
         </Container>
       </div>
     </header>

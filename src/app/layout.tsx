@@ -6,6 +6,10 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { Preloader } from "@/components/preloader";
 import { ScrollProgress } from "@/components/scroll-progress";
+import { JsonLd } from "@/components/json-ld";
+import { organizationSchema, websiteSchema } from "@/lib/structured-data";
+import { CommandPalette } from "@/components/command-palette";
+import { getSearchIndex } from "@/lib/search";
 import { getSite } from "@/lib/site";
 
 const inter = Inter({
@@ -67,6 +71,17 @@ export const metadata: Metadata = {
     title: `${site.name} — ${site.descriptor}`,
     description: site.tagline,
   },
+  alternates: {
+    types: {
+      "application/rss+xml": [{ url: "/feed.xml", title: `${site.name} — RSS` }],
+    },
+  },
+  manifest: "/manifest.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export const viewport: Viewport = {
@@ -74,15 +89,18 @@ export const viewport: Viewport = {
   themeColor: "#071827",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const { docs } = await getSearchIndex();
+
   return (
     <html
       lang="en"
       suppressHydrationWarning
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${plexMono.variable} ${playfair.variable}`}
     >
       <body className="flex min-h-screen flex-col bg-background text-foreground">
@@ -93,6 +111,7 @@ export default function RootLayout({
           Skip to content
         </a>
         <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
+        <JsonLd data={[organizationSchema(), websiteSchema()]} />
         <noscript>
           {/* Without JS the intro can't dismiss itself and reveals can't run. */}
           <style>{".fx-intro{display:none !important}.fx-reveal{opacity:1 !important;transform:none !important}"}</style>
@@ -100,6 +119,7 @@ export default function RootLayout({
 
         <Preloader />
         <ScrollProgress />
+        <CommandPalette docs={docs} />
 
         <div
           aria-hidden="true"
@@ -121,7 +141,6 @@ export default function RootLayout({
         <SiteHeader
           name={site.name}
           descriptor={site.descriptor}
-          applyUrl={site.applyUrl}
         />
         <main id="main" className="relative flex-1">{children}</main>
         <SiteFooter
