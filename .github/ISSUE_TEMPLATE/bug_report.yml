@@ -1,0 +1,69 @@
+name: Bug report
+description: Something on the site is broken, wrong, or looks off.
+title: "[Bug]: "
+labels: ["bug", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to report a problem. Please don't include
+        private data, real case material, credentials or personal information.
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, and what you expected instead.
+      placeholder: The command palette opens but arrow keys don't move the selection.
+    validations:
+      required: true
+
+  - type: input
+    id: url
+    attributes:
+      label: Page or route
+      description: The URL where you saw the problem.
+      placeholder: https://forensyra.com/resources
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Click ...
+        3. See ...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: device
+    attributes:
+      label: Device
+      options:
+        - Desktop / laptop
+        - Tablet
+        - Phone
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and OS
+      placeholder: Chrome 141 on Windows 11
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I searched existing issues before opening this one.
+          required: true
+        - label: This report contains no private, personal or case-sensitive data.
+          required: true

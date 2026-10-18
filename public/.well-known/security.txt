@@ -1,0 +1,6 @@
+Contact: mailto:forensyra@outlook.in
+Contact: https://github.com/Eviddgc/Forensyra/security/advisories/new
+Expires: 2027-12-31T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://forensyra.com/.well-known/security.txt
+Policy: https://forensyra.com/security

@@ -19,11 +19,16 @@ npm install       # install dependencies
 npm run dev       # start the dev server → http://localhost:3000
 npm run build     # production build
 npm run start     # run the production build
-npm run typecheck # TypeScript check
 npm run lint      # ESLint
+npm run typecheck # TypeScript check
+npm test          # unit tests (node:test)
 ```
 
 Node.js **20.9+** is required (this project was built on Node 24).
+
+> **Dev server note.** Tailwind is wired through `next.config.ts` →
+> `turbopack.rules`. Keep `npm run dev` as `next dev` — running the dev server
+> with `--webpack` bypasses that loader and the site renders with no styles.
 
 ---
 
@@ -34,15 +39,26 @@ Node.js **20.9+** is required (this project was built on Node 24).
 | Home (pinned items, highlights) | `/` | `src/app/page.tsx` + content |
 | About | `/about` | `content/pages/about.md` |
 | Roles (13 specialisations) | `/roles` | `content/roles/*.md` |
+| Role matcher (6-question quiz) | `/roles/matcher` | `src/components/role-matcher.tsx` |
 | Team | `/team` | `content/team/*.md` |
 | Projects / case files | `/projects`, `/projects/[slug]` | `content/projects/*.md` |
 | Write-ups | `/writeups`, `/writeups/[slug]` | `content/writeups/*.md` |
 | Roadmap (present + upcoming) | `/roadmap` | `content/roadmap/*.md` |
 | Ethics & legal rules | `/ethics` | `content/pages/ethics.md` |
 | Join / apply | `/join` | `content/pages/join.md` + `site.json` |
-| Resources | `/resources` | `content/pages/resources.md` |
+| Learn library | `/resources` | `content/learn/library.json` |
+| Practice datasets | `/resources/datasets` | `content/learn/library.json` |
+| DFIR tools | `/resources/tools` | `content/learn/library.json` |
+| Terminal playground | `/playground` | `src/components/terminal-playground.tsx` |
+| Site search (no-JS fallback) | `/search?q=` | `src/lib/search.ts` |
+| Security policy / disclosure | `/security` | `src/app/security/page.tsx` + `SECURITY.md` |
+| RSS feed | `/feed.xml` | `src/app/feed.xml/route.ts` |
 | Contact | `/contact` | `src/app/contact/page.tsx` + `site.json` |
 | Content manager (CMS) | `/admin` | `content/admin/config.yml` + `public/admin/index.html` |
+
+Site-wide, the layout also renders structured data (Organization + WebSite),
+a `⌘K` / `Ctrl-K` command palette, per-article Open Graph cards, a sitemap, an
+RSS feed and a web manifest.
 
 ---
 
@@ -79,21 +95,56 @@ controlled from `content/settings/site.json`.
 
 ```
 content/
-  settings/site.json   # name, tagline, motto, links, announcement, apply URL
-  projects/*.md        # case files (title, status, evidence, tags, pinned…)
-  writeups/*.md        # write-ups (title, author, date, tags, pinned…)
-  roadmap/*.md         # present + upcoming plans (status, order…)
-  team/*.md            # members (role, roleId, phase, links…)
-  roles/*.md           # the 13 roles (description, phase, order…)
-  pages/*.md           # about, ethics, join, resources
-  admin/config.yml     # Decap CMS configuration (served at /admin/config.yml)
+  settings/site.json     # name, tagline, motto, links, announcement, apply URL
+  learn/library.json     # the Learn library: references, datasets, tools, standards, reading
+  projects/*.md          # case files (title, status, evidence, plan, deliverables, tags…)
+  writeups/*.md          # write-ups (title, author, date, tags, pinned…)
+  roadmap/*.md           # present + upcoming plans (status, order…)
+  team/*.md              # members (role, roleId, phase, location, cover, links…)
+  roles/*.md             # the 13 roles (description, work, responsibilities, skills…)
+  pages/*.md             # about, ethics, join, resources
+  admin/config.yml       # Decap CMS configuration (served at /admin/config.yml)
 public/
-  admin/index.html     # Decap CMS app shell (only used for /admin)
-  uploads/             # media uploaded through the CMS
+  admin/index.html       # Decap CMS app shell (only used for /admin)
+  uploads/               # media uploaded through the CMS
+  .well-known/security.txt
 ```
 
 Every entry supports: `title`, `description`, `date`, `updated`, `status`,
-`tags`, `pinned`, `links`, plus a Markdown body.
+`tags`, `pinned`, `links`, plus a Markdown body. Case files add `caseType`,
+`evidence`, `plan` and `deliverables`; roles add `work`, `responsibilities`
+and `skills`.
+
+Headings in Markdown bodies get deterministic `id` attributes automatically
+(`src/lib/content.ts`), which is what powers the on-page table of contents and
+`#anchor` links.
+
+---
+
+## Environment variables
+
+Everything is optional — the site runs without any of them, it just cannot
+deliver email. Copy the template and fill in what you need:
+
+```bash
+cp .env.example .env.local        # macOS / Linux
+Copy-Item .env.example .env.local # Windows PowerShell
+```
+
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Overrides `url` in `site.json` (canonicals, sitemap, OG) |
+| `EMAILJS_SERVICE_ID` | EmailJS service for the application/mentor/newsletter forms |
+| `EMAILJS_TEMPLATE_ID` | Team application template |
+| `EMAILJS_PUBLIC_KEY` | EmailJS public key |
+| `EMAILJS_PRIVATE_KEY` | Optional — only for non-browser EmailJS access |
+| `EMAILJS_AUTOREPLY_TEMPLATE_ID` | Optional applicant auto-reply |
+| `EMAILJS_MENTOR_TEMPLATE_ID` | Mentor form template (falls back to `EMAILJS_TEMPLATE_ID`) |
+| `EMAILJS_MENTOR_AUTOREPLY_TEMPLATE_ID` | Optional mentor auto-reply |
+| `EMAILJS_NEWSLETTER_TEMPLATE_ID` | Footer newsletter template |
+
+When email is not configured the forms fail **honestly** — they never claim a
+message was sent.
 
 ---
 
@@ -130,14 +181,34 @@ the site breaks without it.
 
 ```
 src/
-  app/            # routes (App Router) + sitemap, robots, OG image
-  components/     # UI: header, footer, cards, badges, markdown renderer…
+  app/            # routes (App Router) + sitemap, robots, feed, manifest, OG images
+  components/     # UI: header, footer, command palette, workbench, terminal…
   lib/
-    content.ts    # reads + renders the Markdown collections
-    site.ts       # reads content/settings/site.json
-    utils.ts      # helpers (dates, class names)
-    ui.ts         # shared Tailwind class strings
+    content.ts        # reads + renders the Markdown collections (adds heading ids)
+    learn.ts          # loads content/learn/library.json
+    search-core.ts    # client-safe search (matcher + types)
+    search.ts         # builds the site-wide search index
+    structured-data.ts# schema.org JSON-LD builders
+    toc.ts            # heading extraction + reading time
+    og.tsx            # shared Open Graph card renderer
+    site.ts           # reads content/settings/site.json
+    utils.ts          # helpers (dates, class names)
+    ui.ts             # shared Tailwind class strings
+tests/            # node:test unit tests (npm test)
 ```
+
+---
+
+## Verification
+
+Every change is expected to keep these green:
+
+```bash
+npm run lint && npm run typecheck && npm test && npm run build
+```
+
+GitHub Actions runs the same four commands for every push to `main` and every
+pull request (`.github/workflows/ci.yml`).
 
 ---
 

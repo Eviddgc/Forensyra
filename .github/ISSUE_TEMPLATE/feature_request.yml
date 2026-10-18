@@ -1,0 +1,56 @@
+name: Feature or content request
+description: Suggest an improvement, a new case file, write-up, resource or role.
+title: "[Idea]: "
+labels: ["enhancement", "needs triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ideas are welcome — especially anything that makes the collective more
+        useful to people learning digital forensics.
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Content (case file, write-up, learn resource)
+        - Roles and team
+        - Design and interaction
+        - Accessibility
+        - Performance
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve?
+      placeholder: It's hard to find write-ups by topic, so I keep re-reading the same two.
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would you like to see?
+      placeholder: Tag pages at /writeups/tag/[tag] with an index.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Checks
+      options:
+        - label: I checked the roadmap and existing issues first.
+          required: true

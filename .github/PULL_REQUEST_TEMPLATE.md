@@ -1,27 +1,26 @@
-<!--
-Thanks for contributing to Forensyra!
-Keep the summary short and clear.
--->
+## What does this change?
 
-## Summary
-
-<!-- What does this change and why? -->
+<!-- A short summary of the change and the problem it solves. -->
 
 ## Type
 
-- [ ] Content (write-up, case file, roadmap, team)
-- [ ] Feature
-- [ ] Fix
-- [ ] Docs
-- [ ] Chore
+- [ ] Bug fix
+- [ ] New feature or interaction
+- [ ] Content (case file, write-up, learn resource)
+- [ ] Documentation
+- [ ] Design / accessibility polish
+- [ ] Chore (dependencies, config, CI)
 
 ## Checks
 
-- [ ] `npm run typecheck` passes
 - [ ] `npm run lint` passes
+- [ ] `npm run typecheck` passes
+- [ ] `npm test` passes
 - [ ] `npm run build` passes
-- [ ] No real victim data, only legal/public sample evidence
+- [ ] Checked at 320, 375, 768, 1024 and 1440 px widths
+- [ ] Keyboard-only navigation works for anything interactive
+- [ ] `prefers-reduced-motion` is respected
 
-## Screenshots / notes
+## Notes for reviewers
 
-<!-- If this changes the UI, add a screenshot. -->
+<!-- Anything specific to look at, or trade-offs you made. -->

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/Eviddgc/Forensyra/security/advisories/new
+    about: Please report security issues privately — never in a public issue.
+  - name: Contact the collective
+    url: https://forensyra.com/contact
+    about: General questions, collaboration and mentoring enquiries.
