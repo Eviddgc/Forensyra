@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import matter from "gray-matter";
+import yaml from "js-yaml";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 
@@ -60,14 +60,6 @@ export interface Entry {
 }
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
-const COLLECTIONS: Collection[] = [
-  "projects",
-  "writeups",
-  "roadmap",
-  "team",
-  "roles",
-  "pages",
-];
 
 function collectionDir(collection: Collection) {
   return path.join(CONTENT_DIR, collection);
@@ -147,13 +139,36 @@ async function renderMarkdown(markdown: string): Promise<string> {
   return addHeadingIds(file.toString());
 }
 
+/**
+ * Split a Markdown file into its YAML frontmatter and body.
+ *
+ * Frontmatter is always a single `---` block at the very top of the file, so a
+ * small parser is enough; it also keeps gray-matter's old js-yaml 3 tree (and
+ * its unpatched argparse/sprintf-js advisories) out of the dependency graph.
+ */
+function readFrontmatter(raw: string): {
+  data: Record<string, unknown>;
+  content: string;
+} {
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+  if (!match) return { data: {}, content: raw };
+  const parsed = yaml.load(match[1]);
+  return {
+    data:
+      parsed && typeof parsed === "object"
+        ? (parsed as Record<string, unknown>)
+        : {},
+    content: raw.slice(match[0].length),
+  };
+}
+
 async function parseFile(
   collection: Collection,
   fileName: string,
 ): Promise<Entry> {
   const fullPath = path.join(collectionDir(collection), fileName);
   const fileContents = fs.readFileSync(fullPath, "utf8");
-  const { data, content } = matter(fileContents);
+  const { data, content } = readFrontmatter(fileContents);
   const slug = fileName.replace(/\.mdx?$/, "");
   const rendered = await renderMarkdown(content);
 
@@ -170,7 +185,10 @@ async function parseFile(
     order: typeof data.order === "number" ? data.order : 999,
     role: data.role ? String(data.role) : undefined,
     roleId: data.roleId ? String(data.roleId) : undefined,
-    phase: data.phase ?? undefined,
+    phase:
+      typeof data.phase === "number" || typeof data.phase === "string"
+        ? data.phase
+        : undefined,
     skills: toArray(data.skills),
     responsibilities: toArray(data.responsibilities),
     work: data.work ? String(data.work) : undefined,
@@ -231,13 +249,5 @@ export async function getEntry(
 export function getSlugs(collection: Collection): string[] {
   return listFiles(collection).map((file) => file.replace(/\.mdx?$/, ""));
 }
-
-/** Entries flagged `pinned: true` in frontmatter. */
-export async function getPinned(collection: Collection): Promise<Entry[]> {
-  const entries = await getEntries(collection);
-  return entries.filter((entry) => entry.pinned);
-}
-
-export const ALL_COLLECTIONS = COLLECTIONS;
 
 

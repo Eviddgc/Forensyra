@@ -64,7 +64,8 @@ install it — the pin just keeps CI reproducible.
 
 Site-wide, the layout also renders structured data (Organization + WebSite),
 a `⌘K` / `Ctrl-K` command palette, per-article Open Graph cards, a sitemap, an
-RSS feed and a web manifest.
+RSS feed and a web manifest. Every response carries the security headers set in
+`next.config.ts` (see [Security posture](#security-posture)).
 
 ---
 
@@ -197,6 +198,7 @@ src/
     structured-data.ts# schema.org JSON-LD builders
     toc.ts            # heading extraction + reading time
     og.tsx            # shared Open Graph card renderer
+    seo.ts            # per-page canonical + feed discovery links
     site.ts           # reads content/settings/site.json
     utils.ts          # helpers (dates, class names)
     ui.ts             # shared Tailwind class strings
@@ -215,6 +217,30 @@ npm run lint && npm run typecheck && npm test && npm run build
 
 GitHub Actions runs the same four commands for every push to `main` and every
 pull request (`.github/workflows/ci.yml`).
+
+---
+
+## Security posture
+
+Every response carries the headers configured in `next.config.ts`:
+
+- a same-origin `Content-Security-Policy` (`/admin` gets a relaxed policy,
+  because Decap CMS loads its bundle from a CDN, validates its config with
+  `new Function`, and talks to GitHub);
+- `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`,
+  `X-Frame-Options: DENY` and a restrictive `Permissions-Policy`;
+- `Strict-Transport-Security` in production only, and no `X-Powered-By`.
+
+Nonces are deliberately not used for the CSP: they would force every route to
+render dynamically, trading away the site's static output. Inline script and
+style therefore stay allowed, so the policy pins *sources* rather than
+individual inline blocks.
+
+`npm audit` reports one unfixable, dev-only advisory: `braces`
+(GHSA-vfj7-8cjw-p6xm), reached through `eslint-config-next` → `fast-glob` →
+`micromatch`. Every published version is affected and no patched release
+exists, so no version override can clear it — it runs at lint time only and
+never reaches a visitor's browser.
 
 ---
 
