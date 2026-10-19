@@ -6,6 +6,10 @@
     <meta name="robots" content="noindex, nofollow" />
     <title>Forensyra — Content Manager</title>
     <link rel="icon" href="/icon.png" />
+    <!-- Decap resolves `config.yml` relative to the page URL, and this page is
+         served at /admin (no trailing slash), so it would request /config.yml.
+         Point it at the handler that serves the real config instead. -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
   <body>
     <!-- Decap CMS: a browser UI for editing the Markdown/JSON content in this repo. -->
