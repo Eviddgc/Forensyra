@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
+import { Terminal } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
+import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { TerminalPlayground } from "@/components/terminal-playground";
 import { JsonLd } from "@/components/json-ld";
 import { pageAlternates } from "@/lib/seo";
@@ -38,20 +40,17 @@ export default function PlaygroundPage() {
         ])}
       />
 
-      <section className="relative isolate overflow-hidden bg-background">
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_20%,#122b46_0%,#0d2238_50%,#071827_100%)]" />
-          <div className="fx-orb pointer-events-none right-[12%] top-[10%] h-[18rem] w-[18rem] bg-accent/8" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-        </div>
-
-        <Container className="relative py-20 sm:py-24">
+      <HeroSection variant="playground">
+        <Container className="relative z-10 flex min-h-[420px] items-center py-20 sm:min-h-[470px] sm:py-24 lg:min-h-[510px]">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
-              Playground
-            </p>
-            <h1 className="font-display mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl">
-              Talk to the collective
+            <div className="flex items-center gap-3">
+              <Terminal className="h-5 w-5 text-accent" />
+              <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
+                Playground
+              </p>
+            </div>
+            <h1 className="font-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Talk to the <span className="text-accent-2">collective</span>
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
               A simulated shell for the curious. Type <code>help</code> to see
@@ -59,7 +58,7 @@ export default function PlaygroundPage() {
             </p>
           </Reveal>
         </Container>
-      </section>
+      </HeroSection>
 
       <Container className="pb-20 sm:pb-28">
         <Reveal>

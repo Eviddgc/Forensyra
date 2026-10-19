@@ -33,6 +33,7 @@ export default async function MentorApplyPage({
         eyebrow="Mentoring"
         title="Mentor / Advisor Application"
         description="Share your expertise and help guide the next generation of forensic analysts. We value your time and will review every application."
+        variant="mentor"
       />
 
       <Container className="py-12 sm:py-16">

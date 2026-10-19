@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { Counter } from "@/components/counter";
+import { HeroDial } from "@/components/home/hero-dial";
 import { btnOutlineDarkLg, btnPrimaryLg } from "@/lib/ui";
 import { cn } from "@/lib/utils";
 
@@ -51,16 +52,19 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(115%_110%_at_12%_45%,rgba(7,24,39,0.92),rgba(7,24,39,0.35)_45%,transparent_70%)]" />
       <div className="fx-scanlines pointer-events-none absolute inset-0 opacity-[0.28]" />
 
-      <div className="pointer-events-none absolute inset-0 flex items-center justify-center xl:justify-end">
-        <Image
-          src="/brand-logo.webp"
-          alt=""
-          width={1024}
-          height={1024}
-          preload
-          sizes="(max-width: 1280px) 56vw, 22rem"
-          className="h-[min(58vw,13rem)] w-auto opacity-[0.15] drop-shadow-[0_0_60px_rgba(230,182,79,0.45)] xl:mr-[3%] xl:h-[22rem] xl:translate-x-[3%] xl:opacity-95"
-        />
+      <div className="pointer-events-none absolute inset-0 flex items-center justify-center xl:justify-end xl:pr-[3%]">
+        <div className="relative flex items-center justify-center">
+          <HeroDial className="absolute left-1/2 top-1/2 hidden h-[min(82vw,34rem)] w-[min(82vw,34rem)] -translate-x-1/2 -translate-y-1/2 opacity-70 drop-shadow-[0_0_40px_rgba(230,182,79,0.18)] sm:block lg:opacity-80" />
+          <Image
+            src="/brand-logo.webp"
+            alt=""
+            width={1024}
+            height={1024}
+            preload
+            sizes="(max-width: 1280px) 56vw, 22rem"
+            className="relative h-[min(58vw,13rem)] w-auto opacity-[0.15] drop-shadow-[0_0_60px_rgba(230,182,79,0.45)] md:opacity-20 lg:opacity-30 xl:h-[22rem] xl:opacity-95"
+          />
+        </div>
       </div>
 
       <Container className="relative z-10 py-16 sm:py-20 lg:py-20">
@@ -72,7 +76,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
           </Reveal>
 
           <Reveal delay={140}>
-            <h1 className="fx-wordmark w-fit font-display mt-4 text-[clamp(3.25rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em]">
+            <h1 className="fx-wordmark w-fit font-display mt-4 text-[clamp(2.5rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em]">
               <span className="fx-wordmark-stack">
                 <span className="fx-wordmark-face">{glyphs}</span>
                 <span

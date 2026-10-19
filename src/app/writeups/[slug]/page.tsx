@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Calendar, Clock, User, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
+import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { Markdown } from "@/components/markdown";
 import { JsonLd } from "@/components/json-ld";
 import { ArticleToc } from "@/components/article-toc";
@@ -76,18 +77,9 @@ export default async function WriteupPage({
         ]}
       />
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-background">
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_20%,#122b46_0%,#0d2238_50%,#071827_100%)]" />
-          <div className="fx-orb pointer-events-none right-[15%] top-[5%] h-[20rem] w-[20rem] bg-[#6aa0dc]/10" />
-          <div className="fx-orb pointer-events-none left-[-5%] bottom-[-10%] h-[16rem] w-[16rem] bg-accent/8" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-          <div className="fx-scanlines absolute inset-0 opacity-[0.14]" />
-        </div>
-
-        <Container className="relative z-10 flex min-h-[360px] items-center py-20 sm:min-h-[420px] sm:py-24">
-          <Reveal>
+      <HeroSection variant="research">
+        <Container className="relative z-10 flex min-h-[400px] items-center py-20 sm:min-h-[460px] sm:py-24 lg:min-h-[500px]">
+          <Reveal className="max-w-3xl">
             <Link
               href="/writeups"
               className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent"
@@ -136,19 +128,7 @@ export default async function WriteupPage({
             </div>
           </Reveal>
         </Container>
-
-        <svg
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 block h-[46px] w-full sm:h-[70px]"
-          viewBox="0 0 1440 110"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 30 C 260 96 470 4 720 40 C 970 76 1180 108 1440 44 L 1440 110 L 0 110 Z"
-            fill="var(--color-surface)"
-          />
-        </svg>
-      </section>
+      </HeroSection>
 
       <Container className="py-14 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-16">

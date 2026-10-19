@@ -10,6 +10,7 @@ import {
 } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
+import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { pageAlternates } from "@/lib/seo";
@@ -72,30 +73,27 @@ export default function SecurityPage() {
       />
 
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-background">
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_20%,#122b46_0%,#0d2238_50%,#071827_100%)]" />
-          <div className="fx-orb pointer-events-none right-[12%] top-[8%] h-[18rem] w-[18rem] bg-accent/8" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-        </div>
-
-        <Container className="relative py-20 sm:py-28">
+      <HeroSection variant="security">
+        <Container className="relative z-10 flex min-h-[430px] items-center py-20 sm:min-h-[480px] sm:py-24 lg:min-h-[520px]">
           <Reveal>
-            <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
-              Responsible disclosure
-            </p>
-            <h1 className="font-display mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <div className="flex items-center gap-3">
+              <ShieldCheck className="h-5 w-5 text-accent" />
+              <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
+                Responsible disclosure
+              </p>
+            </div>
+            <h1 className="font-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Security policy
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
               We hold ourselves to the same standard we bring to evidence work:
-              careful, honest and documented. If you find a problem in
+              careful, honest and documented. If you find a problem in{" "}
               {site.name}, tell us privately — we will treat it seriously and
               tell you exactly where it stands.
             </p>
           </Reveal>
         </Container>
-      </section>
+      </HeroSection>
 
       <Container className="py-16 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16">

@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, Route } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
+import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { RoleMatcher } from "@/components/role-matcher";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
@@ -29,14 +30,8 @@ export default async function RoleMatcherPage() {
         ])}
       />
 
-      <section className="relative isolate overflow-hidden bg-background">
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_20%,#122b46_0%,#0d2238_50%,#071827_100%)]" />
-          <div className="fx-orb pointer-events-none right-[12%] top-[10%] h-[18rem] w-[18rem] bg-accent/8" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/80 to-transparent" />
-        </div>
-
-        <Container className="relative py-20 sm:py-24">
+      <HeroSection variant="matcher">
+        <Container className="relative z-10 flex min-h-[440px] items-center py-20 sm:min-h-[490px] sm:py-24 lg:min-h-[530px]">
           <Reveal>
             <Link
               href="/roles"
@@ -45,11 +40,14 @@ export default async function RoleMatcherPage() {
               <ArrowLeft className="h-4 w-4" />
               All thirteen roles
             </Link>
-            <p className="mt-6 font-mono text-xs uppercase tracking-[0.32em] text-accent">
-              Role matcher
-            </p>
-            <h1 className="font-display mt-4 max-w-3xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground sm:text-5xl">
-              Which seat is yours?
+            <div className="mt-6 flex items-center gap-3">
+              <Route className="h-5 w-5 text-accent" />
+              <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
+                Role matcher
+              </p>
+            </div>
+            <h1 className="font-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+              Which seat is <span className="text-accent-2">yours?</span>
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
               Six questions, no wrong answers. We map your instincts against all
@@ -57,7 +55,7 @@ export default async function RoleMatcherPage() {
             </p>
           </Reveal>
         </Container>
-      </section>
+      </HeroSection>
 
       <Container className="pb-20 sm:pb-28">
         <Reveal>

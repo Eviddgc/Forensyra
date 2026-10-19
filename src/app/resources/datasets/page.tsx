@@ -3,6 +3,7 @@ import { getLearnGroup, groupToNode } from "@/lib/learn";
 import { pageAlternates } from "@/lib/seo";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
+import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { HardDrive, ShieldCheck } from "lucide-react";
 import { LearnTree } from "@/components/learn-tree";
 import type { TreeNode } from "@/components/learn-tree";
@@ -47,24 +48,8 @@ export default function PracticeDatasetsPage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative isolate overflow-hidden bg-background">
-        <div aria-hidden="true" className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(120%_100%_at_80%_20%,#122b46_0%,#0d2238_50%,#071827_100%)]" />
-          <div className="fx-orb pointer-events-none right-[15%] top-[5%] h-[18rem] w-[18rem] bg-[#6aa0dc]/10" />
-          <div className="fx-orb pointer-events-none left-[-5%] bottom-[-10%] h-[16rem] w-[16rem] bg-accent/8" />
-          <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/30" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-          <div
-            className="absolute inset-0 opacity-[0.1]"
-            style={{
-              background:
-                "repeating-conic-gradient(from 0deg at 75% 40%, rgba(100,160,220,0.3) 0deg 2deg, transparent 2deg 16deg)",
-            }}
-          />
-          <div className="fx-scanlines absolute inset-0 opacity-[0.14]" />
-        </div>
-
-        <Container className="relative z-10 flex min-h-[360px] items-center py-20 sm:min-h-[420px] sm:py-24">
+      <HeroSection variant="datasets">
+        <Container className="relative z-10 flex min-h-[430px] items-center py-20 sm:min-h-[480px] sm:py-24 lg:min-h-[520px]">
           <Reveal>
             <div className="flex items-center gap-3">
               <HardDrive className="h-5 w-5 text-accent" />
@@ -72,7 +57,7 @@ export default function PracticeDatasetsPage() {
                 Learn
               </p>
             </div>
-            <h1 className="font-display mt-4 text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="font-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Practice <span className="text-accent-2">Datasets</span>
             </h1>
             <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
@@ -81,19 +66,7 @@ export default function PracticeDatasetsPage() {
             </p>
           </Reveal>
         </Container>
-
-        <svg
-          aria-hidden="true"
-          className="absolute inset-x-0 bottom-0 block h-[46px] w-full sm:h-[70px]"
-          viewBox="0 0 1440 110"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 30 C 260 96 470 4 720 40 C 970 76 1180 108 1440 44 L 1440 110 L 0 110 Z"
-            fill="var(--color-surface)"
-          />
-        </svg>
-      </section>
+      </HeroSection>
 
       {/* Dataset list */}
       <Container className="py-14 sm:py-20">
