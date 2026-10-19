@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
 import type { Entry } from "@/lib/content";
-import { cn } from "@/lib/utils";
+import { cn, phaseLabel } from "@/lib/utils";
 
 export function RoleCard({
   role,
@@ -30,6 +30,11 @@ export function RoleCard({
           </div>
         </div>
         <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+          {role.phase !== undefined ? (
+            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+              {phaseLabel(role.phase)}
+            </span>
+          ) : null}
           <Badge variant={filled ? "success" : "accent"}>
             {filled ? "Filled" : "Open"}
           </Badge>

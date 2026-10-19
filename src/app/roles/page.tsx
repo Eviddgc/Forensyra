@@ -7,12 +7,14 @@ import { Reveal } from "@/components/reveal";
 import { RoleCard } from "@/components/role-card";
 import { btnPrimary } from "@/lib/ui";
 import { getEntries } from "@/lib/content";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Roles",
   description:
     "Thirteen specialist roles across digital forensics — find the one that fits you.",
+  alternates: pageAlternates("/roles"),
 };
 
 export default async function RolesPage() {
@@ -38,8 +40,10 @@ export default async function RolesPage() {
             The full roster
           </h2>
           <p className="mt-2 max-w-xl text-[15px] text-muted">
-            Numbered 01 to 13. Expand any role to see what the work involves, the
-            key responsibilities, and the skills and tools we look for.
+            Numbered 01 to 13. Roles are filled in phases — phase 1 builds the
+            core team, phase 2 grows the collective. Expand any role to see what
+            the work involves, the key responsibilities, and the skills and
+            tools we look for.
           </p>
         </Reveal>
 
