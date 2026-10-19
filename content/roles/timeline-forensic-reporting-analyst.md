@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Timeline & Forensic Reporting Analyst"
 description: "Builds the incident timeline and converts validated findings into reports, slides, and case documentation."
 phase: 1

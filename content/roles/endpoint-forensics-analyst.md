@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Endpoint Forensics Analyst"
 description: "Investigates Windows/Linux computers for logs, files, browser data, USB activity, persistence, and user actions."
 phase: 1

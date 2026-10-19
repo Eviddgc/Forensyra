@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Mobile Device Forensics Analyst"
 description: "Investigates Android/iOS artefacts such as calls, messages, app data, media, location, browser history, and backups."
 phase: 2

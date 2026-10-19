@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Legal & Digital Evidence Advisor"
 description: "Reviews legal, ethical, privacy, consent, and digital evidence handling considerations for each mock case."
 phase: 1

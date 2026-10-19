@@ -1,4 +1,4 @@
-﻿---
+---
 title: "AI Forensics & AI Security Analyst"
 description: "Investigates AI misuse, prompt injection, AI API logs, synthetic-media risks, and AI-related data exposure."
 phase: 2

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Network Forensics Analyst"
 description: "Analyses PCAPs and network logs to identify suspicious traffic, attacker communication, and data exfiltration."
 phase: 1

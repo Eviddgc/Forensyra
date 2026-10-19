@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Cloud Forensics Analyst"
 description: "Investigates cloud logs, IAM changes, account activity, storage access, API events, and cloud-based attacks."
 phase: 2

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Multimedia Forensics Analyst"
 description: "Examines image, video, and audio evidence for metadata, integrity, editing signs, and deepfake risks."
 phase: 2

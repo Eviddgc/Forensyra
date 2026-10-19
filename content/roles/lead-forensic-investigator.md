@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lead Forensic Investigator"
 description: "Leads the case, assigns work, validates findings, and approves the final investigation report."
 phase: 1

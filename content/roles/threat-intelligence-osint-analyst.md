@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Threat Intelligence & OSINT Analyst"
 description: "Researches and enriches suspicious IPs, domains, URLs, hashes, attacker methods, and related threat information."
 phase: 2
