@@ -16,7 +16,6 @@
   --color-accent-2: #f5d58a; /* light gold */
   --color-accent-deep: #a97f22; /* gold for text on light */
   --color-accent-ink: #8a6417; /* accessible gold for small text on light */
-  --color-accent-2-deep: #c99a47;
 
   /* Light editorial sections */
   --color-light: #f3f5f6; /* light section background */
@@ -242,8 +241,10 @@
   border-color: var(--color-border);
 }
 .prose-forensyra table {
+  display: block;
   margin-top: 1.4rem;
-  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
   font-size: 0.95rem;
 }
@@ -258,6 +259,8 @@
   color: var(--color-foreground);
 }
 .prose-forensyra img {
+  max-width: 100%;
+  height: auto;
   border-radius: 12px;
   border: 1px solid var(--color-border);
 }
@@ -1337,14 +1340,6 @@
 @keyframes fx-seal-rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
-}
-.fx-seal::after {
-  content: "";
-  position: absolute;
-  inset: -12px;
-  border-radius: 999px;
-  border: 1px solid color-mix(in oklab, var(--color-accent) 30%, transparent);
-  animation: fx-seal-ring 2.6s ease-out infinite;
 }
 .fx-seal::after {
   content: "";

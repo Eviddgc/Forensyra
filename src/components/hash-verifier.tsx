@@ -153,6 +153,7 @@ export function HashVerifier() {
           type="file"
           className="sr-only"
           id="fx-hash-file"
+          aria-label="Choose an evidence file to hash"
           onChange={(event) => {
             const chosen = event.target.files?.[0];
             if (chosen) void handleFile(chosen);
