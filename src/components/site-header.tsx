@@ -89,7 +89,10 @@ function MobileDropdown({
   const [open, setOpen] = useState(false);
 
   return (
-    <details className="group">
+    <details
+      className="group"
+      onToggle={(event) => setOpen(event.currentTarget.open)}
+    >
       <summary
         className={cn(
           "flex items-center justify-between px-3 py-2.5 text-sm font-medium transition rounded-xl",
@@ -97,13 +100,10 @@ function MobileDropdown({
             ? "bg-accent/10 text-accent-2"
             : "text-muted hover:bg-surface hover:text-foreground",
         )}
-        onClick={(e) => {
-          e.preventDefault();
-          setOpen((v) => !v);
-        }}
       >
         {label}
         <ChevronDown
+          aria-hidden="true"
           className={cn(
             "h-3.5 w-3.5 transition-transform duration-200",
             open && "rotate-180",
@@ -297,8 +297,10 @@ export function SiteHeader({
             className="inline-flex h-10 items-center gap-2 rounded-full border border-border bg-surface/40 px-3 text-muted transition hover:border-accent/60 hover:text-accent-2"
           >
             <Search className="h-4 w-4" />
-            <span className="hidden text-xs font-medium lg:inline">Search</span>
-            <kbd className="hidden rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-muted/80 lg:inline">
+            {/* Full label and shortcut hint wait for xl: at exactly 1024px the
+                desktop nav plus this button overflowed the header. */}
+            <span className="hidden text-xs font-medium xl:inline">Search</span>
+            <kbd className="hidden rounded border border-border bg-surface-2 px-1.5 py-0.5 font-mono text-[10px] text-muted/80 xl:inline">
               ⌘K
             </kbd>
           </button>
@@ -321,10 +323,12 @@ export function SiteHeader({
         id="mobile-nav"
         inert={!open}
         className={cn(
-          "overflow-hidden border-b bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden",
+          // Closed panels clip so the max-height transition works; open panels
+          // scroll, because expanded sub-menus are taller than a small phone.
+          "border-b bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden",
           open
-            ? "max-h-[80vh] border-border-gold opacity-100"
-            : "max-h-0 border-transparent opacity-0",
+            ? "max-h-[calc(100dvh-4rem)] overflow-y-auto border-border-gold opacity-100"
+            : "max-h-0 overflow-hidden border-transparent opacity-0",
         )}
       >
         <Container className="py-4">
