@@ -43,15 +43,15 @@ install it — the pin just keeps CI reproducible.
 | Area | Route | Source |
 | --- | --- | --- |
 | Home (pinned items, highlights) | `/` | `src/app/page.tsx` + content |
-| About | `/about` | `content/pages/about.md` |
+| About | `/about` | `src/components/about/*` + `content/pages/about.md` (summary) |
 | Roles (13 specialisations) | `/roles` | `content/roles/*.md` |
 | Role matcher (6-question quiz) | `/roles/matcher` | `src/components/role-matcher.tsx` |
 | Team | `/team` | `content/team/*.md` |
 | Projects / case files | `/projects`, `/projects/[slug]` | `content/projects/*.md` |
 | Write-ups | `/writeups`, `/writeups/[slug]` | `content/writeups/*.md` |
-| Roadmap (present + upcoming) | `/roadmap` | `content/roadmap/*.md` |
-| Ethics & legal rules | `/ethics` | `content/pages/ethics.md` |
-| Join / apply | `/join` | `content/pages/join.md` + `site.json` |
+| Roadmap (present + upcoming) | `/roadmap` | `src/lib/roadmap.ts` |
+| Ethics & legal rules | `/ethics` | `src/app/ethics/page.tsx` |
+| Join / apply | `/join` | `src/app/join/page.tsx` + `site.json` |
 | Learn library | `/resources` | `content/learn/library.json` |
 | Practice datasets | `/resources/datasets` | `content/learn/library.json` |
 | DFIR tools | `/resources/tools` | `content/learn/library.json` |
@@ -77,7 +77,7 @@ versioned, and reusable.
 ### Option A — directly on GitHub (works right now)
 
 Open any file under `content/` on GitHub and click the pencil to edit. This is
-the simplest way to add a write-up, update the roadmap, or pin a project.
+the simplest way to add a write-up or update a case file.
 
 ### Option B — the browser content manager (`/admin`)
 
@@ -92,8 +92,8 @@ npm run dev        # terminal 2
 
 ### Pinning ("keep it at the top")
 
-Add `pinned: true` to any project, write-up, or roadmap item. Pinned items are
-surfaced first and highlighted on the home page. The site announcement banner is
+Add `pinned: true` to any project or write-up. Pinned items are surfaced first
+and highlighted on the home page. The site announcement banner is
 controlled from `content/settings/site.json`.
 
 ---
@@ -106,10 +106,9 @@ content/
   learn/library.json     # the Learn library: references, datasets, tools, standards, reading
   projects/*.md          # case files (title, status, evidence, plan, deliverables, tags…)
   writeups/*.md          # write-ups (title, author, date, tags, pinned…)
-  roadmap/*.md           # present + upcoming plans (status, order…)
+  pages/about.md         # About page summary (the roadmap is in src/lib/roadmap.ts)
   team/*.md              # members (role, roleId, phase, location, cover, links…)
   roles/*.md             # the 13 roles (description, work, responsibilities, skills…)
-  pages/*.md             # about, ethics, join, resources
   admin/config.yml       # Decap CMS configuration (served at /admin/config.yml)
 public/
   admin/index.html       # Decap CMS app shell (only used for /admin)

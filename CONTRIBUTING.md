@@ -12,10 +12,12 @@ GitHub (pencil icon on any file) or from the CMS at `/admin`.
 - **Write-ups** → `content/writeups/` (add `pinned: true` to feature it)
 - **Case files** → `content/projects/` (uses `evidence`, `plan`, `deliverables`)
 - **Learn library** → `content/learn/library.json` (references, datasets, tools)
-- **Roadmap** → `content/roadmap/`
 - **Team** → `content/team/` (link a member to a role with `roleId`)
 - **Roles** → `content/roles/` (uses `work`, `responsibilities`, `skills`)
-- **Pages** → `content/pages/`
+- **About summary** → `content/pages/about.md` (the hero subtitle)
+
+The roadmap is code-managed in `src/lib/roadmap.ts` because its timeline
+layout is built around fixed milestones with icons, tags, and artwork.
 
 Each file starts with frontmatter. Copy an existing file as a template.
 

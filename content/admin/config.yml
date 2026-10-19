@@ -96,28 +96,9 @@ collections:
           - { name: url, label: URL, widget: string }
       - { name: body, label: Body, widget: markdown }
 
-  - name: roadmap
-    label: "Roadmap"
-    label_singular: "Roadmap item"
-    folder: "content/roadmap"
-    create: true
-    slug: "{{slug}}"
-    summary: "{{title}} — {{status}}"
-    sortable_fields: ["order", "date", "title"]
-    fields:
-      - { name: title, label: Title, widget: string }
-      - { name: description, label: Summary, widget: text, required: false }
-      - name: status
-        label: Status
-        widget: select
-        required: false
-        options: ["Upcoming", "Planned", "Active", "Complete", "On hold"]
-      - { name: date, label: Target date, widget: datetime, required: false }
-      - { name: order, label: "Sort order", widget: number, required: false, default: 999 }
-      - { name: pinned, label: "Pin to top", widget: boolean, default: false }
-      - { name: tags, label: Tags, widget: list, required: false, default: [] }
-      - { name: body, label: Notes, widget: markdown, required: false }
-
+  # The roadmap is intentionally not editable here: the timeline layout is
+  # built around fixed milestones with icons, tags, and artwork. Its source of
+  # truth is src/lib/roadmap.ts.
   - name: team
     label: "Team members"
     label_singular: "Member"
@@ -182,6 +163,8 @@ collections:
       - { name: tags, label: Tags, widget: list, required: false, default: [] }
       - { name: body, label: Notes, widget: markdown, required: false }
 
+  # Only the About page reads from content/pages: the summary is used as its
+  # hero subtitle. Other pages are components with fixed, reviewed copy.
   - name: pages
     label: "Pages"
     label_singular: "Page"
@@ -190,7 +173,6 @@ collections:
     fields:
       - { name: title, label: Title, widget: string }
       - { name: description, label: Summary, widget: text, required: false }
-      - { name: body, label: Body, widget: markdown }
 
   - name: learn
     label: "Learn library"
