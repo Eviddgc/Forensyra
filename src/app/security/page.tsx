@@ -22,20 +22,22 @@ export const metadata: Metadata = {
   alternates: pageAlternates("/security"),
 };
 
-const CHANNELS = [
-  {
-    label: "GitHub private advisory",
-    value: "github.com/Eviddgc/Forensyra/security/advisories/new",
-    href: "https://github.com/Eviddgc/Forensyra/security/advisories/new",
-    external: true,
-  },
-  {
-    label: "Email",
-    value: "forensyra@outlook.in",
-    href: "mailto:forensyra@outlook.in",
-    external: false,
-  },
-];
+function channels(email: string) {
+  return [
+    {
+      label: "GitHub private advisory",
+      value: "github.com/Eviddgc/Forensyra/security/advisories/new",
+      href: "https://github.com/Eviddgc/Forensyra/security/advisories/new",
+      external: true,
+    },
+    {
+      label: "Email",
+      value: email,
+      href: `mailto:${email}`,
+      external: false,
+    },
+  ];
+}
 
 const TIMELINE = [
   { stage: "We acknowledge your report", target: "within 3 working days" },
@@ -117,7 +119,7 @@ export default function SecurityPage() {
                   one of these private channels:
                 </p>
                 <ul className="mt-5 space-y-3">
-                  {CHANNELS.map((channel) => (
+                  {channels(site.email).map((channel) => (
                     <li key={channel.label}>
                       <a
                         href={channel.href}

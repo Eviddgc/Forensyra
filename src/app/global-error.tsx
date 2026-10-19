@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import site from "../../content/settings/site.json";
 
 /**
  * Last-resort boundary: replaces the whole document when the root layout
@@ -57,8 +58,7 @@ export default function GlobalError({
           </h1>
           <p style={{ marginTop: "1rem", color: "#b7c4d2", lineHeight: 1.6 }}>
             A critical error prevented the site from loading. Reloading usually
-            clears it. If the problem persists, please email
-            forensyra@outlook.in.
+            clears it. If the problem persists, please email {site.email}.
           </p>
           <button
             type="button"

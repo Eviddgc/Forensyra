@@ -29,9 +29,11 @@ type Status = "idle" | "sending" | "sent" | "error";
 interface ApplyFormProps {
   /** False when the EmailJS environment variables are missing. */
   configured: boolean;
+  /** Public contact address, read from the site settings. */
+  email: string;
 }
 
-export function ApplyForm({ configured }: ApplyFormProps) {
+export function ApplyForm({ configured, email }: ApplyFormProps) {
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, "");
   const fieldId = useCallback((name: string) => `${uid}-${name}`, [uid]);
 
@@ -266,7 +268,7 @@ export function ApplyForm({ configured }: ApplyFormProps) {
           <AlertCircle className="mt-0.5 h-4 w-4 shrink-0" />
           <p>
             The on-site form is being connected. You can still explore it below — if you need to
-            apply now, email us directly at forensyra@outlook.in.
+            apply now, email us directly at {email}.
           </p>
         </div>
       ) : null}
@@ -409,8 +411,8 @@ export function ApplyForm({ configured }: ApplyFormProps) {
 
               <p className="mt-4 text-xs text-muted">
                 Having trouble? Email{" "}
-                <a href="mailto:forensyra@outlook.in" className="text-accent-2 underline">
-                  forensyra@outlook.in
+                <a href={`mailto:${email}`} className="text-accent-2 underline">
+                  {email}
                 </a>
                 .
               </p>

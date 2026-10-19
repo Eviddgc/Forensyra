@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { PageHeader } from "@/components/page-header";
 import { MentorForm } from "@/components/mentor-form";
 import { pageAlternates } from "@/lib/seo";
+import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Mentor Application",
@@ -18,6 +19,7 @@ export default async function MentorApplyPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const { status } = await searchParams;
+  const site = getSite();
 
   const configured = Boolean(
     process.env.EMAILJS_SERVICE_ID &&
@@ -48,7 +50,7 @@ export default async function MentorApplyPage({
           </div>
         ) : null}
 
-        <MentorForm configured={configured} />
+        <MentorForm configured={configured} email={site.email} />
       </Container>
     </>
   );

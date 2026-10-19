@@ -24,9 +24,11 @@ type Status = "idle" | "sending" | "sent" | "error";
 
 interface MentorFormProps {
   configured: boolean;
+  /** Public contact address, read from the site settings. */
+  email: string;
 }
 
-export function MentorForm({ configured }: MentorFormProps) {
+export function MentorForm({ configured, email }: MentorFormProps) {
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, "");
   const fieldId = useCallback((name: string) => `${uid}-${name}`, [uid]);
 
@@ -639,8 +641,8 @@ export function MentorForm({ configured }: MentorFormProps) {
 
           <p className="mt-4 text-xs text-muted">
             Having trouble? Email{" "}
-            <a href="mailto:forensyra@outlook.in" className="text-accent-2 underline">
-              forensyra@outlook.in
+            <a href={`mailto:${email}`} className="text-accent-2 underline">
+              {email}
             </a>
             .
           </p>

@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { PageHeader } from "@/components/page-header";
 import { ApplyForm } from "@/components/apply-form";
 import { pageAlternates } from "@/lib/seo";
+import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Team Application",
@@ -18,6 +19,7 @@ export default async function ApplyPage({
   searchParams: Promise<{ status?: string }>;
 }) {
   const { status } = await searchParams;
+  const site = getSite();
   const configured = Boolean(
     process.env.EMAILJS_SERVICE_ID &&
       process.env.EMAILJS_TEMPLATE_ID &&
@@ -47,7 +49,7 @@ export default async function ApplyPage({
           </div>
         ) : null}
 
-        <ApplyForm configured={configured} />
+        <ApplyForm configured={configured} email={site.email} />
       </Container>
     </>
   );
