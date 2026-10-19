@@ -48,6 +48,9 @@ function statusStyles(status: MilestoneStatus) {
  * the four cards feel distinct without leaving the navy/gold palette.
  */
 function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
+  // Gradient ids must be unique per instance: this component renders once per
+  // milestone, and duplicate ids make every card resolve to the first defs.
+  const gradientId = `rm-peak-${variant}`;
   return (
     <div
       aria-hidden="true"
@@ -56,11 +59,11 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
         variant === "network" &&
           "bg-[radial-gradient(120%_110%_at_80%_20%,#1b365d_0%,#0d2238_55%,#071827_100%)]",
         variant === "terminal" &&
-          "bg-[radial-gradient(120%_110%_at_75% 30%,#16304f_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_30%,#16304f_0%,#0d2238_50%,#071827_100%)]",
         variant === "evidence" &&
-          "bg-[radial-gradient(120%_110%_at_80% 25%,#14304e_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_25%,#14304e_0%,#0d2238_50%,#071827_100%)]",
         variant === "workstation" &&
-          "bg-[radial-gradient(120%_110%_at_75% 25%,#152e4b_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_25%,#152e4b_0%,#0d2238_50%,#071827_100%)]",
       )}
     >
       <div className="bg-damask absolute inset-0 opacity-80" />
@@ -83,11 +86,11 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
       >
         <path
           d="M0 90 C 60 60 120 100 180 72 C 240 44 300 88 400 58 L 400 120 L 0 120 Z"
-          fill="url(#rm-peak-a)"
+          fill={`url(#${gradientId}-a)`}
         />
         <path
           d="M0 102 C 70 80 140 112 210 92 C 280 72 340 106 400 86 L 400 120 L 0 120 Z"
-          fill="url(#rm-peak-b)"
+          fill={`url(#${gradientId}-b)`}
         />
         <path
           d="M0 90 C 60 60 120 100 180 72 C 240 44 300 88 400 58"
@@ -95,11 +98,11 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
           strokeWidth="1"
         />
         <defs>
-          <linearGradient id="rm-peak-a" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id={`${gradientId}-a`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#1b365d" />
             <stop offset="100%" stopColor="#0d2238" />
           </linearGradient>
-          <linearGradient id="rm-peak-b" x1="0" y1="0" x2="0" y2="1">
+          <linearGradient id={`${gradientId}-b`} x1="0" y1="0" x2="0" y2="1">
             <stop offset="0%" stopColor="#16304f" />
             <stop offset="100%" stopColor="#071827" />
           </linearGradient>
@@ -188,6 +191,8 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
 export function RoadmapTimeline() {
   return (
     <Container className="py-16 sm:py-24">
+      {/* The timeline cards are h3s; this keeps the outline from skipping a level. */}
+      <h2 className="sr-only">Milestones</h2>
       <div className="relative">
         {/* Vertical connecting line. */}
         <span
