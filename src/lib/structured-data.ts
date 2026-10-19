@@ -10,9 +10,18 @@ type Ld = Record<string, unknown>;
 
 const SOCIAL_KEYS = ["github", "linkedin", "instagram", "youtube"] as const;
 
+/**
+ * `sameAs` wants identity URLs (profiles) rather than individual posts, so a
+ * LinkedIn *post* permalink is left out until it points at a profile
+ * (/in/…, /company/…). It still appears as a footer link.
+ */
+const LINKEDIN_POST = /linkedin\.com\/(posts|feed\/update)\//;
+
 export function organizationSchema(): Ld {
   const site = getSite();
-  const sameAs = SOCIAL_KEYS.map((key) => site.social[key]).filter(Boolean);
+  const sameAs = SOCIAL_KEYS.map((key) => site.social[key])
+    .filter(Boolean)
+    .filter((url) => !LINKEDIN_POST.test(url));
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -90,25 +99,5 @@ export function articleSchema(entry: Entry, path: string): Ld {
     },
     keywords: entry.tags.join(", "),
     inLanguage: "en",
-  };
-}
-
-export function itemListSchema(
-  name: string,
-  items: Array<{ name: string; path?: string; description?: string }>,
-): Ld {
-  const site = getSite();
-  return {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    name,
-    numberOfItems: items.length,
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.name,
-      ...(item.path ? { url: `${site.url}${item.path}` } : {}),
-      ...(item.description ? { description: item.description } : {}),
-    })),
   };
 }

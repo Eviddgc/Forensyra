@@ -232,7 +232,6 @@ collections:
           - { name: url, label: "Site URL", widget: string }
           - { name: email, label: "Email", widget: string }
           - { name: applyUrl, label: "Apply link", widget: string, hint: "Internal path to the on-site form, e.g. /apply" }
-          - { name: applyFallbackUrl, label: "Fallback application form URL", widget: string, hint: "Used when the on-site form is unavailable (e.g. no JavaScript)." }
           - label: Announcement
             name: announcement
             widget: object

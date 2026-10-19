@@ -7,7 +7,6 @@
   "url": "https://forensyra.com",
   "email": "forensyra@outlook.in",
   "applyUrl": "/apply",
-  "applyFallbackUrl": "https://forms.cloud.microsoft/r/DqtYq3HvNE",
   "announcement": {
     "enabled": true,
     "text": "Applications are open — join the founding team and help build the first student-led DFIR collective.",
@@ -16,7 +15,7 @@
   },
   "social": {
     "github": "https://github.com/Eviddgc",
-    "linkedin": "https://www.linkedin.com/posts/evid-dgc_forensyra-role-preview-activity-7514294722673369088-4TV6?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEWxwjEB-SRWb6_wNgTRY1JMlMxXYry0Ris",
+    "linkedin": "https://www.linkedin.com/posts/evid-dgc_forensyra-role-preview-activity-7514294722673369088-4TV6",
     "instagram": "",
     "youtube": "",
     "email": "forensyra@outlook.in"

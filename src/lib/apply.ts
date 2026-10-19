@@ -522,17 +522,3 @@ export function buildApplyEmailParams(values: ApplyValues, now = new Date()): Re
     submitted_at: now.toISOString().replace("T", " ").replace(/\.\d+Z$/, " UTC"),
   };
 }
-
-/** A plain-text rendering of the application, handy for logs and auto-replies. */
-export function formatApplyAnswers(values: ApplyValues): string {
-  const lines: string[] = [];
-  for (const section of APPLY_SECTIONS) {
-    lines.push(`— ${section.title} —`);
-    for (const field of section.fields) {
-      const value = joinValue(values[field.name]) || "—";
-      lines.push(`${field.number}. ${field.label}\n   ${value}`);
-    }
-    lines.push("");
-  }
-  return lines.join("\n").trim();
-}
