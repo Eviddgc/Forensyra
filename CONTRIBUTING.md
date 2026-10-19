@@ -30,8 +30,8 @@ Each file starts with frontmatter. Copy an existing file as a template.
 
 ## Contributing code
 
-0. Use **Node 24** (`nvm use`) so your npm matches the committed lockfile. See
-   the note in the README — npm 10 will fail `npm ci`.
+0. Use **Node 24.12.0** (`nvm use`) so your npm matches the committed lockfile
+   and CI. See the toolchain note in the README.
 1. Create a branch: `git checkout -b feat/short-description`.
 2. Make your change. Keep it consistent with the surrounding code and style.
 3. Run the checks — all four must pass:
