@@ -22,7 +22,7 @@ deliverables:
   - "A short portfolio write-up for every member"
 links:
   - label: "NIST CFReDS — reference datasets"
-    url: "https://www.cfreds.nist.gov/"
+    url: "https://cfreds.nist.gov/"
 ---
 ## Intro
 

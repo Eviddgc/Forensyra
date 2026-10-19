@@ -87,7 +87,7 @@
       "items": [
         {
           "label": "NIST CFReDS — Computer Forensic Reference Data Sets",
-          "href": "https://www.cfreds.nist.gov/",
+          "href": "https://cfreds.nist.gov/",
           "description": "Reference disk, memory and mobile images with published hash values. This is the source for our Case File 001.",
           "tags": ["Disk", "Memory", "NIST", "Free"]
         },
@@ -130,7 +130,7 @@
         },
         {
           "label": "FTK Imager",
-          "href": "https://www.exterro.com/ftk-imager",
+          "href": "https://www.exterro.com/digital-forensics-software/ftk-imager",
           "description": "Forensic imaging tool from Exterro for creating and verifying disk and memory images.",
           "tags": ["Imaging", "Free"]
         },
