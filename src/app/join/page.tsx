@@ -5,6 +5,7 @@ import { Container } from "@/components/container";
 import { JoinHero } from "@/components/join-hero";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/badge";
+import { pageAlternates } from "@/lib/seo";
 import { btnPrimary } from "@/lib/ui";
 import { getEntries } from "@/lib/content";
 
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
   title: "Join",
   description:
     "Apply for a role in the FORENSYRA founding team and help build our first investigation.",
+  alternates: pageAlternates("/join"),
 };
 
 const STEPS = [

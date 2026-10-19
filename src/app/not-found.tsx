@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { Container } from "@/components/container";
 import { btnPrimary, btnSecondary } from "@/lib/ui";
+
+export const metadata: Metadata = {
+  title: "Page not found",
+  description:
+    "This trace does not exist — the page may have been moved, renamed, or never preserved.",
+};
 
 export default function NotFound() {
   return (

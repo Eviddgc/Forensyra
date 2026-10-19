@@ -7,12 +7,14 @@ import { Approach } from "@/components/about/approach";
 import { Leadership } from "@/components/about/leadership";
 import { JoinCta } from "@/components/home/join-cta";
 import { getEntry } from "@/lib/content";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About",
   description:
     "FORENSYRA is a student-led digital forensics collective: learn together, practise on legal mock cases, and build one strong public investigation.",
+  alternates: pageAlternates("/about"),
 };
 
 /** Used only if the leadership entry is missing from the CMS. */

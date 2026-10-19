@@ -3,11 +3,13 @@ import { AlertCircle } from "lucide-react";
 import { Container } from "@/components/container";
 import { PageHeader } from "@/components/page-header";
 import { MentorForm } from "@/components/mentor-form";
+import { pageAlternates } from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: "Mentor Application",
   description:
     "Apply to mentor FORENSYRA — share your DFIR expertise and guide the next generation of forensic analysts.",
+  alternates: pageAlternates("/apply/mentor"),
 };
 
 export default async function MentorApplyPage({

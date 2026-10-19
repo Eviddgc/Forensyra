@@ -6,12 +6,14 @@ import { Reveal } from "@/components/reveal";
 import { TeamRoster } from "@/components/team-roster";
 import { EmptyState } from "@/components/empty-state";
 import { getEntries } from "@/lib/content";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Team",
   description:
     "Meet the members of FORENSYRA and the roles they hold across the collective.",
+  alternates: pageAlternates("/team"),
 };
 
 export default async function TeamPage() {

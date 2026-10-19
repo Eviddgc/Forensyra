@@ -4,6 +4,7 @@ import { FeaturedProjects } from "@/components/home/featured-projects";
 import { EvidenceProcess } from "@/components/home/evidence-process";
 import { Benefits } from "@/components/home/benefits";
 import { WaveDivider } from "@/components/wave-divider";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: { absolute: "FORENSYRA | Digital Forensics & Incident Response" },
   description:
     "FORENSYRA is a student-led digital forensics and incident response collective. Learn DFIR, practise evidence handling on legal mock cases, and build one strong public investigation together.",
+  alternates: pageAlternates("/"),
 };
 
 export default async function HomePage() {

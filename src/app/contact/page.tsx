@@ -12,11 +12,13 @@ import { Container } from "@/components/container";
 import { ContactHero } from "@/components/contact-hero";
 import { Reveal } from "@/components/reveal";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with FORENSYRA.",
+  alternates: pageAlternates("/contact"),
 };
 
 export default function ContactPage() {

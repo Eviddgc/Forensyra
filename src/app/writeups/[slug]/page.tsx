@@ -13,6 +13,7 @@ import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { getEntries, getEntry, getSlugs } from "@/lib/content";
 import { extractToc, readingTime } from "@/lib/toc";
 import { formatDate } from "@/lib/utils";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -30,7 +31,7 @@ export async function generateMetadata({
   return {
     title: entry.title,
     description: entry.description,
-    alternates: { canonical: `/writeups/${slug}` },
+    alternates: pageAlternates(`/writeups/${slug}`),
     openGraph: {
       type: "article",
       title: entry.title,

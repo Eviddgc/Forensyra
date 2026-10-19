@@ -12,13 +12,14 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Security Policy",
   description:
     "How to report a vulnerability to FORENSYRA, what we promise in return, and what is in scope.",
-  alternates: { canonical: "/security" },
+  alternates: pageAlternates("/security"),
 };
 
 const CHANNELS = [

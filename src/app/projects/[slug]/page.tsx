@@ -10,6 +10,7 @@ import { ArticleToc } from "@/components/article-toc";
 import { ArticleNav } from "@/components/article-nav";
 import { CiteBlock } from "@/components/cite-block";
 import { CaseWorkbench } from "@/components/case-workbench";
+import { pageAlternates } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { btnSecondary } from "@/lib/ui";
 import { getEntries, getEntry, getSlugs } from "@/lib/content";
@@ -32,7 +33,7 @@ export async function generateMetadata({
   return {
     title: entry.title,
     description: entry.description,
-    alternates: { canonical: `/projects/${slug}` },
+    alternates: pageAlternates(`/projects/${slug}`),
     openGraph: {
       type: "article",
       title: entry.title,

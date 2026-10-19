@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { WriteupsHero } from "@/components/writeups-hero";
 import { WriteupsList } from "@/components/writeups-list";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: "Write-ups",
   description:
     "Investigation logs, tutorials, and research from FORENSYRA members.",
+  alternates: pageAlternates("/writeups"),
 };
 
 export default async function WriteupsPage() {

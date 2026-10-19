@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { getLearnGroup, groupToNode } from "@/lib/learn";
+import { pageAlternates } from "@/lib/seo";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { ShieldCheck, Terminal } from "lucide-react";
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
   title: "Tools",
   description:
     "Curated open-source tools for digital forensics and incident response — guides and references.",
+  alternates: pageAlternates("/resources/tools"),
 };
 
 export default function ToolsPage() {

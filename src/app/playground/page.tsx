@@ -3,13 +3,14 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { TerminalPlayground } from "@/components/terminal-playground";
 import { JsonLd } from "@/components/json-ld";
+import { pageAlternates } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
 export const metadata: Metadata = {
   title: "Terminal Playground",
   description:
     "A simulated DFIR shell. Explore the collective by typing — and compute a real SHA-256 in your browser.",
-  alternates: { canonical: "/playground" },
+  alternates: pageAlternates("/playground"),
 };
 
 const HIGHLIGHTS = [

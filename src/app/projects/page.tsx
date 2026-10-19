@@ -4,6 +4,7 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { ProjectsHero } from "@/components/projects-hero";
 import { ProjectsList } from "@/components/projects-list";
+import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
@@ -11,6 +12,7 @@ export const metadata: Metadata = {
   title: "Projects",
   description:
     "Case files from FORENSYRA — complete mock investigations built from public sample evidence.",
+  alternates: pageAlternates("/projects"),
 };
 
 export default async function ProjectsPage() {
