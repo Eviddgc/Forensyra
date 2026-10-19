@@ -17,7 +17,8 @@ import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
-  description: "Get in touch with FORENSYRA.",
+  description:
+    "Contact FORENSYRA about membership, mock cases, mentoring, or collaboration. Ask a question and we will reply within 48 hours.",
   alternates: pageAlternates("/contact"),
 };
 

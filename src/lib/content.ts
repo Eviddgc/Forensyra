@@ -7,7 +7,6 @@ import remarkHtml from "remark-html";
 export type Collection =
   | "projects"
   | "writeups"
-  | "roadmap"
   | "team"
   | "roles"
   | "pages";
@@ -135,7 +134,10 @@ function addHeadingIds(html: string): string {
 }
 
 async function renderMarkdown(markdown: string): Promise<string> {
-  const file = await remark().use(remarkHtml, { sanitize: false }).process(markdown);
+  // Sanitising raw HTML costs nothing for the current content (all of it is
+  // plain Markdown) and means a CMS edit cannot inject script or event
+  // handlers into a prerendered page.
+  const file = await remark().use(remarkHtml, { sanitize: true }).process(markdown);
   return addHeadingIds(file.toString());
 }
 
@@ -162,6 +164,28 @@ function readFrontmatter(raw: string): {
   };
 }
 
+/**
+ * YAML parses an unquoted `date: 2026-10-10` into a Date object. `String()`
+ * would then produce a long, locale-dependent form ("Sat Oct 10 2026 ..."),
+ * which is invalid in JSON-LD and in sitemap `lastModified`. Normalise every
+ * frontmatter date to an ISO calendar date instead.
+ */
+function isoDate(value: unknown): string | undefined {
+  if (!value) return undefined;
+  if (value instanceof Date) {
+    return Number.isNaN(value.getTime())
+      ? undefined
+      : value.toISOString().slice(0, 10);
+  }
+  const raw = String(value).trim();
+  if (!raw) return undefined;
+  if (/^\d{4}-\d{2}-\d{2}$/.test(raw)) return raw;
+  const parsed = new Date(raw);
+  return Number.isNaN(parsed.getTime())
+    ? raw
+    : parsed.toISOString().slice(0, 10);
+}
+
 async function parseFile(
   collection: Collection,
   fileName: string,
@@ -177,8 +201,8 @@ async function parseFile(
     slug,
     title: String(data.title ?? slug),
     description: data.description ? String(data.description) : undefined,
-    date: data.date ? String(data.date) : undefined,
-    updated: data.updated ? String(data.updated) : undefined,
+    date: isoDate(data.date),
+    updated: isoDate(data.updated),
     status: data.status ? String(data.status) : undefined,
     tags: toArray(data.tags),
     pinned: data.pinned === true,

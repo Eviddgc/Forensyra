@@ -5,7 +5,6 @@ import { getEntries } from "@/lib/content";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const site = getSite();
   const base = site.url.replace(/\/$/, "");
-  const now = new Date();
 
   const staticRoutes: Array<{ path: string; priority: number }> = [
     { path: "", priority: 1 },
@@ -34,15 +33,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   ]);
 
   const dateOf = (value?: string) => {
-    if (!value) return now;
+    if (!value) return undefined;
     const parsed = new Date(value);
-    return Number.isNaN(parsed.getTime()) ? now : parsed;
+    return Number.isNaN(parsed.getTime()) ? undefined : parsed;
   };
 
   return [
     ...staticRoutes.map((route) => ({
       url: `${base}${route.path}`,
-      lastModified: now,
+      // Static routes have no real "last modified" date; stamping the build
+      // time would claim every page changed on every deploy, which is the
+      // fastest way to make search engines ignore lastmod entirely.
       changeFrequency: "weekly" as const,
       priority: route.priority,
     })),

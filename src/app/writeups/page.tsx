@@ -11,7 +11,7 @@ import { getEntries } from "@/lib/content";
 export const metadata: Metadata = {
   title: "Write-ups",
   description:
-    "Investigation logs, tutorials, and research from FORENSYRA members.",
+    "Investigation logs, tutorials, and research on digital forensics, incident response, and evidence handling, written and published by FORENSYRA members.",
   alternates: pageAlternates("/writeups"),
 };
 
