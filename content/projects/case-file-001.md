@@ -3,6 +3,7 @@ title: "Case File 001 — The Data Leakage Investigation"
 description: "Our flagship project: a complete insider-threat investigation built on public evidence from NIST's CFReDS project."
 date: 2026-10-10
 updated: 2026-10-18
+order: 1
 status: "Planning"
 caseType: "Mock case"
 pinned: true

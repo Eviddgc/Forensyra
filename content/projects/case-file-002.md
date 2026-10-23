@@ -3,6 +3,7 @@ title: "Case File 002 — The Encrypted Share"
 description: "Our second planned investigation: a ransomware incident on a small file server, investigated as a live-compromise scenario."
 date: 2026-10-12
 updated: 2026-10-18
+order: 2
 status: "Planning"
 caseType: "Mock case"
 tags: ["Mock case", "Ransomware", "Memory", "Network", "Endpoint"]

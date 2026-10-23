@@ -3,6 +3,7 @@ title: "Case File 003 — The Quiet Exfiltration"
 description: "Our third planned investigation: a long-dwell intrusion where data leaves slowly enough to look like normal business traffic."
 date: 2026-10-16
 updated: 2026-10-18
+order: 3
 status: "Planning"
 caseType: "Mock case"
 tags: ["Mock case", "Network", "Cloud", "Timeline", "Insider risk"]
