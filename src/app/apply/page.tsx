@@ -25,6 +25,7 @@ export default async function ApplyPage({
       process.env.EMAILJS_TEMPLATE_ID &&
       process.env.EMAILJS_PUBLIC_KEY,
   );
+  const autoReply = Boolean(process.env.EMAILJS_AUTOREPLY_TEMPLATE_ID);
 
   return (
     <>
@@ -49,7 +50,7 @@ export default async function ApplyPage({
           </div>
         ) : null}
 
-        <ApplyForm configured={configured} email={site.email} />
+        <ApplyForm configured={configured} autoReply={autoReply} email={site.email} />
       </Container>
     </>
   );

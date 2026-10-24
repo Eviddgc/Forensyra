@@ -10,7 +10,9 @@
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const EMAILJS_ENDPOINT = "https://api.emailjs.com/api/v1.0/email/send";
+// Overridable so local QA can point at a mock EmailJS without touching code.
+const EMAILJS_ENDPOINT =
+  process.env.EMAILJS_ENDPOINT ?? "https://api.emailjs.com/api/v1.0/email/send";
 
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;

@@ -15,8 +15,15 @@ export const metadata: Metadata = {
  * The landing spot for a no-JavaScript submission, which the API route reaches
  * with a 303 redirect. With JavaScript the form shows its own success state and
  * this page is never seen.
+ *
+ * Dynamic so the auto-reply promise below matches what the API route can
+ * actually send at request time — we never claim an email was sent when the
+ * confirmation template isn't wired up.
  */
+export const dynamic = "force-dynamic";
+
 export default function ApplyThanksPage() {
+  const autoReply = Boolean(process.env.EMAILJS_AUTOREPLY_TEMPLATE_ID);
   return (
     <>
       <PageHeader
@@ -40,10 +47,17 @@ export default function ApplyThanksPage() {
           <h2 className="font-display mt-7 text-3xl font-semibold tracking-tight text-foreground">
             We&apos;ve got it.
           </h2>
-          <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-muted">
-            Your application has reached the team and a confirmation is on its way to your inbox. If
-            it isn&apos;t there in a few minutes, check your spam folder.
-          </p>
+          {autoReply ? (
+            <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-muted">
+              Your application has reached the team and a confirmation is on its way to your inbox.
+              If it isn&apos;t there in a few minutes, check your spam folder.
+            </p>
+          ) : (
+            <p className="mx-auto mt-4 max-w-md text-[15px] leading-relaxed text-muted">
+              Your application has reached the team. We read every application and contact selected
+              members by email — no automatic newsletter, just a real reply.
+            </p>
+          )}
           <p className="mx-auto mt-3 max-w-md text-sm text-muted">
             Only limited spots are open. Selected members are contacted by email, and we read every
             application.

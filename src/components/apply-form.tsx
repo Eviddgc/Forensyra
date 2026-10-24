@@ -29,11 +29,13 @@ type Status = "idle" | "sending" | "sent" | "error";
 interface ApplyFormProps {
   /** False when the EmailJS environment variables are missing. */
   configured: boolean;
+  /** True when the confirmation (auto-reply) email is wired up too. */
+  autoReply: boolean;
   /** Public contact address, read from the site settings. */
   email: string;
 }
 
-export function ApplyForm({ configured, email }: ApplyFormProps) {
+export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
   const uid = useId().replace(/[^a-zA-Z0-9_-]/g, "");
   const fieldId = useCallback((name: string) => `${uid}-${name}`, [uid]);
 
@@ -211,7 +213,12 @@ export function ApplyForm({ configured, email }: ApplyFormProps) {
   if (status === "sent") {
     return (
       <div ref={panelRef} className="scroll-mt-24">
-        <ApplySuccess name={String(values.fullName ?? "")} email={String(values.email ?? "")} />
+        <ApplySuccess
+          name={String(values.fullName ?? "")}
+          email={String(values.email ?? "")}
+          autoReply={autoReply}
+          directEmail={email}
+        />
       </div>
     );
   }
@@ -739,7 +746,17 @@ function FieldError({
 
 /* ── Success ─────────────────────────────────────────────────────────────── */
 
-function ApplySuccess({ name, email }: { name: string; email: string }) {
+function ApplySuccess({
+  name,
+  email,
+  autoReply,
+  directEmail,
+}: {
+  name: string;
+  email: string;
+  autoReply: boolean;
+  directEmail: string;
+}) {
   const firstName = name.trim().split(/\s+/)[0] || "there";
   return (
     <div className="relative fx-form-panel fx-holo overflow-hidden p-8 text-center sm:p-14">
@@ -754,37 +771,55 @@ function ApplySuccess({ name, email }: { name: string; email: string }) {
             <Check className="h-12 w-12" strokeWidth={2.5} />
           </span>
         </div>
-      <p className="fx-eyebrow mt-7 text-accent">Application received</p>
-      <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-        Thank you, {firstName}.
-      </h2>
-      <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
-        Your application is on its way to the team. We&apos;ve sent a confirmation to{" "}
-        <span className="text-foreground">{email || "your inbox"}</span> — if it isn&apos;t there in a
-        few minutes, check your spam folder.
-      </p>
-      <p className="mx-auto mt-3 max-w-xl text-sm text-muted">
-        Only limited spots are open. Selected members are contacted by email, and we read every
-        application.
-      </p>
+        <p className="fx-eyebrow mt-7 text-accent">Application received</p>
+        <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          Thank you, {firstName}.
+        </h2>
+        {autoReply ? (
+          <>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
+              Your application is on its way to the team. We&apos;ve sent a confirmation to{" "}
+              <span className="text-foreground">{email || "your inbox"}</span> — if it isn&apos;t
+              there in a few minutes, check your spam folder.
+            </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted">
+              Only limited spots are open. Selected members are contacted by email, and we read
+              every application.
+            </p>
+          </>
+        ) : (
+          <>
+            <p className="mx-auto mt-4 max-w-xl text-[15px] leading-relaxed text-muted">
+              Your application is on its way to the team. We read every application and contact
+              selected members by email — no automatic newsletter, just a real reply.
+            </p>
+            <p className="mx-auto mt-3 max-w-xl text-sm text-muted">
+              Questions meanwhile? Write to{" "}
+              <a href={`mailto:${directEmail}`} className="text-accent-2 underline">
+                {directEmail}
+              </a>
+              .
+            </p>
+          </>
+        )}
 
-      <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
-        <Link href="/roles" className={btnPrimaryLg}>
-          Explore the roles
-          <ArrowRight className="h-4 w-4" />
-        </Link>
-        <Link
-          href="/"
-          className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-[15px] font-medium text-foreground transition hover:border-accent/60 hover:text-accent-2"
-        >
-          Back to home
-        </Link>
-      </div>
+        <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
+          <Link href="/roles" className={btnPrimaryLg}>
+            Explore the roles
+            <ArrowRight className="h-4 w-4" />
+          </Link>
+          <Link
+            href="/"
+            className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-[15px] font-medium text-foreground transition hover:border-accent/60 hover:text-accent-2"
+          >
+            Back to home
+          </Link>
+        </div>
 
-      <p className="mt-8 inline-flex items-center gap-2 text-xs text-muted">
-        <Lock className="h-3.5 w-3.5" />
-        We keep your answers private and use them only to review this application.
-      </p>
+        <p className="mt-8 inline-flex items-center gap-2 text-xs text-muted">
+          <Lock className="h-3.5 w-3.5" />
+          We keep your answers private and use them only to review this application.
+        </p>
       </div>
     </div>
   );
