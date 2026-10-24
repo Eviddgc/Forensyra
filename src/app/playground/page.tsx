@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "@/lib/structured-data";
 export const metadata: Metadata = {
   title: "Terminal Playground",
   description:
-    "A simulated DFIR shell. Explore the collective by typing — and compute a real SHA-256 in your browser.",
+    "A simulated DFIR shell: browse a virtual evidence workspace, run typing drills and forensic missions, earn badges — and compute a real SHA-256 in your browser.",
   alternates: pageAlternates("/playground"),
 };
 
@@ -22,11 +22,11 @@ const HIGHLIGHTS = [
   },
   {
     title: "The hashing is real",
-    body: "`hash <text>` computes a genuine SHA-256 with the Web Crypto API, locally in your browser.",
+    body: "`hash <text>` computes a genuine SHA-256 with the Web Crypto API, locally in your browser — no server round-trip.",
   },
   {
-    title: "A way to wander",
-    body: "`open case001`, `roles`, `ethics` — learn the vocabulary and find the parts of the site you'd otherwise miss.",
+    title: "Drills, missions, badges",
+    body: "Typing drills measure your wpm and accuracy, DFIR missions walk the method, and thirteen badges persist in your browser.",
   },
 ];
 
@@ -53,8 +53,9 @@ export default function PlaygroundPage() {
               Talk to the <span className="text-accent-2">collective</span>
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
-              A simulated shell for the curious. Type <code>help</code> to see
-              what it knows, or try one of the suggestions below.
+              A simulated shell with 35+ commands, typing drills, forensic missions
+              and a badge locker. Type <code>help</code> to begin, or try one of
+              the suggestions below.
             </p>
           </Reveal>
         </Container>
