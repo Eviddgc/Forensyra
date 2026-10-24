@@ -56,12 +56,22 @@ export async function getSearchIndex(): Promise<SearchIndex> {
   }
 
   for (const item of getAllLearnItems()) {
+    const guideText = [
+      item.guide?.overview,
+      item.guide?.why,
+      item.guide?.watchOut,
+      item.guide?.fieldNote,
+      ...(item.guide?.keyPoints ?? []),
+      ...(item.guide?.workflow ?? []),
+    ].filter((value): value is string => Boolean(value));
+
     docs.push({
       title: item.label,
       description: item.description,
-      href: item.href,
+      href: `/resources#${item.nodeId}`,
       kind: "Resource",
       tags: [...item.tags, item.group],
+      keywords: guideText,
     });
   }
 

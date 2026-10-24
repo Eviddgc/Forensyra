@@ -16,6 +16,8 @@ export interface SearchDoc {
   href: string;
   kind: SearchKind;
   tags: string[];
+  /** Extra text that can match a query without being displayed. */
+  keywords?: string[];
 }
 
 /** Pure, testable matcher used by both the palette and the /search page. */
@@ -32,11 +34,13 @@ export function searchDocs(
       const title = doc.title.toLowerCase();
       const description = doc.description.toLowerCase();
       const tags = doc.tags.join(" ").toLowerCase();
+      const keywords = (doc.keywords ?? []).join(" ").toLowerCase();
       let score = 0;
       if (title === q) score += 100;
       if (title.startsWith(q)) score += 50;
       if (title.includes(q)) score += 25;
       if (tags.includes(q)) score += 10;
+      if (keywords.includes(q)) score += 6;
       if (description.includes(q)) score += 5;
       return { doc, score };
     })

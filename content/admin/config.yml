@@ -196,9 +196,20 @@ collections:
                 summary: "{{fields.label}}"
                 fields:
                   - { name: label, label: "Title", widget: string }
-                  - { name: href, label: URL, widget: string }
+                  - { name: href, label: URL, widget: string, hint: "Official source. Used only for the 'Go deeper' link — the on-site guide is written below." }
                   - { name: description, label: Description, widget: text, required: false }
                   - { name: tags, label: Tags, widget: list, required: false, default: [] }
+                  - name: guide
+                    label: "On-site guide"
+                    widget: object
+                    required: false
+                    fields:
+                      - { name: overview, label: "The short version", widget: text, required: false }
+                      - { name: why, label: "Why it matters", widget: text, required: false }
+                      - { name: keyPoints, label: "Key ideas", widget: list, required: false, default: [] }
+                      - { name: workflow, label: "How to use it", widget: list, required: false, default: [] }
+                      - { name: watchOut, label: "Watch out", widget: text, required: false }
+                      - { name: fieldNote, label: "FORENSYRA field note", widget: text, required: false }
 
   - name: settings
     label: "Site settings"

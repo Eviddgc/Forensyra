@@ -5,8 +5,8 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { HardDrive, ShieldCheck } from "lucide-react";
-import { LearnTree } from "@/components/learn-tree";
-import type { TreeNode } from "@/components/learn-tree";
+import { LearnExplorer } from "@/components/learn-explorer";
+import type { TreeNode } from "@/lib/learn-types";
 
 export const metadata: Metadata = {
   title: "Practice Datasets",
@@ -69,7 +69,7 @@ export default function PracticeDatasetsPage() {
       </HeroSection>
 
       {/* Dataset list */}
-      <Container className="py-14 sm:py-20">
+      <Container className="py-14 sm:py-20 max-w-[96rem]">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
             Available datasets
@@ -83,11 +83,7 @@ export default function PracticeDatasetsPage() {
           </p>
         </Reveal>
 
-        <LearnTree
-          title="Available datasets"
-          subtitle="Public, legal forensic datasets for hands-on labs — disk images, memory dumps and packet captures from trusted sources."
-          nodes={nodes}
-        />
+        <LearnExplorer nodes={nodes} />
 <Reveal delay={120}>
           <div className="mt-10 flex items-start gap-3 rounded-2xl border border-[#6aa0dc]/30 bg-[#122b46]/50 p-6">
             <ShieldCheck className="mt-0.5 h-5 w-5 shrink-0 text-accent" />

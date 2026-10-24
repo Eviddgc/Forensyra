@@ -49,6 +49,7 @@ export function Preloader() {
       }
       setDone(true);
       html.classList.remove("intro-active");
+      window.dispatchEvent(new Event("fx:intro-done"));
       window.setTimeout(
         () => {
           html.classList.add("intro-seen");

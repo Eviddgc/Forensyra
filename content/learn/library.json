@@ -9,25 +9,106 @@
           "label": "Order of volatility (RFC 3227)",
           "href": "https://datatracker.ietf.org/doc/html/rfc3227",
           "description": "The rules for what to capture first — live memory before disk, disk before logs. Every investigation starts here.",
-          "tags": ["Standards", "Basics"]
+          "tags": [
+            "Standards",
+            "Basics"
+          ],
+          "guide": {
+            "overview": "RFC 3227 is a short IETF memo that explains how to collect digital evidence without destroying it. Its best-known idea is the order of volatility: capture the things most likely to disappear first, before they change or vanish.",
+            "why": "A running system is constantly rewriting memory, network state, process tables and logs. If you image the disk first, you can lose the evidence that explains what was happening at the moment of the incident.",
+            "keyPoints": [
+              "Volatile data includes RAM, running processes, network connections, ARP caches and temporary files.",
+              "Less volatile data includes disk contents, registry hives, logs and archived backups.",
+              "Collection should change as little as possible; document every action and its effect.",
+              "The order is a guide, not a ritual: scope, urgency and legal authority decide what you capture first."
+            ],
+            "workflow": [
+              "Identify which systems are live and what evidence each one holds.",
+              "Prioritise the most perishable sources, usually memory and network state, then disk and logs.",
+              "Record the time, tool, command and hash for every acquisition.",
+              "Package and label evidence so the chain of custody is clear."
+            ],
+            "watchOut": "Do not power off a live machine by default. A shutdown can destroy memory-resident evidence; isolate it from the network and follow your incident plan instead.",
+            "fieldNote": "Our Case File 001 starts from a published disk image, so the volatile phase is already lost. That is a useful lesson in itself: know what evidence your scenario can and cannot contain."
+          }
         },
         {
           "label": "NIST SP 800-86 — Guide to Integrating Forensic Techniques",
           "href": "https://csrc.nist.gov/pubs/sp/800/86/final",
           "description": "The canonical process for collecting, examining, analysing and reporting digital evidence.",
-          "tags": ["Standards", "NIST"]
+          "tags": [
+            "Standards",
+            "NIST"
+          ],
+          "guide": {
+            "overview": "NIST SP 800-86 describes a repeatable forensic process: collection, examination, analysis and reporting. It is written for incident response teams and explains how forensic techniques fit into a broader investigation.",
+            "why": "It gives you a shared vocabulary and a defensible sequence. If you can explain which phase you are in and what you did, your findings are easier to review and challenge.",
+            "keyPoints": [
+              "Collection preserves data; examination extracts relevant data; analysis answers the investigative question; reporting communicates the result.",
+              "Repeatability matters: another examiner should be able to follow your method.",
+              "Tool validation, chain of custody and documented limitations support the weight of the evidence.",
+              "The guide is technology-neutral; it does not replace legal advice or your organisation's policy."
+            ],
+            "workflow": [
+              "Define the question and the scope before touching evidence.",
+              "Collect and verify the data, recording hashes and storage details.",
+              "Examine and analyse with tools you can explain and, where possible, reproduce.",
+              "Write findings with the evidence that supports them and the limits of your conclusions."
+            ],
+            "watchOut": "SP 800-86 is guidance, not a legal checklist. Admissibility depends on jurisdiction, authorisation and how the evidence was handled."
+          }
         },
         {
           "label": "DFIR Cheat Sheets (SANS)",
           "href": "https://www.sans.org/posters/",
           "description": "Free reference posters for Windows artefacts, memory, and incident response.",
-          "tags": ["Reference", "SANS"]
+          "tags": [
+            "Reference",
+            "SANS"
+          ],
+          "guide": {
+            "overview": "SANS publishes free reference posters that condense common DFIR artefacts and workflows into one-page visual guides. They are quick lookup sheets, not full training material.",
+            "why": "During an investigation you often need to remember where a Windows artefact lives or which event IDs matter. A good cheat sheet reduces lookup time and helps you ask the next question.",
+            "keyPoints": [
+              "They cover Windows artefacts, memory, network, incident response and several tool workflows.",
+              "The best use is as a checklist or memory aid, not as the only source of truth.",
+              "Artefact locations and event meanings can change between operating system versions.",
+              "A poster is a map; the evidence is still in the system you are examining."
+            ],
+            "workflow": [
+              "Pick the sheet that matches the system or artefact you are examining.",
+              "Use it to list candidate artefacts, then verify each one in the actual evidence.",
+              "Record the source and version of the reference you used.",
+              "Test commands and paths in a lab before relying on them in a live case."
+            ],
+            "watchOut": "Posters age. Check the publication date and compare any command or path with the current documentation for your operating system and tool version."
+          }
         },
         {
           "label": "13Cubed — Digital Forensics",
           "href": "https://www.13cubed.com/",
           "description": "Accessible video walkthroughs of real forensic workflows, artefacts and tooling.",
-          "tags": ["Video", "Learning"]
+          "tags": [
+            "Video",
+            "Learning"
+          ],
+          "guide": {
+            "overview": "13Cubed is a video channel that walks through digital forensics and incident response workflows, artefacts and tools. The episodes are designed to be approachable for people building practical skills.",
+            "why": "Seeing an artefact being found and interpreted is often more useful than reading a list of paths. Videos are a good way to connect a tool's output to an investigative question.",
+            "keyPoints": [
+              "Episodes often focus on Windows artefacts, memory, timeline analysis and DFIR tooling.",
+              "You can pause and reproduce each step on a legal practice image.",
+              "Watching is not the same as practising; the learning happens when you repeat the workflow.",
+              "Tool versions and interfaces change, so verify commands against current documentation."
+            ],
+            "workflow": [
+              "Choose an episode that matches a skill you want to build.",
+              "Watch once for the overall method, then replay it on a practice dataset.",
+              "Write down the commands, artefacts and outputs in your own notes.",
+              "Compare your result with the episode and explain any differences."
+            ],
+            "watchOut": "Do not treat a demonstration as evidence that a tool always behaves the same way. Test it on your own data and document the version."
+          }
         }
       ]
     },
@@ -40,43 +121,183 @@
           "label": "NIST Computer Forensics Tool Testing (CFTT)",
           "href": "https://www.nist.gov/itl/ssd/software-quality-group/computer-forensics-tool-testing-program-cftt",
           "description": "Reference datasets and methodology from the U.S. National Institute of Standards and Technology.",
-          "tags": ["Reference", "NIST"]
+          "tags": [
+            "Reference",
+            "NIST"
+          ],
+          "guide": {
+            "overview": "The Computer Forensics Tool Testing programme publishes test reports and specifications for forensic tools. It examines whether a tool performs a defined function correctly under controlled conditions.",
+            "why": "If you rely on a tool's output in a report, you should know its tested capabilities and limitations. CFTT reports give you an independent basis for that conversation.",
+            "keyPoints": [
+              "Reports describe the test environment, functions tested and any anomalies found.",
+              "A tool passing one test does not mean it is perfect for every format or scenario.",
+              "Test reports are useful when selecting, validating and explaining a tool.",
+              "The programme covers disk imaging, write blockers, mobile, memory and other areas."
+            ],
+            "workflow": [
+              "Identify the function you need, such as imaging or deleted-file recovery.",
+              "Find the relevant CFTT report and read the scope and limitations.",
+              "Compare the tested version with the version you plan to use.",
+              "Document the report and your own validation in your case notes."
+            ],
+            "watchOut": "A test report is not a certification for every use. Your own verification, hashes and reproducibility still matter."
+          }
         },
         {
           "label": "SANS Digital Forensics & Incident Response",
           "href": "https://www.sans.org/digital-forensics-incident-response/",
           "description": "Blogs, whitepapers, and training resources from the SANS Institute.",
-          "tags": ["Training", "Blog"]
+          "tags": [
+            "Training",
+            "Blog"
+          ],
+          "guide": {
+            "overview": "SANS Digital Forensics and Incident Response is a hub for DFIR blogs, whitepapers, webinars and training. It is a broad professional resource rather than a single standard.",
+            "why": "The field changes quickly. Practitioner write-ups are a practical way to see how others approach artefacts, tools and incident scenarios.",
+            "keyPoints": [
+              "Content ranges from introductory explainers to detailed incident analyses.",
+              "Training and certification options sit alongside free articles and posters.",
+              "Practitioner experience is valuable but should be checked against primary documentation.",
+              "Use the site to find a technique, then verify it on your own evidence."
+            ],
+            "workflow": [
+              "Search for the artefact or incident type you are working with.",
+              "Read more than one source and compare their conclusions.",
+              "Reproduce any technique in a lab before applying it to real evidence.",
+              "Cite the source and note its date when you use it in your reasoning."
+            ],
+            "watchOut": "Vendor and training content can have commercial context. Separate the technical claim from the product or course being promoted."
+          }
         },
         {
           "label": "The DFIR Report",
           "href": "https://thedfirreport.com/",
           "description": "Real-world intrusion write-ups with timelines, tooling and defender takeaways.",
-          "tags": ["Blog", "Threat intel"]
+          "tags": [
+            "Blog",
+            "Threat intel"
+          ],
+          "guide": {
+            "overview": "The DFIR Report publishes detailed write-ups of real intrusions, usually with timelines, command lines, malware behaviour and defender takeaways. It focuses on what happened and how it was observed.",
+            "why": "Real cases show how techniques appear in evidence, not just how they are described in a framework. They are useful for building intuition about attacker behaviour and detection gaps.",
+            "keyPoints": [
+              "Each report typically follows initial access, execution, persistence, lateral movement and impact.",
+              "Indicators and TTPs are tied to a narrative, which makes them easier to remember.",
+              "The reports are useful for mapping activity to MITRE ATT&CK.",
+              "They are published for defenders; do not reuse victim data irresponsibly."
+            ],
+            "workflow": [
+              "Read the summary and timeline before diving into the technical details.",
+              "Map the observed techniques to ATT&CK and your own detection coverage.",
+              "Extract reusable lessons, not just IOCs that may be stale.",
+              "Record the report date and the evidence it provides."
+            ],
+            "watchOut": "A public report is a reconstruction, not the original evidence. Do not present its findings as proof about a different environment."
+          }
         },
         {
           "label": "Forensic Focus",
           "href": "https://www.forensicfocus.com/",
           "description": "Interviews, news and discussion from the wider digital forensics community.",
-          "tags": ["Community", "News"]
+          "tags": [
+            "Community",
+            "News"
+          ],
+          "guide": {
+            "overview": "Forensic Focus is a long-running digital forensics community site with news, interviews, articles and discussion. It is useful for seeing how practitioners and vendors talk about the field.",
+            "why": "It gives context beyond a single tool or standard: career paths, emerging techniques, product changes and professional debate.",
+            "keyPoints": [
+              "Coverage spans digital forensics, eDiscovery and incident response.",
+              "Interviews and opinion pieces are useful for professional context.",
+              "News and vendor announcements should be checked against primary sources.",
+              "Community discussion can point you to a technique, but it is not evidence."
+            ],
+            "workflow": [
+              "Use it to discover a topic, tool or practitioner worth following.",
+              "Follow up with the primary documentation or a peer-reviewed source.",
+              "Note the publication date and whether the article is news, opinion or sponsored.",
+              "Keep a short list of sources you trust for different topics."
+            ],
+            "watchOut": "Community posts and interviews can be outdated or promotional. Verify technical claims independently."
+          }
         },
         {
           "label": "DFIR Review",
           "href": "https://dfir.review/",
           "description": "A curated directory of digital forensics tools, techniques, and references.",
-          "tags": ["Directory", "Tools"]
+          "tags": [
+            "Directory",
+            "Tools"
+          ],
+          "guide": {
+            "overview": "DFIR Review is a curated directory of digital forensics tools, techniques and references. It is designed to help practitioners find relevant resources without searching the whole web.",
+            "why": "A curated index saves time when you are looking for a tool or a starting point. It can also introduce you to options you did not know existed.",
+            "keyPoints": [
+              "The directory covers multiple DFIR disciplines and resource types.",
+              "Curated does not mean endorsed; assess each resource yourself.",
+              "Links and tool versions can change over time.",
+              "Use the directory as a starting point, then read the primary source."
+            ],
+            "workflow": [
+              "Search by discipline or artefact type.",
+              "Shortlist two or three resources and compare their scope.",
+              "Check the last update and the licence before using a tool.",
+              "Record why you chose one resource over another."
+            ],
+            "watchOut": "A directory entry is not a quality guarantee. Test the tool and read its documentation before relying on it."
+          }
         },
         {
           "label": "Forensics Wiki",
           "href": "https://forensicswiki.org/",
           "description": "Community-maintained wiki covering forensic techniques, tools, and methodologies.",
-          "tags": ["Wiki", "Community"]
+          "tags": [
+            "Wiki",
+            "Community"
+          ],
+          "guide": {
+            "overview": "The Forensics Wiki is a community-maintained encyclopedia of forensic techniques, tools, file formats and terminology. It is useful for orientation and vocabulary.",
+            "why": "When you meet an unfamiliar artefact or format, a wiki article can give you the basic model before you open a tool. It is often the fastest way to learn what a term means.",
+            "keyPoints": [
+              "Articles are written by contributors with varying levels of expertise.",
+              "Coverage is broad but uneven; some pages are much more detailed than others.",
+              "Use it to find the right question and the right primary source.",
+              "Check page history and references when accuracy matters."
+            ],
+            "workflow": [
+              "Look up the term or artefact to get a working definition.",
+              "Follow the references to a standard, vendor documentation or research paper.",
+              "Verify the details against your own evidence and tool output.",
+              "Note the page date if you cite it in your notes."
+            ],
+            "watchOut": "Community wikis can be stale or incomplete. Never treat a wiki page as the final authority in a report."
+          }
         },
         {
           "label": "MITRE ATT&CK",
           "href": "https://attack.mitre.org/",
           "description": "Knowledge base of adversary tactics and techniques — essential for threat-informed analysis.",
-          "tags": ["Threat intel", "Framework"]
+          "tags": [
+            "Threat intel",
+            "Framework"
+          ],
+          "guide": {
+            "overview": "MITRE ATT&CK is a knowledge base of adversary tactics and techniques based on observed real-world behaviour. It organises activity into tactics such as initial access, persistence and exfiltration, then into specific techniques.",
+            "why": "ATT&CK gives you a shared language for describing what an adversary did. It helps you see whether your evidence covers the whole intrusion, not just one alert.",
+            "keyPoints": [
+              "Tactics describe the adversary's goal; techniques describe how they achieve it.",
+              "Techniques have IDs and sub-techniques, which makes mapping consistent.",
+              "The framework is descriptive, not a checklist or a compliance standard.",
+              "Detection coverage should be mapped to techniques, not just tool names."
+            ],
+            "workflow": [
+              "Start with the observed behaviour, not the tool name.",
+              "Find the technique that best matches the evidence.",
+              "Record the technique ID, the evidence and your confidence.",
+              "Use the mapping to find detection gaps and related techniques."
+            ],
+            "watchOut": "Do not force every finding into a technique. If the evidence is ambiguous, say so and explain alternative mappings."
+          }
         }
       ]
     },
@@ -89,31 +310,138 @@
           "label": "NIST CFReDS — Computer Forensic Reference Data Sets",
           "href": "https://cfreds.nist.gov/",
           "description": "Reference disk, memory and mobile images with published hash values. This is the source for our Case File 001.",
-          "tags": ["Disk", "Memory", "NIST", "Free"]
+          "tags": [
+            "Disk",
+            "Memory",
+            "NIST",
+            "Free"
+          ],
+          "guide": {
+            "overview": "CFReDS provides reference datasets for computer forensics, including disk images, memory images and scenario documentation. The datasets are built for testing tools and practising investigative workflows.",
+            "why": "You need realistic, legal evidence to practise on. CFReDS gives you known scenarios and published hashes, so you can verify your copy before you analyse it.",
+            "keyPoints": [
+              "Datasets cover disk, memory, mobile and network scenarios.",
+              "Published hash values let you confirm the image is intact.",
+              "Scenario documentation explains what the dataset is designed to test.",
+              "The images can be large; plan storage and processing time."
+            ],
+            "workflow": [
+              "Read the scenario description and identify the investigative question.",
+              "Download the image and verify its hash against the published value.",
+              "Work on a copy, document your tools and keep the original unchanged.",
+              "Compare your findings with the scenario notes where available."
+            ],
+            "watchOut": "Do not assume a dataset contains every artefact type. Some scenarios are deliberately limited; check the documentation.",
+            "fieldNote": "Case File 001 uses a CFReDS disk image as its public evidence base. The first step in our workflow is always hash verification, before any analysis."
+          }
         },
         {
           "label": "Digital Corpora — Digital Forensics",
           "href": "https://digitalcorpora.org/",
           "description": "Public disk images and memory dumps curated for forensics training.",
-          "tags": ["Disk images", "Memory dumps", "Free"]
+          "tags": [
+            "Disk images",
+            "Memory dumps",
+            "Free"
+          ],
+          "guide": {
+            "overview": "Digital Corpora provides public disk images, memory dumps and other forensic datasets for research and training. The collection is maintained by academics and practitioners.",
+            "why": "It offers a wider variety of real and synthetic scenarios than a single reference set, which helps you practise on different filesystems, operating systems and incident types.",
+            "keyPoints": [
+              "Datasets include disk images, memory captures and packet captures.",
+              "Some are real captures with privacy implications; read the licence and handling notes.",
+              "Scenarios vary in size and complexity, from small exercises to full systems.",
+              "Documentation quality varies by dataset."
+            ],
+            "workflow": [
+              "Choose a dataset that matches the skill you want to practise.",
+              "Read the licence, provenance and handling instructions.",
+              "Verify hashes where published and work on a copy.",
+              "Write a short method note before you start analysing."
+            ],
+            "watchOut": "Public does not mean risk-free. Some datasets may contain real personal data; follow the licence and your organisation's ethics rules."
+          }
         },
         {
           "label": "UNB CIC datasets",
           "href": "https://www.unb.ca/cic/datasets/",
           "description": "Publicly available network traffic captures for intrusion-detection practice and protocol analysis labs.",
-          "tags": ["PCAP", "Network", "Free"]
+          "tags": [
+            "PCAP",
+            "Network",
+            "Free"
+          ],
+          "guide": {
+            "overview": "The Canadian Institute for Cybersecurity at the University of New Brunswick publishes labelled network traffic datasets for intrusion detection and network analysis research.",
+            "why": "Network evidence often answers questions that disk evidence cannot: who connected to what, when, and how much data moved. Labelled PCAPs let you practise those questions with known ground truth.",
+            "keyPoints": [
+              "Datasets include packet captures and extracted flow or feature sets.",
+              "Labels describe attack types and normal traffic for evaluation.",
+              "Capture setup and traffic mix affect how realistic the data feels.",
+              "The datasets are intended for research and education, not production detection."
+            ],
+            "workflow": [
+              "Read the dataset description and understand the capture environment.",
+              "Load the PCAP or features and establish a baseline of normal traffic.",
+              "Investigate specific flows, protocols and time windows.",
+              "Compare your findings with the labels and explain any mismatch."
+            ],
+            "watchOut": "Lab-generated traffic may not match your network. Do not tune a production detector only on a research dataset."
+          }
         },
         {
           "label": "Malware-Traffic-Analysis.net",
           "href": "https://www.malware-traffic-analysis.net/",
           "description": "Real packet captures of malware infections, with exercises — ideal for network forensics practice.",
-          "tags": ["PCAP", "Malware", "Free"]
+          "tags": [
+            "PCAP",
+            "Malware",
+            "Free"
+          ],
+          "guide": {
+            "overview": "Malware-Traffic-Analysis.net publishes packet captures and exercises based on real malware infections. The site is aimed at analysts who want to practise network forensics and incident response.",
+            "why": "It lets you see what malicious network behaviour looks like in a PCAP, with context about the infection. That is closer to real incident work than a clean synthetic capture.",
+            "keyPoints": [
+              "Exercises usually include a scenario, a PCAP and questions to answer.",
+              "Traffic can include malicious payloads and live indicators; handle it safely.",
+              "The exercises reward a methodical approach: baseline, filter, correlate, conclude.",
+              "Answers and explanations help you check your reasoning."
+            ],
+            "workflow": [
+              "Read the scenario and note the time window and suspected hosts.",
+              "Work in an isolated lab and never execute recovered payloads on your workstation.",
+              "Use protocol hierarchy, conversations and display filters to narrow the traffic.",
+              "Write your findings before comparing them with the published answers."
+            ],
+            "watchOut": "The PCAPs are real malware traffic. Treat files and extracted payloads as dangerous and keep them inside an isolated lab."
+          }
         },
         {
           "label": "VirusShare — curated malware samples",
           "href": "https://virusshare.com/",
           "description": "Malware corpora available to registered researchers — handle only inside isolated, authorised lab environments.",
-          "tags": ["Malware", "Research", "Registered"]
+          "tags": [
+            "Malware",
+            "Research",
+            "Registered"
+          ],
+          "guide": {
+            "overview": "VirusShare is a malware sample repository used by researchers and defenders. Access is restricted to registered users and samples are provided for analysis, not for execution on normal systems.",
+            "why": "Malware analysis often needs real samples. A curated corpus lets you study families, compare hashes and test detection logic in a controlled environment.",
+            "keyPoints": [
+              "Samples are potentially harmful and must be handled in an isolated lab.",
+              "Registration and acceptable-use rules apply.",
+              "Hashes and metadata help you identify and compare samples.",
+              "A sample's behaviour can depend on configuration, environment and time."
+            ],
+            "workflow": [
+              "Confirm you have authorisation and an isolated analysis environment.",
+              "Look up the sample by hash and record its source and metadata.",
+              "Perform static analysis first, then dynamic analysis only if safe.",
+              "Document containment, network isolation and cleanup."
+            ],
+            "watchOut": "Never download or run live malware on a normal workstation. Follow your lab policy and legal requirements; possession and analysis can be regulated."
+          }
         }
       ]
     },
@@ -126,97 +454,430 @@
           "label": "Autopsy",
           "href": "https://www.autopsy.com/",
           "description": "Open-source digital forensics platform for disk imaging, timeline analysis and artefact extraction.",
-          "tags": ["Disk", "Free", "Open source"]
+          "tags": [
+            "Disk",
+            "Free",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Autopsy is an open-source digital forensics platform built on The Sleuth Kit. It provides a graphical interface for ingesting disk images, browsing filesystems, running ingest modules and building timelines.",
+            "why": "It is a practical first analysis platform for disk evidence: you can examine files, recover deleted content, search keywords and produce a report without building every parser yourself.",
+            "keyPoints": [
+              "Ingest modules extract artefacts such as web history, recent documents, USB history and hashes.",
+              "The timeline view combines filesystem and artefact timestamps.",
+              "Keyword search and tagging help you move from a large image to relevant evidence.",
+              "Every automated result should be traced back to the underlying file or record."
+            ],
+            "workflow": [
+              "Create a case, add the image and verify its hash.",
+              "Choose ingest modules that match the scenario and document them.",
+              "Review the file tree, artefacts and timeline; tag relevant items.",
+              "Export a report that links each finding to its source."
+            ],
+            "watchOut": "Ingest modules can produce false positives and version-specific results. Verify important findings in the raw data or with a second tool."
+          }
         },
         {
           "label": "FTK Imager",
           "href": "https://www.exterro.com/digital-forensics-software/ftk-imager",
           "description": "Forensic imaging tool from Exterro for creating and verifying disk and memory images.",
-          "tags": ["Imaging", "Free"]
+          "tags": [
+            "Imaging",
+            "Free"
+          ],
+          "guide": {
+            "overview": "FTK Imager is a free forensic imaging and preview tool from Exterro. It creates bit-for-bit images in formats such as E01 and raw, verifies hashes and can preview many evidence containers.",
+            "why": "Imaging is the foundation of disk forensics. A verified image preserves the original and gives you a working copy that can be analysed without touching the source.",
+            "keyPoints": [
+              "It can create E01, raw and other image formats.",
+              "Hash verification confirms the image matches the source.",
+              "Preview mode lets you inspect an image before a full analysis.",
+              "It is an imaging and preview tool, not a complete analysis suite."
+            ],
+            "workflow": [
+              "Connect the source through a write blocker.",
+              "Create an image, choose a format and record the case metadata.",
+              "Verify the image hash and store the source securely.",
+              "Document the tool version, settings and any errors."
+            ],
+            "watchOut": "Always image through a write blocker and verify hashes. A successful copy without verification is not enough for evidential work."
+          }
         },
         {
           "label": "Eric Zimmerman's Tools",
           "href": "https://ericzimmerman.github.io/",
           "description": "The de-facto standard suite of Windows artefact parsers — MFTECmd, PECmd, JLECmd, Registry Explorer and more.",
-          "tags": ["Windows", "Free", "Artefacts"]
+          "tags": [
+            "Windows",
+            "Free",
+            "Artefacts"
+          ],
+          "guide": {
+            "overview": "Eric Zimmerman's tools are a suite of free Windows artefact parsers used widely in DFIR. They cover the MFT, Prefetch, Jump Lists, registry hives, shellbags, amcache and more.",
+            "why": "Windows records a huge amount of user and program activity. These parsers turn raw artefacts into readable tables that can be filtered, correlated and placed on a timeline.",
+            "keyPoints": [
+              "Each tool focuses on one artefact type and usually outputs CSV or a GUI view.",
+              "MFTECmd, PECmd, JLECmd, AppCompatCacheParser and Registry Explorer are common starting points.",
+              "Timestamps can be interpreted differently depending on the artefact; read the tool's documentation.",
+              "Parsed output is a convenience, not a substitute for understanding the source record."
+            ],
+            "workflow": [
+              "Extract or acquire the relevant artefact from a copy of the evidence.",
+              "Run the parser with the correct time zone and output options.",
+              "Filter for the user, host or time window in your investigative question.",
+              "Correlate the result with at least one independent artefact."
+            ],
+            "watchOut": "Time zones and timestamp semantics are the most common source of error. Record the settings you used and check the raw values when a timestamp matters."
+          }
         },
         {
           "label": "KAPE",
           "href": "https://www.kroll.com/en/services/cyber-risk/incident-response-litigation-support/kroll-artifact-parser-extractor-kape",
           "description": "Kroll Artifact Parser and Extractor — targeted collection and processing of Windows artefacts.",
-          "tags": ["Windows", "Triage", "Free"]
+          "tags": [
+            "Windows",
+            "Triage",
+            "Free"
+          ],
+          "guide": {
+            "overview": "KAPE (Kroll Artifact Parser and Extractor) is a targeted collection and processing tool for Windows systems. It uses targets to collect artefacts and modules to parse or process them.",
+            "why": "Full disk images are not always possible or necessary. KAPE lets you collect the artefacts that matter quickly, then process them consistently for triage or timeline work.",
+            "keyPoints": [
+              "Targets define what to collect; modules define what to run afterwards.",
+              "It is designed for speed and repeatability in incident response.",
+              "Collection scope should be based on the investigative question, not just what is easy.",
+              "Outputs need the same verification and documentation as any other evidence."
+            ],
+            "workflow": [
+              "Define the scope and the artefacts you need.",
+              "Select or build targets that match the system and question.",
+              "Collect to a controlled destination and record the tool version and target list.",
+              "Run modules on a copy and review the output."
+            ],
+            "watchOut": "Targeted collection is not a full image. Record what was and was not collected, and do not imply the output is complete."
+          }
         },
         {
           "label": "Velociraptor",
           "href": "https://docs.velociraptor.app/",
           "description": "Endpoint visibility and digital forensics at scale, using VQL queries across many hosts.",
-          "tags": ["Endpoint", "Open source", "DFIR"]
+          "tags": [
+            "Endpoint",
+            "Open source",
+            "DFIR"
+          ],
+          "guide": {
+            "overview": "Velociraptor is an endpoint visibility and digital forensics platform. It uses agents, server-side hunts and a query language called VQL to collect and inspect data across many hosts.",
+            "why": "Incidents often span more than one machine. Velociraptor lets you ask the same question across an estate and collect artefacts at scale, instead of logging into each host separately.",
+            "keyPoints": [
+              "Agents can run scheduled collections and respond to server-side queries.",
+              "VQL is powerful and needs careful, read-only queries during an investigation.",
+              "Hunts can target many endpoints with a single artefact definition.",
+              "Results should be scoped, stored and reviewed like any other evidence."
+            ],
+            "workflow": [
+              "Confirm authorisation and deploy agents through your normal management path.",
+              "Start with read-only artefacts and a narrow scope.",
+              "Run a hunt, monitor completion and review results.",
+              "Preserve the query, artefact version and collection time in your notes."
+            ],
+            "watchOut": "A powerful endpoint tool can change a system if misused. Test queries in a lab and avoid write or delete operations during evidence collection."
+          }
         },
         {
           "label": "Volatility 3",
           "href": "https://github.com/volatilityfoundation/volatility3",
           "description": "Memory forensics framework for analysing RAM dumps, processes and artefacts.",
-          "tags": ["Memory", "Free", "Open source"]
+          "tags": [
+            "Memory",
+            "Free",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Volatility 3 is an open-source memory forensics framework. It analyses RAM captures and exposes processes, network connections, loaded modules, injected code and other runtime artefacts.",
+            "why": "Memory contains evidence that never reaches disk: running processes, command lines, network connections and malware that only exists in RAM.",
+            "keyPoints": [
+              "It uses symbol tables to interpret the operating system structures in a memory image.",
+              "Plugins answer specific questions such as process listing, network connections or injection detection.",
+              "Memory acquisition must happen before shutdown or reboot.",
+              "Results depend on the quality and completeness of the capture."
+            ],
+            "workflow": [
+              "Verify the memory image hash and record how it was acquired.",
+              "Identify the operating system and obtain the correct symbols.",
+              "Run baseline plugins, then targeted plugins for your question.",
+              "Correlate memory findings with disk or network evidence."
+            ],
+            "watchOut": "Missing symbols or a partial capture can produce misleading output. Record plugin versions and treat unsupported results cautiously."
+          }
         },
         {
           "label": "MemProcFS",
           "href": "https://github.com/ufrisk/MemProcFS",
           "description": "Present a memory dump as a virtual file system for fast, scriptable memory analysis.",
-          "tags": ["Memory", "Open source"]
+          "tags": [
+            "Memory",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "MemProcFS presents a memory dump as a virtual file system. Instead of remembering plugin commands, you can browse processes, modules, handles, network connections and registry data as files and folders.",
+            "why": "It lowers the barrier to memory analysis and makes it easy to explore a capture interactively. It is also scriptable for repeatable tasks.",
+            "keyPoints": [
+              "The memory image is mounted read-only as a virtual filesystem.",
+              "Files and folders represent processes, drivers, network state and other structures.",
+              "It can be used interactively or through its API and plugins.",
+              "Windows is the primary focus; support for other systems is more limited."
+            ],
+            "workflow": [
+              "Verify the memory image and record its provenance.",
+              "Mount the image in a controlled analysis environment.",
+              "Browse the process and network views to build a baseline.",
+              "Follow interesting files back to the underlying structure and corroborate."
+            ],
+            "watchOut": "The filesystem view is an interpretation of memory, not the memory itself. Verify important findings with another plugin or tool."
+          }
         },
         {
           "label": "Wireshark",
           "href": "https://www.wireshark.org/",
           "description": "The standard open-source packet analyser for network forensics and protocol investigation.",
-          "tags": ["Network", "Free", "Open source"]
+          "tags": [
+            "Network",
+            "Free",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Wireshark is the standard open-source packet analyser. It captures and displays network traffic, decodes protocols and lets you follow streams, extract objects and filter at the packet level.",
+            "why": "Packet captures show what actually crossed the network. They are essential for confirming command-and-control, data movement, authentication and other network events.",
+            "keyPoints": [
+              "Capture filters decide what is recorded; display filters decide what you see.",
+              "Protocol hierarchy and conversations give you a quick overview before deep inspection.",
+              "Follow TCP or UDP stream reconstructs a conversation; export objects extracts files.",
+              "Encrypted traffic limits what you can see without keys."
+            ],
+            "workflow": [
+              "Verify the capture source, time window and capture point.",
+              "Start with protocol hierarchy and conversations to establish a baseline.",
+              "Filter to the hosts, ports or protocols in your question.",
+              "Reconstruct streams, extract files and correlate with other evidence."
+            ],
+            "watchOut": "Where the capture was taken determines what it can prove. A capture from one segment may not show traffic that never crossed it."
+          }
         },
         {
           "label": "YARA",
           "href": "https://yara.readthedocs.io/",
           "description": "Pattern-matching tool for identifying and classifying malware samples in forensic datasets.",
-          "tags": ["Malware", "Free", "Open source"]
+          "tags": [
+            "Malware",
+            "Free",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "YARA is a pattern-matching tool for identifying and classifying malware. Rules combine strings, byte patterns and logical conditions to describe a family or behaviour.",
+            "why": "It lets you turn threat intelligence into a repeatable scan. You can search a disk, memory image or set of files for known indicators and then review the matches.",
+            "keyPoints": [
+              "A rule has a name, optional metadata, string definitions and a condition.",
+              "Rules can match text, hex patterns, regexes and file properties.",
+              "Good rules are specific enough to avoid false positives but broad enough to catch variants.",
+              "Rule quality needs testing against known-good and known-bad samples."
+            ],
+            "workflow": [
+              "Collect the indicators or behavioural patterns you want to detect.",
+              "Write a rule with clear metadata and a precise condition.",
+              "Test it on a labelled corpus and tune for false positives.",
+              "Document the rule version and the scan scope."
+            ],
+            "watchOut": "A YARA match is a lead, not a conclusion. Review the matching bytes and context before calling a file malicious."
+          }
         },
         {
           "label": "CyberChef",
           "href": "https://gchq.github.io/CyberChef/",
           "description": "The cyber swiss-army knife — decode, decrypt, parse and transform data in the browser.",
-          "tags": ["Analysis", "Free", "Open source"]
+          "tags": [
+            "Analysis",
+            "Free",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "CyberChef is a browser-based tool for encoding, decoding, encrypting, hashing, parsing and transforming data. Recipes chain operations together and can be saved or shared.",
+            "why": "Investigators constantly meet encoded or obfuscated data: Base64, hex, URLs, timestamps, compressed blobs. CyberChef makes those transformations quick and repeatable.",
+            "keyPoints": [
+              "Operations are combined into a recipe that shows input, output and intermediate steps.",
+              "Common tasks include Base64 and hex decoding, hashing, timestamp conversion and data extraction.",
+              "Recipes can be saved and shared, which helps with reproducibility.",
+              "Sensitive data should be handled in an offline or approved instance."
+            ],
+            "workflow": [
+              "Identify the encoding or transformation you suspect.",
+              "Build a recipe step by step and inspect intermediate output.",
+              "Save the recipe or document the operations for reproducibility.",
+              "Verify the result against the source format or a second method."
+            ],
+            "watchOut": "Pasting sensitive evidence into a public web tool can leak data. Use an offline build or your organisation's approved instance."
+          }
         },
         {
           "label": "Plaso (log2timeline)",
           "href": "https://plaso.readthedocs.io/",
           "description": "Super timeline generation across filesystems, logs and artefacts into a single chronology.",
-          "tags": ["Timeline", "Open source"]
+          "tags": [
+            "Timeline",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Plaso, formerly log2timeline, builds super timelines from many artefact sources. It parses filesystems, logs, registry, browser history and other data into a common chronology.",
+            "why": "A single artefact tells you one thing; a super timeline shows what happened across the system in order. That is often how you spot the sequence of an intrusion.",
+            "keyPoints": [
+              "Parsers extract timestamped events from different artefact types.",
+              "The output can be filtered and sorted by time, host, user or source.",
+              "Parser coverage varies; not every artefact is understood.",
+              "Time zones and timestamp semantics must be normalised carefully."
+            ],
+            "workflow": [
+              "Collect the evidence and record the source time zone.",
+              "Run the appropriate parsers against a copy of the evidence.",
+              "Filter the timeline to the period and hosts of interest.",
+              "Correlate key events with the underlying artefact and other sources."
+            ],
+            "watchOut": "A super timeline is noisy. Do not treat every timestamp as equally reliable; understand what each timestamp means."
+          }
         },
         {
           "label": "Timesketch",
           "href": "https://timesketch.org/",
           "description": "Collaborative timeline analysis and annotation for investigations.",
-          "tags": ["Timeline", "Open source", "Collaboration"]
+          "tags": [
+            "Timeline",
+            "Open source",
+            "Collaboration"
+          ],
+          "guide": {
+            "overview": "Timesketch is an open-source collaborative timeline analysis platform. It ingests timelines, lets analysts search and tag events, and supports shared stories and annotations.",
+            "why": "Investigations are often team efforts. Timesketch gives several analysts one timeline and a shared place to record observations, instead of passing spreadsheets around.",
+            "keyPoints": [
+              "Sketches group timelines and analyses for a case.",
+              "Analysts can search, filter, tag and annotate events.",
+              "Stories turn selected events into a narrative with supporting context.",
+              "Access control and data handling matter when evidence is shared."
+            ],
+            "workflow": [
+              "Import a normalised timeline and record its source.",
+              "Create a sketch and define the time window and scope.",
+              "Search and tag events, adding notes as you go.",
+              "Build a story that links conclusions to specific events."
+            ],
+            "watchOut": "Collaboration increases the risk of accidental changes. Agree on tagging conventions and preserve the original timeline outside the tool."
+          }
         },
         {
           "label": "ALEAPP",
           "href": "https://github.com/abrignoni/ALEAPP",
           "description": "Android Logs Events And Protobuf Parser for mobile app artefact extraction.",
-          "tags": ["Mobile", "Android", "Open source"]
+          "tags": [
+            "Mobile",
+            "Android",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "ALEAPP (Android Logs Events And Protobuf Parser) extracts and parses artefacts from Android filesystem extractions and app data. It turns scattered app files into readable reports.",
+            "why": "Android evidence is spread across app databases, XML files and protobufs. A parser helps you find messages, locations, account activity and timestamps without reverse-engineering every app.",
+            "keyPoints": [
+              "It supports a wide range of Android apps and system artefacts.",
+              "Input is usually a filesystem extraction or an app backup, not a live device.",
+              "Parsed output should be checked against the original files.",
+              "App versions change their storage formats frequently."
+            ],
+            "workflow": [
+              "Acquire the device or app data using an authorised method.",
+              "Preserve the extraction and record the acquisition details.",
+              "Run ALEAPP and review the report by artefact type and time.",
+              "Verify important findings in the original database or file."
+            ],
+            "watchOut": "A parser can miss data or misinterpret a new app version. Record the ALEAPP version and check the raw artefact when it matters."
+          }
         },
         {
           "label": "MobSF",
           "href": "https://mobsf.github.io/docs/",
           "description": "Mobile Security Framework — static and dynamic analysis of Android and iOS apps.",
-          "tags": ["Mobile", "Analysis", "Open source"]
+          "tags": [
+            "Mobile",
+            "Analysis",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "MobSF (Mobile Security Framework) is an automated platform for static and dynamic analysis of Android and iOS applications. It reports permissions, APIs, secrets, network behaviour and security issues.",
+            "why": "Mobile apps are part of many investigations. MobSF helps you understand what an app can access and what it does, without manually decompiling every file.",
+            "keyPoints": [
+              "Static analysis examines the app package without running it.",
+              "Dynamic analysis runs the app in a controlled environment and observes behaviour.",
+              "Reports include permissions, certificate details, API calls and potential secrets.",
+              "Automated findings need validation in context."
+            ],
+            "workflow": [
+              "Obtain the app package lawfully and record its hash.",
+              "Run static analysis first and review the manifest and permissions.",
+              "If needed, run dynamic analysis in an isolated environment.",
+              "Correlate app behaviour with the investigative question."
+            ],
+            "watchOut": "Only analyse apps you are authorised to examine. Dynamic analysis can contact external services; isolate the environment."
+          }
         },
         {
           "label": "REMnux / Flare VM",
           "href": "https://remnux.org/",
           "description": "Purpose-built Linux and Windows distributions for malware analysis and reverse engineering.",
-          "tags": ["Malware", "Lab", "Free"]
+          "tags": [
+            "Malware",
+            "Lab",
+            "Free"
+          ],
+          "guide": {
+            "overview": "REMnux is a Linux distribution for malware analysis; Flare VM is a Windows-based analysis environment. Both bundle tools for reverse engineering, network analysis and behavioural investigation.",
+            "why": "Malware analysis needs a controlled, disposable environment. These distributions save setup time and reduce the risk of running tools on your normal workstation.",
+            "keyPoints": [
+              "REMnux focuses on Linux-based analysis; Flare VM provides a Windows analyst workstation.",
+              "They include disassemblers, debuggers, network monitors, document tools and utilities.",
+              "The VM should be isolated from production networks.",
+              "Snapshots make it easy to reset after an experiment."
+            ],
+            "workflow": [
+              "Build the VM from a trusted source and update it.",
+              "Isolate the network and disable shared folders or clipboard where appropriate.",
+              "Take a clean snapshot before analysis.",
+              "After analysis, preserve results and revert to the snapshot."
+            ],
+            "watchOut": "A VM is not automatically safe. Misconfigured networking or shared folders can expose your host or production network."
+          }
         },
         {
           "label": "ExifTool",
           "href": "https://exiftool.org/",
           "description": "Read, write and edit metadata across virtually every file format — a metadata workhorse.",
-          "tags": ["Metadata", "Multimedia", "Free"]
+          "tags": [
+            "Metadata",
+            "Multimedia",
+            "Free"
+          ],
+          "guide": {
+            "overview": "ExifTool reads, writes and edits metadata in a very wide range of file formats. It can display EXIF, XMP, GPS, timestamps, camera details and embedded document properties.",
+            "why": "Metadata can place a file at a time, place or device. It can also reveal how a document was created or edited, which is often relevant to authenticity questions.",
+            "keyPoints": [
+              "Metadata is stored in different formats depending on the file type.",
+              "ExifTool can produce a detailed report or a compact set of selected tags.",
+              "Writing metadata changes the file; always work on a copy.",
+              "Metadata can be altered or stripped, so absence is not proof."
+            ],
+            "workflow": [
+              "Work on a copy and record the original hash.",
+              "Run a full metadata report and export it for your notes.",
+              "Focus on timestamps, device, location and software fields.",
+              "Corroborate important metadata with other evidence."
+            ],
+            "watchOut": "Do not use ExifTool to write metadata to original evidence. Even a harmless edit changes the file and its hash."
+          }
         }
       ]
     },
@@ -229,43 +890,183 @@
           "label": "RFC 3227 — Guidelines for Evidence Collection and Archiving",
           "href": "https://datatracker.ietf.org/doc/html/rfc3227",
           "description": "Order of volatility: collect the most perishable evidence first.",
-          "tags": ["Standards", "IETF"]
+          "tags": [
+            "Standards",
+            "IETF"
+          ],
+          "guide": {
+            "overview": "RFC 3227 is the IETF's guidance on evidence collection and archiving. It defines principles for preserving digital evidence, including the order of volatility and the importance of documenting every action.",
+            "why": "It is a concise primary reference you can cite when explaining why a collection sequence was chosen. It is especially useful in incident response where systems are live.",
+            "keyPoints": [
+              "Collect volatile evidence before it disappears.",
+              "Minimise changes to the system and record what you did.",
+              "Use trusted tools and verify their behaviour.",
+              "Preserve the chain of custody from the first contact."
+            ],
+            "workflow": [
+              "Read the memo and map its principles to your incident plan.",
+              "Identify the volatile sources on the live system.",
+              "Capture, hash and label each source in a defined order.",
+              "Document deviations and the reason for them."
+            ],
+            "watchOut": "The memo is old and technology-neutral. It does not cover every modern platform, cloud service or legal requirement."
+          }
         },
         {
           "label": "NIST SP 800-86",
           "href": "https://csrc.nist.gov/pubs/sp/800/86/final",
           "description": "Guide to integrating forensic techniques into incident response.",
-          "tags": ["Standards", "NIST"]
+          "tags": [
+            "Standards",
+            "NIST"
+          ],
+          "guide": {
+            "overview": "This NIST guide describes how forensic techniques fit into incident response. It defines the four phases of collection, examination, analysis and reporting and discusses the organisational context around them.",
+            "why": "It is a defensible framework for structuring an investigation and explaining it to non-specialists. It helps you separate the technical work from the legal and procedural questions.",
+            "keyPoints": [
+              "Collection preserves data; examination extracts it; analysis interprets it; reporting communicates it.",
+              "Policies, procedures and training are part of a forensic capability.",
+              "Tool validation and documentation support repeatability.",
+              "The guide is general guidance, not a jurisdiction-specific legal standard."
+            ],
+            "workflow": [
+              "Use the four phases to structure your case plan.",
+              "Document the tools, versions and settings used in each phase.",
+              "Keep examination and analysis distinct in your notes.",
+              "Write the report so a reviewer can follow the evidence chain."
+            ],
+            "watchOut": "Do not cite SP 800-86 as a legal authority. It explains good practice, not what is admissible in a particular court."
+          }
         },
         {
           "label": "ISO/IEC 27037",
           "href": "https://www.iso.org/standard/44381.html",
           "description": "International guidelines for identification, collection, acquisition and preservation of digital evidence.",
-          "tags": ["Standards", "ISO"]
+          "tags": [
+            "Standards",
+            "ISO"
+          ],
+          "guide": {
+            "overview": "ISO/IEC 27037 gives international guidance on identifying, collecting, acquiring and preserving digital evidence. It is written for organisations that need a consistent evidence-handling process.",
+            "why": "It provides a common vocabulary for evidence handling across teams and jurisdictions. It is useful when a case may cross organisational or national boundaries.",
+            "keyPoints": [
+              "The standard covers the full evidence-handling lifecycle before analysis.",
+              "Roles, responsibilities and documentation should be defined in advance.",
+              "Preservation includes physical storage, access control and integrity checks.",
+              "It is guidance, not a certification requirement by itself."
+            ],
+            "workflow": [
+              "Map your evidence process to the standard's phases.",
+              "Define who is authorised to identify, collect and handle evidence.",
+              "Record every transfer, storage condition and integrity check.",
+              "Review gaps before an incident, not during one."
+            ],
+            "watchOut": "The standard is not a substitute for local law or your organisation's policies. Confirm legal requirements with the appropriate adviser."
+          }
         },
         {
           "label": "ISO/IEC 27041 / 27042",
           "href": "https://www.iso.org/standard/44406.html",
           "description": "Assurance and analysis/interpretation of digital evidence.",
-          "tags": ["Standards", "ISO"]
+          "tags": [
+            "Standards",
+            "ISO"
+          ],
+          "guide": {
+            "overview": "ISO/IEC 27041 covers assurance of digital evidence handling; ISO/IEC 27042 covers analysis and interpretation. Together they extend the 27037 collection guidance into the later stages of an investigation.",
+            "why": "Collecting evidence is only half the job. These standards address whether the process is fit for purpose and how analysis should be documented and defended.",
+            "keyPoints": [
+              "27041 focuses on assurance: competence, methods, tools and review.",
+              "27042 focuses on analysis and interpretation, including uncertainty.",
+              "Both emphasise documentation and repeatability.",
+              "They are intended to complement, not replace, 27037."
+            ],
+            "workflow": [
+              "Identify the assurance questions for your case.",
+              "Document the method, tool validation and reviewer competence.",
+              "Record analytical assumptions, limitations and alternative explanations.",
+              "Have a second qualified person review critical conclusions."
+            ],
+            "watchOut": "Standards describe good practice; they do not guarantee a court will accept a conclusion. Legal and procedural advice still applies."
+          }
         },
         {
           "label": "SWGDE — Scientific Working Group on Digital Evidence",
           "href": "https://www.swgde.org/documents/",
           "description": "Practical, free guidance documents across forensic disciplines.",
-          "tags": ["Standards", "Guidance"]
+          "tags": [
+            "Standards",
+            "Guidance"
+          ],
+          "guide": {
+            "overview": "SWGDE is the Scientific Working Group on Digital Evidence. It publishes free guidance documents on digital evidence handling, analysis, training and reporting across forensic disciplines.",
+            "why": "SWGDE documents are practical and detailed, often closer to a working procedure than a high-level standard. They are useful for building lab methods and training material.",
+            "keyPoints": [
+              "Coverage includes collection, imaging, mobile, video, audio and reporting.",
+              "Documents are developed by practitioners and publicly available.",
+              "Guidance is not automatically binding in every jurisdiction.",
+              "Version and scope matter; use the current document."
+            ],
+            "workflow": [
+              "Find the document that matches your discipline and task.",
+              "Read the scope, definitions and recommended procedure.",
+              "Compare it with your lab's policy and local legal requirements.",
+              "Record the document version in your method notes."
+            ],
+            "watchOut": "Do not assume a US-oriented guidance document satisfies local law or your organisation's accreditation requirements."
+          }
         },
         {
           "label": "ACPO Good Practice Guide for Digital Evidence",
           "href": "https://www.digitalforensics.education/acpo-principles",
           "description": "The four ACPO principles for handling digital evidence, widely referenced in practice.",
-          "tags": ["Standards", "Principles"]
+          "tags": [
+            "Standards",
+            "Principles"
+          ],
+          "guide": {
+            "overview": "The ACPO Good Practice Guide for Digital Evidence sets out four principles for handling digital evidence. The principles are widely referenced because they are short, practical and technology-neutral.",
+            "why": "They give everyone on a case a shared baseline: preserve the original, handle copies, document actions and ensure the person in charge is competent.",
+            "keyPoints": [
+              "Principle 1: do not change the data held on a device or storage medium.",
+              "Principle 2: if access to original data is necessary, the person must be competent and explain the implications.",
+              "Principle 3: keep an audit trail of all actions so an independent party can reproduce them.",
+              "Principle 4: the person in charge has overall responsibility for ensuring the principles are followed."
+            ],
+            "workflow": [
+              "Use the four principles as a pre-flight checklist.",
+              "Identify the original, the copies and the audit trail.",
+              "Record who accessed what, when and why.",
+              "Review the trail before reporting."
+            ],
+            "watchOut": "The guide originated in UK policing. The principles are broadly useful, but local law and your organisation's policy take precedence."
+          }
         },
         {
           "label": "NIST SP 800-101 — Mobile Device Forensics",
           "href": "https://csrc.nist.gov/pubs/sp/800/101/r1/final",
           "description": "Guidelines on mobile device forensics, acquisition methods and preservation.",
-          "tags": ["Standards", "Mobile"]
+          "tags": [
+            "Standards",
+            "Mobile"
+          ],
+          "guide": {
+            "overview": "NIST SP 800-101 gives guidance on mobile device forensics, including acquisition methods, evidence preservation and the challenges of phones, tablets and cloud-backed data.",
+            "why": "Mobile devices are often the richest source of personal and location data, but they are also harder to preserve: they lock, update, sync and remote-wipe.",
+            "keyPoints": [
+              "Acquisition options include manual examination, logical, filesystem and physical methods.",
+              "Isolation from networks is critical to prevent remote wipe or synchronisation.",
+              "Cloud services may hold evidence that is not on the device.",
+              "The method chosen depends on the device, OS, access and legal authority."
+            ],
+            "workflow": [
+              "Document the device state, including lock status and network connections.",
+              "Isolate the device using an appropriate shield or Faraday method.",
+              "Choose an acquisition method that matches your authority and the question.",
+              "Preserve the extraction and verify hashes where possible."
+            ],
+            "watchOut": "Do not power on or unlock a device without a plan. A small action can change data or trigger a remote wipe."
+          }
         }
       ]
     },
@@ -278,49 +1079,210 @@
           "label": "File System Forensic Analysis — Brian Carrier",
           "href": "https://www.pearson.com/en-us/subject-catalog/p/file-system-forensic-analysis/P200000009286",
           "description": "The deep reference on FAT, NTFS, HFS+ and how filesystems leak evidence.",
-          "tags": ["Book", "Filesystem"]
+          "tags": [
+            "Book",
+            "Filesystem"
+          ],
+          "guide": {
+            "overview": "Brian Carrier's book is a deep technical reference on FAT, NTFS, HFS+ and related filesystem structures. It explains where metadata lives and how files, directories and deleted data are represented.",
+            "why": "Filesystem internals explain why a tool shows a timestamp, why a deleted file can be recovered, and why two tools may disagree. That understanding makes you a better examiner.",
+            "keyPoints": [
+              "Filesystems store metadata separately from file content.",
+              "Timestamps have different meanings and update rules.",
+              "Deleted data may remain in slack space, unallocated space or journal records.",
+              "The book is detailed and best used alongside practical exercises."
+            ],
+            "workflow": [
+              "Read the chapter for the filesystem you are examining.",
+              "Use a practice image and verify each structure with a hex or forensic tool.",
+              "Connect the theory to a specific artefact in your case.",
+              "Write a short note explaining the structure in your own words."
+            ],
+            "watchOut": "Filesystem implementations evolve. Use the book for concepts and verify current behaviour against documentation and test images."
+          }
         },
         {
           "label": "The Art of Memory Forensics",
           "href": "https://www.wiley.com/en-us/The+Art+of+Memory+Forensics-p-9781118825099",
           "description": "Windows, Linux and Mac memory analysis — the memory forensics bible.",
-          "tags": ["Book", "Memory"]
+          "tags": [
+            "Book",
+            "Memory"
+          ],
+          "guide": {
+            "overview": "This book is a comprehensive guide to memory forensics on Windows, Linux and macOS. It covers operating system internals, memory structures and the analysis of processes, drivers, network state and malware.",
+            "why": "Memory evidence can reveal activity that never touches disk. Understanding the underlying structures helps you interpret tool output and recognise when it is incomplete.",
+            "keyPoints": [
+              "Memory is organised into pools, structures and objects that differ by operating system.",
+              "Process, module, handle and network analysis are core workflows.",
+              "Malware can hide in memory through injection, hooking or direct kernel manipulation.",
+              "The book pairs well with hands-on Volatility exercises."
+            ],
+            "workflow": [
+              "Start with the operating system chapter for your image.",
+              "Follow a known-good process and network connection through the structures.",
+              "Repeat the analysis on a memory image with a known scenario.",
+              "Compare tool output with the underlying structure."
+            ],
+            "watchOut": "Structures and symbols change across OS versions. Do not assume a technique from one build applies unchanged to another."
+          }
         },
         {
           "label": "Practical Malware Analysis",
           "href": "https://nostarch.com/malware",
           "description": "A hands-on guide to dissecting malicious software safely.",
-          "tags": ["Book", "Malware"]
+          "tags": [
+            "Book",
+            "Malware"
+          ],
+          "guide": {
+            "overview": "Practical Malware Analysis is a hands-on book about safely dissecting malicious software. It covers static and dynamic analysis, reverse engineering, persistence, network behaviour and anti-analysis tricks.",
+            "why": "Malware is often the thing you need to understand in an incident. The book teaches a structured approach that starts safely and moves to deeper analysis only when needed.",
+            "keyPoints": [
+              "Static analysis examines the file without running it.",
+              "Dynamic analysis observes behaviour in an isolated lab.",
+              "Basic reverse engineering helps you understand code and unpack obfuscation.",
+              "Every sample should be handled in a controlled, disposable environment."
+            ],
+            "workflow": [
+              "Build an isolated lab and take a clean snapshot.",
+              "Start with hashes, strings, imports and file structure.",
+              "Run the sample with monitoring and capture its behaviour.",
+              "Document indicators, capabilities and limitations."
+            ],
+            "watchOut": "The book's labs are intentionally malicious. Follow the safety instructions and never run samples outside an isolated environment."
+          }
         },
         {
           "label": "Windows Forensic Analysis Toolkit — Harlan Carvey",
           "href": "https://www.sciencedirect.com/book/9781597494721/windows-forensic-analysis-toolkit",
           "description": "The practical field guide to Windows artefact analysis.",
-          "tags": ["Book", "Windows"]
+          "tags": [
+            "Book",
+            "Windows"
+          ],
+          "guide": {
+            "overview": "Harlan Carvey's toolkit book focuses on Windows artefact analysis: registry, event logs, execution history, USB devices, malware persistence and timeline creation.",
+            "why": "Windows is the most common enterprise endpoint. Knowing where activity is recorded and how to interpret it is a core DFIR skill.",
+            "keyPoints": [
+              "Windows records execution, persistence and user activity in many different artefacts.",
+              "Registry hives and event logs are central sources of evidence.",
+              "Timelines become more reliable when multiple artefacts are correlated.",
+              "The book emphasises understanding the data, not just running a tool."
+            ],
+            "workflow": [
+              "Choose a question, such as what ran or who logged in.",
+              "Identify the artefacts that could answer it.",
+              "Parse them on a copy and compare the results.",
+              "Record the source and timestamp semantics for each finding."
+            ],
+            "watchOut": "Windows versions and configurations change artefact behaviour. Validate your interpretation on a test system."
+          }
         },
         {
           "label": "Incident Response & Computer Forensics",
           "href": "https://www.mhprofessional.com/incident-response-computer-forensics-third-edition-9780071798686-usa",
           "description": "The end-to-end incident response lifecycle, from triage to reporting.",
-          "tags": ["Book", "IR"]
+          "tags": [
+            "Book",
+            "IR"
+          ],
+          "guide": {
+            "overview": "This book covers the end-to-end incident response lifecycle and the forensic techniques that support it. It discusses preparation, identification, containment, eradication, recovery and reporting.",
+            "why": "An investigation does not happen in isolation. It sits inside an incident response process with business, legal and communication pressures.",
+            "keyPoints": [
+              "Preparation determines how well an organisation responds.",
+              "Containment must balance evidence preservation with stopping harm.",
+              "Communication and documentation are part of the response, not an afterthought.",
+              "Lessons learned should feed back into preparation."
+            ],
+            "workflow": [
+              "Use the lifecycle to structure your incident notes.",
+              "Identify the decision points for containment and escalation.",
+              "Record the evidence implications of each response action.",
+              "Write a post-incident review with concrete improvements."
+            ],
+            "watchOut": "A textbook process may not fit a real organisation. Adapt it to the business, legal and technical constraints."
+          }
         },
         {
           "label": "Digital Forensics and Incident Response — Gerard Johansen",
           "href": "https://www.packtpub.com/product/digital-forensics-and-incident-response/9781803238678",
           "description": "A practical introduction to incident response. Relevant to the T1486 ransomware scenario in Case File 002.",
-          "tags": ["Book", "IR"]
+          "tags": [
+            "Book",
+            "IR"
+          ],
+          "guide": {
+            "overview": "Gerard Johansen's book is a practical introduction to digital forensics and incident response. It covers the investigative process, Windows and network artefacts, malware, and reporting.",
+            "why": "It connects forensic technique to the incident response workflow, which is useful for readers who are building a broad foundation rather than a single specialism.",
+            "keyPoints": [
+              "The book follows the incident lifecycle from preparation to reporting.",
+              "It introduces common artefacts and tools without assuming deep prior knowledge.",
+              "Practical examples help connect concepts to real tasks.",
+              "It is a starting point; specialist topics need deeper references."
+            ],
+            "workflow": [
+              "Read the lifecycle chapters first to build the big picture.",
+              "Choose one artefact chapter and practise on a legal image.",
+              "Write a short incident narrative using what you found.",
+              "Follow the references for deeper technical detail."
+            ],
+            "watchOut": "Tool versions and interfaces change. Use the book for method and verify current commands against up-to-date documentation."
+          }
         },
         {
           "label": "NIST SP 800-61 — Computer Security Incident Handling Guide",
           "href": "https://csrc.nist.gov/pubs/sp/800/61/r2/final",
           "description": "The canonical incident response lifecycle. Essential reading for Case File 002's ransomware scenario.",
-          "tags": ["Standards", "NIST", "IR"]
+          "tags": [
+            "Standards",
+            "NIST",
+            "IR"
+          ],
+          "guide": {
+            "overview": "NIST SP 800-61 is the canonical guide to computer security incident handling. It describes the incident response lifecycle and the organisational capabilities needed to prepare for, detect, contain and recover from incidents.",
+            "why": "It gives a common structure for incident response that technical forensic work can plug into. It is also widely recognised, which makes it useful for explaining a process to stakeholders.",
+            "keyPoints": [
+              "The lifecycle includes preparation; detection and analysis; containment, eradication and recovery; and post-incident activity.",
+              "Incident response is a team capability, not a single tool.",
+              "Communication, escalation and documentation should be planned in advance.",
+              "Lessons learned should improve future preparation."
+            ],
+            "workflow": [
+              "Map your incident to the lifecycle phases.",
+              "Define the evidence and decision points for each phase.",
+              "Document actions, timelines and communications.",
+              "Run a post-incident review and update the plan."
+            ],
+            "watchOut": "The guide is US-oriented guidance. Local law, sector regulation and your organisation's policy still apply."
+          }
         },
         {
           "label": "Plaso documentation",
           "href": "https://plaso.readthedocs.io/en/latest/",
           "description": "How to build super timelines from disparate artefacts — critical for Case File 003.",
-          "tags": ["Reference", "Timeline"]
+          "tags": [
+            "Reference",
+            "Timeline"
+          ],
+          "guide": {
+            "overview": "The Plaso documentation explains how to run log2timeline, how parsers work and how to filter and output super timelines. It is the practical manual for the tool.",
+            "why": "A super timeline is only useful if you understand which parsers ran, how timestamps were normalised and what the output contains. The documentation is the reference for those details.",
+            "keyPoints": [
+              "Plaso uses parsers to extract events from different artefact types.",
+              "Output formats include dynamic, JSON line and other timeline consumers.",
+              "Filters and preprocessing affect what appears in the timeline.",
+              "Time zone handling is central to correct interpretation."
+            ],
+            "workflow": [
+              "Read the installation and quick-start sections for your platform.",
+              "Run a small dataset first and inspect the output.",
+              "Record the parser list, filters and time zone.",
+              "Use the filtered timeline for analysis, not the raw dump."
+            ],
+            "watchOut": "The documentation tracks the current release. Commands and parser names may differ in older versions, so record the version you used."
+          }
         }
       ]
     },
@@ -333,37 +1295,163 @@
           "label": "Autopsy — Case File 001 primary analysis",
           "href": "https://www.autopsy.com/",
           "description": "Full disk image analysis, artifact extraction and keyword search.",
-          "tags": ["Case 001", "Disk", "Open source"]
+          "tags": [
+            "Case 001",
+            "Disk",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Autopsy is the primary analysis platform for Case File 001's Windows 7 disk image. It provides the case structure, ingest modules, file browser and timeline used to examine the published evidence.",
+            "why": "It gives the team a shared, reproducible path from image to findings. In Case File 001, Autopsy is where disk artefacts, keyword hits and the timeline come together.",
+            "keyPoints": [
+              "Create the case before adding evidence and record the image hash.",
+              "Use ingest modules selectively and document why each was enabled.",
+              "Tag and comment on items so the team can review findings.",
+              "The report should link every conclusion to a specific artefact."
+            ],
+            "workflow": [
+              "Verify the CFReDS image hash and add it to a new case.",
+              "Run the agreed ingest modules and review the summary.",
+              "Investigate the case questions using file tree, artefacts and timeline.",
+              "Export a report and a list of tagged evidence for review."
+            ],
+            "watchOut": "Do not treat an ingest module's output as a finding. Open the source file or record and explain how it supports the conclusion."
+          }
         },
         {
           "label": "Bulk Extractor",
           "href": "https://github.com/simsong/bulk_extractor",
           "description": "Scan raw disk images for PII, documents, and other salient features without parsing the filesystem.",
-          "tags": ["Case 001", "Disk", "Open source"]
+          "tags": [
+            "Case 001",
+            "Disk",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Bulk Extractor scans raw disk images and other data for features such as email addresses, URLs, credit-card numbers, hashes and document fragments. It does not need a parsed filesystem.",
+            "why": "It can find relevant strings and fragments even when files are deleted, fragmented or stored in unallocated space. That makes it a useful complement to a filesystem browser.",
+            "keyPoints": [
+              "Scanners define the feature types extracted from the raw data.",
+              "Output is written to feature files that can be searched and reviewed.",
+              "It can process images without mounting or parsing the filesystem.",
+              "Results include false positives and need context."
+            ],
+            "workflow": [
+              "Identify the scanners relevant to the investigative question.",
+              "Run Bulk Extractor on a copy of the image and record the options.",
+              "Review feature files for patterns, context and repetition.",
+              "Corroborate hits with filesystem or other artefact evidence."
+            ],
+            "watchOut": "A hit is a string, not proof. An email address may belong to an unrelated document or be part of a test file; verify its context."
+          }
         },
         {
           "label": "RegRipper",
           "href": "https://github.com/keydet89/RegRipper3.0",
           "description": "Parse Windows Registry hives for user activity, USB history and evidence of execution.",
-          "tags": ["Case 001", "Windows", "Open source"]
+          "tags": [
+            "Case 001",
+            "Windows",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "RegRipper is a Windows Registry parsing tool. It applies plugins to registry hives to extract user activity, USB history, execution evidence, system configuration and more.",
+            "why": "The registry records a huge amount of system and user behaviour. RegRipper turns raw hive data into readable, plugin-specific reports.",
+            "keyPoints": [
+              "It works on extracted hives, not a live registry.",
+              "Plugins target specific artefacts or keys.",
+              "Output can be reviewed as text or processed for timelines.",
+              "Hive files and transaction logs should be preserved together."
+            ],
+            "workflow": [
+              "Extract the relevant hives from a copy of the evidence.",
+              "Choose plugins for the artefact or question you are investigating.",
+              "Run the plugins and review the output in context.",
+              "Verify important values with a registry viewer."
+            ],
+            "watchOut": "Plugin coverage is not exhaustive and output can change between versions. Record the RegRipper and plugin versions."
+          }
         },
         {
           "label": "libewf / ewfacquire",
           "href": "https://github.com/libyal/libewf",
           "description": "Handle E01/Ex01 forensic image formats described in case briefs.",
-          "tags": ["Case 001", "Imaging", "Open source"]
+          "tags": [
+            "Case 001",
+            "Imaging",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "libewf is a library for reading and writing EWF forensic image formats such as E01 and Ex01. ewfacquire is a command-line tool for creating EWF images.",
+            "why": "E01 is a common evidence container that stores metadata, compression and integrity information. You need reliable tools to acquire, verify and access it.",
+            "keyPoints": [
+              "EWF images can include case metadata and chunk checksums.",
+              "Compression reduces storage but increases acquisition time.",
+              "Verification confirms the image matches the source.",
+              "The format is widely supported, but tool behaviour can vary."
+            ],
+            "workflow": [
+              "Connect the source through a write blocker.",
+              "Acquire to a new image file with clear case metadata.",
+              "Verify the image and record the hash and tool version.",
+              "Test that your analysis tool can open the image before relying on it."
+            ],
+            "watchOut": "Do not acquire to the same disk as the evidence or overwrite an existing image. Preserve the original and work from verified copies."
+          }
         },
         {
           "label": "Zeek",
           "href": "https://zeek.org/",
           "description": "Network security monitor that converts PCAP into structured logs for analysis.",
-          "tags": ["Case 002", "Network", "Open source"]
+          "tags": [
+            "Case 002",
+            "Network",
+            "Open source"
+          ],
+          "guide": {
+            "overview": "Zeek is a network security monitor that turns packet captures or live traffic into structured logs. It produces connection, DNS, HTTP, file and notice logs that are easier to query than raw packets.",
+            "why": "Raw PCAP is powerful but slow to review at scale. Zeek logs give you a searchable record of network activity that can be correlated with host and timeline evidence.",
+            "keyPoints": [
+              "Zeek logs connections, protocols, files and security notices.",
+              "Scripts extend what it records and how it labels activity.",
+              "Logs are not a substitute for the packets when payload detail matters.",
+              "Capture placement determines what Zeek can see."
+            ],
+            "workflow": [
+              "Capture traffic at the right point in the network.",
+              "Process the PCAP with Zeek and record the version and scripts.",
+              "Start with conn, dns, http and files logs to build a picture.",
+              "Pivot back to the PCAP for payload-level confirmation."
+            ],
+            "watchOut": "Encrypted traffic limits log detail, and a capture from the wrong segment may miss the activity entirely."
+          }
         },
         {
           "label": "Ransomware decryption tools",
           "href": "https://www.nomoreransom.org/en/decryption-tools.html",
           "description": "Free decryption tools by ransomware family — relevant to the T1486 scenario in Case File 002.",
-          "tags": ["Case 002", "Ransomware", "Free"]
+          "tags": [
+            "Case 002",
+            "Ransomware",
+            "Free"
+          ],
+          "guide": {
+            "overview": "No More Ransom is a joint initiative by law enforcement and security companies that provides free decryption tools and guidance for many ransomware families.",
+            "why": "If a victim has a known ransomware family and a viable decryptor, recovery may be possible without paying. It is one of the first places to check after identification.",
+            "keyPoints": [
+              "Decryptors are family-specific; correct identification is essential.",
+              "The site provides instructions and tool downloads from participating vendors.",
+              "Some variants have no working decryptor.",
+              "Paying does not guarantee recovery and can fund criminal activity."
+            ],
+            "workflow": [
+              "Preserve the ransom note, encrypted files and any samples for identification.",
+              "Identify the family using trusted analysis, not just the note's name.",
+              "Check the initiative for a matching decryptor and follow its instructions.",
+              "Test on copies and document the result."
+            ],
+            "watchOut": "Never run an untrusted decryptor on original evidence. Work on copies and verify the tool's source before use."
+          }
         }
       ]
     }
