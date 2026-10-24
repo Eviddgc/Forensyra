@@ -149,6 +149,10 @@ Copy-Item .env.example .env.local # Windows PowerShell
 | `EMAILJS_MENTOR_AUTOREPLY_TEMPLATE_ID` | Optional mentor auto-reply |
 | `EMAILJS_NEWSLETTER_TEMPLATE_ID` | Footer newsletter template |
 
+Ready-made branded HTML for every template lives in
+[`docs/email-templates/`](docs/email-templates/README.md) — paste it into the
+EmailJS template editor's code view and copy the IDs into the variables above.
+
 When email is not configured the forms fail **honestly** — they never claim a
 message was sent.
 
