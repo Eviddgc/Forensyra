@@ -53,6 +53,11 @@ const cmsContentSecurityPolicy = [
 const nextConfig: NextConfig = {
   // Don't advertise the framework in every response.
   poweredByHeader: false,
+  experimental: {
+    // Marks this 16.4.0 → 16.4.3 upgrade as a security-driven change, so the
+    // dev/build advisory nudge stops firing on every run.
+    agentUpgrade: "security",
+  },
   async headers() {
     return [
       {
