@@ -47,7 +47,7 @@ const TIMELINE = [
 ];
 
 const SCOPE_IN = [
-  "forensyra.com and its subdomains, and this repository",
+  "forensyra.in and its subdomains, and this repository",
   "The contact, application and mentor forms and their API routes",
   "Anything that leaks private data or bypasses validation",
   "Anything that lets one visitor affect another",
