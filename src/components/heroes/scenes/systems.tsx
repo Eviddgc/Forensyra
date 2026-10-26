@@ -41,17 +41,17 @@ export function EthicsScene() {
 
         <line x1="330" y1="238" x2="286" y2="344" stroke={C.gold} strokeWidth="0.9" opacity="0.7" />
         <line x1="330" y1="238" x2="374" y2="344" stroke={C.gold} strokeWidth="0.9" opacity="0.7" />
-        <path d="M272 350 Q330 398 388 350" stroke={C.gold} strokeWidth="2" fill="rgba(230,182,79,0.07)" />
+        <path d="M272 350 Q330 398 388 350" stroke={C.gold} strokeWidth="2" fill="rgba(214,176,104,0.07)" />
         <path d="M286 344 L374 344" stroke={C.gold} strokeWidth="0.8" opacity="0.5" />
 
         <line x1="650" y1="238" x2="606" y2="344" stroke={C.gold} strokeWidth="0.9" opacity="0.7" />
         <line x1="650" y1="238" x2="694" y2="344" stroke={C.gold} strokeWidth="0.9" opacity="0.7" />
-        <path d="M592 350 Q650 398 708 350" stroke={C.gold} strokeWidth="2" fill="rgba(230,182,79,0.07)" />
+        <path d="M592 350 Q650 398 708 350" stroke={C.gold} strokeWidth="2" fill="rgba(214,176,104,0.07)" />
         <path d="M606 344 L694 344" stroke={C.gold} strokeWidth="0.8" opacity="0.5" />
 
         <g transform="rotate(-5 330 318)">
           <rect x="300" y="300" width="60" height="38" rx="3" fill={C.card} stroke={C.blue} strokeWidth="0.8" />
-          <RuleLines x={308} y={311} width={44} rows={3} gap={8} color="rgba(106,160,220,0.45)" shortEvery={2} />
+          <RuleLines x={308} y={311} width={44} rows={3} gap={8} color="rgba(212,175,95,0.45)" shortEvery={2} />
         </g>
 
         <g transform="rotate(6 650 318)">
@@ -139,8 +139,8 @@ export function SecurityScene() {
     <Scene>
       <defs>
         <linearGradient id="shield-face" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1d3e5f" />
-          <stop offset="62%" stopColor="#102741" />
+          <stop offset="0%" stopColor="#2a2c31" />
+          <stop offset="62%" stopColor="#101521" />
           <stop offset="100%" stopColor="#0a1c2f" />
         </linearGradient>
         <radialGradient id="shield-glow" cx="50%" cy="40%" r="60%">
@@ -204,7 +204,7 @@ export function PlaygroundScene() {
       <defs>
         <linearGradient id="term-face" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#102945" />
-          <stop offset="100%" stopColor="#081a2c" />
+          <stop offset="100%" stopColor="#0b1017" />
         </linearGradient>
         <radialGradient id="term-glow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor={C.blue} stopOpacity="0.22" />
@@ -217,8 +217,8 @@ export function PlaygroundScene() {
 
       <g transform="rotate(-3 480 318)">
         <rect x="286" y="132" width="402" height="316" rx="13" fill={C.ink} stroke={C.gold} strokeWidth="1.4" />
-        <rect x="286" y="132" width="402" height="42" rx="13" fill="#15324e" />
-        <rect x="286" y="162" width="402" height="12" fill="#15324e" />
+        <rect x="286" y="132" width="402" height="42" rx="13" fill="#171b24" />
+        <rect x="286" y="162" width="402" height="12" fill="#171b24" />
         <line x1="286" y1="174" x2="688" y2="174" stroke={C.gold} strokeWidth="0.8" opacity="0.5" />
         <circle cx="310" cy="153" r="5" fill={C.gold} opacity="0.9" />
         <circle cx="328" cy="153" r="5" fill={C.blue} opacity="0.75" />
@@ -290,7 +290,7 @@ export function ApplyScene() {
     <Scene>
       <defs>
         <linearGradient id="apply-folder" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1d3e5f" />
+          <stop offset="0%" stopColor="#2a2c31" />
           <stop offset="100%" stopColor="#0c2137" />
         </linearGradient>
         <radialGradient id="apply-glow" cx="50%" cy="50%" r="50%">
@@ -304,7 +304,7 @@ export function ApplyScene() {
 
       <g transform="rotate(-3 486 318)">
         <path d="M296 190 L446 190 L468 216 L676 216 L676 514 L296 514 Z" fill="url(#apply-folder)" stroke={C.blue} strokeWidth="1" opacity="0.95" />
-        <path d="M296 236 L676 236 L676 514 L296 514 Z" fill="#0b1d31" stroke={C.gold} strokeWidth="1.2" />
+        <path d="M296 236 L676 236 L676 514 L296 514 Z" fill="#0c1119" stroke={C.gold} strokeWidth="1.2" />
         <rect x="290" y="224" width="88" height="27" rx="6" fill={C.gold} />
         <text x="306" y="242" fill={C.ink} fontFamily="var(--font-plex-mono), monospace" fontSize="9" letterSpacing="1.8">
           APPLICATION

@@ -87,8 +87,8 @@ export default async function RolesPage() {
 
       <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
-          <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
-            <div className="absolute inset-0 bg-[#0a1a2c]" />
+          <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
+            <div className="absolute inset-0 bg-[#0c1119]" />
             <svg
               aria-hidden="true"
               className="absolute inset-x-0 bottom-0 h-[70%] w-full"
@@ -105,17 +105,17 @@ export default async function RolesPage() {
               />
               <path
                 d="M0 220 C 240 140 420 260 720 180 C 1020 100 1200 240 1440 160"
-                stroke="rgba(230,182,79,0.3)"
+                stroke="rgba(214,176,104,0.3)"
                 strokeWidth="1"
               />
               <defs>
                 <linearGradient id="roles-cta-a" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#1b365d" />
-                  <stop offset="100%" stopColor="#0a1a2c" />
+                  <stop offset="0%" stopColor="#22262f" />
+                  <stop offset="100%" stopColor="#0c1119" />
                 </linearGradient>
                 <linearGradient id="roles-cta-b" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#16304f" />
-                  <stop offset="100%" stopColor="#071827" />
+                  <stop offset="0%" stopColor="#1b1f29" />
+                  <stop offset="100%" stopColor="#080D15" />
                 </linearGradient>
               </defs>
             </svg>
@@ -144,7 +144,7 @@ export default async function RolesPage() {
                   </a>
                   <a
                     href="/contact"
-                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#6aa0dc]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
+                    className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d4af5f]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
                   >
                     Talk to us
                   </a>

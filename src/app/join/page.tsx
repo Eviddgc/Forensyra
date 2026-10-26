@@ -61,7 +61,7 @@ export default async function JoinPage() {
           {/* Sidebar */}
           <div className="space-y-4">
             <Reveal delay={80}>
-              <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+              <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
                   Start here
                 </p>
@@ -75,7 +75,7 @@ export default async function JoinPage() {
                   </Link>
                   <Link
                     href="/apply/mentor"
-                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#6aa0dc]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
+                    className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#d4af5f]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
                   >
                     Mentor / Advisor
                     <ArrowRight className="h-4 w-4" />
@@ -87,7 +87,7 @@ export default async function JoinPage() {
               </div>
             </Reveal>
             <Reveal delay={140}>
-              <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+              <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                   <ShieldCheck className="h-5 w-5" />
                 </span>
@@ -123,7 +123,7 @@ export default async function JoinPage() {
               {roles.map((role) => (
                 <div
                   key={role.slug}
-                  className="flex items-center justify-between gap-3 rounded-xl border border-[#6aa0dc]/25 bg-[#122b46]/50 px-4 py-3"
+                  className="flex items-center justify-between gap-3 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 px-4 py-3"
                 >
                   <span className="text-sm text-foreground">{role.title}</span>
                   <Badge variant="accent">Open</Badge>

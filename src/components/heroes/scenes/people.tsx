@@ -172,7 +172,7 @@ export function RolesScene() {
           <g key={index}>
             <polygon
               points={hexPoints(point.x, point.y, 44)}
-              fill={cell.active ? "rgba(230,182,79,0.1)" : "rgba(7,24,39,0.62)"}
+              fill={cell.active ? "rgba(214,176,104,0.1)" : "rgba(8,13,21,0.62)"}
               stroke={cell.active ? C.gold : C.blue}
               strokeWidth={cell.active ? "1.8" : "1.05"}
               opacity={cell.active ? "0.96" : "0.62"}
@@ -224,7 +224,7 @@ export function TeamScene() {
       <defs>
         <radialGradient id="team-table" cx="50%" cy="40%" r="65%">
           <stop offset="0%" stopColor="#1c3b5a" />
-          <stop offset="62%" stopColor="#10263d" />
+          <stop offset="62%" stopColor="#10141c" />
           <stop offset="100%" stopColor="#0a1b2d" />
         </radialGradient>
         <radialGradient id="team-glow" cx="50%" cy="50%" r="50%">
@@ -293,7 +293,7 @@ export function TeamScene() {
             width="30"
             height="30"
             rx="9"
-            fill={seat.filled ? "rgba(230,182,79,0.13)" : C.ink}
+            fill={seat.filled ? "rgba(214,176,104,0.13)" : C.ink}
             stroke={seat.filled ? C.gold : seat.open ? C.blueLight : C.blue}
             strokeWidth={seat.filled ? "1.6" : "1.1"}
             strokeDasharray={seat.open ? "4 4" : undefined}

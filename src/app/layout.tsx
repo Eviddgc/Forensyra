@@ -4,6 +4,7 @@ import "./globals.css";
 import { Announcement } from "@/components/announcement";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { SiteBackground } from "@/components/background/site-background";
 import { Preloader } from "@/components/preloader";
 import { ScrollProgress } from "@/components/scroll-progress";
 import { JsonLd } from "@/components/json-ld";
@@ -86,7 +87,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   colorScheme: "dark",
-  themeColor: "#071827",
+  themeColor: "#080D15",
 };
 
 export default async function RootLayout({
@@ -112,7 +113,7 @@ export default async function RootLayout({
       */}
       <body
         suppressHydrationWarning
-        className="flex min-h-screen flex-col bg-background text-foreground"
+        className="relative flex min-h-screen flex-col bg-background text-foreground"
       >
         <a
           href="#main"
@@ -131,16 +132,7 @@ export default async function RootLayout({
         <ScrollProgress />
         <CommandPalette docs={docs} />
 
-        <div
-          aria-hidden="true"
-          className="pointer-events-none fixed inset-0 -z-10 overflow-hidden"
-        >
-          <div className="bg-damask absolute inset-0" />
-          <div className="fx-orb animate-drift left-[-12%] top-[-14%] h-[44rem] w-[44rem] bg-accent/20" />
-          <div className="fx-orb animate-float-slow right-[-14%] top-[16%] h-[36rem] w-[36rem] bg-accent-2/20" />
-          <div className="fx-orb bottom-[-22%] left-[28%] h-[32rem] w-[32rem] bg-accent/10" />
-          <div className="fx-noise absolute inset-0 opacity-[0.035] mix-blend-soft-light" />
-        </div>
+        <SiteBackground />
 
         <Announcement
           enabled={site.announcement.enabled}

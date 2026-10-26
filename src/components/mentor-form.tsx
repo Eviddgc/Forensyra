@@ -191,7 +191,7 @@ export function MentorForm({ configured, email }: MentorFormProps) {
         <div className="relative fx-form-panel fx-holo overflow-hidden p-8 text-center sm:p-14">
           <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
             <div className="absolute left-1/2 top-1/3 h-[20rem] w-[20rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent/15 blur-3xl" />
-            <div className="absolute right-[10%] top-[10%] h-[12rem] w-[12rem] rounded-full bg-[#6aa0dc]/10 blur-3xl" />
+            <div className="absolute right-[10%] top-[10%] h-[12rem] w-[12rem] rounded-full bg-[#d4af5f]/10 blur-3xl" />
           </div>
           <div className="relative z-10">
             <div className="flex justify-center">
@@ -233,19 +233,19 @@ export function MentorForm({ configured, email }: MentorFormProps) {
       {/* Floating 3D background orbs. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <div className="absolute -left-[10%] -top-[5%] h-[18rem] w-[18rem] rounded-full bg-accent/8 blur-3xl" />
-        <div className="absolute -right-[8%] top-[15%] h-[14rem] w-[14rem] rounded-full bg-[#6aa0dc]/10 blur-3xl" />
+        <div className="absolute -right-[8%] top-[15%] h-[14rem] w-[14rem] rounded-full bg-[#d4af5f]/10 blur-3xl" />
         <div className="absolute bottom-[-10%] left-[30%] h-[12rem] w-[12rem] rounded-full bg-accent-2/6 blur-3xl" />
         <div
           className="absolute inset-0 opacity-[0.03]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(230,182,79,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(230,182,79,0.4) 1px, transparent 1px)",
+              "linear-gradient(rgba(214,176,104,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(214,176,104,0.4) 1px, transparent 1px)",
             backgroundSize: "40px 40px",
           }}
         />
         <span className="absolute left-[15%] top-[20%] h-1 w-1 rounded-full bg-accent/60 animate-pulse" />
         <span className="absolute left-[75%] top-[10%] h-1.5 w-1.5 rounded-full bg-accent-2/50 animate-pulse" style={{ animationDelay: "0.5s" }} />
-        <span className="absolute left-[45%] top-[80%] h-1 w-1 rounded-full bg-[#6aa0dc]/60 animate-pulse" style={{ animationDelay: "1s" }} />
+        <span className="absolute left-[45%] top-[80%] h-1 w-1 rounded-full bg-[#d4af5f]/60 animate-pulse" style={{ animationDelay: "1s" }} />
         <span className="absolute left-[90%] top-[60%] h-1.5 w-1.5 rounded-full bg-accent/40 animate-pulse" style={{ animationDelay: "1.5s" }} />
       </div>
 

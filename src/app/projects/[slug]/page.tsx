@@ -81,7 +81,7 @@ export default async function ProjectPage({
       />
       {/* Hero */}
       <HeroSection variant="case">
-        <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
+        <Container variant="wide" className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
           <Reveal className="max-w-3xl">
             <Link
               href="/projects"
@@ -95,7 +95,7 @@ export default async function ProjectPage({
                 {entry.caseType ?? "Case file"}
               </span>
               {entry.status ? (
-                <span className="inline-flex items-center rounded-full border border-[#6aa0dc]/40 bg-[#6aa0dc]/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#9cc3ee]">
+                <span className="inline-flex items-center rounded-full border border-[#d4af5f]/40 bg-[#d4af5f]/10 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.14em] text-[#ecd49b]">
                   {entry.status}
                 </span>
               ) : null}
@@ -105,7 +105,7 @@ export default async function ProjectPage({
                 </span>
               ) : null}
             </div>
-            <h1 className="font-display mt-5 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="font-display mt-5 text-3xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               {entry.title}
             </h1>
             {entry.description ? (
@@ -166,7 +166,7 @@ export default async function ProjectPage({
           <ArticleToc items={toc} />
 
           <Reveal delay={80}>
-            <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+            <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
               <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
                 Case details
               </p>
@@ -200,7 +200,7 @@ export default async function ProjectPage({
 
           {entry.evidence.length > 0 ? (
             <Reveal delay={140}>
-              <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+              <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
                   Evidence
                 </p>
@@ -218,7 +218,7 @@ export default async function ProjectPage({
 
           {entry.tags.length > 0 ? (
             <Reveal delay={200}>
-              <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+              <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
                   Tags
                 </p>
@@ -226,7 +226,7 @@ export default async function ProjectPage({
                   {entry.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
+                      className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
                     >
                       {tag}
                     </span>

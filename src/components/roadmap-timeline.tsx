@@ -31,8 +31,8 @@ function statusStyles(status: MilestoneStatus) {
       };
     case "Planned":
       return {
-        badge: "border-[#6aa0dc]/40 bg-[#6aa0dc]/10 text-[#9cc3ee]",
-        dot: "bg-[#6aa0dc]",
+        badge: "border-[#d4af5f]/40 bg-[#d4af5f]/10 text-[#ecd49b]",
+        dot: "bg-[#d4af5f]",
       };
     default:
       return {
@@ -57,13 +57,13 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
       className={cn(
         "absolute inset-0 overflow-hidden",
         variant === "network" &&
-          "bg-[radial-gradient(120%_110%_at_80%_20%,#1b365d_0%,#0d2238_55%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_20%,#22262f_0%,#10141c_55%,#080D15_100%)]",
         variant === "terminal" &&
-          "bg-[radial-gradient(120%_110%_at_75%_30%,#16304f_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_30%,#1b1f29_0%,#10141c_50%,#080D15_100%)]",
         variant === "evidence" &&
-          "bg-[radial-gradient(120%_110%_at_80%_25%,#14304e_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_25%,#14304e_0%,#10141c_50%,#080D15_100%)]",
         variant === "workstation" &&
-          "bg-[radial-gradient(120%_110%_at_75%_25%,#152e4b_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_25%,#152e4b_0%,#10141c_50%,#080D15_100%)]",
       )}
     >
       <div className="bg-damask absolute inset-0 opacity-80" />
@@ -71,7 +71,7 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
         className={cn(
           "fx-orb absolute",
           variant === "network" && "-right-[10%] top-[-20%] h-[14rem] w-[14rem] bg-accent/10",
-          variant === "terminal" && "-right-[15%] bottom-[-25%] h-[13rem] w-[13rem] bg-[#6aa0dc]/10",
+          variant === "terminal" && "-right-[15%] bottom-[-25%] h-[13rem] w-[13rem] bg-[#d4af5f]/10",
           variant === "evidence" && "-right-[8%] top-[-15%] h-[12rem] w-[12rem] bg-accent-2/10",
           variant === "workstation" && "-right-[12%] bottom-[-20%] h-[13rem] w-[13rem] bg-accent/10",
         )}
@@ -94,17 +94,17 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
         />
         <path
           d="M0 90 C 60 60 120 100 180 72 C 240 44 300 88 400 58"
-          stroke="rgba(230,182,79,0.35)"
+          stroke="rgba(214,176,104,0.35)"
           strokeWidth="1"
         />
         <defs>
           <linearGradient id={`${gradientId}-a`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#1b365d" />
-            <stop offset="100%" stopColor="#0d2238" />
+            <stop offset="0%" stopColor="#22262f" />
+            <stop offset="100%" stopColor="#10141c" />
           </linearGradient>
           <linearGradient id={`${gradientId}-b`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#16304f" />
-            <stop offset="100%" stopColor="#071827" />
+            <stop offset="0%" stopColor="#1b1f29" />
+            <stop offset="100%" stopColor="#080D15" />
           </linearGradient>
         </defs>
       </svg>
@@ -130,11 +130,11 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
       </span>
 
       <Reveal delay={index * 80}>
-        <article className="group relative overflow-hidden rounded-2xl border border-[#6aa0dc]/25 bg-[#16304f]/60 backdrop-blur-sm transition-colors duration-300 hover:border-accent/40">
+        <article className="group relative overflow-hidden rounded-2xl border border-[#d4af5f]/25 bg-[#1b1f29]/60 backdrop-blur-sm transition-colors duration-300 hover:border-accent/40">
           {/* Contextual brand artwork on the right — hidden on small screens. */}
           <div className="absolute inset-y-0 right-0 hidden w-[42%] md:block">
             <MilestoneVisual variant={milestone.visual} />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#16304f]/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1b1f29]/60 via-transparent to-transparent" />
           </div>
 
           <div className="relative p-6 sm:p-8 md:max-w-[58%]">
@@ -175,7 +175,7 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
               {milestone.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
+                  className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
                 >
                   {tag}
                 </span>
@@ -197,7 +197,7 @@ export function RoadmapTimeline() {
         {/* Vertical connecting line. */}
         <span
           aria-hidden="true"
-          className="absolute bottom-6 left-5 top-6 w-px bg-gradient-to-b from-accent/60 via-[#6aa0dc]/40 to-transparent sm:left-6"
+          className="absolute bottom-6 left-5 top-6 w-px bg-gradient-to-b from-accent/60 via-[#d4af5f]/40 to-transparent sm:left-6"
         />
         <ol className="space-y-8 sm:space-y-10">
           {MILESTONES.map((milestone, index) => (
@@ -228,9 +228,9 @@ export function RoadmapCta({
   return (
     <Container variant="wide" className="pb-20 sm:pb-28">
       <Reveal>
-        <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
+        <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
           {/* Backdrop: layered peaks + warm horizon glow, drawn in brand colors. */}
-          <div className="absolute inset-0 bg-[#0a1a2c]" />
+          <div className="absolute inset-0 bg-[#0c1119]" />
           <svg
             aria-hidden="true"
             className="absolute inset-x-0 bottom-0 h-[70%] w-full"
@@ -247,17 +247,17 @@ export function RoadmapCta({
             />
             <path
               d="M0 220 C 240 140 420 260 720 180 C 1020 100 1200 240 1440 160"
-              stroke="rgba(230,182,79,0.3)"
+              stroke="rgba(214,176,104,0.3)"
               strokeWidth="1"
             />
             <defs>
               <linearGradient id="rm-cta-a" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#1b365d" />
-                <stop offset="100%" stopColor="#0a1a2c" />
+                <stop offset="0%" stopColor="#22262f" />
+                <stop offset="100%" stopColor="#0c1119" />
               </linearGradient>
               <linearGradient id="rm-cta-b" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#16304f" />
-                <stop offset="100%" stopColor="#071827" />
+                <stop offset="0%" stopColor="#1b1f29" />
+                <stop offset="100%" stopColor="#080D15" />
               </linearGradient>
             </defs>
           </svg>
@@ -287,7 +287,7 @@ export function RoadmapCta({
                 </a>
                 <a
                   href="/contact"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#6aa0dc]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d4af5f]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
                 >
                   Talk to us
                 </a>

@@ -61,7 +61,7 @@ export function BrandPlate({ className }: { className?: string }) {
     <div
       aria-hidden="true"
       className={cn(
-        "absolute inset-0 overflow-hidden bg-[radial-gradient(130%_120%_at_18%_0%,#122b46_0%,#0d2238_48%,#071827_100%)]",
+        "absolute inset-0 overflow-hidden bg-[radial-gradient(130%_120%_at_18%_0%,#151922_0%,#10141c_48%,#080D15_100%)]",
         className,
       )}
     >
@@ -81,7 +81,7 @@ export function BrandPlate({ className }: { className?: string }) {
           width={768}
           height={768}
           sizes="(max-width: 1024px) 60vw, 22rem"
-          className="h-auto w-[42%] max-w-[11rem] opacity-90 drop-shadow-[0_0_50px_rgba(230,182,79,0.35)]"
+          className="h-auto w-[42%] max-w-[11rem] opacity-90 drop-shadow-[0_0_50px_rgba(214,176,104,0.35)]"
         />
       </div>
 
