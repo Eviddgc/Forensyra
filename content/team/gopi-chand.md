@@ -4,7 +4,10 @@ role: "Lead Forensic Investigator"
 roleId: "lead-forensic-investigator"
 phase: 1
 description: "Founder and lead of Forensyra. Sets each case's direction, validates findings, and approves the published reports."
+cover: "/uploads/gopi-chand.webp"
 links:
+  - label: LinkedIn
+    url: "https://www.linkedin.com/in/gopichand-dandimeni-269709287/"
   - label: GitHub
     url: "https://github.com/Eviddgc"
 ---

@@ -135,12 +135,13 @@ collections:
         label: "Photo (optional)"
         widget: image
         required: false
-        hint: "Square headshot, stored in public/uploads. Falls back to initials when empty."
+        hint: "Portrait 4:5 recommended"
       - { name: joined, label: "Joined (YYYY-MM)", widget: string, required: false }
       - name: links
         label: Links
         widget: list
         required: false
+        hint: "Label LinkedIn / GitHub"
         fields:
           - { name: label, label: Label, widget: string }
           - { name: url, label: URL, widget: string }
