@@ -190,7 +190,7 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
 
 export function RoadmapTimeline() {
   return (
-    <Container className="py-16 sm:py-24">
+    <Container variant="wide" className="py-16 sm:py-24">
       {/* The timeline cards are h3s; this keeps the outline from skipping a level. */}
       <h2 className="sr-only">Milestones</h2>
       <div className="relative">
@@ -226,7 +226,7 @@ export function RoadmapCta({
   applyUrl: string;
 }) {
   return (
-    <Container className="pb-20 sm:pb-28">
+    <Container variant="wide" className="pb-20 sm:pb-28">
       <Reveal>
         <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
           {/* Backdrop: layered peaks + warm horizon glow, drawn in brand colors. */}

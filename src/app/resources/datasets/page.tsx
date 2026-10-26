@@ -49,7 +49,7 @@ export default function PracticeDatasetsPage() {
     <>
       {/* Hero */}
       <HeroSection variant="datasets">
-        <Container className="relative z-10 flex min-h-[430px] items-center py-20 sm:min-h-[480px] sm:py-24 lg:min-h-[520px]">
+        <Container variant="dense" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
           <Reveal>
             <div className="flex items-center gap-3">
               <HardDrive className="h-5 w-5 text-accent" />
@@ -69,7 +69,7 @@ export default function PracticeDatasetsPage() {
       </HeroSection>
 
       {/* Dataset list */}
-      <Container className="py-14 sm:py-20 max-w-[96rem]">
+      <Container variant="dense" className="py-14 sm:py-20">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
             Available datasets

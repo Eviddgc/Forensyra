@@ -6,6 +6,8 @@ import { Purpose } from "@/components/about/purpose";
 import { Approach } from "@/components/about/approach";
 import { Leadership } from "@/components/about/leadership";
 import { JoinCta } from "@/components/home/join-cta";
+import { Container } from "@/components/container";
+import { Reveal } from "@/components/reveal";
 import { getEntry } from "@/lib/content";
 import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
@@ -43,27 +45,40 @@ export default async function AboutPage() {
       {/* Sections 1–2 (announcement + navigation) and 9 (footer) are part of
           the root layout so every page shares them. */}
       <AboutHero name={site.name} subtitle={page.description ?? site.tagline} />
-      <Collective
-        name={site.name}
-        descriptor={site.descriptor}
-        motto={site.motto}
-      />
-      <Purpose />
-      <Approach />
-      <Leadership
-        founder={founder}
-        name={site.name}
-        descriptor={site.descriptor}
-        tagline={site.tagline}
-        motto={site.motto}
-      />
-      <JoinCta
-        applyUrl={site.applyUrl}
-        eyebrow="Join the Collective"
-        title="Build your DFIR portfolio with us"
-        description="Pick a role, practise on legal mock cases, and publish real work as part of a team."
-        applyLabel="Apply now"
-      />
+
+      <Container variant="wide" className="space-y-16 py-14 sm:py-20">
+        <Reveal>
+          <Collective
+            name={site.name}
+            descriptor={site.descriptor}
+            motto={site.motto}
+          />
+        </Reveal>
+        <Reveal delay={60}>
+          <Purpose />
+        </Reveal>
+        <Reveal delay={120}>
+          <Approach />
+        </Reveal>
+        <Reveal delay={180}>
+          <Leadership
+            founder={founder}
+            name={site.name}
+            descriptor={site.descriptor}
+            tagline={site.tagline}
+            motto={site.motto}
+          />
+        </Reveal>
+        <Reveal delay={240}>
+          <JoinCta
+            applyUrl={site.applyUrl}
+            eyebrow="Join the Collective"
+            title="Build your DFIR portfolio with us"
+            description="Pick a role, practise on legal mock cases, and publish real work as part of a team."
+            applyLabel="Apply now"
+          />
+        </Reveal>
+      </Container>
     </>
   );
 }

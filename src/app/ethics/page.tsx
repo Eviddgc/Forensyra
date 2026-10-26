@@ -25,10 +25,12 @@ export default async function EthicsPage() {
         description="How Forensyra works legally, ethically, and responsibly with digital evidence."
       />
 
-      <EthicsContent />
+      <Container variant="wide">
+        <EthicsContent />
+      </Container>
 
       {/* CTA banner */}
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
             {/* Mountain sunset backdrop — pure SVG. */}

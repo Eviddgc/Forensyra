@@ -78,7 +78,7 @@ export default async function WriteupPage({
       />
       {/* Hero */}
       <HeroSection variant="research">
-        <Container className="relative z-10 flex min-h-[400px] items-center py-20 sm:min-h-[460px] sm:py-24 lg:min-h-[500px]">
+        <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
           <Reveal className="max-w-3xl">
             <Link
               href="/writeups"
@@ -130,7 +130,7 @@ export default async function WriteupPage({
         </Container>
       </HeroSection>
 
-      <Container className="py-14 sm:py-16">
+      <Container variant="reading" className="py-14 sm:py-16">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-16">
           <div className="min-w-0">
             {toc.length > 1 ? (

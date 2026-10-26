@@ -57,7 +57,7 @@ export default function ContactPage() {
       <ContactHero description="Questions about a role, a case, or collaborating with the collective? Reach out — we reply to every message." />
 
       {/* Direct line */}
-      <Container className="py-14 sm:py-20">
+      <Container variant="wide" className="py-14 sm:py-20">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30 bg-[#0a1a2c] p-8 sm:p-12">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />

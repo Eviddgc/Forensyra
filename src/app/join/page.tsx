@@ -31,7 +31,7 @@ export default async function JoinPage() {
     <>
       <JoinHero description="Applications are open for the founding team. Limited spots — pick a role and apply." />
 
-      <Container className="py-14 sm:py-20">
+      <Container variant="wide" className="py-14 sm:py-20">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr]">
           {/* How to apply */}
           <Reveal>

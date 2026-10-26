@@ -25,7 +25,7 @@ export default function ResourcesPage() {
     <>
       <ResourcesHero description="Starter tools, public sample evidence, and references for digital forensics — curated for our members." />
 
-      <Container className="py-14 sm:py-20 max-w-[96rem]">
+      <Container variant="dense" className="py-14 sm:py-20">
         <LearnExplorer nodes={nodes} />
       </Container>
 {/* CTA banner */}

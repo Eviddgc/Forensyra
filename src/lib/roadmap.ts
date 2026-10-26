@@ -40,7 +40,7 @@ export const MILESTONES: Milestone[] = [
     status: "Planned",
     date: "Nov 1, 2026",
     description:
-      "Analyse public disk, memory, and network evidence as a team and publish one complete investigation report.",
+      "Analyse public disk images, USB drive images and CD evidence as a team and publish one complete investigation report.",
     details:
       "Execute Case File 001 end to end and release the report and supporting write-ups on GitHub.",
     tags: ["Mock case", "Report"],

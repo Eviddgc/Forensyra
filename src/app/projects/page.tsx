@@ -27,10 +27,12 @@ export default async function ProjectsPage() {
         description="Our flagship work: complete, publicly documented investigations built by the whole team from legal sample evidence."
       />
 
-      <ProjectsList projects={projects} />
+      <Container variant="wide">
+        <ProjectsList projects={projects} />
+      </Container>
 
       {/* CTA banner */}
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
             <div className="absolute inset-0 bg-[#0a1a2c]" />

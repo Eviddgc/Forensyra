@@ -25,10 +25,12 @@ export default async function WriteupsPage() {
           the root layout so every page shares them. */}
       <WriteupsHero description="Investigation logs, tutorials, and research — documented as we learn and as cases progress." />
 
-      <WriteupsList writeups={writeups} />
+      <Container variant="wide">
+        <WriteupsList writeups={writeups} />
+      </Container>
 
       {/* CTA banner */}
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
             <div className="absolute inset-0 bg-[#0a1a2c]" />

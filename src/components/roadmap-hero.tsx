@@ -16,7 +16,7 @@ export function RoadmapHero({
 }) {
   return (
     <HeroSection variant="roadmap">
-      <Container className="relative z-10 flex min-h-[440px] items-center py-20 sm:min-h-[490px] sm:py-24 lg:min-h-[530px]">
+      <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
         <Reveal>
           <div className="flex items-center gap-3">
             <Map className="h-5 w-5 text-accent" />

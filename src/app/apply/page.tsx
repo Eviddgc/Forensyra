@@ -35,7 +35,7 @@ export default async function ApplyPage({
         description="Apply to join Forensyra. Tell us about your interests, skills, availability, and preferred role."
       />
 
-      <Container className="py-12 sm:py-16">
+      <Container variant="form" className="py-12 sm:py-16">
         {status === "invalid" || status === "error" ? (
           <div
             role="alert"

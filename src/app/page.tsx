@@ -4,6 +4,8 @@ import { FeaturedProjects } from "@/components/home/featured-projects";
 import { EvidenceProcess } from "@/components/home/evidence-process";
 import { Benefits } from "@/components/home/benefits";
 import { WaveDivider } from "@/components/wave-divider";
+import { Container } from "@/components/container";
+import { Reveal } from "@/components/reveal";
 import { pageAlternates } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
@@ -34,9 +36,18 @@ export default async function HomePage() {
           the root layout so every page shares them. */}
       <Hero name={site.name} applyUrl={site.applyUrl} />
       <WaveDivider from="var(--color-background)" to="var(--color-light)" />
-      <FeaturedProjects projects={featured} />
-      <EvidenceProcess />
-      <Benefits />
+
+      <Container variant="wide" className="space-y-16 py-14 sm:py-20">
+        <Reveal>
+          <FeaturedProjects projects={featured} />
+        </Reveal>
+        <Reveal delay={60}>
+          <EvidenceProcess />
+        </Reveal>
+        <Reveal delay={120}>
+          <Benefits />
+        </Reveal>
+      </Container>
     </>
   );
 }

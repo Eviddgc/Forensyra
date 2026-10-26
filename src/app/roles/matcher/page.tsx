@@ -31,7 +31,7 @@ export default async function RoleMatcherPage() {
       />
 
       <HeroSection variant="matcher">
-        <Container className="relative z-10 flex min-h-[440px] items-center py-20 sm:min-h-[490px] sm:py-24 lg:min-h-[530px]">
+        <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
           <Reveal>
             <Link
               href="/roles"
@@ -57,7 +57,7 @@ export default async function RoleMatcherPage() {
         </Container>
       </HeroSection>
 
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="narrow" className="pb-20 sm:pb-28">
         <Reveal>
           <div className="mx-auto max-w-2xl">
             <RoleMatcher

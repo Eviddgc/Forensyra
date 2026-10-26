@@ -41,7 +41,7 @@ export default function PlaygroundPage() {
       />
 
       <HeroSection variant="playground">
-        <Container className="relative z-10 flex min-h-[420px] items-center py-20 sm:min-h-[470px] sm:py-24 lg:min-h-[510px]">
+        <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
           <Reveal>
             <div className="flex items-center gap-3">
               <Terminal className="h-5 w-5 text-accent" />
@@ -61,7 +61,7 @@ export default function PlaygroundPage() {
         </Container>
       </HeroSection>
 
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
           <TerminalPlayground />
         </Reveal>

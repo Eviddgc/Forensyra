@@ -3,6 +3,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { TeamHero } from "@/components/team-hero";
 import { Reveal } from "@/components/reveal";
+import { TeamMembers } from "@/components/team-members";
 import { TeamRoster } from "@/components/team-roster";
 import { EmptyState } from "@/components/empty-state";
 import { getEntries } from "@/lib/content";
@@ -29,7 +30,12 @@ export default async function TeamPage() {
     <>
       <TeamHero />
 
-      <Container className="space-y-16 py-14 sm:py-20">
+      <Container variant="wide" className="space-y-16 py-14 sm:py-20">
+        {/* Members gallery — above the roster */}
+        <Reveal>
+          <TeamMembers members={team} seats={sortedRoles.length * 2} />
+        </Reveal>
+
         {/* Roster */}
         <section>
           <Reveal>
@@ -60,7 +66,7 @@ export default async function TeamPage() {
       </Container>
 
       {/* CTA banner */}
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
             <div className="absolute inset-0 bg-[#0a1a2c]" />

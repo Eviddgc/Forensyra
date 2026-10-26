@@ -31,7 +31,7 @@ export default async function RolesPage() {
     <>
       <RolesHero description="All thirteen specialisations, in one place. Every member owns a defined role — pick the one that fits you." />
 
-      <Container className="py-14 sm:py-20">
+      <Container variant="wide" className="py-14 sm:py-20">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
             All 13 Roles
@@ -70,7 +70,7 @@ export default async function RolesPage() {
           </div>
         </Reveal>
 
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {roles.map((role, index) => (
             <div
               key={role.slug}
@@ -85,7 +85,7 @@ export default async function RolesPage() {
         </div>
       </Container>
 
-      <Container className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-20 sm:pb-28">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30">
             <div className="absolute inset-0 bg-[#0a1a2c]" />
