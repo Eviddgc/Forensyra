@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#071827" />
+    <title>Forensyra — Content Manager</title>
+    <link rel="icon" href="/icon.png" />
+    <!-- The theme is served by src/app/admin/theme.css/route.ts so it follows
+         the same production 404 gate as the CMS shell. -->
+    <link rel="stylesheet" href="/admin/theme.css" />
+    <!-- Decap resolves `config.yml` relative to the page URL, and this page is
+         served at /admin (no trailing slash), so it would request /config.yml.
+         Point it at the handler that serves the real config instead. -->
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+  </head>
+  <body>
+    <!-- Branded chrome above the CMS. Decap renders into #nc-root below it. -->
+    <div class="fx-adminbar" role="banner">
+      <a class="fx-adminbar__brand" href="/" target="_blank" rel="noopener">
+        <span class="fx-adminbar__mark">
+          <img src="/brand-mark.png" alt="" width="27" height="27" />
+        </span>
+        <span class="fx-adminbar__wordmark">FORENSYRA</span>
+      </a>
+      <span class="fx-adminbar__sep" aria-hidden="true"></span>
+      <span class="fx-adminbar__label">Content studio</span>
+      <div class="fx-adminbar__actions">
+        <span class="fx-adminbar__status">
+          <span class="fx-adminbar__dot" aria-hidden="true"></span>
+          Editorial workspace
+        </span>
+        <a class="fx-adminbar__site" href="/" target="_blank" rel="noopener" aria-label="View site">
+          <span>View site</span>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path d="M5 11 11 5" />
+            <path d="M6 5h5v5" />
+          </svg>
+        </a>
+      </div>
+    </div>
+    <noscript>
+      <p class="fx-noscript">
+        The Forensyra content studio needs JavaScript enabled to run.
+      </p>
+    </noscript>
+    <!-- Decap CMS: a browser UI for editing the Markdown/JSON content in this repo. -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  </body>
+</html>

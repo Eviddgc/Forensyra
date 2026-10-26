@@ -3,6 +3,7 @@ import path from "node:path";
 import yaml from "js-yaml";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
+import { decodeHtmlEntities } from "@/lib/html-entities";
 
 export type Collection =
   | "projects"
@@ -104,10 +105,9 @@ function parseSteps(value: unknown): EntryStep[] {
 }
 
 function slugifyHeading(text: string): string {
-  const plain = text
+  const plain = decodeHtmlEntities(text)
     .replace(/<[^>]+>/g, "")
-    .replace(/&amp;/g, " and ")
-    .replace(/&[a-z]+;/gi, " ")
+    .replace(/&/g, " and ")
     .toLowerCase()
     .replace(/[^a-z0-9\s-]/g, "")
     .trim()

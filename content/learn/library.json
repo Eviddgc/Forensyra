@@ -222,58 +222,6 @@
           }
         },
         {
-          "label": "DFIR Review",
-          "href": "https://dfir.review/",
-          "description": "A curated directory of digital forensics tools, techniques, and references.",
-          "tags": [
-            "Directory",
-            "Tools"
-          ],
-          "guide": {
-            "overview": "DFIR Review is a curated directory of digital forensics tools, techniques and references. It is designed to help practitioners find relevant resources without searching the whole web.",
-            "why": "A curated index saves time when you are looking for a tool or a starting point. It can also introduce you to options you did not know existed.",
-            "keyPoints": [
-              "The directory covers multiple DFIR disciplines and resource types.",
-              "Curated does not mean endorsed; assess each resource yourself.",
-              "Links and tool versions can change over time.",
-              "Use the directory as a starting point, then read the primary source."
-            ],
-            "workflow": [
-              "Search by discipline or artefact type.",
-              "Shortlist two or three resources and compare their scope.",
-              "Check the last update and the licence before using a tool.",
-              "Record why you chose one resource over another."
-            ],
-            "watchOut": "A directory entry is not a quality guarantee. Test the tool and read its documentation before relying on it."
-          }
-        },
-        {
-          "label": "Forensics Wiki",
-          "href": "https://forensicswiki.org/",
-          "description": "Community-maintained wiki covering forensic techniques, tools, and methodologies.",
-          "tags": [
-            "Wiki",
-            "Community"
-          ],
-          "guide": {
-            "overview": "The Forensics Wiki is a community-maintained encyclopedia of forensic techniques, tools, file formats and terminology. It is useful for orientation and vocabulary.",
-            "why": "When you meet an unfamiliar artefact or format, a wiki article can give you the basic model before you open a tool. It is often the fastest way to learn what a term means.",
-            "keyPoints": [
-              "Articles are written by contributors with varying levels of expertise.",
-              "Coverage is broad but uneven; some pages are much more detailed than others.",
-              "Use it to find the right question and the right primary source.",
-              "Check page history and references when accuracy matters."
-            ],
-            "workflow": [
-              "Look up the term or artefact to get a working definition.",
-              "Follow the references to a standard, vendor documentation or research paper.",
-              "Verify the details against your own evidence and tool output.",
-              "Note the page date if you cite it in your notes."
-            ],
-            "watchOut": "Community wikis can be stale or incomplete. Never treat a wiki page as the final authority in a report."
-          }
-        },
-        {
           "label": "MITRE ATT&CK",
           "href": "https://attack.mitre.org/",
           "description": "Knowledge base of adversary tactics and techniques — essential for threat-informed analysis.",
@@ -1018,7 +966,7 @@
         },
         {
           "label": "ACPO Good Practice Guide for Digital Evidence",
-          "href": "https://www.digitalforensics.education/acpo-principles",
+          "href": "https://www.digital-detective.net/acpo-good-practice-guide-for-digital-evidence/",
           "description": "The four ACPO principles for handling digital evidence, widely referenced in practice.",
           "tags": [
             "Standards",
@@ -1155,7 +1103,7 @@
         },
         {
           "label": "Windows Forensic Analysis Toolkit — Harlan Carvey",
-          "href": "https://www.sciencedirect.com/book/9781597494721/windows-forensic-analysis-toolkit",
+          "href": "https://shop.elsevier.com/books/windows-forensic-analysis-toolkit/carvey/978-0-12-417157-2",
           "description": "The practical field guide to Windows artefact analysis.",
           "tags": [
             "Book",

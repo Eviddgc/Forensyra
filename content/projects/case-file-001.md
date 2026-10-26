@@ -8,7 +8,12 @@ status: "Planning"
 caseType: "Mock case"
 pinned: true
 tags: ["Mock case", "Disk", "USB", "CD", "Insider threat"]
-evidence: ["Disk image", "USB artifacts", "CD image", "System logs", "Cloud sync records"]
+evidence:
+  - "Windows 7 PC disk image (20 GB)"
+  - "USB drive image 1 (4 GB)"
+  - "USB drive image 2 (4 GB)"
+  - "CD-R image (700 MB)"
+  - "Seed files and reference hash lists"
 plan:
   - label: "Week 1 — Acquisition & endpoint"
     detail: "Acquire the published images, verify every copy against its hash, then analyse the Windows 7 disk: filesystem, registry, event logs and browser history."
@@ -22,8 +27,8 @@ deliverables:
   - "A reconstructed incident timeline"
   - "A short portfolio write-up for every member"
 links:
-  - label: "NIST CFReDS — reference datasets"
-    url: "https://cfreds.nist.gov/"
+  - label: "NIST CFReDS — Data Leakage Case"
+    url: "https://cfreds.nist.gov/data_leakage_case/data-leakage-case.html"
 ---
 ## Intro
 
@@ -46,7 +51,7 @@ Around 6 GB of public, legal practice images from the NIST CFReDS Data Leakage C
 - A CD image (700 MB CD-R)
 - Seed files and reference hash lists to verify every copy
 
-The case ships in DD and EnCase formats, and NIST publishes a reference solution, so we can check our findings against the ground truth. Source: NIST CFReDS Data Leakage Case.
+The case ships in DD and EnCase formats, and NIST publishes a reference solution, so we can check our findings against the ground truth. Source: [NIST CFReDS Data Leakage Case](https://cfreds.nist.gov/data_leakage_case/data-leakage-case.html).
 
 ## The team
 

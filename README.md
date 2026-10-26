@@ -60,7 +60,7 @@ install it — the pin just keeps CI reproducible.
 | Security policy / disclosure | `/security` | `src/app/security/page.tsx` + `SECURITY.md` |
 | RSS feed | `/feed.xml` | `src/app/feed.xml/route.ts` |
 | Contact | `/contact` | `src/app/contact/page.tsx` + `site.json` |
-| Content manager (CMS) | `/admin` | `content/admin/config.yml` + `public/admin/index.html` |
+| Content manager (CMS) | `/admin` (dev only by default) | `content/admin/config.yml` + `content/admin/index.html` |
 
 Site-wide, the layout also renders structured data (Organization + WebSite),
 a `⌘K` / `Ctrl-K` command palette, per-article Open Graph cards, a sitemap, an
@@ -90,6 +90,10 @@ npm run dev        # terminal 2
 # then open http://localhost:3000/admin
 ```
 
+In production `/admin`, `/admin/config.yml` and `/admin/theme.css` return
+**404** unless the `ENABLE_CMS` environment variable is `"true"`. Leave it unset
+until the OAuth proxy is configured.
+
 ### Pinning ("keep it at the top")
 
 Add `pinned: true` to any project or write-up. Pinned items are surfaced first
@@ -109,9 +113,10 @@ content/
   pages/about.md         # About page summary (the roadmap is in src/lib/roadmap.ts)
   team/*.md              # members (role, roleId, phase, location, cover, links…)
   roles/*.md             # the 13 roles (description, work, responsibilities, skills…)
-  admin/config.yml       # Decap CMS configuration (served at /admin/config.yml)
+  admin/config.yml       # Decap CMS configuration (served at /admin/config.yml in development)
+  admin/index.html       # Decap CMS app shell (served at /admin in development)
+  admin/theme.css        # FORENSYRA navy/gold styling for the CMS shell
 public/
-  admin/index.html       # Decap CMS app shell (only used for /admin)
   uploads/               # media uploaded through the CMS
   .well-known/security.txt
 ```
@@ -180,10 +185,9 @@ Decap CMS saves content through GitHub, which needs an OAuth app:
 2. Deploy a small OAuth proxy (e.g. a Vercel function) and give it the OAuth
    app's client ID and secret. (Any Decap-compatible GitHub OAuth proxy works.)
 3. In `content/admin/config.yml`, set `base_url:` to the proxy URL.
-4. Commit and redeploy — `/admin` now signs in with GitHub.
-
-Until this is done, edit the Markdown files directly on GitHub. Nothing about
-the site breaks without it.
+4. Set `ENABLE_CMS=true` in Vercel (Project → Settings → Environment Variables)
+   and redeploy. Commit the `base_url` change at the same time. Until both are
+   done, `/admin` and `/admin/config.yml` return 404 in production.
 
 ---
 

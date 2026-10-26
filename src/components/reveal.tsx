@@ -8,7 +8,7 @@ export function Reveal({
   children,
   className,
   delay = 0,
-  threshold = 0.15,
+  threshold = 0.01,
 }: {
   children: React.ReactNode;
   className?: string;

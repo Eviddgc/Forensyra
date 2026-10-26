@@ -27,6 +27,9 @@ function evidenceId(index: number): string {
   return `EVID-${String(index + 1).padStart(3, "0")}`;
 }
 
+/** Every row is pending acquisition; the filter matches this label too. */
+const STATUS_LABEL = "Pending";
+
 /**
  * Interactive workspace for a case file: an evidence register, a local hash
  * verifier, and the investigation plan. Nothing here simulates findings — it
@@ -52,7 +55,14 @@ export function CaseWorkbench({
     const q = query.trim().toLowerCase();
     return evidence
       .map((item, index) => ({ item, index }))
-      .filter(({ item }) => (q ? item.toLowerCase().includes(q) : true));
+      .filter(({ item, index }) => {
+        if (!q) return true;
+        return (
+          item.toLowerCase().includes(q) ||
+          evidenceId(index).toLowerCase().includes(q) ||
+          STATUS_LABEL.toLowerCase().includes(q)
+        );
+      });
   }, [evidence, query]);
 
   async function copyRegister() {
@@ -60,7 +70,7 @@ export function CaseWorkbench({
     const rows = evidence
       .map(
         (item, index) =>
-          `| ${evidenceId(index)} | ${item} | _(recorded on acquisition)_ | Pending |`,
+          `| ${evidenceId(index)} | ${item} | _(recorded on acquisition)_ | ${STATUS_LABEL} |`,
       )
       .join("\n");
     const body = `${header}\n${rows}\n\nCustody log — every copy is hashed and recorded on receipt.`;
@@ -185,7 +195,7 @@ export function CaseWorkbench({
               </span>
               <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted/80">
                 <Hash className="h-3 w-3" />
-                Pending
+                {STATUS_LABEL}
               </span>
             </li>
           ))}

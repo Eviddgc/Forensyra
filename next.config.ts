@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const isDev = process.env.NODE_ENV === "development";
+// `/admin` is off in production until a GitHub OAuth proxy exists. Setting
+// ENABLE_CMS=true re-enables both the routes and their relaxed CSP.
+const cmsEnabled = isDev || process.env.ENABLE_CMS === "true";
 
 /**
  * A nonce-based CSP requires every route to render dynamically, which would
@@ -38,9 +41,10 @@ const cmsContentSecurityPolicy = [
   // Decap loads its bundle from a CDN and validates the config with Ajv, which
   // compiles validators through `new Function` — hence 'unsafe-eval' here.
   "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://unpkg.com https://cdn.jsdelivr.net",
-  "style-src 'self' 'unsafe-inline'",
+  // The admin theme mirrors the site's Playfair/Inter/IBM Plex Mono pairing.
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "img-src 'self' data: blob: https:",
-  "font-src 'self' data:",
+  "font-src 'self' data: https://fonts.gstatic.com",
   // `npx decap-server` (local backend) listens on :8081 in development only.
   `connect-src 'self' https:${isDev ? " http://localhost:8081" : ""}`,
   "media-src 'self' blob:",
@@ -53,6 +57,13 @@ const cmsContentSecurityPolicy = [
 const nextConfig: NextConfig = {
   // Don't advertise the framework in every response.
   poweredByHeader: false,
+  // The CMS routes read their shell, config and theme from `content/admin` at
+  // request time. Include the folder in the server traces so an opt-in
+  // production deploy (ENABLE_CMS=true) still has the files on disk.
+  outputFileTracingIncludes: {
+    "/admin": ["./content/admin/**/*"],
+    "/admin/*": ["./content/admin/**/*"],
+  },
   experimental: {
     // Marks this 16.4.0 → 16.4.3 upgrade as a security-driven change, so the
     // dev/build advisory nudge stops firing on every run.
@@ -79,26 +90,28 @@ const nextConfig: NextConfig = {
             : [
                 {
                   key: "Strict-Transport-Security",
-                  value: "max-age=31536000",
+                  value: "max-age=31536000; includeSubDomains; preload",
                 },
               ]),
         ],
       },
-      {
-        // Last match wins for duplicate keys, so this overrides only the CSP.
-        source: "/admin/:path*",
-        headers: [
-          { key: "Content-Security-Policy", value: cmsContentSecurityPolicy },
-        ],
-      },
-    ];
-  },
-  // Decap CMS lives in public/admin/index.html. Next doesn't map a bare
-  // directory to its index file, so route /admin (and /admin/) to it.
-  async rewrites() {
-    return [
-      { source: "/admin", destination: "/admin/index.html" },
-      { source: "/admin/", destination: "/admin/index.html" },
+      // `/admin` ships disabled unless ENABLE_CMS is set (see
+      // src/app/admin/route.ts), so the relaxed CMS policy is opt-in.
+      ...(cmsEnabled
+        ? [
+            {
+              // Last match wins for duplicate keys, so this overrides only the
+              // CSP.
+              source: "/admin/:path*",
+              headers: [
+                {
+                  key: "Content-Security-Policy",
+                  value: cmsContentSecurityPolicy,
+                },
+              ],
+            },
+          ]
+        : []),
     ];
   },
   turbopack: {

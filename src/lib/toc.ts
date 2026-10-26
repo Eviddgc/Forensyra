@@ -1,19 +1,14 @@
+import { decodeHtmlEntities } from "@/lib/html-entities";
+
 export interface TocItem {
   id: string;
   text: string;
   level: 2 | 3;
 }
 
-/** Strip tags and decode the handful of entities remark-html emits. */
+/** Strip tags and decode every entity remark-html emits. */
 export function stripHtml(html: string): string {
-  return html
-    .replace(/<[^>]+>/g, " ")
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#39;/g, "'")
-    .replace(/&nbsp;/g, " ")
+  return decodeHtmlEntities(html.replace(/<[^>]+>/g, " "))
     .replace(/\s+/g, " ")
     .trim();
 }

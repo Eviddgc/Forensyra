@@ -38,9 +38,9 @@ export function FeaturedProjects({
   const active = items[Math.min(index, items.length - 1)];
 
   return (
-    <section className="bg-light py-20 text-light-ink sm:py-28">
+    <section className="bg-light pb-20 pt-10 text-light-ink sm:pb-28 sm:pt-14">
       <Container>
-        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>
             <p className="fx-eyebrow text-accent-ink">Case Files</p>
             <h2 className="font-display mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">
@@ -84,7 +84,7 @@ export function FeaturedProjects({
                   {active.title}
                 </h3>
                 {active.description ? (
-                  <p className="mt-3 line-clamp-3 max-w-md text-sm leading-relaxed text-muted">
+                  <p className="mt-3 line-clamp-3 max-w-md pr-16 text-sm leading-relaxed text-muted">
                     {active.description}
                   </p>
                 ) : null}

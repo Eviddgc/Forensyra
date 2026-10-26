@@ -26,8 +26,8 @@ local_backend: true
 media_folder: "public/uploads"
 public_folder: "/uploads"
 
-site_url: https://forensyra.com
-display_url: https://forensyra.com
+site_url: https://forensyra.in
+display_url: https://forensyra.in
 logo_url: /brand-mark.png
 
 collections:
