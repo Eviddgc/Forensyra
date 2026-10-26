@@ -1339,7 +1339,7 @@ export function TerminalPlayground() {
               <>
                 <span className="text-accent">visitor@forensyra</span>
                 <span className="text-muted">:</span>
-                <span className="text-[#6aa0dc]">~{cwd ? `/${cwd}` : ""}$</span> {line.text}
+                <span className="text-[#d4af5f]">~{cwd ? `/${cwd}` : ""}$</span> {line.text}
               </>
             ) : (
               line.text || "\u00A0"
@@ -1448,7 +1448,7 @@ export function TerminalPlayground() {
           }
           aria-describedby="fx-terminal-hint"
           className="flex-1 bg-transparent font-mono text-[12.5px] text-foreground placeholder:text-muted/50 focus:outline-none"
-          style={{ caretColor: "#e6b64f" }}
+          style={{ caretColor: "#d6b068" }}
         />
       </form>
 

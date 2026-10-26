@@ -59,9 +59,9 @@ export default function ContactPage() {
       {/* Direct line */}
       <Container variant="wide" className="py-14 sm:py-20">
         <Reveal>
-          <section className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30 bg-[#0a1a2c] p-8 sm:p-12">
+          <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30 bg-[#0c1119] p-8 sm:p-12">
             <div className="absolute -right-20 -top-20 h-64 w-64 rounded-full bg-accent/15 blur-3xl" />
-            <div className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-[#6aa0dc]/15 blur-3xl" />
+            <div className="absolute -bottom-24 -left-16 h-64 w-64 rounded-full bg-[#d4af5f]/15 blur-3xl" />
             <div className="fx-scanlines absolute inset-0 opacity-[0.12]" />
             <div className="relative grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-center">
               <div>
@@ -84,7 +84,7 @@ export default function ContactPage() {
                 </a>
               </div>
               <div className="grid gap-3">
-                <div className="flex items-center gap-3 rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/60 p-4">
+                <div className="flex items-center gap-3 rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/60 p-4">
                   <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                     <Clock className="h-5 w-5" />
                   </span>
@@ -97,7 +97,7 @@ export default function ContactPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-3 rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/60 p-4">
+                <div className="flex items-center gap-3 rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/60 p-4">
                   <span className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                     <Sparkles className="h-5 w-5" />
                   </span>
@@ -124,7 +124,7 @@ export default function ContactPage() {
                   href={channel.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex h-full flex-col rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6 transition-colors duration-300 hover:border-accent/40"
+                  className="group flex h-full flex-col rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6 transition-colors duration-300 hover:border-accent/40"
                 >
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                     <channel.icon className="h-5 w-5" />
@@ -145,7 +145,7 @@ export default function ContactPage() {
         {/* When to use which */}
         <Reveal delay={120}>
           <div className="mt-12 grid gap-4 sm:grid-cols-2">
-            <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+            <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                   <MessageSquare className="h-5 w-5" />
@@ -160,7 +160,7 @@ export default function ContactPage() {
                 <li>• You need help choosing a role.</li>
               </ul>
             </div>
-            <div className="rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6">
+            <div className="rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6">
               <div className="flex items-center gap-3">
                 <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
                   <ArrowUpRight className="h-5 w-5" />

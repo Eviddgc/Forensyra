@@ -72,7 +72,7 @@ function Eyebrow({ children }: { children: ReactNode }) {
 
 function Tag({ children }: { children: ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/60 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-muted">
+    <span className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/60 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.1em] text-muted">
       {children}
     </span>
   );
@@ -81,7 +81,7 @@ function Tag({ children }: { children: ReactNode }) {
 function ReadingTime({ node }: { node: TreeNode }) {
   if (!node.guide) return null;
   return (
-    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#6aa0dc]/25 bg-[#0d2238]/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
+    <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#d4af5f]/25 bg-[#10141c]/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted">
       <Clock3 className="h-3.5 w-3.5 text-accent" />
       {readingMinutes(node)} min read
     </span>
@@ -122,7 +122,7 @@ function TreeItem({
           "group flex w-full items-center gap-2.5 rounded-lg px-2.5 py-1.5 text-left text-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/70",
           isSelected
             ? "bg-accent/15 text-accent-2"
-            : "text-muted hover:bg-[#122b46]/60 hover:text-foreground",
+            : "text-muted hover:bg-[#151922]/60 hover:text-foreground",
         )}
         style={{ paddingLeft: `${depth * 14 + 8}px` }}
       >
@@ -143,7 +143,7 @@ function TreeItem({
               ? "border-accent/40 bg-accent/10 text-accent-2"
               : node.guide
                 ? "border-accent/25 bg-accent/[0.07] text-accent-2"
-                : "border-[#6aa0dc]/30 bg-[#0d2238]/60 text-muted",
+                : "border-[#d4af5f]/30 bg-[#10141c]/60 text-muted",
           )}
         >
           {isFolder ? (
@@ -218,7 +218,7 @@ function GroupView({
         </div>
       </div>
 
-      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#6aa0dc]/20 pt-5">
+      <div className="flex flex-wrap items-center justify-between gap-3 border-t border-[#d4af5f]/20 pt-5">
         <p className="font-mono text-[10px] uppercase tracking-[0.22em] text-accent">
           {guides.length} on-site {guides.length === 1 ? "guide" : "guides"}
         </p>
@@ -234,7 +234,7 @@ function GroupView({
             <button
               type="button"
               onClick={() => onSelect(child)}
-              className="group flex h-full w-full flex-col items-start gap-3 rounded-xl border border-[#6aa0dc]/20 bg-[#0d2238]/40 p-4 text-left transition-colors hover:border-accent/45 hover:bg-[#122b46]/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/70"
+              className="group flex h-full w-full flex-col items-start gap-3 rounded-xl border border-[#d4af5f]/20 bg-[#10141c]/40 p-4 text-left transition-colors hover:border-accent/45 hover:bg-[#151922]/60 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent/70"
             >
               <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent/25 bg-accent/[0.07] text-accent-2">
                 <BookOpen className="h-4 w-4" />
@@ -273,7 +273,7 @@ function GroupView({
             {links.map((child) => {
               const body = (
                 <>
-                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#6aa0dc]/30 bg-[#0d2238]/60 text-muted">
+                  <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-[#d4af5f]/30 bg-[#10141c]/60 text-muted">
                     <FileText className="h-4 w-4" />
                   </span>
                   <span className="min-w-0">
@@ -290,7 +290,7 @@ function GroupView({
                 </>
               );
               const className =
-                "group flex w-full items-center gap-3 rounded-xl border border-[#6aa0dc]/20 bg-[#0d2238]/40 p-3 text-left transition-colors hover:border-accent/40";
+                "group flex w-full items-center gap-3 rounded-xl border border-[#d4af5f]/20 bg-[#10141c]/40 p-3 text-left transition-colors hover:border-accent/40";
               return (
                 <li key={child.id}>
                   {child.href ? (
@@ -349,7 +349,7 @@ function GuideView({
           type="button"
           onClick={() => parent && onSelect(parent)}
           disabled={!parent}
-          className="inline-flex items-center gap-1.5 rounded-full border border-[#6aa0dc]/25 bg-[#0d2238]/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted transition hover:border-accent/45 hover:text-accent-2 disabled:cursor-default disabled:opacity-60"
+          className="inline-flex items-center gap-1.5 rounded-full border border-[#d4af5f]/25 bg-[#10141c]/50 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.12em] text-muted transition hover:border-accent/45 hover:text-accent-2 disabled:cursor-default disabled:opacity-60"
         >
           <ChevronLeft className="h-3.5 w-3.5" />
           {node.groupLabel ?? "Learn library"}
@@ -406,7 +406,7 @@ function GuideView({
           {keyPoints.length > 0 || workflow.length > 0 ? (
             <div className="mt-8 grid gap-6 lg:grid-cols-2">
               {keyPoints.length > 0 ? (
-                <section className="rounded-2xl border border-[#6aa0dc]/20 bg-[#0d2238]/35 p-5">
+                <section className="rounded-2xl border border-[#d4af5f]/20 bg-[#10141c]/35 p-5">
                   <div className="flex items-center gap-2.5">
                     <CheckCircle2 className="h-5 w-5 text-accent" />
                     <h3 className="font-display text-lg font-semibold tracking-tight text-foreground">
@@ -430,7 +430,7 @@ function GuideView({
               ) : null}
 
               {workflow.length > 0 ? (
-                <section className="rounded-2xl border border-[#6aa0dc]/20 bg-[#0d2238]/35 p-5">
+                <section className="rounded-2xl border border-[#d4af5f]/20 bg-[#10141c]/35 p-5">
                   <div className="flex items-center gap-2.5">
                     <ListOrdered className="h-5 w-5 text-accent" />
                     <h3 className="font-display text-lg font-semibold tracking-tight text-foreground">
@@ -469,7 +469,7 @@ function GuideView({
           ) : null}
 
           {guide.fieldNote ? (
-            <section className="mt-4 rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/45 p-5">
+            <section className="mt-4 rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/45 p-5">
               <div className="flex items-center gap-2.5">
                 <Sparkles className="h-5 w-5 text-accent" />
                 <h3 className="font-display text-lg font-semibold tracking-tight text-foreground">
@@ -484,7 +484,7 @@ function GuideView({
         </>
       ) : null}
 
-      <footer className="mt-8 border-t border-[#6aa0dc]/20 pt-6">
+      <footer className="mt-8 border-t border-[#d4af5f]/20 pt-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="text-sm font-medium text-foreground">
@@ -631,9 +631,9 @@ export function LearnExplorer({ nodes }: { nodes: TreeNode[] }) {
   }, [nodes]);
 
   return (
-    <div className="relative rounded-3xl border border-[#6aa0dc]/25 bg-[#122b46]/30 p-3 sm:p-4 lg:p-6">
+    <div className="relative rounded-3xl border border-[#d4af5f]/25 bg-[#151922]/30 p-3 sm:p-4 lg:p-6">
       <div className="grid gap-4 lg:grid-cols-[380px_1fr] lg:gap-8">
-        <aside className="min-w-0 max-h-[46vh] overflow-auto rounded-2xl border border-[#6aa0dc]/20 bg-[#0d2238]/40 p-3 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:self-start lg:overflow-auto">
+        <aside className="min-w-0 max-h-[46vh] overflow-auto rounded-2xl border border-[#d4af5f]/20 bg-[#10141c]/40 p-3 lg:sticky lg:top-28 lg:max-h-[calc(100vh-8rem)] lg:self-start lg:overflow-auto">
           <div className="px-2 pb-3">
             <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-accent">
               Learn library
@@ -660,7 +660,7 @@ export function LearnExplorer({ nodes }: { nodes: TreeNode[] }) {
         <section
           ref={panelRef}
           id="learn-panel"
-          className="min-h-[60vh] min-w-0 scroll-mt-24 rounded-2xl bg-[#0d2238]/40 p-5 sm:p-7 lg:p-8"
+          className="min-h-[60vh] min-w-0 scroll-mt-24 rounded-2xl bg-[#10141c]/40 p-5 sm:p-7 lg:p-8"
         >
           {selected ? (
             selected.kind === "folder" ? (

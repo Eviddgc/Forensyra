@@ -67,7 +67,7 @@ export function FeaturedProjects({
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[5/4]">
                 <BrandPlate className="transition-transform duration-700 ease-out group-hover:scale-105" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#071827] via-[#071827]/70 to-[#071827]/20" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#080D15] via-[#080D15]/70 to-[#080D15]/20" />
               </div>
 
               <div className="absolute inset-0 flex flex-col justify-end p-6 sm:p-8">

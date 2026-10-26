@@ -28,13 +28,13 @@ function CardVisual({ variant }: { variant: Visual }) {
       className={cn(
         "absolute inset-0 overflow-hidden",
         variant === "fingerprint" &&
-          "bg-[radial-gradient(120%_110%_at_80%_30%,#1b365d_0%,#0d2238_55%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_30%,#22262f_0%,#10141c_55%,#080D15_100%)]",
         variant === "network" &&
-          "bg-[radial-gradient(120%_110%_at_75%_25%,#16304f_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_25%,#1b1f29_0%,#10141c_50%,#080D15_100%)]",
         variant === "terminal" &&
-          "bg-[radial-gradient(120%_110%_at_80%_20%,#14304e_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_20%,#14304e_0%,#10141c_50%,#080D15_100%)]",
         variant === "evidence" &&
-          "bg-[radial-gradient(120%_110%_at_75%_30%,#152e4b_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_30%,#152e4b_0%,#10141c_50%,#080D15_100%)]",
       )}
     >
       <div className="bg-damask absolute inset-0 opacity-80" />
@@ -44,12 +44,12 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <circle cx="100" cy="100" r="90" stroke="#6aa0dc" strokeWidth="0.8" />
-          <circle cx="100" cy="100" r="75" stroke="#6aa0dc" strokeWidth="0.6" />
-          <circle cx="100" cy="100" r="60" stroke="#6aa0dc" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="45" stroke="#6aa0dc" strokeWidth="0.4" />
-          <path d="M100 10 C 130 10 155 35 155 65 C 155 95 130 120 100 120 C 70 120 45 95 45 65 C 45 35 70 10 100 10" stroke="#6aa0dc" strokeWidth="0.8" />
-          <path d="M100 25 C 120 25 140 45 140 65 C 140 85 120 105 100 105 C 80 105 60 85 60 65 C 60 45 80 25 100 25" stroke="#6aa0dc" strokeWidth="0.6" />
+          <circle cx="100" cy="100" r="90" stroke="#d4af5f" strokeWidth="0.8" />
+          <circle cx="100" cy="100" r="75" stroke="#d4af5f" strokeWidth="0.6" />
+          <circle cx="100" cy="100" r="60" stroke="#d4af5f" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="45" stroke="#d4af5f" strokeWidth="0.4" />
+          <path d="M100 10 C 130 10 155 35 155 65 C 155 95 130 120 100 120 C 70 120 45 95 45 65 C 45 35 70 10 100 10" stroke="#d4af5f" strokeWidth="0.8" />
+          <path d="M100 25 C 120 25 140 45 140 65 C 140 85 120 105 100 105 C 80 105 60 85 60 65 C 60 45 80 25 100 25" stroke="#d4af5f" strokeWidth="0.6" />
         </svg>
       )}
       {variant === "network" && (
@@ -58,17 +58,17 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <circle cx="100" cy="100" r="80" stroke="#6aa0dc" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="55" stroke="#6aa0dc" strokeWidth="0.4" />
-          <circle cx="100" cy="100" r="30" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="100" y1="20" x2="100" y2="180" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="20" y1="100" x2="180" y2="100" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="44" y1="44" x2="156" y2="156" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="156" y1="44" x2="44" y2="156" stroke="#6aa0dc" strokeWidth="0.3" />
-          <circle cx="100" cy="20" r="4" fill="#6aa0dc" opacity="0.6" />
-          <circle cx="100" cy="180" r="4" fill="#6aa0dc" opacity="0.6" />
-          <circle cx="20" cy="100" r="4" fill="#6aa0dc" opacity="0.6" />
-          <circle cx="180" cy="100" r="4" fill="#6aa0dc" opacity="0.6" />
+          <circle cx="100" cy="100" r="80" stroke="#d4af5f" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="55" stroke="#d4af5f" strokeWidth="0.4" />
+          <circle cx="100" cy="100" r="30" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="100" y1="20" x2="100" y2="180" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="20" y1="100" x2="180" y2="100" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="44" y1="44" x2="156" y2="156" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="156" y1="44" x2="44" y2="156" stroke="#d4af5f" strokeWidth="0.3" />
+          <circle cx="100" cy="20" r="4" fill="#d4af5f" opacity="0.6" />
+          <circle cx="100" cy="180" r="4" fill="#d4af5f" opacity="0.6" />
+          <circle cx="20" cy="100" r="4" fill="#d4af5f" opacity="0.6" />
+          <circle cx="180" cy="100" r="4" fill="#d4af5f" opacity="0.6" />
         </svg>
       )}
       {variant === "terminal" && (
@@ -77,14 +77,14 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <rect x="30" y="30" width="140" height="100" rx="4" stroke="#6aa0dc" strokeWidth="0.6" />
-          <rect x="40" y="40" width="120" height="80" rx="2" stroke="#6aa0dc" strokeWidth="0.4" />
-          <line x1="50" y1="55" x2="150" y2="55" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="65" x2="130" y2="65" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="75" x2="140" y2="75" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="85" x2="120" y2="85" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="95" x2="135" y2="95" stroke="#6aa0dc" strokeWidth="0.3" />
-          <rect x="70" y="140" width="60" height="8" rx="2" stroke="#6aa0dc" strokeWidth="0.4" />
+          <rect x="30" y="30" width="140" height="100" rx="4" stroke="#d4af5f" strokeWidth="0.6" />
+          <rect x="40" y="40" width="120" height="80" rx="2" stroke="#d4af5f" strokeWidth="0.4" />
+          <line x1="50" y1="55" x2="150" y2="55" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="65" x2="130" y2="65" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="75" x2="140" y2="75" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="85" x2="120" y2="85" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="95" x2="135" y2="95" stroke="#d4af5f" strokeWidth="0.3" />
+          <rect x="70" y="140" width="60" height="8" rx="2" stroke="#d4af5f" strokeWidth="0.4" />
         </svg>
       )}
       {variant === "evidence" && (
@@ -93,15 +93,15 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <circle cx="100" cy="100" r="70" stroke="#6aa0dc" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="50" stroke="#6aa0dc" strokeWidth="0.4" />
-          <circle cx="100" cy="100" r="30" stroke="#6aa0dc" strokeWidth="0.3" />
-          <circle cx="100" cy="100" r="10" fill="#6aa0dc" opacity="0.4" />
-          <line x1="100" y1="30" x2="100" y2="170" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="30" y1="100" x2="170" y2="100" stroke="#6aa0dc" strokeWidth="0.3" />
+          <circle cx="100" cy="100" r="70" stroke="#d4af5f" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="50" stroke="#d4af5f" strokeWidth="0.4" />
+          <circle cx="100" cy="100" r="30" stroke="#d4af5f" strokeWidth="0.3" />
+          <circle cx="100" cy="100" r="10" fill="#d4af5f" opacity="0.4" />
+          <line x1="100" y1="30" x2="100" y2="170" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="30" y1="100" x2="170" y2="100" stroke="#d4af5f" strokeWidth="0.3" />
         </svg>
       )}
-      <div className="fx-orb absolute -right-[10%] top-[-20%] h-[10rem] w-[10rem] bg-[#6aa0dc]/10" />
+      <div className="fx-orb absolute -right-[10%] top-[-20%] h-[10rem] w-[10rem] bg-[#d4af5f]/10" />
       <div className="fx-scanlines absolute inset-0 opacity-[0.15]" />
     </div>
   );
@@ -112,7 +112,7 @@ function statusBadge(status?: string) {
   if (value.includes("plan") || value.includes("progress") || value.includes("active"))
     return "border-accent/50 bg-accent/10 text-accent-2";
   if (value.includes("upcoming") || value.includes("research"))
-    return "border-[#6aa0dc]/40 bg-[#6aa0dc]/10 text-[#9cc3ee]";
+    return "border-[#d4af5f]/40 bg-[#d4af5f]/10 text-[#ecd49b]";
   if (value.includes("publish") || value.includes("complete") || value.includes("done"))
     return "border-success/40 bg-success/10 text-success";
   return "border-border bg-surface-2/60 text-muted";
@@ -213,12 +213,12 @@ export function ProjectsList({ projects }: { projects: Entry[] }) {
             <Reveal key={project.slug} delay={index * 60}>
               <Link
                 href={`/projects/${project.slug}`}
-                className="group relative block overflow-hidden rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 transition-colors duration-300 hover:border-accent/40"
+                className="group relative block overflow-hidden rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 transition-colors duration-300 hover:border-accent/40"
               >
                 {/* Contextual visual on the right. */}
                 <div className="absolute inset-y-0 right-0 hidden w-[38%] md:block">
                   <CardVisual variant={visualForSlug(project.slug)} />
-                  <div className="absolute inset-0 bg-gradient-to-r from-[#122b46]/70 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#151922]/70 via-transparent to-transparent" />
                 </div>
 
                 <div className="relative p-6 sm:p-8 md:max-w-[62%]">
@@ -267,7 +267,7 @@ export function ProjectsList({ projects }: { projects: Entry[] }) {
                       {project.tags.slice(0, 5).map((tag) => (
                         <span
                           key={tag}
-                          className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
+                          className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
                         >
                           {tag}
                         </span>

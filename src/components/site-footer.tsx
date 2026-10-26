@@ -69,12 +69,12 @@ export function SiteFooter({
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="bg-damask absolute inset-0 opacity-[0.15]" />
         <div className="fx-orb -left-[10%] -top-[20%] h-[24rem] w-[24rem] bg-accent/6" />
-        <div className="fx-orb -right-[10%] bottom-[-15%] h-[20rem] w-[20rem] bg-[#6aa0dc]/6" />
+        <div className="fx-orb -right-[10%] bottom-[-15%] h-[20rem] w-[20rem] bg-[#d4af5f]/6" />
         <div
           className="absolute inset-0 opacity-[0.02]"
           style={{
             backgroundImage:
-              "linear-gradient(rgba(230,182,79,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(230,182,79,0.4) 1px, transparent 1px)",
+              "linear-gradient(rgba(214,176,104,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(214,176,104,0.4) 1px, transparent 1px)",
             backgroundSize: "50px 50px",
           }}
         />

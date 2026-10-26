@@ -9,7 +9,7 @@ import { HeroSection } from "@/components/heroes/hero-backdrop";
 export function TeamHero() {
   return (
     <HeroSection variant="team">
-      <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
+      <Container variant="wide" className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
         <Reveal>
           <div className="flex items-center gap-3">
             <Users className="h-5 w-5 text-accent" />
@@ -17,7 +17,7 @@ export function TeamHero() {
               The People
             </p>
           </div>
-          <h1 className="font-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+          <h1 className="font-display mt-4 max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
             Meet the <span className="text-accent-2">Collective</span>
           </h1>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">
