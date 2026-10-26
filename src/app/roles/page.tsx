@@ -13,7 +13,7 @@ import { getSite } from "@/lib/site";
 export const metadata: Metadata = {
   title: "Roles",
   description:
-    "Thirteen specialist roles across digital forensics — find the one that fits you.",
+    "Fifteen specialist roles across digital forensics — find the one that fits you.",
   alternates: pageAlternates("/roles"),
 };
 
@@ -29,21 +29,21 @@ export default async function RolesPage() {
 
   return (
     <>
-      <RolesHero description="All thirteen specialisations, in one place. Every member owns a defined role — pick the one that fits you." />
+      <RolesHero description="All fifteen specialisations, in one place — two more revealing soon. Every member owns a defined role — pick the one that fits you." />
 
       <Container variant="wide" className="py-14 sm:py-20">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
-            All 13 Roles
+            All 15 Roles
           </p>
           <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             The full roster
           </h2>
           <p className="mt-2 max-w-xl text-[15px] text-muted">
-            Numbered 01 to 13. Roles are filled in phases — phase 1 builds the
-            core team, phase 2 grows the collective. Expand any role to see what
-            the work involves, the key responsibilities, and the skills and
-            tools we look for.
+            Numbered 01 to 15. Roles are filled in phases — phase 1 builds the
+            core team, phase 2 grows the collective. Two new roles are coming
+            soon. Expand any role to see what the work involves, the key
+            responsibilities, and the skills and tools we look for.
           </p>
         </Reveal>
 
