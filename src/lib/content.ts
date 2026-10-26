@@ -49,6 +49,8 @@ export interface Entry {
   evidence: string[];
   plan: EntryStep[];
   deliverables: string[];
+  /** Coming-soon placeholder roles */
+  comingSoon: boolean;
   /** Write-ups */
   author?: string;
   cover?: string;
@@ -223,6 +225,7 @@ async function parseFile(
     plan: parseSteps(data.plan),
     deliverables: toArray(data.deliverables),
     author: data.author ? String(data.author) : undefined,
+    comingSoon: data.comingSoon === true,
     cover: data.cover ? String(data.cover) : undefined,
     links: parseLinks(data.links),
     content: rendered,

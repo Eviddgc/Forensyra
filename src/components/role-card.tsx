@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Lock } from "lucide-react";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
 import type { Entry } from "@/lib/content";
@@ -14,6 +15,55 @@ export function RoleCard({
   holders?: Entry[];
 }) {
   const filled = holders.length > 0;
+
+  if (role.comingSoon) {
+    return (
+      <div
+        className={cn(
+          cardClass,
+          "relative flex flex-col gap-3 overflow-hidden p-5 opacity-70 select-none",
+        )}
+      >
+        {/* blurred content hint */}
+        <div className="flex items-start gap-3">
+          <span className="font-mono text-xs text-muted">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <div className="flex-1">
+            <h3 className="text-base font-semibold text-foreground blur-[3px]">
+              {role.title}
+            </h3>
+            {role.description ? (
+              <p className="mt-1 text-sm text-muted blur-[2px]">
+                {role.description}
+              </p>
+            ) : null}
+          </div>
+          <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
+            {role.phase !== undefined ? (
+              <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                {phaseLabel(role.phase)}
+              </span>
+            ) : null}
+            <Badge variant="muted">Soon</Badge>
+          </div>
+        </div>
+
+        {/* lock overlay */}
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[inherit] bg-background/60 backdrop-blur-[1px]">
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent">
+            <Lock className="h-4 w-4" />
+          </span>
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+            Revealing soon
+          </p>
+          <p className="max-w-[16rem] text-center text-xs text-muted">
+            This role is coming in Phase 2. Stay tuned.
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <details className={cn(cardClass, "group flex flex-col p-5 open:ring-1 open:ring-accent/30")}>
