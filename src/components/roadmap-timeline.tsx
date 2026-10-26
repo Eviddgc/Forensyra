@@ -59,11 +59,11 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
         variant === "network" &&
           "bg-[radial-gradient(120%_110%_at_80%_20%,#22262f_0%,#10141c_55%,#080D15_100%)]",
         variant === "terminal" &&
-          "bg-[radial-gradient(120%_110%_at_75%_30%,#1b1f29_0%,#10141c_50%,#080D15_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_30%,#1d1e23_0%,#10141c_50%,#080D15_100%)]",
         variant === "evidence" &&
-          "bg-[radial-gradient(120%_110%_at_80%_25%,#14304e_0%,#10141c_50%,#080D15_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_25%,#292a2f_0%,#10141c_50%,#080D15_100%)]",
         variant === "workstation" &&
-          "bg-[radial-gradient(120%_110%_at_75%_25%,#152e4b_0%,#10141c_50%,#080D15_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_25%,#28292e_0%,#10141c_50%,#080D15_100%)]",
       )}
     >
       <div className="bg-damask absolute inset-0 opacity-80" />
@@ -103,7 +103,7 @@ function MilestoneVisual({ variant }: { variant: Milestone["visual"] }) {
             <stop offset="100%" stopColor="#10141c" />
           </linearGradient>
           <linearGradient id={`${gradientId}-b`} x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#1b1f29" />
+            <stop offset="0%" stopColor="#1d1e23" />
             <stop offset="100%" stopColor="#080D15" />
           </linearGradient>
         </defs>
@@ -130,11 +130,11 @@ function MilestoneCard({ milestone, index }: { milestone: Milestone; index: numb
       </span>
 
       <Reveal delay={index * 80}>
-        <article className="group relative overflow-hidden rounded-2xl border border-[#d4af5f]/25 bg-[#1b1f29]/60 backdrop-blur-sm transition-colors duration-300 hover:border-accent/40">
+        <article className="group relative overflow-hidden rounded-2xl border border-[#d4af5f]/25 bg-[#1d1e23]/60 backdrop-blur-sm transition-colors duration-300 hover:border-accent/40">
           {/* Contextual brand artwork on the right — hidden on small screens. */}
           <div className="absolute inset-y-0 right-0 hidden w-[42%] md:block">
             <MilestoneVisual variant={milestone.visual} />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#1b1f29]/60 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#1d1e23]/60 via-transparent to-transparent" />
           </div>
 
           <div className="relative p-6 sm:p-8 md:max-w-[58%]">
@@ -256,7 +256,7 @@ export function RoadmapCta({
                 <stop offset="100%" stopColor="#0c1119" />
               </linearGradient>
               <linearGradient id="rm-cta-b" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#1b1f29" />
+                <stop offset="0%" stopColor="#1d1e23" />
                 <stop offset="100%" stopColor="#080D15" />
               </linearGradient>
             </defs>

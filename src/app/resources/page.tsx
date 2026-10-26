@@ -58,7 +58,7 @@ export default function ResourcesPage() {
                   <stop offset="100%" stopColor="#0c1119" />
                 </linearGradient>
                 <linearGradient id="res-cta-b" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor="#1b1f29" />
+                  <stop offset="0%" stopColor="#1d1e23" />
                   <stop offset="100%" stopColor="#080D15" />
                 </linearGradient>
               </defs>

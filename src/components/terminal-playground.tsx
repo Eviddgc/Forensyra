@@ -1312,7 +1312,7 @@ export function TerminalPlayground() {
   return (
     <div
       id="fx-terminal"
-      className="overflow-hidden rounded-2xl border border-border-gold/50 bg-[#050d17] shadow-[0_40px_80px_-40px] shadow-black/90"
+      className="overflow-hidden rounded-2xl border border-border-gold/50 bg-[#0a0b10] shadow-[0_40px_80px_-40px] shadow-black/90"
     >
       <div className="flex items-center gap-2 border-b border-border/60 bg-background/60 px-4 py-2.5">
         <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-danger/70" />

@@ -62,8 +62,8 @@ export function ResourcesScene() {
           <stop offset="100%" stopColor={C.gold} stopOpacity="0" />
         </radialGradient>
         <linearGradient id="lib-page" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1c3d5c" />
-          <stop offset="100%" stopColor="#101521" />
+          <stop offset="0%" stopColor="#35363b" />
+          <stop offset="100%" stopColor="#131419" />
         </linearGradient>
       </defs>
 
@@ -141,18 +141,18 @@ export function RoadmapScene() {
         </radialGradient>
         <linearGradient id="road-sky" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#080D15" stopOpacity="0" />
-          <stop offset="100%" stopColor="#153350" stopOpacity="0.8" />
+          <stop offset="100%" stopColor="#2c2d32" stopOpacity="0.8" />
         </linearGradient>
         <linearGradient id="road-far" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1d3f61" />
-          <stop offset="100%" stopColor="#112a45" />
+          <stop offset="0%" stopColor="#37383d" />
+          <stop offset="100%" stopColor="#24252a" />
         </linearGradient>
         <linearGradient id="road-mid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#183755" />
-          <stop offset="100%" stopColor="#0d233b" />
+          <stop offset="0%" stopColor="#2f3035" />
+          <stop offset="100%" stopColor="#1e1f24" />
         </linearGradient>
         <linearGradient id="road-near" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#122c49" />
+          <stop offset="0%" stopColor="#26272c" />
           <stop offset="100%" stopColor="#0b1017" />
         </linearGradient>
       </defs>
@@ -167,7 +167,7 @@ export function RoadmapScene() {
         return <circle key={index} cx={point.x} cy={point.y} r={index % 5 === 0 ? 1.8 : 1} fill={index % 5 === 0 ? C.gold : C.blue} opacity={0.35 + (index % 3) * 0.12} />;
       })}
 
-      <path d="M0 430 L296 330 L338 356 L392 294 L444 344 L498 304 L548 352 L602 316 L660 362 L714 328 L760 350 L760 570 L0 570 Z" fill="#1b3f61" opacity="0.52" />
+      <path d="M0 430 L296 330 L338 356 L392 294 L444 344 L498 304 L548 352 L602 316 L660 362 L714 328 L760 350 L760 570 L0 570 Z" fill="#36373c" opacity="0.52" />
       <path d="M0 440 L316 320 L378 370 L438 286 L506 352 L566 300 L638 362 L714 318 L760 338 L760 570 L0 570 Z" fill="url(#road-far)" opacity="0.92" />
       <path d="M438 286 L456 300 L438 310 L419 300 Z" fill="#f5f4f0" opacity="0.35" />
       <path d="M0 474 L332 396 L412 442 L486 372 L560 430 L632 382 L714 424 L760 444 L760 570 L0 570 Z" fill="url(#road-mid)" />
@@ -213,9 +213,9 @@ export function DatasetsScene() {
     <Scene>
       <defs>
         <radialGradient id="disk-face" cx="45%" cy="38%" r="68%">
-          <stop offset="0%" stopColor="#214464" />
+          <stop offset="0%" stopColor="#3c3d42" />
           <stop offset="62%" stopColor="#10141c" />
-          <stop offset="100%" stopColor="#0a1b2e" />
+          <stop offset="100%" stopColor="#16171c" />
         </radialGradient>
         <linearGradient id="disk-arm" x1="0" y1="0" x2="1" y2="1">
           <stop offset="0%" stopColor="#ecd49b" />
@@ -247,7 +247,7 @@ export function DatasetsScene() {
       })}
 
       <g transform="rotate(24 492 310)">
-        <rect x="492" y="80" width="16" height="172" rx="7" fill="#163451" stroke={C.blue} strokeWidth="0.8" />
+        <rect x="492" y="80" width="16" height="172" rx="7" fill="#2d2e33" stroke={C.blue} strokeWidth="0.8" />
         <circle cx="500" cy="82" r="17" fill={C.ink} stroke={C.gold} strokeWidth="1.2" />
         <circle cx="500" cy="82" r="5" fill={C.gold} />
         <path d="M500 256 L518 292 L500 310 L482 292 Z" fill="url(#disk-arm)" stroke={C.blueLight} strokeWidth="0.8" />
@@ -295,7 +295,7 @@ export function ToolsScene() {
           <circle cx="2" cy="2" r="1.2" fill={C.blue} opacity="0.3" />
         </pattern>
         <linearGradient id="tool-case" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#193957" />
+          <stop offset="0%" stopColor="#313237" />
           <stop offset="100%" stopColor="#10141c" />
         </linearGradient>
       </defs>

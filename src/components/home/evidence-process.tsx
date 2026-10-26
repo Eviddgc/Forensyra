@@ -7,7 +7,6 @@ import {
   Share2,
   type LucideIcon,
 } from "lucide-react";
-import { BrandBackdrop } from "@/components/brand-visual";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { btnOutlineDarkLg } from "@/lib/ui";
@@ -47,9 +46,8 @@ const STEPS: Array<{
 
 export function EvidenceProcess() {
   return (
-    <section className="relative isolate overflow-hidden bg-surface">
-      <BrandBackdrop align="right" />
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-background/90 via-background/72 to-background/90" />
+    <section className="relative isolate overflow-hidden">
+      <div className="pointer-events-none absolute inset-0 bg-transparent" />
 
       <Container className="relative z-10 py-20 sm:py-28">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">

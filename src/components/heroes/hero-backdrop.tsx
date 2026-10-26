@@ -14,7 +14,7 @@ type Theme = {
 
 const THEMES: Record<HeroVariant, Theme> = {
   about: {
-    wash: "linear-gradient(118deg, #080D15 0%, #0b2036 46%, #102b46 100%)",
+    wash: "linear-gradient(118deg, #080D15 0%, #1b1c21 46%, #24252a 100%)",
     glow: "radial-gradient(48% 62% at 86% 38%, rgba(212,175,95,0.2), transparent 72%), radial-gradient(54% 58% at 6% 12%, rgba(214,176,104,0.12), transparent 70%)",
     pattern: "radial-gradient(rgba(245,213,138,0.18) 1px, transparent 1.4px)",
     patternSize: "30px 30px",
@@ -23,7 +23,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[41rem] lg:w-[44rem]",
   },
   roles: {
-    wash: "linear-gradient(122deg, #080D15 0%, #0a2138 44%, #11304a 100%)",
+    wash: "linear-gradient(122deg, #080D15 0%, #1b1c21 44%, #28292e 100%)",
     glow: "radial-gradient(50% 60% at 88% 26%, rgba(214,176,104,0.16), transparent 70%), radial-gradient(46% 56% at 4% 80%, rgba(212,175,95,0.12), transparent 72%)",
     pattern: "linear-gradient(60deg, rgba(212,175,95,0.09) 1px, transparent 1px), linear-gradient(-60deg, rgba(212,175,95,0.07) 1px, transparent 1px)",
     patternSize: "34px 60px",
@@ -32,7 +32,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[42rem] lg:w-[45rem]",
   },
   projects: {
-    wash: "linear-gradient(120deg, #080D15 0%, #0e1219 48%, #0f304d 100%)",
+    wash: "linear-gradient(120deg, #080D15 0%, #0e1219 48%, #28292e 100%)",
     glow: "radial-gradient(52% 62% at 84% 28%, rgba(212,175,95,0.22), transparent 72%), radial-gradient(48% 54% at 4% 90%, rgba(214,176,104,0.1), transparent 70%)",
     pattern: "linear-gradient(rgba(212,175,95,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,95,0.1) 1px, transparent 1px)",
     patternSize: "44px 44px",
@@ -41,7 +41,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[44rem] lg:w-[47rem]",
   },
   writeups: {
-    wash: "linear-gradient(116deg, #080D15 0%, #0c233b 44%, #181c25 100%)",
+    wash: "linear-gradient(116deg, #080D15 0%, #1d1e23 44%, #181c25 100%)",
     glow: "radial-gradient(50% 60% at 82% 34%, rgba(214,176,104,0.13), transparent 70%), radial-gradient(52% 62% at 8% 78%, rgba(212,175,95,0.12), transparent 72%)",
     pattern: "repeating-linear-gradient(to bottom, rgba(245,244,240,0.06) 0 1px, transparent 1px 28px)",
     patternSize: "auto",
@@ -50,7 +50,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[43rem] lg:w-[46rem]",
   },
   resources: {
-    wash: "linear-gradient(124deg, #080D15 0%, #0b223a 46%, #12324c 100%)",
+    wash: "linear-gradient(124deg, #080D15 0%, #1c1d22 46%, #2a2b30 100%)",
     glow: "radial-gradient(54% 64% at 82% 48%, rgba(214,176,104,0.14), transparent 70%), radial-gradient(48% 58% at 6% 20%, rgba(212,175,95,0.14), transparent 72%)",
     pattern: "repeating-linear-gradient(to right, rgba(214,176,104,0.07) 0 1px, transparent 1px 52px)",
     patternSize: "auto",
@@ -59,7 +59,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[42rem] lg:w-[45rem]",
   },
   roadmap: {
-    wash: "linear-gradient(180deg, #080D15 0%, #0a2036 46%, #18354d 100%)",
+    wash: "linear-gradient(180deg, #080D15 0%, #1a1b20 46%, #2d2e33 100%)",
     glow: "radial-gradient(52% 58% at 76% 26%, rgba(214,176,104,0.24), transparent 72%), radial-gradient(44% 52% at 8% 86%, rgba(212,175,95,0.12), transparent 70%)",
     pattern: "repeating-radial-gradient(ellipse at 72% 54%, transparent 0 42px, rgba(212,175,95,0.07) 43px 44px)",
     patternSize: "auto",
@@ -68,7 +68,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[45rem] lg:w-[48rem]",
   },
   team: {
-    wash: "linear-gradient(118deg, #080D15 0%, #0b223b 48%, #151922 100%)",
+    wash: "linear-gradient(118deg, #080D15 0%, #1c1d22 48%, #151922 100%)",
     glow: "radial-gradient(50% 60% at 84% 46%, rgba(212,175,95,0.18), transparent 72%), radial-gradient(46% 54% at 4% 12%, rgba(214,176,104,0.12), transparent 70%)",
     pattern: "radial-gradient(rgba(212,175,95,0.18) 1px, transparent 1.4px)",
     patternSize: "34px 34px",
@@ -77,7 +77,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[45rem] lg:w-[48rem]",
   },
   join: {
-    wash: "linear-gradient(122deg, #080D15 0%, #0d2337 46%, #1b3042 100%)",
+    wash: "linear-gradient(122deg, #080D15 0%, #1d1e23 46%, #2a2b30 100%)",
     glow: "radial-gradient(56% 66% at 78% 34%, rgba(214,176,104,0.2), transparent 70%), radial-gradient(46% 58% at 4% 82%, rgba(212,175,95,0.14), transparent 72%)",
     pattern: "repeating-linear-gradient(90deg, rgba(214,176,104,0.06) 0 1px, transparent 1px 46px)",
     patternSize: "auto",
@@ -86,7 +86,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[40rem] lg:w-[43rem]",
   },
   ethics: {
-    wash: "linear-gradient(120deg, #080D15 0%, #0f131b 44%, #1e3243 100%)",
+    wash: "linear-gradient(120deg, #080D15 0%, #0f131b 44%, #2c2d32 100%)",
     glow: "radial-gradient(54% 64% at 80% 36%, rgba(214,176,104,0.2), transparent 70%), radial-gradient(46% 56% at 4% 16%, rgba(245,244,240,0.08), transparent 72%)",
     pattern: "repeating-linear-gradient(to right, rgba(214,176,104,0.08) 0 1px, transparent 1px 64px)",
     patternSize: "auto",
@@ -95,7 +95,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[43rem] lg:w-[46rem]",
   },
   contact: {
-    wash: "linear-gradient(118deg, #080D15 0%, #0d1118 48%, #0d3150 100%)",
+    wash: "linear-gradient(118deg, #080D15 0%, #0d1118 48%, #28292e 100%)",
     glow: "radial-gradient(56% 64% at 86% 42%, rgba(212,175,95,0.22), transparent 72%), radial-gradient(48% 56% at 6% 82%, rgba(214,176,104,0.1), transparent 70%)",
     pattern: "repeating-radial-gradient(circle at 64% 50%, transparent 0 60px, rgba(212,175,95,0.08) 61px 62px)",
     patternSize: "auto",
@@ -104,7 +104,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[42rem] lg:w-[45rem]",
   },
   security: {
-    wash: "linear-gradient(124deg, #080D15 0%, #0b1017 46%, #0b2c48 100%)",
+    wash: "linear-gradient(124deg, #080D15 0%, #0b1017 46%, #24252a 100%)",
     glow: "radial-gradient(50% 62% at 82% 32%, rgba(214,176,104,0.16), transparent 70%), radial-gradient(52% 60% at 6% 84%, rgba(212,175,95,0.16), transparent 72%)",
     pattern: "linear-gradient(rgba(212,175,95,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(212,175,95,0.09) 1px, transparent 1px)",
     patternSize: "38px 38px",
@@ -113,7 +113,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[42rem] lg:w-[45rem]",
   },
   playground: {
-    wash: "linear-gradient(120deg, #080D15 0%, #0b1017 44%, #0d2c46 100%)",
+    wash: "linear-gradient(120deg, #080D15 0%, #0b1017 44%, #24252a 100%)",
     glow: "radial-gradient(54% 64% at 82% 32%, rgba(212,175,95,0.22), transparent 72%), radial-gradient(44% 54% at 6% 18%, rgba(214,176,104,0.08), transparent 70%)",
     pattern: "radial-gradient(rgba(212,175,95,0.2) 1px, transparent 1.4px)",
     patternSize: "26px 26px",
@@ -122,7 +122,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[44rem] lg:w-[47rem]",
   },
   apply: {
-    wash: "linear-gradient(122deg, #080D15 0%, #0f131b 46%, #1b3248 100%)",
+    wash: "linear-gradient(122deg, #080D15 0%, #0f131b 46%, #2c2d32 100%)",
     glow: "radial-gradient(54% 64% at 80% 36%, rgba(214,176,104,0.18), transparent 70%), radial-gradient(48% 56% at 6% 84%, rgba(212,175,95,0.14), transparent 72%)",
     pattern: "radial-gradient(rgba(214,176,104,0.16) 1px, transparent 1.4px)",
     patternSize: "32px 32px",
@@ -131,7 +131,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[44rem] lg:w-[47rem]",
   },
   mentor: {
-    wash: "linear-gradient(118deg, #080D15 0%, #0e1219 46%, #13304a 100%)",
+    wash: "linear-gradient(118deg, #080D15 0%, #0e1219 46%, #292a2f 100%)",
     glow: "radial-gradient(52% 62% at 82% 34%, rgba(212,175,95,0.18), transparent 72%), radial-gradient(46% 56% at 6% 16%, rgba(214,176,104,0.12), transparent 70%)",
     pattern: "radial-gradient(rgba(245,213,138,0.18) 1px, transparent 1.4px)",
     patternSize: "36px 36px",
@@ -149,7 +149,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[44rem] lg:w-[47rem]",
   },
   search: {
-    wash: "linear-gradient(120deg, #080D15 0%, #0a2139 46%, #102e47 100%)",
+    wash: "linear-gradient(120deg, #080D15 0%, #1b1c21 46%, #26272c 100%)",
     glow: "radial-gradient(52% 62% at 84% 38%, rgba(212,175,95,0.18), transparent 72%), radial-gradient(46% 56% at 4% 84%, rgba(214,176,104,0.1), transparent 70%)",
     pattern: "repeating-linear-gradient(to bottom, rgba(245,244,240,0.055) 0 1px, transparent 1px 32px)",
     patternSize: "auto",
@@ -158,7 +158,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[41rem] lg:w-[44rem]",
   },
   datasets: {
-    wash: "linear-gradient(122deg, #080D15 0%, #0d1118 46%, #113653 100%)",
+    wash: "linear-gradient(122deg, #080D15 0%, #0d1118 46%, #2d2e33 100%)",
     glow: "radial-gradient(54% 64% at 82% 40%, rgba(212,175,95,0.22), transparent 72%), radial-gradient(46% 56% at 4% 86%, rgba(214,176,104,0.1), transparent 70%)",
     pattern: "repeating-radial-gradient(circle at 64% 50%, transparent 0 50px, rgba(212,175,95,0.06) 51px 52px)",
     patternSize: "auto",
@@ -167,7 +167,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     artWidth: "md:w-[43rem] lg:w-[46rem]",
   },
   tools: {
-    wash: "linear-gradient(120deg, #080D15 0%, #0a223a 46%, #17334c 100%)",
+    wash: "linear-gradient(120deg, #080D15 0%, #1c1d22 46%, #2c2d32 100%)",
     glow: "radial-gradient(52% 62% at 84% 34%, rgba(214,176,104,0.14), transparent 72%), radial-gradient(50% 58% at 6% 82%, rgba(212,175,95,0.14), transparent 72%)",
     pattern: "radial-gradient(rgba(212,175,95,0.2) 1px, transparent 1.4px)",
     patternSize: "24px 24px",

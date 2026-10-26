@@ -223,9 +223,9 @@ export function TeamScene() {
     <Scene>
       <defs>
         <radialGradient id="team-table" cx="50%" cy="40%" r="65%">
-          <stop offset="0%" stopColor="#1c3b5a" />
+          <stop offset="0%" stopColor="#34353a" />
           <stop offset="62%" stopColor="#10141c" />
-          <stop offset="100%" stopColor="#0a1b2d" />
+          <stop offset="100%" stopColor="#16171c" />
         </radialGradient>
         <radialGradient id="team-glow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor={C.gold} stopOpacity="0.35" />

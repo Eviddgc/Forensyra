@@ -1623,3 +1623,31 @@
   color: #080d15;
   box-shadow: 0 10px 28px -14px rgba(214, 176, 104, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.35);
 }
+
+/* Forms stay solid navy (not glass) with gold focus accents */
+.fx-form-panel {
+  background: linear-gradient(180deg, #11151d 0%, #0a0e15 100%);
+  border: 1px solid rgba(214, 176, 104, 0.24);
+  transform: none;
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, 0.95), inset 0 1px 0 rgba(255, 244, 214, 0.05);
+}
+.fx-form-panel:hover {
+  transform: none;
+}
+.fx-form-section {
+  background: #0d1118;
+  border: 1px solid rgba(214, 176, 104, 0.14);
+  transform: none;
+}
+.fx-form-section:hover {
+  transform: none;
+}
+.fx-input {
+  background: #090d14;
+  border: 1px solid rgba(214, 176, 104, 0.2);
+}
+.fx-input:focus,
+.fx-input:focus-visible {
+  border-color: rgba(214, 176, 104, 0.75);
+  box-shadow: 0 0 0 3px rgba(214, 176, 104, 0.14);
+}
