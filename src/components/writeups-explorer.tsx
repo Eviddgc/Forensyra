@@ -42,13 +42,13 @@ function CardVisual({ variant }: { variant: Visual }) {
       className={cn(
         "absolute inset-0 overflow-hidden",
         variant === "document" &&
-          "bg-[radial-gradient(120%_110%_at_80%_30%,#1b365d_0%,#0d2238_55%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_30%,#22262f_0%,#10141c_55%,#080D15_100%)]",
         variant === "fingerprint" &&
-          "bg-[radial-gradient(120%_110%_at_75%_25%,#16304f_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_25%,#1d1e23_0%,#10141c_50%,#080D15_100%)]",
         variant === "terminal" &&
-          "bg-[radial-gradient(120%_110%_at_80%_20%,#14304e_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_20%,#292a2f_0%,#10141c_50%,#080D15_100%)]",
         variant === "network" &&
-          "bg-[radial-gradient(120%_110%_at_75%_30%,#152e4b_0%,#0d2238_50%,#071827_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_30%,#28292e_0%,#10141c_50%,#080D15_100%)]",
       )}
     >
       <div className="bg-damask absolute inset-0 opacity-80" />
@@ -58,12 +58,12 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <rect x="40" y="20" width="120" height="160" rx="4" stroke="#6aa0dc" strokeWidth="0.8" />
-          <rect x="55" y="40" width="90" height="6" rx="2" fill="#6aa0dc" opacity="0.4" />
-          <rect x="55" y="55" width="70" height="4" rx="2" fill="#6aa0dc" opacity="0.3" />
-          <rect x="55" y="65" width="80" height="4" rx="2" fill="#6aa0dc" opacity="0.3" />
-          <rect x="55" y="75" width="60" height="4" rx="2" fill="#6aa0dc" opacity="0.3" />
-          <rect x="55" y="85" width="75" height="4" rx="2" fill="#6aa0dc" opacity="0.3" />
+          <rect x="40" y="20" width="120" height="160" rx="4" stroke="#d4af5f" strokeWidth="0.8" />
+          <rect x="55" y="40" width="90" height="6" rx="2" fill="#d4af5f" opacity="0.4" />
+          <rect x="55" y="55" width="70" height="4" rx="2" fill="#d4af5f" opacity="0.3" />
+          <rect x="55" y="65" width="80" height="4" rx="2" fill="#d4af5f" opacity="0.3" />
+          <rect x="55" y="75" width="60" height="4" rx="2" fill="#d4af5f" opacity="0.3" />
+          <rect x="55" y="85" width="75" height="4" rx="2" fill="#d4af5f" opacity="0.3" />
         </svg>
       )}
       {variant === "fingerprint" && (
@@ -72,12 +72,12 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <circle cx="100" cy="100" r="90" stroke="#6aa0dc" strokeWidth="0.8" />
-          <circle cx="100" cy="100" r="75" stroke="#6aa0dc" strokeWidth="0.6" />
-          <circle cx="100" cy="100" r="60" stroke="#6aa0dc" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="45" stroke="#6aa0dc" strokeWidth="0.4" />
-          <path d="M100 10 C 130 10 155 35 155 65 C 155 95 130 120 100 120 C 70 120 45 95 45 65 C 45 35 70 10 100 10" stroke="#6aa0dc" strokeWidth="0.8" />
-          <path d="M100 25 C 120 25 140 45 140 65 C 140 85 120 105 100 105 C 80 105 60 85 60 65 C 60 45 80 25 100 25" stroke="#6aa0dc" strokeWidth="0.6" />
+          <circle cx="100" cy="100" r="90" stroke="#d4af5f" strokeWidth="0.8" />
+          <circle cx="100" cy="100" r="75" stroke="#d4af5f" strokeWidth="0.6" />
+          <circle cx="100" cy="100" r="60" stroke="#d4af5f" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="45" stroke="#d4af5f" strokeWidth="0.4" />
+          <path d="M100 10 C 130 10 155 35 155 65 C 155 95 130 120 100 120 C 70 120 45 95 45 65 C 45 35 70 10 100 10" stroke="#d4af5f" strokeWidth="0.8" />
+          <path d="M100 25 C 120 25 140 45 140 65 C 140 85 120 105 100 105 C 80 105 60 85 60 65 C 60 45 80 25 100 25" stroke="#d4af5f" strokeWidth="0.6" />
         </svg>
       )}
       {variant === "terminal" && (
@@ -86,13 +86,13 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <rect x="30" y="30" width="140" height="100" rx="4" stroke="#6aa0dc" strokeWidth="0.6" />
-          <rect x="40" y="40" width="120" height="80" rx="2" stroke="#6aa0dc" strokeWidth="0.4" />
-          <line x1="50" y1="55" x2="150" y2="55" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="65" x2="130" y2="65" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="75" x2="140" y2="75" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="85" x2="120" y2="85" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="50" y1="95" x2="135" y2="95" stroke="#6aa0dc" strokeWidth="0.3" />
+          <rect x="30" y="30" width="140" height="100" rx="4" stroke="#d4af5f" strokeWidth="0.6" />
+          <rect x="40" y="40" width="120" height="80" rx="2" stroke="#d4af5f" strokeWidth="0.4" />
+          <line x1="50" y1="55" x2="150" y2="55" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="65" x2="130" y2="65" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="75" x2="140" y2="75" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="85" x2="120" y2="85" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="50" y1="95" x2="135" y2="95" stroke="#d4af5f" strokeWidth="0.3" />
         </svg>
       )}
       {variant === "network" && (
@@ -101,18 +101,18 @@ function CardVisual({ variant }: { variant: Visual }) {
           viewBox="0 0 200 200"
           fill="none"
         >
-          <circle cx="100" cy="100" r="70" stroke="#6aa0dc" strokeWidth="0.5" />
-          <circle cx="100" cy="100" r="50" stroke="#6aa0dc" strokeWidth="0.4" />
-          <circle cx="100" cy="100" r="30" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="100" y1="30" x2="100" y2="170" stroke="#6aa0dc" strokeWidth="0.3" />
-          <line x1="30" y1="100" x2="170" y2="100" stroke="#6aa0dc" strokeWidth="0.3" />
-          <circle cx="100" cy="30" r="4" fill="#6aa0dc" opacity="0.6" />
-          <circle cx="100" cy="170" r="4" fill="#6aa0dc" opacity="0.6" />
-          <circle cx="30" cy="100" r="4" fill="#6aa0dc" opacity="0.6" />
-          <circle cx="170" cy="100" r="4" fill="#6aa0dc" opacity="0.6" />
+          <circle cx="100" cy="100" r="70" stroke="#d4af5f" strokeWidth="0.5" />
+          <circle cx="100" cy="100" r="50" stroke="#d4af5f" strokeWidth="0.4" />
+          <circle cx="100" cy="100" r="30" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="100" y1="30" x2="100" y2="170" stroke="#d4af5f" strokeWidth="0.3" />
+          <line x1="30" y1="100" x2="170" y2="100" stroke="#d4af5f" strokeWidth="0.3" />
+          <circle cx="100" cy="30" r="4" fill="#d4af5f" opacity="0.6" />
+          <circle cx="100" cy="170" r="4" fill="#d4af5f" opacity="0.6" />
+          <circle cx="30" cy="100" r="4" fill="#d4af5f" opacity="0.6" />
+          <circle cx="170" cy="100" r="4" fill="#d4af5f" opacity="0.6" />
         </svg>
       )}
-      <div className="fx-orb absolute -right-[10%] top-[-20%] h-[8rem] w-[8rem] bg-[#6aa0dc]/10" />
+      <div className="fx-orb absolute -right-[10%] top-[-20%] h-[8rem] w-[8rem] bg-[#d4af5f]/10" />
       <div className="fx-scanlines absolute inset-0 opacity-[0.15]" />
     </div>
   );
@@ -129,16 +129,16 @@ function WriteupCard({ entry }: { entry: WriteupCardData }) {
   return (
     <Link
       href={`/writeups/${entry.slug}`}
-      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 transition-colors duration-300 hover:border-accent/40"
+      className="group relative flex h-full flex-col overflow-hidden rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 transition-colors duration-300 hover:border-accent/40"
     >
       <div className="relative h-40 overflow-hidden">
         <CardVisual variant={visualForSlug(entry.slug)} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#122b46] via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#151922] via-transparent to-transparent" />
         <div className="absolute bottom-3 left-4 flex items-center gap-2">
-          <span className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/80 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted backdrop-blur-sm">
+          <span className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/80 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted backdrop-blur-sm">
             Write-up
           </span>
-          <span className="inline-flex items-center gap-1 rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/80 px-2.5 py-0.5 font-mono text-[10px] text-muted backdrop-blur-sm">
+          <span className="inline-flex items-center gap-1 rounded-full border border-[#d4af5f]/30 bg-[#10141c]/80 px-2.5 py-0.5 font-mono text-[10px] text-muted backdrop-blur-sm">
             <Clock className="h-2.5 w-2.5" />
             {entry.minutes} min
           </span>
@@ -173,7 +173,7 @@ function WriteupCard({ entry }: { entry: WriteupCardData }) {
             {entry.tags.slice(0, 3).map((tag) => (
               <span
                 key={tag}
-                className="inline-flex items-center rounded-full border border-[#6aa0dc]/25 bg-[#0d2238]/50 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
+                className="inline-flex items-center rounded-full border border-[#d4af5f]/25 bg-[#10141c]/50 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
               >
                 {tag}
               </span>
@@ -309,7 +309,7 @@ export function WriteupsExplorer({ items }: { items: WriteupCardData[] }) {
                     "inline-flex items-center rounded-full border px-3 py-1 font-mono text-[10px] uppercase tracking-[0.1em] transition",
                     active
                       ? "border-accent bg-accent/15 text-accent-2"
-                      : "border-[#6aa0dc]/25 bg-[#0d2238]/50 text-muted hover:border-accent/50 hover:text-foreground",
+                      : "border-[#d4af5f]/25 bg-[#10141c]/50 text-muted hover:border-accent/50 hover:text-foreground",
                   )}
                 >
                   {tag}

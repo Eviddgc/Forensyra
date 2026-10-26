@@ -62,8 +62,8 @@ export function ResourcesScene() {
           <stop offset="100%" stopColor={C.gold} stopOpacity="0" />
         </radialGradient>
         <linearGradient id="lib-page" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1c3d5c" />
-          <stop offset="100%" stopColor="#102741" />
+          <stop offset="0%" stopColor="#35363b" />
+          <stop offset="100%" stopColor="#131419" />
         </linearGradient>
       </defs>
 
@@ -80,7 +80,7 @@ export function ResourcesScene() {
 
       {SHELF_BOOKS.map((book, index) => (
         <g key={index}>
-          <rect x={book.x} y={book.y} width={book.w} height={book.h} rx="2" fill={book.gold ? "rgba(230,182,79,0.1)" : "rgba(7,24,39,0.72)"} stroke={book.gold ? C.gold : C.blue} strokeWidth={book.gold ? "1" : "0.7"} opacity={book.gold ? "0.85" : "0.62"} />
+          <rect x={book.x} y={book.y} width={book.w} height={book.h} rx="2" fill={book.gold ? "rgba(214,176,104,0.1)" : "rgba(8,13,21,0.72)"} stroke={book.gold ? C.gold : C.blue} strokeWidth={book.gold ? "1" : "0.7"} opacity={book.gold ? "0.85" : "0.62"} />
           <line x1={book.x + 4} y1={book.y + 9} x2={book.x + book.w - 4} y2={book.y + 9} stroke={book.gold ? C.goldLight : C.blueLight} strokeWidth="0.7" opacity="0.55" />
           <line x1={book.x + 4} y1={book.y + 15} x2={book.x + book.w - 4} y2={book.y + 15} stroke={C.lineSoft} strokeWidth="0.6" />
         </g>
@@ -140,20 +140,20 @@ export function RoadmapScene() {
           <stop offset="100%" stopColor={C.gold} stopOpacity="0" />
         </radialGradient>
         <linearGradient id="road-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#071827" stopOpacity="0" />
-          <stop offset="100%" stopColor="#153350" stopOpacity="0.8" />
+          <stop offset="0%" stopColor="#080D15" stopOpacity="0" />
+          <stop offset="100%" stopColor="#2c2d32" stopOpacity="0.8" />
         </linearGradient>
         <linearGradient id="road-far" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1d3f61" />
-          <stop offset="100%" stopColor="#112a45" />
+          <stop offset="0%" stopColor="#37383d" />
+          <stop offset="100%" stopColor="#24252a" />
         </linearGradient>
         <linearGradient id="road-mid" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#183755" />
-          <stop offset="100%" stopColor="#0d233b" />
+          <stop offset="0%" stopColor="#2f3035" />
+          <stop offset="100%" stopColor="#1e1f24" />
         </linearGradient>
         <linearGradient id="road-near" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#122c49" />
-          <stop offset="100%" stopColor="#081a2c" />
+          <stop offset="0%" stopColor="#26272c" />
+          <stop offset="100%" stopColor="#0b1017" />
         </linearGradient>
       </defs>
 
@@ -167,7 +167,7 @@ export function RoadmapScene() {
         return <circle key={index} cx={point.x} cy={point.y} r={index % 5 === 0 ? 1.8 : 1} fill={index % 5 === 0 ? C.gold : C.blue} opacity={0.35 + (index % 3) * 0.12} />;
       })}
 
-      <path d="M0 430 L296 330 L338 356 L392 294 L444 344 L498 304 L548 352 L602 316 L660 362 L714 328 L760 350 L760 570 L0 570 Z" fill="#1b3f61" opacity="0.52" />
+      <path d="M0 430 L296 330 L338 356 L392 294 L444 344 L498 304 L548 352 L602 316 L660 362 L714 328 L760 350 L760 570 L0 570 Z" fill="#36373c" opacity="0.52" />
       <path d="M0 440 L316 320 L378 370 L438 286 L506 352 L566 300 L638 362 L714 318 L760 338 L760 570 L0 570 Z" fill="url(#road-far)" opacity="0.92" />
       <path d="M438 286 L456 300 L438 310 L419 300 Z" fill="#f5f4f0" opacity="0.35" />
       <path d="M0 474 L332 396 L412 442 L486 372 L560 430 L632 382 L714 424 L760 444 L760 570 L0 570 Z" fill="url(#road-mid)" />
@@ -213,12 +213,12 @@ export function DatasetsScene() {
     <Scene>
       <defs>
         <radialGradient id="disk-face" cx="45%" cy="38%" r="68%">
-          <stop offset="0%" stopColor="#214464" />
-          <stop offset="62%" stopColor="#10263d" />
-          <stop offset="100%" stopColor="#0a1b2e" />
+          <stop offset="0%" stopColor="#3c3d42" />
+          <stop offset="62%" stopColor="#10141c" />
+          <stop offset="100%" stopColor="#16171c" />
         </radialGradient>
         <linearGradient id="disk-arm" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#9cc3ee" />
+          <stop offset="0%" stopColor="#ecd49b" />
           <stop offset="100%" stopColor={C.blue} />
         </linearGradient>
         <radialGradient id="disk-glow" cx="50%" cy="50%" r="50%">
@@ -247,7 +247,7 @@ export function DatasetsScene() {
       })}
 
       <g transform="rotate(24 492 310)">
-        <rect x="492" y="80" width="16" height="172" rx="7" fill="#163451" stroke={C.blue} strokeWidth="0.8" />
+        <rect x="492" y="80" width="16" height="172" rx="7" fill="#2d2e33" stroke={C.blue} strokeWidth="0.8" />
         <circle cx="500" cy="82" r="17" fill={C.ink} stroke={C.gold} strokeWidth="1.2" />
         <circle cx="500" cy="82" r="5" fill={C.gold} />
         <path d="M500 256 L518 292 L500 310 L482 292 Z" fill="url(#disk-arm)" stroke={C.blueLight} strokeWidth="0.8" />
@@ -295,8 +295,8 @@ export function ToolsScene() {
           <circle cx="2" cy="2" r="1.2" fill={C.blue} opacity="0.3" />
         </pattern>
         <linearGradient id="tool-case" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#193957" />
-          <stop offset="100%" stopColor="#0d2238" />
+          <stop offset="0%" stopColor="#313237" />
+          <stop offset="100%" stopColor="#10141c" />
         </linearGradient>
       </defs>
 
@@ -304,18 +304,18 @@ export function ToolsScene() {
 
       <g transform="rotate(-3 492 330)">
         <path d="M326 270 L658 270 L640 522 L344 522 Z" fill="url(#tool-case)" stroke={C.gold} strokeWidth="1.4" />
-        <path d="M326 270 L658 270 L652 306 L332 306 Z" fill="#1d3d5e" stroke={C.blue} strokeWidth="0.8" opacity="0.85" />
+        <path d="M326 270 L658 270 L652 306 L332 306 Z" fill="#2a2c31" stroke={C.blue} strokeWidth="0.8" opacity="0.85" />
         <path d="M352 270 Q352 230 388 230 L596 230 Q632 230 632 270" stroke={C.gold} strokeWidth="1.6" />
         <path d="M370 270 Q370 248 392 248 L592 248 Q614 248 614 270" stroke={C.blue} strokeWidth="0.8" opacity="0.65" />
         <rect x="470" y="214" width="36" height="18" rx="6" fill={C.ink} stroke={C.gold} strokeWidth="0.8" />
 
         <g transform="translate(360 332)">
-          <path d="M0 44 L54 12 L60 22 L30 42 L58 48 L54 58 L24 52 L6 62 Z" fill="rgba(106,160,220,0.12)" stroke={C.blue} strokeWidth="1" />
+          <path d="M0 44 L54 12 L60 22 L30 42 L58 48 L54 58 L24 52 L6 62 Z" fill="rgba(212,175,95,0.12)" stroke={C.blue} strokeWidth="1" />
           <circle cx="56" cy="17" r="7" stroke={C.blueLight} strokeWidth="0.8" />
         </g>
 
         <g transform="translate(440 330) rotate(18)">
-          <rect x="0" y="12" width="94" height="15" rx="7" fill="rgba(230,182,79,0.1)" stroke={C.gold} strokeWidth="1" />
+          <rect x="0" y="12" width="94" height="15" rx="7" fill="rgba(214,176,104,0.1)" stroke={C.gold} strokeWidth="1" />
           <rect x="88" y="6" width="22" height="27" rx="4" fill={C.ink} stroke={C.gold} strokeWidth="0.9" />
           <line x1="96" y1="14" x2="104" y2="14" stroke={C.goldLight} strokeWidth="0.8" />
           <line x1="96" y1="20" x2="104" y2="20" stroke={C.goldLight} strokeWidth="0.8" />
@@ -347,7 +347,7 @@ export function ToolsScene() {
         </g>
 
         <g transform="translate(558 432)">
-          <path d="M0 24 L26 0 L52 24 L26 48 Z" fill="rgba(230,182,79,0.08)" stroke={C.gold} strokeWidth="0.9" />
+          <path d="M0 24 L26 0 L52 24 L26 48 Z" fill="rgba(214,176,104,0.08)" stroke={C.gold} strokeWidth="0.9" />
           <circle cx="26" cy="24" r="6" stroke={C.goldLight} strokeWidth="0.7" />
         </g>
       </g>
@@ -377,13 +377,13 @@ export function SearchScene() {
       <circle cx="470" cy="310" r="240" stroke={C.blue} strokeWidth="0.8" strokeDasharray="2 10" opacity="0.22" />
 
       <g transform="rotate(-7 450 330)">
-        <rect x="286" y="146" width="228" height="330" rx="8" fill="#0b1d31" stroke={C.blue} strokeWidth="0.8" opacity="0.8" transform="translate(28 18)" />
+        <rect x="286" y="146" width="228" height="330" rx="8" fill="#0c1119" stroke={C.blue} strokeWidth="0.8" opacity="0.8" transform="translate(28 18)" />
         <rect x="300" y="132" width="238" height="340" rx="8" fill={C.card} stroke={C.gold} strokeWidth="1" />
         <text x="322" y="166" fill={C.goldLight} fontFamily="var(--font-plex-mono), monospace" fontSize="9" letterSpacing="2">
           SEARCH INDEX
         </text>
         <RuleLines x={322} y={188} width={190} rows={9} gap={19} color="rgba(245,244,240,0.2)" />
-        <rect x="318" y="290" width="198" height="28" rx="4" fill="rgba(230,182,79,0.08)" stroke={C.gold} strokeWidth="0.7" />
+        <rect x="318" y="290" width="198" height="28" rx="4" fill="rgba(214,176,104,0.08)" stroke={C.gold} strokeWidth="0.7" />
         <line x1="332" y1="304" x2="470" y2="304" stroke={C.goldLight} strokeWidth="1" opacity="0.65" />
       </g>
 

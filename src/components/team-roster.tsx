@@ -24,7 +24,7 @@ function MemberSlot({
 }) {
   if (!member) {
     return (
-      <div className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-[#6aa0dc]/30 bg-[#0d2238]/40 p-4 text-center">
+      <div className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-[#d4af5f]/30 bg-[#10141c]/40 p-4 text-center">
         <div className="flex h-16 w-16 items-center justify-center rounded-full border border-dashed border-accent/30 bg-accent/5 font-mono text-xs text-accent/60">
           Photo
         </div>
@@ -43,7 +43,7 @@ function MemberSlot({
   const linkedin = member.links.find((link) => /linked/i.test(link.label));
 
   return (
-    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-4 text-center">
+    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 p-4 text-center">
       <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent">
         {member.cover ? (
           // eslint-disable-next-line @next/next/no-img-element

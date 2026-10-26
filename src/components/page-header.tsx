@@ -17,7 +17,7 @@ export function PageHeader({
 }) {
   return (
     <HeroSection variant={variant}>
-      <Container className="relative z-10 flex min-h-[420px] items-center py-20 sm:min-h-[470px] sm:py-24 lg:min-h-[500px]">
+      <Container className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
         <div className="max-w-3xl">
           {eyebrow ? (
             <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
@@ -25,8 +25,15 @@ export function PageHeader({
             </p>
           ) : null}
 
-          <h1 className="font-display mt-4 text-4xl font-bold leading-[1.05] tracking-tight text-gradient-anim sm:text-5xl lg:text-6xl">
-            {title}
+          <h1 className="font-display mt-4 text-4xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            {title.includes(" ") ? (
+              <>
+                {title.slice(0, title.lastIndexOf(" ") + 1)}
+                <span className="text-accent-2">{title.slice(title.lastIndexOf(" ") + 1)}</span>
+              </>
+            ) : (
+              title
+            )}
           </h1>
 
           {description ? (
