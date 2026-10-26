@@ -41,7 +41,7 @@ export default function PlaygroundPage() {
       />
 
       <HeroSection variant="playground">
-        <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
+        <Container variant="wide" className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
           <Reveal>
             <div className="flex items-center gap-3">
               <Terminal className="h-5 w-5 text-accent" />
@@ -49,7 +49,7 @@ export default function PlaygroundPage() {
                 Playground
               </p>
             </div>
-            <h1 className="font-display mt-4 max-w-3xl text-4xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="font-display mt-4 max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Talk to the <span className="text-accent-2">collective</span>
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">

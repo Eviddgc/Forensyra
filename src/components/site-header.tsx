@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, Search, X } from "lucide-react";
 import { Logo } from "@/components/logo";
-import { Container } from "@/components/container";
 import { OPEN_SEARCH_EVENT } from "@/components/command-palette";
 import { cn } from "@/lib/utils";
 
@@ -175,16 +174,14 @@ export function SiteHeader({
   };
 
   return (
-    <header className="sticky top-0 z-50">
+    <header className="sticky top-3 z-50 px-4 pt-3 sm:px-8">
       <div
         className={cn(
-          "border-b backdrop-blur-xl transition-colors duration-300",
-          scrolled
-            ? "border-border-gold bg-background/85 shadow-[0_16px_40px_-30px] shadow-black/90"
-            : "border-border/60 bg-background/60",
+          "fx-glass-nav rounded-[22px] transition-shadow duration-300",
+          scrolled && "shadow-[0_22px_60px_-22px_rgba(0,0,0,0.95)]",
         )}
       >
-        <Container className="flex h-16 items-center gap-4 lg:h-[74px]">
+        <div className="flex h-16 items-center gap-4 px-5 lg:h-[72px] lg:px-6">
           <Link href="/" className="flex shrink-0 items-center gap-3">
             <Logo size={36} />
             <span className="leading-none">
@@ -249,8 +246,15 @@ export function SiteHeader({
                     {navItem.label}
                     <ChevronDown
                       className={cn(
-                        "h-3.5 w-3.5 transition-transform duration-200",
+                        "h-3 w-3 transition-transform duration-200",
                         isOpen && "rotate-180",
+                      )}
+                    />
+                    <span
+                      aria-hidden="true"
+                      className={cn(
+                        "absolute inset-x-3 -bottom-0.5 h-px bg-gradient-to-r from-transparent via-accent to-transparent transition-transform duration-300",
+                        active ? "scale-x-100" : "scale-x-0",
                       )}
                     />
                   </button>
@@ -259,7 +263,7 @@ export function SiteHeader({
                     <div
                       id={`${dropdownKey}-dropdown`}
                       role="menu"
-                      className="absolute left-0 top-full mt-2 min-w-[220px] rounded-2xl border border-border bg-surface p-2 shadow-[0_30px_60px_-20px] shadow-black/90 animate-fade-in"
+                      className="absolute left-0 top-full mt-2 min-w-[220px] fx-glass-strong rounded-2xl p-2 animate-fade-in"
                     >
                       {navItem.items!.map((item) => (
                         <Link
@@ -294,7 +298,7 @@ export function SiteHeader({
               window.dispatchEvent(new CustomEvent(OPEN_SEARCH_EVENT))
             }
             aria-label="Search the site (Command or Control + K)"
-            className="inline-flex h-10 items-center gap-2 rounded-full border border-border bg-surface/40 px-3 text-muted transition hover:border-accent/60 hover:text-accent-2"
+            className="inline-flex h-10 items-center gap-2 rounded-full border border-accent/25 bg-white/[0.03] px-3.5 text-muted transition hover:border-accent/60 hover:text-accent-2"
           >
             <Search className="h-4 w-4" />
             {/* Full label and shortcut hint wait for xl: at exactly 1024px the
@@ -315,7 +319,7 @@ export function SiteHeader({
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
-        </Container>
+        </div>
       </div>
 
       {/* Mobile panel */}
@@ -325,13 +329,13 @@ export function SiteHeader({
         className={cn(
           // Closed panels clip so the max-height transition works; open panels
           // scroll, because expanded sub-menus are taller than a small phone.
-          "border-b bg-background/95 backdrop-blur-xl transition-[max-height,opacity] duration-300 lg:hidden",
+          "fx-glass-strong mt-2 rounded-[22px] transition-[max-height,opacity] duration-300 lg:hidden",
           open
-            ? "max-h-[calc(100dvh-4rem)] overflow-y-auto border-border-gold opacity-100"
-            : "max-h-0 overflow-hidden border-transparent opacity-0",
+            ? "max-h-[calc(100dvh-8rem)] overflow-y-auto opacity-100"
+            : "max-h-0 overflow-hidden !border-transparent opacity-0",
         )}
       >
-        <Container className="py-4">
+        <div className="px-3 py-3">
           <nav aria-label="Mobile" className="flex flex-col">
             {NAV.map((navItem) => {
               const hasDropdown = Boolean(navItem.items);
@@ -367,7 +371,7 @@ export function SiteHeader({
               );
             })}
           </nav>
-        </Container>
+        </div>
       </div>
     </header>
   );

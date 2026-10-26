@@ -117,7 +117,7 @@ function EditorialSection({
       <Container>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
           <Reveal className="shrink-0">
-            <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[#6aa0dc]/30 bg-[#122b46]/60 text-accent-2">
+            <span className="inline-flex h-14 w-14 items-center justify-center rounded-2xl border border-[#d4af5f]/30 bg-[#151922]/60 text-accent-2">
               <Icon className="h-6 w-6" />
             </span>
           </Reveal>
@@ -174,7 +174,7 @@ export function EthicsContent() {
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {COMMITMENTS.map((card, index) => (
               <Reveal key={card.number} delay={index * 60}>
-                <div className="group h-full rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/50 p-6 transition-colors duration-300 hover:border-accent/40">
+                <div className="group h-full rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/50 p-6 transition-colors duration-300 hover:border-accent/40">
                   <div className="flex items-center justify-between">
                     <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent-2">
                       <card.Icon className="h-5 w-5" />
@@ -227,7 +227,7 @@ export function EthicsContent() {
       <section className="border-t border-border/40 py-16 sm:py-20">
         <Container>
           <Reveal>
-            <div className="relative overflow-hidden rounded-3xl border border-[#6aa0dc]/30 bg-gradient-to-br from-[#122b46] via-[#0d2238] to-[#071827] p-8 sm:p-12">
+            <div className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30 bg-gradient-to-br from-[#151922] via-[#10141c] to-[#080D15] p-8 sm:p-12">
               {/* Fingerprint decoration on the right. */}
               <svg
                 aria-hidden="true"
@@ -235,24 +235,24 @@ export function EthicsContent() {
                 viewBox="0 0 200 200"
                 fill="none"
               >
-                <circle cx="100" cy="100" r="90" stroke="#e6b64f" strokeWidth="0.8" />
-                <circle cx="100" cy="100" r="75" stroke="#e6b64f" strokeWidth="0.6" />
-                <circle cx="100" cy="100" r="60" stroke="#e6b64f" strokeWidth="0.5" />
-                <circle cx="100" cy="100" r="45" stroke="#e6b64f" strokeWidth="0.4" />
-                <circle cx="100" cy="100" r="30" stroke="#e6b64f" strokeWidth="0.3" />
+                <circle cx="100" cy="100" r="90" stroke="#d6b068" strokeWidth="0.8" />
+                <circle cx="100" cy="100" r="75" stroke="#d6b068" strokeWidth="0.6" />
+                <circle cx="100" cy="100" r="60" stroke="#d6b068" strokeWidth="0.5" />
+                <circle cx="100" cy="100" r="45" stroke="#d6b068" strokeWidth="0.4" />
+                <circle cx="100" cy="100" r="30" stroke="#d6b068" strokeWidth="0.3" />
                 <path
                   d="M100 10 C 130 10 155 35 155 65 C 155 95 130 120 100 120 C 70 120 45 95 45 65 C 45 35 70 10 100 10"
-                  stroke="#e6b64f"
+                  stroke="#d6b068"
                   strokeWidth="0.8"
                 />
                 <path
                   d="M100 25 C 120 25 140 45 140 65 C 140 85 120 105 100 105 C 80 105 60 85 60 65 C 60 45 80 25 100 25"
-                  stroke="#e6b64f"
+                  stroke="#d6b068"
                   strokeWidth="0.6"
                 />
                 <path
                   d="M100 40 C 110 40 125 50 125 65 C 125 80 110 90 100 90 C 90 90 75 80 75 65 C 75 50 90 40 100 40"
-                  stroke="#e6b64f"
+                  stroke="#d6b068"
                   strokeWidth="0.5"
                 />
               </svg>
@@ -287,7 +287,7 @@ export function EthicsContent() {
       <section className="pb-16 sm:pb-20">
         <Container>
           <Reveal>
-            <div className="flex flex-col items-start gap-4 rounded-2xl border border-[#6aa0dc]/30 bg-[#122b46]/50 p-6 sm:flex-row sm:items-center sm:gap-6 sm:p-8">
+            <div className="flex flex-col items-start gap-4 rounded-2xl border border-[#d4af5f]/30 bg-[#151922]/50 p-6 sm:flex-row sm:items-center sm:gap-6 sm:p-8">
               <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent-2">
                 <MessageSquare className="h-5 w-5" />
               </span>

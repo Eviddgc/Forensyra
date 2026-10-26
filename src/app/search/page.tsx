@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 const KIND_STYLE: Record<string, string> = {
   "Case file": "border-accent/50 bg-accent/10 text-accent-2",
-  "Write-up": "border-[#6aa0dc]/40 bg-[#6aa0dc]/10 text-[#9cc3ee]",
+  "Write-up": "border-[#d4af5f]/40 bg-[#d4af5f]/10 text-[#ecd49b]",
   Role: "border-success/40 bg-success/10 text-success",
   Resource: "border-warning/40 bg-warning/10 text-warning",
   Page: "border-border bg-surface-2/60 text-muted",
@@ -32,7 +32,7 @@ export default async function SearchPage({
   return (
     <>
       <HeroSection variant="search">
-        <Container className="relative z-10 flex min-h-[400px] items-center py-16 sm:min-h-[440px] sm:py-20">
+        <Container className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
           <div className="w-full">
             <div className="flex items-center gap-3">
               <Search className="h-5 w-5 text-accent" />
@@ -40,7 +40,7 @@ export default async function SearchPage({
                 Search the archive
               </p>
             </div>
-            <h1 className="font-display mt-3 max-w-3xl text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl">
+            <h1 className="font-display mt-3 max-w-3xl text-4xl font-medium tracking-tight text-foreground sm:text-5xl lg:text-6xl">
               Find a <span className="text-accent-2">trace</span>
             </h1>
             <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
@@ -110,14 +110,14 @@ export default async function SearchPage({
                       href={doc.href}
                       target="_blank"
                       rel="noreferrer"
-                      className="group block rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/40 p-5 transition-colors hover:border-accent/40"
+                      className="group block rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/40 p-5 transition-colors hover:border-accent/40"
                     >
                       {inner}
                     </a>
                   ) : (
                     <Link
                       href={doc.href}
-                      className="group block rounded-2xl border border-[#6aa0dc]/25 bg-[#122b46]/40 p-5 transition-colors hover:border-accent/40"
+                      className="group block rounded-2xl border border-[#d4af5f]/25 bg-[#151922]/40 p-5 transition-colors hover:border-accent/40"
                     >
                       {inner}
                     </Link>

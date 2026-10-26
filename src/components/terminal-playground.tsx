@@ -1312,7 +1312,7 @@ export function TerminalPlayground() {
   return (
     <div
       id="fx-terminal"
-      className="overflow-hidden rounded-2xl border border-border-gold/50 bg-[#050d17] shadow-[0_40px_80px_-40px] shadow-black/90"
+      className="overflow-hidden rounded-2xl border border-border-gold/50 bg-[#0a0b10] shadow-[0_40px_80px_-40px] shadow-black/90"
     >
       <div className="flex items-center gap-2 border-b border-border/60 bg-background/60 px-4 py-2.5">
         <span aria-hidden="true" className="h-2.5 w-2.5 rounded-full bg-danger/70" />
@@ -1339,7 +1339,7 @@ export function TerminalPlayground() {
               <>
                 <span className="text-accent">visitor@forensyra</span>
                 <span className="text-muted">:</span>
-                <span className="text-[#6aa0dc]">~{cwd ? `/${cwd}` : ""}$</span> {line.text}
+                <span className="text-[#d4af5f]">~{cwd ? `/${cwd}` : ""}$</span> {line.text}
               </>
             ) : (
               line.text || "\u00A0"
@@ -1448,7 +1448,7 @@ export function TerminalPlayground() {
           }
           aria-describedby="fx-terminal-hint"
           className="flex-1 bg-transparent font-mono text-[12.5px] text-foreground placeholder:text-muted/50 focus:outline-none"
-          style={{ caretColor: "#e6b64f" }}
+          style={{ caretColor: "#d6b068" }}
         />
       </form>
 

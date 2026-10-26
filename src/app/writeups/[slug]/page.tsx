@@ -83,7 +83,7 @@ export default async function WriteupPage({
       />
       {/* Hero */}
       <HeroSection variant="research">
-        <Container variant="wide" className="relative z-10 flex min-h-[360px] items-center py-16 sm:min-h-[400px] sm:py-20 lg:min-h-[440px] lg:py-20">
+        <Container variant="wide" className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
           <Reveal className="max-w-3xl">
             <Link
               href="/writeups"
@@ -99,13 +99,13 @@ export default async function WriteupPage({
               {entry.tags.slice(0, 3).map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
+                  className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/60 px-3 py-1 font-mono text-[11px] uppercase tracking-[0.12em] text-muted"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-            <h1 className="font-display mt-5 text-3xl font-bold leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
+            <h1 className="font-display mt-5 text-3xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-4xl lg:text-5xl">
               {entry.title}
             </h1>
             {entry.description ? (
@@ -164,7 +164,7 @@ export default async function WriteupPage({
                       href={link.url}
                       target="_blank"
                       rel="noreferrer"
-                      className="inline-flex items-center gap-2 rounded-full border border-[#6aa0dc]/40 bg-[#122b46]/50 px-5 py-2.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent-2"
+                      className="inline-flex items-center gap-2 rounded-full border border-[#d4af5f]/40 bg-[#151922]/50 px-5 py-2.5 text-sm font-medium text-foreground transition hover:border-accent hover:text-accent-2"
                     >
                       {link.label}
                       <ArrowUpRight className="h-3.5 w-3.5" />

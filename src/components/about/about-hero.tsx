@@ -15,20 +15,20 @@ export function AboutHero({
 }) {
   return (
     <HeroSection variant="about" id="top">
-      <Container className="relative z-10 flex min-h-[440px] items-center py-20 sm:min-h-[480px] sm:py-24 lg:min-h-[540px] lg:py-28">
+      <Container className="relative z-10 flex min-h-[240px] items-center pb-6 pt-14 sm:min-h-[260px] sm:pt-16">
         <div className="max-w-2xl">
           <Reveal>
             <p className="fx-eyebrow text-accent">Who We Are</p>
           </Reveal>
 
           <Reveal delay={80}>
-            <h1 className="font-display mt-4 text-[clamp(2.5rem,6.5vw,4rem)] font-bold leading-[1.03] tracking-[-0.02em] text-foreground">
+            <h1 className="font-display mt-4 text-[clamp(2.5rem,6.5vw,4rem)] font-medium leading-[1.03] tracking-[-0.01em] text-foreground">
               About {name}
             </h1>
           </Reveal>
 
           <Reveal delay={140}>
-            <p className="font-display mt-5 text-[clamp(1.25rem,2.8vw,1.9rem)] font-medium italic leading-snug text-foreground/95">
+            <p className="mt-5 max-w-2xl text-base leading-relaxed text-foreground/90 sm:text-lg">
               {subtitle}
             </p>
           </Reveal>

@@ -11,7 +11,7 @@ export const OPEN_SEARCH_EVENT = "fx:open-search";
 
 const KIND_STYLE: Record<string, string> = {
   "Case file": "border-accent/50 bg-accent/10 text-accent-2",
-  "Write-up": "border-[#6aa0dc]/40 bg-[#6aa0dc]/10 text-[#9cc3ee]",
+  "Write-up": "border-[#d4af5f]/40 bg-[#d4af5f]/10 text-[#ecd49b]",
   Role: "border-success/40 bg-success/10 text-success",
   Resource: "border-warning/40 bg-warning/10 text-warning",
   Page: "border-border bg-surface-2/60 text-muted",

@@ -1,14 +1,14 @@
 import type { ReactNode } from "react";
 
 export const C = {
-  gold: "#e6b64f",
-  goldLight: "#f5d58a",
+  gold: "#d6b068",
+  goldLight: "#ecd49b",
   goldDeep: "#a97f22",
-  blue: "#6aa0dc",
-  blueLight: "#9cc3ee",
-  ink: "#071827",
-  surface: "#0d2238",
-  card: "#122b46",
+  blue: "#d4af5f",
+  blueLight: "#ecd49b",
+  ink: "#080D15",
+  surface: "#10141c",
+  card: "#151922",
   line: "rgba(245,244,240,0.18)",
   lineSoft: "rgba(245,244,240,0.1)",
 } as const;

@@ -123,7 +123,7 @@ export function RoleCard({
               {role.skills.map((skill) => (
                 <span
                   key={skill}
-                  className="inline-flex items-center rounded-full border border-[#6aa0dc]/30 bg-[#0d2238]/60 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
+                  className="inline-flex items-center rounded-full border border-[#d4af5f]/30 bg-[#10141c]/60 px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.1em] text-muted"
                 >
                   {skill}
                 </span>

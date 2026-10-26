@@ -28,7 +28,7 @@ export default function GlobalError({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          background: "#071827",
+          background: "#080D15",
           color: "#f5f4f0",
           fontFamily: "system-ui, sans-serif",
           padding: "2rem",
@@ -41,7 +41,7 @@ export default function GlobalError({
               fontSize: "0.72rem",
               letterSpacing: "0.28em",
               textTransform: "uppercase",
-              color: "#e6b64f",
+              color: "#d6b068",
             }}
           >
             System fault
@@ -56,7 +56,7 @@ export default function GlobalError({
           >
             FORENSYRA could not start
           </h1>
-          <p style={{ marginTop: "1rem", color: "#b7c4d2", lineHeight: 1.6 }}>
+          <p style={{ marginTop: "1rem", color: "#b4b6b8", lineHeight: 1.6 }}>
             A critical error prevented the site from loading. Reloading usually
             clears it. If the problem persists, please email {site.email}.
           </p>
@@ -68,8 +68,8 @@ export default function GlobalError({
               cursor: "pointer",
               borderRadius: "999px",
               border: "none",
-              background: "#e6b64f",
-              color: "#071827",
+              background: "#d6b068",
+              color: "#080D15",
               padding: "0.7rem 1.5rem",
               fontSize: "0.95rem",
               fontWeight: 600,
