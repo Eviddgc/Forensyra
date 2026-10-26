@@ -42,6 +42,11 @@ export async function generateMetadata({
       ...(entry.updated ? { modifiedTime: entry.updated } : {}),
       ...(entry.tags.length ? { tags: entry.tags } : {}),
     },
+    twitter: {
+      card: "summary_large_image",
+      title: entry.title,
+      description: entry.description,
+    },
   };
 }
 

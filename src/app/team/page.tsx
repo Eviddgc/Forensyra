@@ -14,6 +14,19 @@ export const metadata: Metadata = {
   description:
     "Meet the members of FORENSYRA and the roles they hold across the collective.",
   alternates: pageAlternates("/team"),
+  openGraph: {
+    type: "website",
+    url: "https://www.forensyra.in/team",
+    title: "Team · FORENSYRA",
+    description:
+      "Meet the members of FORENSYRA and the roles they hold across the collective.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Team · FORENSYRA",
+    description:
+      "Meet the members of FORENSYRA and the roles they hold across the collective.",
+  },
 };
 
 export default async function TeamPage() {

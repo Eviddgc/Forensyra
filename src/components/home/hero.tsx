@@ -65,11 +65,11 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
           <HeroDial className="absolute left-1/2 top-1/2 hidden h-[min(82vw,34rem)] w-[min(82vw,34rem)] -translate-x-1/2 -translate-y-1/2 opacity-70 drop-shadow-[0_0_40px_rgba(230,182,79,0.18)] sm:block lg:opacity-80" />
           <Image
             src="/brand-logo.webp"
-            alt=""
+            alt="FORENSYRA brand emblem"
             width={1024}
             height={1024}
             preload
-            sizes="(max-width: 1280px) 56vw, 22rem"
+            sizes="(max-width: 1280px) 0px, 352px"
             className="relative h-[min(58vw,13rem)] w-auto opacity-[0.15] drop-shadow-[0_0_60px_rgba(230,182,79,0.45)] md:opacity-20 lg:opacity-30 xl:h-[22rem] xl:opacity-95"
           />
         </div>
@@ -85,12 +85,11 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
 
           <Reveal delay={30}>
             <h1 className="fx-wordmark w-fit font-display mt-4 text-[clamp(2.5rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em]">
-              <span className="fx-wordmark-stack">
+              {/* Visually-hidden clean text for search engines */}
+              <span className="sr-only">{name} — Digital Evidence &amp; DFIR Collective</span>
+              <span aria-hidden="true" className="fx-wordmark-stack">
                 <span className="fx-wordmark-face">{glyphs}</span>
-                <span
-                  className="fx-wordmark-face fx-wordmark-face-foil"
-                  aria-hidden="true"
-                >
+                <span className="fx-wordmark-face fx-wordmark-face-foil">
                   {glyphs}
                 </span>
               </span>
