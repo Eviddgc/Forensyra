@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { TeamHero } from "@/components/team-hero";
 import { Reveal } from "@/components/reveal";
-import { TeamMembers } from "@/components/team-members";
 import { TeamRoster } from "@/components/team-roster";
 import { EmptyState } from "@/components/empty-state";
 import { getEntries } from "@/lib/content";
@@ -31,11 +30,6 @@ export default async function TeamPage() {
       <TeamHero />
 
       <Container variant="wide" className="space-y-16 py-14 sm:py-20">
-        {/* Members gallery — above the roster */}
-        <Reveal>
-          <TeamMembers members={team} seats={sortedRoles.length * 2} />
-        </Reveal>
-
         {/* Roster */}
         <section>
           <Reveal>
