@@ -214,7 +214,7 @@ export function MentorForm({ configured, email }: MentorFormProps) {
               </Link>
               <Link
                 href="/"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-surface px-6 py-3 text-[15px] font-medium text-foreground transition hover:border-accent/60 hover:text-accent-2"
+                className="inline-flex items-center justify-center gap-2 fx-glass rounded-full px-6 py-3 text-[15px] font-medium text-foreground transition hover:border-accent/60 hover:text-accent-2"
               >
                 Back to home
               </Link>

@@ -120,11 +120,11 @@ export function WriteupsScene() {
     <Scene>
       <defs>
         <linearGradient id="paper-left" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#193652" />
-          <stop offset="100%" stopColor="#101521" />
+          <stop offset="0%" stopColor="#2f3035" />
+          <stop offset="100%" stopColor="#131419" />
         </linearGradient>
         <linearGradient id="paper-right" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#1b3a57" />
+          <stop offset="0%" stopColor="#323338" />
           <stop offset="100%" stopColor="#0f131b" />
         </linearGradient>
         <radialGradient id="write-glow" cx="50%" cy="50%" r="50%">
@@ -198,7 +198,7 @@ export function CaseScene() {
     <Scene>
       <defs>
         <linearGradient id="folder-back" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#1a3857" />
+          <stop offset="0%" stopColor="#313237" />
           <stop offset="100%" stopColor="#0e1219" />
         </linearGradient>
         <radialGradient id="case-seal" cx="50%" cy="50%" r="50%">
@@ -281,7 +281,7 @@ export function ResearchScene() {
     <Scene>
       <defs>
         <linearGradient id="research-page" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#1a3855" />
+          <stop offset="0%" stopColor="#313237" />
           <stop offset="100%" stopColor="#0f131b" />
         </linearGradient>
       </defs>

@@ -44,11 +44,11 @@ function CardVisual({ variant }: { variant: Visual }) {
         variant === "document" &&
           "bg-[radial-gradient(120%_110%_at_80%_30%,#22262f_0%,#10141c_55%,#080D15_100%)]",
         variant === "fingerprint" &&
-          "bg-[radial-gradient(120%_110%_at_75%_25%,#1b1f29_0%,#10141c_50%,#080D15_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_25%,#1d1e23_0%,#10141c_50%,#080D15_100%)]",
         variant === "terminal" &&
-          "bg-[radial-gradient(120%_110%_at_80%_20%,#14304e_0%,#10141c_50%,#080D15_100%)]",
+          "bg-[radial-gradient(120%_110%_at_80%_20%,#292a2f_0%,#10141c_50%,#080D15_100%)]",
         variant === "network" &&
-          "bg-[radial-gradient(120%_110%_at_75%_30%,#152e4b_0%,#10141c_50%,#080D15_100%)]",
+          "bg-[radial-gradient(120%_110%_at_75%_30%,#28292e_0%,#10141c_50%,#080D15_100%)]",
       )}
     >
       <div className="bg-damask absolute inset-0 opacity-80" />

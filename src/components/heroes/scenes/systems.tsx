@@ -140,8 +140,8 @@ export function SecurityScene() {
       <defs>
         <linearGradient id="shield-face" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#2a2c31" />
-          <stop offset="62%" stopColor="#101521" />
-          <stop offset="100%" stopColor="#0a1c2f" />
+          <stop offset="62%" stopColor="#131419" />
+          <stop offset="100%" stopColor="#17181d" />
         </linearGradient>
         <radialGradient id="shield-glow" cx="50%" cy="40%" r="60%">
           <stop offset="0%" stopColor={C.gold} stopOpacity="0.28" />
@@ -203,7 +203,7 @@ export function PlaygroundScene() {
     <Scene>
       <defs>
         <linearGradient id="term-face" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#102945" />
+          <stop offset="0%" stopColor="#232429" />
           <stop offset="100%" stopColor="#0b1017" />
         </linearGradient>
         <radialGradient id="term-glow" cx="50%" cy="50%" r="50%">
@@ -291,7 +291,7 @@ export function ApplyScene() {
       <defs>
         <linearGradient id="apply-folder" x1="0" y1="0" x2="0" y2="1">
           <stop offset="0%" stopColor="#2a2c31" />
-          <stop offset="100%" stopColor="#0c2137" />
+          <stop offset="100%" stopColor="#1c1d22" />
         </linearGradient>
         <radialGradient id="apply-glow" cx="50%" cy="50%" r="50%">
           <stop offset="0%" stopColor={C.gold} stopOpacity="0.24" />

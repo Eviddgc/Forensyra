@@ -38,7 +38,7 @@ export function FeaturedProjects({
   const active = items[Math.min(index, items.length - 1)];
 
   return (
-    <section className="bg-surface pb-20 pt-10 text-foreground sm:pb-28 sm:pt-14">
+    <section className="pb-20 pt-10 text-foreground sm:pb-28 sm:pt-14">
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
           <Reveal>
@@ -63,10 +63,10 @@ export function FeaturedProjects({
           <Reveal delay={120}>
             <Link
               href={active.href}
-              className="fx-media group relative block overflow-hidden rounded-[26px] border border-light-border shadow-[0_50px_90px_-55px_rgba(16,39,65,0.75)]"
+              className="fx-media group relative block overflow-hidden rounded-[26px] border border-accent/30 bg-[linear-gradient(160deg,#131419_0%,#080d15_100%)] shadow-[0_40px_80px_-50px_rgba(0,0,0,0.9)]"
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden sm:aspect-[16/10] lg:aspect-[5/4]">
-                <BrandPlate className="transition-transform duration-700 ease-out group-hover:scale-105" />
+                <BrandPlate className="opacity-25 transition-transform duration-700 ease-out group-hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#080D15] via-[#080D15]/70 to-[#080D15]/20" />
               </div>
 
