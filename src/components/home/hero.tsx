@@ -44,8 +44,16 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
       {/* The hero's visual is the full FORENSYRA lockup rather than stock
           photography, so the first screen reads as unmistakably FORENSYRA. */}
       <div className="bg-damask pointer-events-none absolute inset-0 opacity-70" />
-      <div className="fx-orb pointer-events-none left-[-10%] top-[4%] h-[34rem] w-[34rem] bg-accent/15" />
+{/* Orb layers */}
+      <div className="fx-orb pointer-events-none left-[-12%] top-[4%] h-[38rem] w-[38rem] bg-accent/10 border-2 border-accent-2 rounded-full" />
+      <div className="fx-orb pointer-events-none left-[-10%] top-[6%] h-[34rem] w-[34rem] bg-accent/15" />
       <div className="fx-orb pointer-events-none bottom-[-20%] right-[-8%] h-[30rem] w-[30rem] bg-accent-2/20" />
+{/* Tiny evidence tags */}
+      <div className="pointer-events-none absolute left-[5%] top-[20%] flex flex-col gap-2">
+        <span className="text-xs text-accent-2">#disk</span>
+        <span className="text-xs text-accent-2">#usb</span>
+        <span className="text-xs text-accent-2">#cd</span>
+      </div>
 
       {/* Dark navy gradient + stronger overlay behind the text */}
       <div className="fx-cinematic pointer-events-none absolute inset-0" />
@@ -75,7 +83,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
             </p>
           </Reveal>
 
-          <Reveal delay={140}>
+          <Reveal delay={30}>
             <h1 className="fx-wordmark w-fit font-display mt-4 text-[clamp(2.5rem,10.5vw,7rem)] font-bold leading-[0.95] tracking-[-0.02em]">
               <span className="fx-wordmark-stack">
                 <span className="fx-wordmark-face">{glyphs}</span>
@@ -89,13 +97,13 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
             </h1>
           </Reveal>
 
-          <Reveal delay={200}>
+          <Reveal delay={60}>
             <p className="font-display mt-5 text-[clamp(1.4rem,3.4vw,2.25rem)] font-medium italic leading-snug text-foreground/95">
               Where Digital Truth Takes Form.
             </p>
           </Reveal>
 
-          <Reveal delay={240}>
+          <Reveal delay={90}>
             <p className="mt-5 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
               {name} is a collective for students and early-career professionals
               in digital forensics, incident response, and cybersecurity. We
@@ -104,7 +112,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
             </p>
           </Reveal>
 
-          <Reveal delay={300}>
+          <Reveal delay={120}>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link href={applyUrl} className={cn(btnPrimaryLg, "fx-shine")}>
                 Apply to Join
@@ -116,7 +124,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
             </div>
           </Reveal>
 
-          <Reveal delay={360}>
+          <Reveal delay={150}>
             <dl className="mt-12 grid max-w-2xl grid-cols-2 gap-y-8 sm:grid-cols-4">
               {STATS.map((stat, index) => (
                 <div

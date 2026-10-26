@@ -3,7 +3,7 @@ import { Hero } from "@/components/home/hero";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { EvidenceProcess } from "@/components/home/evidence-process";
 import { Benefits } from "@/components/home/benefits";
-import { WaveDivider } from "@/components/wave-divider";
+
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { pageAlternates } from "@/lib/seo";
@@ -35,7 +35,7 @@ export default async function HomePage() {
       {/* Sections 1–2 (announcement + navigation) and 9 (footer) are part of
           the root layout so every page shares them. */}
       <Hero name={site.name} applyUrl={site.applyUrl} />
-      <WaveDivider from="var(--color-background)" to="var(--color-light)" />
+      
 
       <Container variant="wide" className="space-y-16 py-14 sm:py-20">
         <Reveal>

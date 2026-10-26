@@ -753,6 +753,17 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+/* Chain-of-custody line that draws on scroll */
+.fx-chain-line {
+  width: 1px;
+  background: var(--color-border-gold);
+  height: 0;
+  animation: fx-chain-line-grow 1.2s ease-out forwards;
+}
+@keyframes fx-chain-line-grow {
+  to { height: 100%; }
+}
+
 /* Aurora background blobs */
 .fx-orb {
   position: absolute;

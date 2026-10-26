@@ -38,9 +38,9 @@ export function FeaturedProjects({
   const active = items[Math.min(index, items.length - 1)];
 
   return (
-    <section className="bg-light pb-20 pt-10 text-light-ink sm:pb-28 sm:pt-14">
+    <section className="bg-surface pb-20 pt-10 text-foreground sm:pb-28 sm:pt-14">
       <Container>
-        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-16">
+        <div className="grid items-start gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
           <Reveal>
             <p className="fx-eyebrow text-accent-ink">Case Files</p>
             <h2 className="font-display mt-4 text-4xl font-semibold leading-tight tracking-tight sm:text-5xl">

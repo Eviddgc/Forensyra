@@ -76,7 +76,7 @@ export function EvidenceProcess() {
           {/* Vertical connector — mobile / tablet */}
           <span
             aria-hidden="true"
-            className="absolute bottom-6 left-6 top-6 w-px bg-border-gold lg:hidden"
+            className="absolute bottom-6 left-6 top-6 w-px bg-border-gold fx-chain-line lg:hidden"
           />
 
           <ol className="grid gap-10 lg:grid-cols-4 lg:gap-8">
