@@ -94,8 +94,8 @@ const TOOL_OPTIONS: ApplyOption[] = [
 
 const STATEMENT_OPTIONS: ApplyOption[] = [
   { value: "I understand Forensyra is an educational group", label: "I understand Forensyra is an educational group" },
-  { value: "I will use only legal, authorized training data", label: "I will use only legal, authorized training data" },
-  { value: "I will not publish confidential or unauthorized evidence", label: "I will not publish confidential or unauthorized evidence" },
+  { value: "I will use only legal, authorised training data", label: "I will use only legal, authorised training data" },
+  { value: "I will not publish confidential or unauthorised evidence", label: "I will not publish confidential or unauthorised evidence" },
   { value: "I will document work honestly and avoid unsupported claims", label: "I will document work honestly and avoid unsupported claims" },
   { value: "I understand applying does not guarantee selection", label: "I understand applying does not guarantee selection" },
 ];
@@ -126,7 +126,7 @@ export const APPLY_SECTIONS: ApplySection[] = [
         name: "legalCases",
         number: 2,
         kind: "radio",
-        label: "Do you agree to work only on legal, authorized, educational cases?",
+        label: "Do you agree to work only on legal, authorised, educational cases?",
         required: true,
         options: [
           { value: "Yes", label: "Yes" },
@@ -206,7 +206,7 @@ export const APPLY_SECTIONS: ApplySection[] = [
         name: "organization",
         number: 8,
         kind: "text",
-        label: "College, university, or organization?",
+        label: "College, university, or organisation?",
         required: true,
         placeholder: "Enter your answer",
         autoComplete: "organization",
@@ -227,8 +227,7 @@ export const APPLY_SECTIONS: ApplySection[] = [
         name: "github",
         number: 10,
         kind: "text",
-        label: "GitHub or portfolio",
-        required: true,
+        label: "GitHub, portfolio or write-up link",
         placeholder: "github.com/your-handle",
         inputMode: "url",
         maxLength: 300,
@@ -347,7 +346,7 @@ export const APPLY_SECTIONS: ApplySection[] = [
         number: 18,
         kind: "radio",
         label:
-          "Do you agree not to upload personal, confidential, stolen, or unauthorized data to Forensyra or GitHub?",
+          "Do you agree not to upload personal, confidential, stolen, or unauthorised data to Forensyra or GitHub?",
         required: true,
         options: [
           { value: "Yes", label: "Yes" },

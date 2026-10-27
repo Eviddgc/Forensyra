@@ -6,7 +6,7 @@ import { Reveal } from "@/components/reveal";
 const CARDS = [
   {
     title: "Hands-on Experience",
-    text: "Work on real investigations and build your portfolio.",
+    text: "Work on realistic investigations and build your portfolio.",
 
   },
   {
@@ -37,7 +37,7 @@ export function Benefits() {
               What&apos;s next
             </h2>
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-light-muted">
-              Together, we build skills, solve real cases, and grow into
+              Together, we build skills, solve realistic cases, and grow into
               professionals.
             </p>
           </Reveal>

@@ -75,7 +75,7 @@ export default async function ProjectsPage() {
                   Join the Collective
                 </p>
                 <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                  Work a real investigation
+                  Work a realistic investigation
                 </h2>
                 <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
                   Join the team that will build Case File 001 from start to published
@@ -100,7 +100,7 @@ export default async function ProjectsPage() {
 
               <div className="hidden lg:block">
                 <p className="fx-accent-type text-right text-3xl font-medium italic leading-snug xl:text-4xl">
-                  Real Cases
+                  Realistic Cases
                   <br />
                   Real Skills
                   <br />

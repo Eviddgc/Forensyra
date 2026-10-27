@@ -263,7 +263,7 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
         </h2>
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">
           Tell us about your interests, skills, availability, and preferred role. It takes about
-          three minutes, and selected members are contacted by email.
+          ten minutes, and selected members are contacted by email.
         </p>
         <div className="fx-progress mt-5" role="presentation">
           <span style={{ width: `${percent}%` }} />
@@ -386,6 +386,12 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
                   <Link href="/ethics" className="text-accent-2 underline">
                     ethics rules
                   </Link>
+                  .
+                  <br />
+                  We use your details only to review applications. To have them deleted, email{" "}
+                  <a href="mailto:forensyra@outlook.in" className="text-accent-2 underline">
+                    forensyra@outlook.in
+                  </a>
                   .
                 </p>
               </div>

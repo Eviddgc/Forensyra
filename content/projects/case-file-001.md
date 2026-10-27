@@ -55,7 +55,7 @@ The case ships in DD and EnCase formats, and NIST publishes a reference solution
 
 ## The team
 
-All 13 roles have a defined job in this case. The evidence is disk and removable media, so the leadership, custody, endpoint, timeline, intelligence, legal and coordination roles drive the investigation. Where an artefact touches another speciality, such as cloud sync records or disguised media files, that role takes the thread. The remaining roles support with method review, tooling notes and quality checks on the final report.
+All 13 open roles have a defined job in this case. The evidence is disk and removable media, so the leadership, custody, endpoint, timeline, intelligence, legal and coordination roles drive the investigation. Where an artefact touches another speciality, such as cloud sync records or disguised media files, that role takes the thread. The remaining roles support with method review, tooling notes and quality checks on the final report.
 
 ### Lead Forensic Investigator
 
@@ -162,14 +162,3 @@ A three-week pilot. Week one: acquisition, hashing and endpoint analysis. Week t
 ## Scope and safety
 
 This case uses only public, legal practice material from NIST CFReDS. No real victim data, no live systems and no unauthorised investigation. We handle every artefact under chain-of-custody rules as if it were real evidence.
-
-## What changed and why
-
-1. Scenario corrected to the real NIST case: an insider recruited by a rival, using email, cloud storage, USB and a CD, caught at a security checkpoint. The old text mentioned only USB drives and CDs.
-2. Evidence list fixed: it is a 20 GB Windows 7 PC image plus two USB images, a CD image, seed files and hash lists, about 6 GB in total. The old text said USB artifacts and supporting logs, which understates it.
-3. Supporting roles rewritten to match the evidence: this case has no network capture, RAM dump or phone, so those roles now have honest jobs tied to artefacts that actually exist.
-4. Tense fixed to planning language: the investigation has not run yet, so analysed and published became planned wording.
-5. Team size softened to all 13 roles until recruitment is confirmed.
-6. Added the source link, the NIST reference solution and the anti-forensic angle, which is the most interesting part of this case for a visitor.
-
-Case facts checked against NIST CFReDS on 18 Oct 2026. The schedule and the GitHub release are plans, not commitments.

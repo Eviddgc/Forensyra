@@ -145,7 +145,7 @@ export function CaseWorkbench({
         <div className="flex flex-wrap items-center justify-between gap-3">
           <p className="text-sm text-muted">
             {evidence.length} item{evidence.length === 1 ? "" : "s"} in the
-            register. Hashes are recorded on acquisition and published when the
+            register (compressed download about 6 GB). Hashes are recorded on acquisition and published when the
             case closes.
           </p>
           <button

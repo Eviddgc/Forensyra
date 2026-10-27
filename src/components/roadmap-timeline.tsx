@@ -296,7 +296,7 @@ export function RoadmapCta({
 
             <div className="hidden lg:block">
               <p className="fx-accent-type text-right text-3xl font-medium italic leading-snug xl:text-4xl">
-                Real Cases
+                Realistic Cases
                 <br />
                 Real Skills
                 <br />

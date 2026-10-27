@@ -75,7 +75,7 @@ const HELP_GROUPS: Array<{ head: string; rows: Array<[string, string]> }> = [
   {
     head: "Collective brief",
     rows: [
-      ["roles", "List the 13 specialisations"],
+      ["roles", "List the specialisations"],
       ["ethics", "Rules of engagement"],
       ["roadmap", "What we're building, in phases"],
     ],
@@ -985,7 +985,7 @@ export function TerminalPlayground() {
 
         case "roles":
           out(
-            `thirteen specialisations (${ROLES.length}):`,
+            `specialisations (${ROLES.length}):`,
             ...tabulate(ROLES.map((r, i) => `${String(i + 1).padStart(2, "0")}\t${r}`), 8),
             "",
             "not sure? open matcher",

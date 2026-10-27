@@ -54,7 +54,7 @@ Case 001 is a disk-and-removable-media investigation. This one is built around *
 
 Practice material is assembled from public, legal sources and synthetic data we generate ourselves:
 
-- A file server disk image from a public practice set.
+- A file server disk image (public source to be selected).
 - A memory capture taken during the simulated encryption window.
 - A packet capture of the server's network segment.
 - Windows Security, System and Application event logs.
@@ -64,7 +64,7 @@ Every copy is hashed on receipt and recorded in the custody log before analysis 
 
 ## The team
 
-All thirteen roles have a defined job. The heaviest load falls on the memory and malware, network, endpoint and timeline roles; the custody, legal and coordination roles keep the investigation defensible while the clock runs.
+All thirteen open roles have a defined job. The heaviest load falls on the memory and malware, network, endpoint and timeline roles; the custody, legal and coordination roles keep the investigation defensible while the clock runs.
 
 ### Memory & Malware Analysis Analyst
 

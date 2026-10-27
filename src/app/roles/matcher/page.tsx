@@ -13,7 +13,7 @@ import { pageAlternates } from "@/lib/seo";
 export const metadata: Metadata = {
   title: "Find Your Role",
   description:
-    "Answer six questions and find which of the thirteen digital forensics roles fits you best.",
+    "Answer six questions and find which of the thirteen open digital forensics roles fits you best.",
   alternates: pageAlternates("/roles/matcher"),
 };
 
@@ -38,7 +38,7 @@ export default async function RoleMatcherPage() {
               className="inline-flex items-center gap-2 text-sm text-muted transition hover:text-accent"
             >
               <ArrowLeft className="h-4 w-4" />
-              All thirteen roles
+              All thirteen open roles
             </Link>
             <div className="mt-6 flex items-center gap-3">
               <Route className="h-5 w-5 text-accent" />
@@ -51,7 +51,7 @@ export default async function RoleMatcherPage() {
             </h1>
             <p className="mt-5 max-w-2xl text-[15px] leading-relaxed text-muted sm:text-base">
               Six questions, no wrong answers. We map your instincts against all
-              thirteen specialisations and show you where you fit.
+              thirteen open specialisations and show you where you fit.
             </p>
           </Reveal>
         </Container>
