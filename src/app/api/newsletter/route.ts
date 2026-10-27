@@ -7,6 +7,8 @@
  * of pretending the address was stored.
  */
 
+import { verifyTurnstile } from "@/lib/turnstile";
+
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -80,15 +82,24 @@ export async function POST(request: Request): Promise<Response> {
   }
 
   let email = "";
+  let turnstileToken: string | undefined;
   try {
     const body = (await request.json()) as Record<string, unknown>;
     email = typeof body.email === "string" ? body.email.trim().slice(0, 254) : "";
+    turnstileToken = typeof body.turnstile === "string" ? body.turnstile : undefined;
   } catch {
     return Response.json({ error: "We couldn't read that request." }, { status: 400 });
   }
 
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return Response.json({ error: "Please enter a valid email address." }, { status: 400 });
+  }
+
+  if (!(await verifyTurnstile(turnstileToken, clientIp(request)))) {
+    return Response.json(
+      { error: "We couldn't verify you're human. Please try again." },
+      { status: 403 },
+    );
   }
 
   if (!isConfigured()) {

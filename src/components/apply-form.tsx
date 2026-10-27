@@ -23,6 +23,7 @@ import {
 } from "@/lib/apply";
 import { btnPrimaryLg } from "@/lib/ui";
 import { cn } from "@/lib/utils";
+import { Turnstile, turnstileConfigured } from "@/components/turnstile";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -45,6 +46,9 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
   const [errorCount, setErrorCount] = useState(0);
   const [serverError, setServerError] = useState("");
   const [honeypot, setHoneypot] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const captchaNeeded = turnstileConfigured();
   const [startedAt] = useState(() => Date.now());
   const [activeSection, setActiveSection] = useState<string>(APPLY_SECTIONS[0].id);
   const [submitted, setSubmitted] = useState(false);
@@ -177,12 +181,18 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
         return;
       }
 
+      if (captchaNeeded && !turnstileToken) {
+        setStatus("error");
+        setServerError("One moment — the human check is still running. Please try again in a second.");
+        return;
+      }
+
       setStatus("sending");
       try {
         const response = await fetch("/api/apply", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ ...clean, website: honeypot, _ts: startedAt }),
+          body: JSON.stringify({ ...clean, website: honeypot, _ts: startedAt, turnstile: turnstileToken ?? "" }),
         });
         const data = (await response.json().catch(() => ({}))) as {
           error?: string;
@@ -196,6 +206,8 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
         if (!response.ok) {
           setStatus("error");
           setServerError(data.error || "Something went wrong sending your application. Please try again.");
+          setTurnstileToken(null);
+          setTurnstileReset((n) => n + 1);
           return;
         }
 
@@ -203,9 +215,11 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
       } catch {
         setStatus("error");
         setServerError("We couldn't reach the server. Please check your connection and try again.");
+        setTurnstileToken(null);
+        setTurnstileReset((n) => n + 1);
       }
     },
-    [configured, honeypot, startedAt, values],
+    [captchaNeeded, configured, honeypot, startedAt, turnstileToken, values],
   );
 
   /* ── Success ──────────────────────────────────────────────────────────── */
@@ -378,6 +392,11 @@ export function ApplyForm({ configured, autoReply, email }: ApplyFormProps) {
 
             {/* Consent + submit */}
             <div id="apply-submit" className="fx-form-section mt-6">
+              <Turnstile
+                onToken={setTurnstileToken}
+                resetSignal={turnstileReset}
+                className="mb-5"
+              />
               <div className="flex items-start gap-3 text-sm text-muted">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
                 <p>
