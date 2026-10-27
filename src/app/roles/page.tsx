@@ -58,7 +58,7 @@ export default async function RolesPage() {
                   Not sure which role is yours?
                 </p>
                 <p className="mt-0.5 text-sm text-muted">
-                  Six questions. We map your answers against all thirteen
+                  Six questions. We map your answers against all fifteen
                   specialisations.
                 </p>
               </div>
@@ -75,7 +75,7 @@ export default async function RolesPage() {
             <div
               key={role.slug}
               id={`role-${role.slug}`}
-              className="scroll-mt-24"
+              className="relative scroll-mt-24 hover:z-40 focus-within:z-40"
             >
               <Reveal delay={index * 40}>
                 <RoleCard role={role} index={index} holders={holdersFor(role.slug)} />
