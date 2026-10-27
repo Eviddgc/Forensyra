@@ -11,8 +11,8 @@ import { ArticleToc } from "@/components/article-toc";
 import { ArticleNav } from "@/components/article-nav";
 import { CiteBlock } from "@/components/cite-block";
 import { CaseWorkbench } from "@/components/case-workbench";
-import { pageAlternates } from "@/lib/seo";
-import { breadcrumbSchema } from "@/lib/structured-data";
+import { pageMetadata } from "@/lib/seo";
+import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { btnSecondary } from "@/lib/ui";
 import { getEntries, getEntry, getSlugs } from "@/lib/content";
 import { extractToc, readingTime } from "@/lib/toc";
@@ -31,23 +31,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const entry = await getEntry("projects", slug);
   if (!entry) return { title: "Case file" };
+  const path = `/projects/${slug}`;
+  const metadata = pageMetadata(path, entry.title, entry.description ?? "");
+  // Each article has its own generated 1200x630 preview.
+  const image = { url: `${path}/opengraph-image`, width: 1200, height: 630, alt: entry.title };
   return {
-    title: entry.title,
-    description: entry.description,
-    alternates: pageAlternates(`/projects/${slug}`),
-    openGraph: {
-      type: "article",
-      title: entry.title,
-      description: entry.description,
-      url: `/projects/${slug}`,
+    ...metadata,
+    openGraph: { ...metadata.openGraph, type: "article", images: [image],
       ...(entry.date ? { publishedTime: entry.date } : {}),
       ...(entry.updated ? { modifiedTime: entry.updated } : {}),
     },
-    twitter: {
-      card: "summary_large_image",
-      title: entry.title,
-      description: entry.description,
-    },
+    twitter: { ...metadata.twitter, card: "summary_large_image", images: [image] },
   };
 }
 
@@ -73,11 +67,11 @@ export default async function ProjectPage({
   return (
     <>
       <JsonLd
-        data={breadcrumbSchema([
+        data={[articleSchema(entry, `/projects/${slug}`), breadcrumbSchema([
           { name: "Home", path: "/" },
           { name: "Case board", path: "/projects" },
           { name: entry.title, path: `/projects/${slug}` },
-        ])}
+        ])]}
       />
       {/* Hero */}
       <HeroSection variant="case">

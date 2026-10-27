@@ -7,15 +7,10 @@ import { Reveal } from "@/components/reveal";
 import { RoleCard } from "@/components/role-card";
 import { btnPrimary } from "@/lib/ui";
 import { getEntries } from "@/lib/content";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Roles",
-  description:
-    "Fifteen specialist roles across digital forensics — find the one that fits you.",
-  alternates: pageAlternates("/roles"),
-};
+export const metadata: Metadata = pageMetadata("/roles", "Digital Forensics Roles", "Explore 13 open digital forensics roles and two upcoming specialities in the FORENSYRA collective.");
 
 export default async function RolesPage() {
   const [roles, team] = await Promise.all([

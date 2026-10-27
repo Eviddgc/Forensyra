@@ -12,15 +12,10 @@ import { Container } from "@/components/container";
 import { ContactHero } from "@/components/contact-hero";
 import { Reveal } from "@/components/reveal";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Contact",
-  description:
-    "Contact FORENSYRA about membership, mock cases, mentoring, or collaboration. Ask a question and we will reply within 48 hours.",
-  alternates: pageAlternates("/contact"),
-};
+export const metadata: Metadata = pageMetadata("/contact", "Contact", "Contact FORENSYRA about membership, mock cases, mentoring, or collaboration.");
 
 export default function ContactPage() {
   const site = getSite();

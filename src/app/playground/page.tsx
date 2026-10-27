@@ -5,15 +5,10 @@ import { Reveal } from "@/components/reveal";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { TerminalPlayground } from "@/components/terminal-playground";
 import { JsonLd } from "@/components/json-ld";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { breadcrumbSchema } from "@/lib/structured-data";
 
-export const metadata: Metadata = {
-  title: "Terminal Playground",
-  description:
-    "A simulated DFIR shell: browse a virtual evidence workspace, run typing drills and forensic missions, earn badges — and compute a real SHA-256 in your browser.",
-  alternates: pageAlternates("/playground"),
-};
+export const metadata: Metadata = pageMetadata("/playground", "Terminal Playground", "A simulated DFIR shell: browse a virtual evidence workspace, run typing drills and forensic missions, earn badges — and compute a real SHA-256 in your browser.");
 
 const HIGHLIGHTS = [
   {

@@ -4,15 +4,10 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { EthicsHero } from "@/components/ethics-hero";
 import { EthicsContent } from "@/components/ethics-content";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Ethics & Legal",
-  description:
-    "How FORENSYRA works legally, ethically, and responsibly with digital evidence.",
-  alternates: pageAlternates("/ethics"),
-};
+export const metadata: Metadata = pageMetadata("/ethics", "Ethics & Legal", "How FORENSYRA works legally, ethically, and responsibly with digital evidence.");
 
 export default async function EthicsPage() {
   const site = getSite();

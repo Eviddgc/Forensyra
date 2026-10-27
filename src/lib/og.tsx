@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { getSite } from "@/lib/site";
 
@@ -25,6 +27,7 @@ export function renderOgCard({
   footer?: Array<string | undefined>;
 }): ImageResponse {
   const site = getSite();
+  const logo = `data:image/png;base64,${fs.readFileSync(path.join(process.cwd(), "public/brand-mark.png")).toString("base64")}`;
   const meta = (footer ?? []).filter((item): item is string => Boolean(item));
 
   return new ImageResponse(
@@ -38,7 +41,7 @@ export function renderOgCard({
           justifyContent: "space-between",
           backgroundColor: "#0c1119",
           backgroundImage:
-            "radial-gradient(60% 55% at 20% 0%, rgba(201,154,71,0.20) 0%, rgba(12,17,25,0) 70%), radial-gradient(50% 50% at 90% 15%, rgba(27,54,93,0.55) 0%, rgba(12,17,25,0) 70%)",
+            "radial-gradient(60% 55% at 20% 0%, rgba(201,154,71,0.20) 0%, rgba(12,17,25,0) 70%), radial-gradient(50% 50% at 90% 15%, rgba(201,154,71,0.09) 0%, rgba(12,17,25,0) 70%)",
           padding: "72px",
           fontFamily: "sans-serif",
         }}
@@ -65,7 +68,7 @@ export function renderOgCard({
                 fontWeight: 700,
               }}
             >
-              F
+              <img src={logo} width={60} height={60} alt="" />
             </div>
             <div
               style={{

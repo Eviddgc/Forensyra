@@ -1,15 +1,10 @@
 import type { Metadata } from "next";
 import { RoadmapHero } from "@/components/roadmap-hero";
 import { RoadmapTimeline, RoadmapCta } from "@/components/roadmap-timeline";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Roadmap",
-  description:
-    "Present and upcoming plans for FORENSYRA — the phases, milestones, and what we plan to publish next.",
-  alternates: pageAlternates("/roadmap"),
-};
+export const metadata: Metadata = pageMetadata("/roadmap", "Roadmap", "Present and upcoming plans for FORENSYRA — the phases, milestones, and what we plan to publish next.");
 
 export default async function RoadmapPage() {
   const site = getSite();

@@ -8,14 +8,9 @@ import { RoleMatcher } from "@/components/role-matcher";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
 import { getEntries } from "@/lib/content";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Find Your Role",
-  description:
-    "Answer six questions and find which of the thirteen open digital forensics roles fits you best.",
-  alternates: pageAlternates("/roles/matcher"),
-};
+export const metadata: Metadata = pageMetadata("/roles/matcher", "Find Your Role", "Answer six questions and find which of the thirteen open digital forensics roles fits you best.");
 
 export default async function RoleMatcherPage() {
   const roles = await getEntries("roles");

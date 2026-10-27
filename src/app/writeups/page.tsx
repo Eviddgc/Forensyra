@@ -4,16 +4,11 @@ import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { WriteupsHero } from "@/components/writeups-hero";
 import { WriteupsList } from "@/components/writeups-list";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: "Write-ups",
-  description:
-    "Investigation logs, tutorials, and research on digital forensics, incident response, and evidence handling, written and published by FORENSYRA members.",
-  alternates: pageAlternates("/writeups"),
-};
+export const metadata: Metadata = pageMetadata("/writeups", "DFIR Write-ups & Tutorials", "Investigation logs, tutorials, and research on digital forensics, incident response, and evidence handling, written and published by FORENSYRA members.");
 
 export default async function WriteupsPage() {
   const site = getSite();

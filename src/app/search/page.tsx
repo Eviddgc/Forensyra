@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Search } from "lucide-react";
@@ -5,11 +6,7 @@ import { Container } from "@/components/container";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { getSearchIndex, searchDocs } from "@/lib/search";
 
-export const metadata: Metadata = {
-  title: "Search",
-  description: "Search case files, write-ups, roles and resources across FORENSYRA.",
-  robots: { index: false, follow: true },
-};
+export const metadata: Metadata = pageMetadata("/search", "Search", "Search case files, write-ups, roles and resources across FORENSYRA." , { index: false, follow: true });
 
 const KIND_STYLE: Record<string, string> = {
   "Case file": "border-accent/50 bg-accent/10 text-accent-2",

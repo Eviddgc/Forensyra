@@ -4,16 +4,11 @@ import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { ResourcesHero } from "@/components/resources-hero";
 import { Reveal } from "@/components/reveal";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { LearnExplorer } from "@/components/learn-explorer";
 
-export const metadata: Metadata = {
-  title: "Resources",
-  description:
-    "Starter tools, public sample evidence, and references for digital forensics.",
-  alternates: pageAlternates("/resources"),
-};
+export const metadata: Metadata = pageMetadata("/resources", "Digital Forensics Resources", "Starter tools, public sample evidence, and references for digital forensics.");
 
 export default function ResourcesPage() {
   const site = getSite();

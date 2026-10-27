@@ -6,28 +6,10 @@ import { Reveal } from "@/components/reveal";
 import { TeamRoster } from "@/components/team-roster";
 import { EmptyState } from "@/components/empty-state";
 import { getEntries } from "@/lib/content";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Team",
-  description:
-    "Meet the members of FORENSYRA and the roles they hold across the collective.",
-  alternates: pageAlternates("/team"),
-  openGraph: {
-    type: "website",
-    url: "https://www.forensyra.in/team",
-    title: "Team · FORENSYRA",
-    description:
-      "Meet the members of FORENSYRA and the roles they hold across the collective.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Team · FORENSYRA",
-    description:
-      "Meet the members of FORENSYRA and the roles they hold across the collective.",
-  },
-};
+export const metadata: Metadata = pageMetadata("/team", "Team", "Meet the members of FORENSYRA and the roles they hold across the collective.");
 
 export default async function TeamPage() {
   const [team, roles] = await Promise.all([

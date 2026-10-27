@@ -43,22 +43,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
     default: `${site.name} — ${site.descriptor}`,
-    template: `%s · ${site.name}`,
+    template: `${site.name} | %s`,
   },
   description: site.description,
   applicationName: site.name,
-  keywords: [
-    "digital forensics",
-    "DFIR",
-    "incident response",
-    "evidence handling",
-    "chain of custody",
-    "memory forensics",
-    "network forensics",
-    "mobile forensics",
-    "AI forensics",
-    "Forensyra",
-  ],
   authors: [{ name: site.name, url: site.social.github || site.url }],
   openGraph: {
     type: "website",

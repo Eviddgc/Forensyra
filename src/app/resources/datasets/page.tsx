@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getLearnGroup, groupToNode } from "@/lib/learn";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
@@ -8,12 +8,7 @@ import { HardDrive, ShieldCheck } from "lucide-react";
 import { LearnExplorer } from "@/components/learn-explorer";
 import type { TreeNode } from "@/lib/learn-types";
 
-export const metadata: Metadata = {
-  title: "Practice Datasets",
-  description:
-    "Public, legal forensic datasets for hands-on labs — disk images, memory dumps, and packet captures.",
-  alternates: pageAlternates("/resources/datasets"),
-};
+export const metadata: Metadata = pageMetadata("/resources/datasets", "Forensic Practice Datasets", "Public, legal forensic datasets for hands-on labs — disk images, memory dumps, and packet captures.");
 
 export default function PracticeDatasetsPage() {
   const datasets = getLearnGroup("datasets");

@@ -14,7 +14,7 @@ import { articleSchema, breadcrumbSchema } from "@/lib/structured-data";
 import { getEntries, getEntry, getSlugs } from "@/lib/content";
 import { extractToc, readingTime } from "@/lib/toc";
 import { formatDate } from "@/lib/utils";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
 export function generateStaticParams() {
@@ -29,24 +29,17 @@ export async function generateMetadata({
   const { slug } = await params;
   const entry = await getEntry("writeups", slug);
   if (!entry) return { title: "Write-up" };
+  const path = `/writeups/${slug}`;
+  const metadata = pageMetadata(path, entry.title, entry.description ?? "");
+  // Each article has its own generated 1200x630 preview.
+  const image = { url: `${path}/opengraph-image`, width: 1200, height: 630, alt: entry.title };
   return {
-    title: entry.title,
-    description: entry.description,
-    alternates: pageAlternates(`/writeups/${slug}`),
-    openGraph: {
-      type: "article",
-      title: entry.title,
-      description: entry.description,
-      url: `/writeups/${slug}`,
+    ...metadata,
+    openGraph: { ...metadata.openGraph, type: "article", images: [image],
       ...(entry.date ? { publishedTime: entry.date } : {}),
       ...(entry.updated ? { modifiedTime: entry.updated } : {}),
-      ...(entry.tags.length ? { tags: entry.tags } : {}),
     },
-    twitter: {
-      card: "summary_large_image",
-      title: entry.title,
-      description: entry.description,
-    },
+    twitter: { ...metadata.twitter, card: "summary_large_image", images: [image] },
   };
 }
 
