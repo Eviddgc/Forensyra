@@ -4,7 +4,7 @@ import { Reveal } from "@/components/reveal";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
 
 /**
- * Roles hero — the thirteen specialisations as one interlocking honeycomb.
+ * Roles hero — the fifteen specialisations as one interlocking honeycomb.
  */
 export function RolesHero({ description }: { description: string }) {
   return (
@@ -14,7 +14,7 @@ export function RolesHero({ description }: { description: string }) {
           <div className="flex items-center gap-3">
             <Target className="h-5 w-5 text-accent" />
             <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">
-              Thirteen Roles
+              Fifteen Roles
             </p>
           </div>
           <h1 className="font-display mt-4 max-w-3xl text-4xl font-medium leading-[1.05] tracking-tight text-foreground sm:text-5xl lg:text-6xl">
