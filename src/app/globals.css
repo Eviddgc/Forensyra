@@ -933,6 +933,13 @@
   color: transparent;
 }
 
+/* Announcement ticker loop on small screens (two copies, translate -50%). */
+@keyframes fx-notice-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 /* Announcement bar sweep animation. */
 @keyframes fx-announce-sweep {
   0%, 100% {
