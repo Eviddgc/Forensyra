@@ -15,11 +15,11 @@ const cmsEnabled = isDev || process.env.ENABLE_CMS === "true";
  */
 const siteContentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""} https://va.vercel-scripts.com`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  `connect-src 'self'${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self'${isDev ? " ws: wss:" : ""} https://va.vercel-scripts.com`,
   "media-src 'self'",
   "worker-src 'self' blob:",
   "object-src 'none'",
