@@ -12,8 +12,7 @@ import { cn } from "@/lib/utils";
  * and the forms behave exactly as before.
  *
  * The script only starts loading once the widget scrolls near the viewport,
- * so the footer newsletter copy of this component costs nothing on pages the
- * visitor never scrolls through.
+ * so the widget costs nothing on pages the visitor never scrolls through.
  */
 
 declare global {

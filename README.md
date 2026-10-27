@@ -145,14 +145,13 @@ Copy-Item .env.example .env.local # Windows PowerShell
 | Variable | Purpose |
 | --- | --- |
 | `NEXT_PUBLIC_SITE_URL` | Overrides `url` in `site.json` (canonicals, sitemap, OG) |
-| `EMAILJS_SERVICE_ID` | EmailJS service for the application/mentor/newsletter forms |
+| `EMAILJS_SERVICE_ID` | EmailJS service for the application/mentor forms |
 | `EMAILJS_TEMPLATE_ID` | Team application template |
 | `EMAILJS_PUBLIC_KEY` | EmailJS public key |
 | `EMAILJS_PRIVATE_KEY` | Optional — only for non-browser EmailJS access |
 | `EMAILJS_AUTOREPLY_TEMPLATE_ID` | Optional applicant auto-reply |
 | `EMAILJS_MENTOR_TEMPLATE_ID` | Mentor form template (falls back to `EMAILJS_TEMPLATE_ID`) |
 | `EMAILJS_MENTOR_AUTOREPLY_TEMPLATE_ID` | Optional mentor auto-reply |
-| `EMAILJS_NEWSLETTER_TEMPLATE_ID` | Footer newsletter template |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key (public — ships in the client bundle) |
 | `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile secret key (server-only, never commit) |
 
@@ -163,7 +162,7 @@ EmailJS template editor's code view and copy the IDs into the variables above.
 When email is not configured the forms fail **honestly** — they never claim a
 message was sent.
 
-The apply, mentor and newsletter forms are guarded by Cloudflare Turnstile
+The apply and mentor forms are guarded by Cloudflare Turnstile
 (Managed mode). Create a free widget in the Cloudflare dashboard with
 hostnames `forensyra.in` and `www.forensyra.in`, set both Turnstile variables
 in Vercel and redeploy — the site key is baked in at build time. Until the

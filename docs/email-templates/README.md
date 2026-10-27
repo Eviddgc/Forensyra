@@ -57,6 +57,3 @@ blank hole.
   contact selected members by email — no automatic newsletter, just a real
   reply." If you ever want one later, set `EMAILJS_AUTOREPLY_TEMPLATE_ID` and
   the copy upgrades itself.
-- **Newsletter** — the footer sign-up stays in its honest "not connected"
-  state: it never pretends to subscribe anyone until
-  `EMAILJS_NEWSLETTER_TEMPLATE_ID` is set (which is optional).
