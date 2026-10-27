@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Container } from "@/components/container";
-import { NewsletterForm } from "@/components/newsletter-form";
 import {
   GitHubIcon,
   InstagramIcon,
@@ -81,7 +80,7 @@ export function SiteFooter({
       </div>
 
       <Container className="relative z-10 py-16 sm:py-20">
-        {/* Top brand + newsletter row. */}
+        {/* Top brand + contact row. */}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-16">
           {/* Brand block. */}
           <div>
@@ -116,7 +115,7 @@ export function SiteFooter({
             ) : null}
           </div>
 
-          {/* Newsletter + contact. */}
+          {/* Contact. */}
           <div className="rounded-2xl border border-border-gold/40 bg-background/40 p-6 backdrop-blur-sm sm:p-8">
             <div className="flex items-center gap-3">
               <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-accent/30 bg-accent/10 text-accent">
@@ -124,15 +123,12 @@ export function SiteFooter({
               </span>
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.25em] text-accent">
-                  Stay in the loop
+                  Get in touch
                 </p>
                 <p className="mt-0.5 text-sm text-muted">
-                  Get updates on new cases, write-ups, and opportunities.
+                  Questions or want to collaborate? Write to the team.
                 </p>
               </div>
-            </div>
-            <div className="mt-5">
-              <NewsletterForm />
             </div>
             <a
               href={`mailto:${email}`}
