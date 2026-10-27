@@ -1,5 +1,6 @@
 import { after } from "next/server";
 import { buildApplyEmailParams, validateApply, type ApplyValues } from "@/lib/apply";
+import { verifyTurnstile } from "@/lib/turnstile";
 
 /**
  * POST /api/apply — the on-site team application.
@@ -164,6 +165,13 @@ export async function POST(request: Request): Promise<Response> {
   const startedAt = Number(payload._ts);
   if (Number.isFinite(startedAt) && startedAt > 0 && Date.now() - startedAt < MIN_FILL_MS) {
     return ok();
+  }
+
+  // Turnstile: verify the one-time token, then keep it out of every email.
+  const turnstileToken = typeof payload.turnstile === "string" ? payload.turnstile : undefined;
+  delete payload.turnstile;
+  if (!(await verifyTurnstile(turnstileToken, ip))) {
+    return fail(403, "We couldn't verify you're human. Please try again.");
   }
 
   const { errors, values } = validateApply(payload);

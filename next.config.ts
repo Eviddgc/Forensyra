@@ -13,13 +13,18 @@ const cmsEnabled = isDev || process.env.ENABLE_CMS === "true";
  * every *source* is pinned to this origin, and framing, plugins, workers and
  * cross-origin form posts are blocked.
  */
+// Cloudflare Turnstile guards the public forms; its api.js, challenge iframe
+// and verification calls all live on challenges.cloudflare.com.
+const TURNSTILE_ORIGIN = "https://challenges.cloudflare.com";
+
 const siteContentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${TURNSTILE_ORIGIN}${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  `connect-src 'self'${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' ${TURNSTILE_ORIGIN}${isDev ? " ws: wss:" : ""}`,
+  `frame-src 'self' ${TURNSTILE_ORIGIN}`,
   "media-src 'self'",
   "worker-src 'self' blob:",
   "object-src 'none'",

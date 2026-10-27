@@ -3,6 +3,7 @@
 import { useId, useState } from "react";
 import { ArrowRight, Check, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Turnstile, turnstileConfigured } from "@/components/turnstile";
 
 type Status = "idle" | "sending" | "ok" | "error";
 
@@ -17,6 +18,9 @@ export function NewsletterForm({ className }: { className?: string }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const [turnstileReset, setTurnstileReset] = useState(0);
+  const captchaNeeded = turnstileConfigured();
 
   async function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -28,6 +32,12 @@ export function NewsletterForm({ className }: { className?: string }) {
       return;
     }
 
+    if (captchaNeeded && !turnstileToken) {
+      setStatus("error");
+      setMessage("One moment — the human check is still running. Please try again in a second.");
+      return;
+    }
+
     setStatus("sending");
     setMessage("");
 
@@ -35,7 +45,7 @@ export function NewsletterForm({ className }: { className?: string }) {
       const response = await fetch("/api/newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: value }),
+        body: JSON.stringify({ email: value, turnstile: turnstileToken ?? "" }),
       });
       const data = (await response.json().catch(() => ({}))) as {
         ok?: boolean;
@@ -49,10 +59,14 @@ export function NewsletterForm({ className }: { className?: string }) {
       } else {
         setStatus("error");
         setMessage(data.error ?? "Something went wrong. Please try again.");
+        setTurnstileToken(null);
+        setTurnstileReset((n) => n + 1);
       }
     } catch {
       setStatus("error");
       setMessage("We couldn't reach the server. Please try again.");
+      setTurnstileToken(null);
+      setTurnstileReset((n) => n + 1);
     }
   }
 
@@ -104,6 +118,12 @@ export function NewsletterForm({ className }: { className?: string }) {
             )}
           </button>
         </div>
+        <Turnstile
+          onToken={setTurnstileToken}
+          resetSignal={turnstileReset}
+          size="compact"
+          className="mt-3"
+        />
       </form>
       {message ? (
         <p
