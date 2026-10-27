@@ -11,7 +11,7 @@ export function JoinCta({
   applyUrl,
   eyebrow = "Join the Collective",
   title = "Help build the definitive student DFIR team",
-  description = "Applications are open. Bring your curiosity, pick a role, and work on a real investigation with us.",
+  description = "Applications are open. Bring your curiosity, pick a role, and work on a realistic investigation with us.",
   applyLabel = "Apply Now",
 }: {
   applyUrl?: string;
@@ -55,7 +55,7 @@ export function JoinCta({
           <Reveal delay={120}>
             <div className="flex items-center lg:justify-end">
               <p className="fx-accent-type text-3xl sm:text-4xl">
-                Real Cases
+                Realistic Cases
                 <br />
                 Real Skills
                 <br />

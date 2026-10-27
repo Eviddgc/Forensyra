@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin } from "lucide-react";
+import { MapPin, User } from "lucide-react";
 import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
@@ -25,8 +25,8 @@ function MemberSlot({
   if (!member) {
     return (
       <div className="flex flex-col items-center gap-2 rounded-xl border border-dashed border-[#d4af5f]/30 bg-[#10141c]/40 p-4 text-center">
-        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-dashed border-accent/30 bg-accent/5 font-mono text-xs text-accent/60">
-          Photo
+        <div className="flex h-16 w-16 items-center justify-center rounded-full border border-dashed border-accent/30 bg-accent/5 text-accent/60">
+          <User aria-hidden="true" className="h-6 w-6" />
         </div>
         <p className="text-xs text-muted">Open seat</p>
         <Link
@@ -118,6 +118,29 @@ export function TeamRoster({
       {roles.map((role, index) => {
         const holders = membersByRole.get(role.slug) ?? [];
         const slots = [holders[0], holders[1]];
+        if (role.comingSoon) {
+          return (
+            <div
+              key={role.slug}
+              className={cn(cardClass, "flex flex-col p-5 opacity-80")}
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <span className="font-mono text-xs text-muted">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="mt-1 text-base font-semibold text-foreground">
+                    {role.title}
+                  </h3>
+                  <p className="mt-1 text-xs text-muted">
+                    Revealing soon. This role opens in Phase 2.
+                  </p>
+                </div>
+                <Badge variant="muted">Soon</Badge>
+              </div>
+            </div>
+          );
+        }
         return (
           <div
             key={role.slug}

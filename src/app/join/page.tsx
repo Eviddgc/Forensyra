@@ -18,14 +18,18 @@ export const metadata: Metadata = {
 };
 
 const STEPS = [
-  "Open the application form (about 3 minutes).",
+  "Open the application form (about 10 minutes).",
   "Pick the role that fits you best.",
   "Tell us what you have used and what you want to learn.",
   "Selected members are contacted by email.",
 ];
 
 export default async function JoinPage() {
-  const roles = await getEntries("roles");
+  const [roles, team] = await Promise.all([
+    getEntries("roles"),
+    getEntries("team"),
+  ]);
+  const filledRoles = new Set(team.map((member) => member.roleId));
 
   return (
     <>
@@ -114,7 +118,7 @@ export default async function JoinPage() {
               Available Roles
             </p>
             <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Open specialisations
+              Specialisations
             </h2>
             <p className="mt-2 max-w-xl text-[15px] text-muted">
               Choose the role that fits you best. You can change your mind later.
@@ -126,7 +130,13 @@ export default async function JoinPage() {
                   className="flex items-center justify-between gap-3 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 px-4 py-3"
                 >
                   <span className="text-sm text-foreground">{role.title}</span>
-                  <Badge variant="accent">Open</Badge>
+                  {role.comingSoon ? (
+                    <Badge variant="muted">Soon</Badge>
+                  ) : filledRoles.has(role.slug) ? (
+                    <Badge variant="success">Filled</Badge>
+                  ) : (
+                    <Badge variant="accent">Open</Badge>
+                  )}
                 </div>
               ))}
             </div>

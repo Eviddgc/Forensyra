@@ -53,7 +53,7 @@ export default async function TeamPage() {
               Members & open seats
             </h2>
             <p className="mt-2 max-w-xl text-[15px] text-muted">
-              Each of the thirteen roles has two member slots. Filled seats show
+              Each role has two member slots. Filled seats show
               the member; empty seats are open to apply for.
             </p>
           </Reveal>
@@ -141,7 +141,7 @@ export default async function TeamPage() {
 
               <div className="hidden lg:block">
                 <p className="fx-accent-type text-right text-3xl font-medium italic leading-snug xl:text-4xl">
-                  Real Cases
+                  Realistic Cases
                   <br />
                   Real Skills
                   <br />

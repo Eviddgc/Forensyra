@@ -56,7 +56,7 @@ const NAV: NavItem[] = [
   {
     label: "Team",
     items: [
-      { id: "team-roles", href: "/roles", label: "13 Roles", description: "Specialisations across DFIR" },
+      { id: "team-roles", href: "/roles", label: "Roles", description: "Specialisations across DFIR" },
       { id: "team-members", href: "/team", label: "Members", description: "Current collective members" },
       { id: "team-join", href: "/join", label: "Join", description: "How to apply & what to expect" },
     ],

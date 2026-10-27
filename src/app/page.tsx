@@ -11,9 +11,9 @@ import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
 export const metadata: Metadata = {
-  title: { absolute: "FORENSYRA | Digital Forensics & Incident Response" },
+  title: { absolute: "FORENSYRA | Digital Evidence & DFIR Collective" },
   description:
-    "FORENSYRA is a student-led DFIR collective. Learn digital forensics, practise evidence handling on legal mock cases, and publish real investigations together.",
+    "FORENSYRA is a student-led DFIR collective. Learn digital forensics, practise evidence handling on legal mock cases, and publish realistic case reports together.",
   alternates: pageAlternates("/"),
 };
 

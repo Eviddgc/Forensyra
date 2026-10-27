@@ -13,7 +13,7 @@ const STATS: Array<{
   suffix?: string;
   label: string;
 }> = [
-  { value: 13, label: "Specialized Roles" },
+  { value: 15, label: "Specialised Roles" },
   { value: 2, label: "Active Projects" },
   { value: 1, label: "Flagship Case" },
   { value: 2, prefix: "~", suffix: "h", label: "Per Week" },
@@ -59,7 +59,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
             <p className="mt-6 max-w-xl text-[15px] leading-[1.8] text-muted sm:text-base">
               {name} is a collective for students and early-career professionals
               in digital forensics, incident response, and cybersecurity. We
-              come together, practise on real-world problems, and build public
+              come together, practise on realistic problems, and build public
               portfolios — turning curiosity into impact.
             </p>
           </Reveal>

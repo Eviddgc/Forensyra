@@ -53,7 +53,7 @@ export const MILESTONES: Milestone[] = [
     status: "Upcoming",
     date: "Jan 1, 2027",
     description:
-      "Add the remaining roles: operations, threat intel and OSINT, mobile, multimedia, cloud, and AI forensics.",
+      "Add the remaining roles: operations, threat intel and OSINT, mobile, multimedia, cloud, and AI forensics, plus the two roles still to be revealed (Reverse Engineering and Dark Web & Underground Intelligence).",
     details:
       "Build stronger workflows, publish more cases, and expand the team's public footprint.",
     tags: ["Growth", "Teams"],

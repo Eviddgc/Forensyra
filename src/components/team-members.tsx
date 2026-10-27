@@ -140,7 +140,7 @@ export function TeamMembers({
           </h2>
           <p className="mt-2 max-w-xl text-[15px] text-muted">
             The people behind the work — each holding one of the collective&apos;s
-            thirteen specialist roles.
+            specialist roles.
           </p>
         </div>
 

@@ -340,7 +340,7 @@
         {
           "label": "Malware-Traffic-Analysis.net",
           "href": "https://www.malware-traffic-analysis.net/",
-          "description": "Real packet captures of malware infections, with exercises — ideal for network forensics practice.",
+          "description": "Public captures of real malware infections, no victim data, with exercises — ideal for network forensics practice.",
           "tags": [
             "PCAP",
             "Malware",

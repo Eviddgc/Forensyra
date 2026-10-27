@@ -45,7 +45,7 @@ There is no single smoking gun. If data left, it left **slowly, in small pieces,
 
 ## Evidence
 
-Public practice captures combined with synthetic logs we generate for the scenario:
+Public practice captures (sources to be selected) combined with synthetic logs we generate for the scenario:
 
 - A perimeter packet capture covering the incident window.
 - Proxy and firewall logs for the same period.

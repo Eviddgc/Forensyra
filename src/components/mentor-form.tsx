@@ -610,6 +610,12 @@ export function MentorForm({ configured, email }: MentorFormProps) {
                 ethics rules
               </Link>
               .
+              <br />
+              We use your details only to review applications. To have them deleted, email{" "}
+              <a href="mailto:forensyra@outlook.in" className="text-accent-2 underline">
+                forensyra@outlook.in
+              </a>
+              .
             </p>
           </div>
 

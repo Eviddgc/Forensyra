@@ -80,7 +80,7 @@ export async function getSearchIndex(): Promise<SearchIndex> {
     { title: "About", description: "Why the collective exists and what it stands for", href: "/about" },
     { title: "Roadmap", description: "Phases, milestones and what comes next", href: "/roadmap" },
     { title: "Ethics", description: "Rules of engagement for legal, ethical practice", href: "/ethics" },
-    { title: "Roles", description: "The thirteen specialisations across DFIR", href: "/roles" },
+    { title: "Roles", description: "The fifteen specialisations across DFIR", href: "/roles" },
     { title: "Find your role", description: "A six-question role matcher", href: "/roles/matcher" },
     { title: "Members", description: "The people building the collective", href: "/team" },
     { title: "Join", description: "How to apply and what to expect", href: "/join" },

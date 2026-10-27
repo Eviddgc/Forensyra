@@ -205,7 +205,7 @@ export const MENTOR_SECTIONS: ApplySection[] = [
       },
       {
         name: "mentorNote",
-        number: 14,
+        number: 15,
         kind: "textarea",
         label: "If yes, please share a short note about your mentoring experience",
         placeholder: "Describe your mentoring experience…",
@@ -215,7 +215,7 @@ export const MENTOR_SECTIONS: ApplySection[] = [
       },
       {
         name: "whyMentor",
-        number: 15,
+        number: 16,
         kind: "textarea",
         label: "Why do you want to mentor FORENSYRA?",
         required: true,
@@ -235,7 +235,7 @@ export const MENTOR_SECTIONS: ApplySection[] = [
     fields: [
       {
         name: "agreeEthics",
-        number: 16,
+        number: 17,
         kind: "checkboxes",
         label: "I agree to follow ethical and legal standards of digital forensics",
         required: true,
@@ -248,7 +248,7 @@ export const MENTOR_SECTIONS: ApplySection[] = [
       },
       {
         name: "consentContact",
-        number: 17,
+        number: 18,
         kind: "checkboxes",
         label: "I consent to FORENSYRA contacting me about this role",
         required: true,

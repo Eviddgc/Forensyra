@@ -19,7 +19,7 @@ const STEPS: Array<{
   {
     number: "01",
     title: "Roles first",
-    text: "Every member owns one of thirteen defined specialisations, filled in phases.",
+    text: "Every member owns one defined specialisation, and roles are filled in phases.",
     Icon: Layers,
   },
   {

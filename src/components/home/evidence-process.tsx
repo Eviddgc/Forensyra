@@ -26,7 +26,7 @@ const STEPS: Array<{
   },
   {
     number: "02",
-    title: "Analyze & Investigate",
+    title: "Analyse & Investigate",
     text: "Use industry-standard tools to uncover the truth in the data.",
     Icon: Microscope,
   },
@@ -58,7 +58,7 @@ export function EvidenceProcess() {
             </h2>
             <p className="mt-5 text-[15px] leading-relaxed text-muted">
               From the crime scene to the final report, here&apos;s how
-              Forensyra members break down real-world cases.
+              Forensyra members break down realistic cases.
             </p>
           </div>
           <Link

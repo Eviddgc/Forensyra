@@ -37,7 +37,7 @@ something is going to take longer.
 
 In scope:
 
-- `forensyra.com` and its subdomains, and this repository,
+- `forensyra.in` and its subdomains, and this repository,
 - the contact, application and mentor forms and their API routes,
 - anything that leaks private data, bypasses validation, or lets one visitor
   affect another.
