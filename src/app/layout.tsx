@@ -12,6 +12,7 @@ import { organizationSchema, websiteSchema } from "@/lib/structured-data";
 import { CommandPalette } from "@/components/command-palette";
 import { getSearchIndex } from "@/lib/search";
 import { getSite } from "@/lib/site";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -152,6 +153,7 @@ export default async function RootLayout({
           email={site.email}
           social={site.social}
         />
+        <Analytics />
       </body>
     </html>
   );
