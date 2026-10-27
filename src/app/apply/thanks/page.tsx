@@ -1,3 +1,4 @@
+import { pageMetadata } from "@/lib/seo";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, Check, Lock } from "lucide-react";
@@ -5,11 +6,7 @@ import { Container } from "@/components/container";
 import { PageHeader } from "@/components/page-header";
 import { btnPrimaryLg } from "@/lib/ui";
 
-export const metadata: Metadata = {
-  title: "Application received",
-  description: "Thank you — your Forensyra application has been received.",
-  robots: { index: false, follow: false },
-};
+export const metadata: Metadata = pageMetadata("/apply/thanks", "Application received", "Thank you — your Forensyra application has been received." , { index: false, follow: false });
 
 /**
  * The landing spot for a no-JavaScript submission, which the API route reaches

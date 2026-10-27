@@ -25,6 +25,7 @@ export function organizationSchema(): Ld {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": `${site.url}/#organization`,
     name: site.name,
     alternateName: site.descriptor,
     url: site.url,
@@ -89,9 +90,11 @@ export function articleSchema(entry: Entry, path: string): Ld {
     headline: entry.title,
     description: entry.description ?? "",
     url: `${site.url}${path}`,
+    mainEntityOfPage: `${site.url}${path}`,
+    image: `${site.url}${path}/opengraph-image`,
     ...(entry.date ? { datePublished: entry.date } : {}),
     ...(entry.updated ? { dateModified: entry.updated } : {}),
-    ...(entry.author ? { author: { "@type": "Person", name: entry.author } } : {}),
+    ...(entry.author ? { author: { "@type": /^forensyra$/i.test(entry.author) ? "Organization" : "Person", name: entry.author } } : { author: { "@id": `${site.url}/#organization` } }),
     publisher: {
       "@type": "Organization",
       name: site.name,

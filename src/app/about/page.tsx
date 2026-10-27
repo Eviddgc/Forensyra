@@ -9,15 +9,10 @@ import { JoinCta } from "@/components/home/join-cta";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { getEntry } from "@/lib/content";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "FORENSYRA is a student-led digital forensics collective: learn together, practise on legal mock cases, and build one strong public investigation.",
-  alternates: pageAlternates("/about"),
-};
+export const metadata: Metadata = pageMetadata("/about", "About the Digital Forensics Collective", "FORENSYRA is a student-led digital forensics collective: learn together, practise on legal mock cases, and build one strong public investigation.");
 
 /** Used only if the leadership entry is missing from the CMS. */
 const FOUNDER_FALLBACK = {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { getLearnGroup, groupToNode } from "@/lib/learn";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
@@ -8,12 +8,7 @@ import { ShieldCheck, Terminal } from "lucide-react";
 import { LearnExplorer } from "@/components/learn-explorer";
 import type { TreeNode } from "@/lib/learn-types";
 
-export const metadata: Metadata = {
-  title: "Tools",
-  description:
-    "Curated open-source tools for digital forensics and incident response — guides and references.",
-  alternates: pageAlternates("/resources/tools"),
-};
+export const metadata: Metadata = pageMetadata("/resources/tools", "DFIR Tools", "Curated open-source tools for digital forensics and incident response — guides and references.");
 
 export default function ToolsPage() {
   const tools = getLearnGroup("tools");

@@ -6,16 +6,11 @@ import { Benefits } from "@/components/home/benefits";
 
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
-export const metadata: Metadata = {
-  title: { absolute: "FORENSYRA | Digital Evidence & DFIR Collective" },
-  description:
-    "FORENSYRA is a student-led DFIR collective. Learn digital forensics, practise evidence handling on legal mock cases, and publish realistic case reports together.",
-  alternates: pageAlternates("/"),
-};
+export const metadata: Metadata = pageMetadata("/", "Digital Evidence & DFIR Collective", "FORENSYRA is a student-led DFIR collective. Learn digital forensics, practise evidence handling on legal mock cases, and publish realistic case reports together.");
 
 export default async function HomePage() {
   const site = getSite();

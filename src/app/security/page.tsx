@@ -13,15 +13,10 @@ import { Reveal } from "@/components/reveal";
 import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { JsonLd } from "@/components/json-ld";
 import { breadcrumbSchema } from "@/lib/structured-data";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Security Policy",
-  description:
-    "How to report a vulnerability to FORENSYRA, what we promise in return, and what is in scope.",
-  alternates: pageAlternates("/security"),
-};
+export const metadata: Metadata = pageMetadata("/security", "Security Policy", "How to report a vulnerability to FORENSYRA, what we promise in return, and what is in scope.");
 
 function channels(email: string) {
   return [

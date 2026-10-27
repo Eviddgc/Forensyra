@@ -3,15 +3,10 @@ import { AlertCircle } from "lucide-react";
 import { Container } from "@/components/container";
 import { PageHeader } from "@/components/page-header";
 import { ApplyForm } from "@/components/apply-form";
-import { pageAlternates } from "@/lib/seo";
+import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Team Application",
-  description:
-    "Apply to join Forensyra — tell us about your interests, skills, availability, and preferred role.",
-  alternates: pageAlternates("/apply"),
-};
+export const metadata: Metadata = pageMetadata("/apply", "Team Application", "Apply to join Forensyra — tell us about your interests, skills, availability, and preferred role.");
 
 export default async function ApplyPage({
   searchParams,

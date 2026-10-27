@@ -32,18 +32,13 @@ let cachedSite: SiteSettings | null = null;
 
 /**
  * Resolve the public site URL. A configured value is the fallback, but an
- * environment override wins so previews and production deployments
- * (Vercel) get correct canonical URLs, sitemaps and OG tags without editing
- * the committed settings file.
+ * explicit public-site override wins for production configuration. Automatic
+ * deployment hostnames are intentionally excluded so preview deployments do
+ * not change the canonical identity, sitemap or social URLs.
  */
 function resolveSiteUrl(configured: string): string {
-  const candidates = [
-    process.env.NEXT_PUBLIC_SITE_URL,
-    process.env.VERCEL_PROJECT_PRODUCTION_URL
-      ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
-      : undefined,
-    process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : undefined,
-  ];
+  // Canonicals always describe the public site, never a deployment/preview host.
+  const candidates = [process.env.NEXT_PUBLIC_SITE_URL];
   for (const candidate of candidates) {
     if (!candidate) continue;
     try {
