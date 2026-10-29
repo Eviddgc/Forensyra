@@ -57,3 +57,14 @@ blank hole.
   contact selected members by email — no automatic newsletter, just a real
   reply." If you ever want one later, set `EMAILJS_AUTOREPLY_TEMPLATE_ID` and
   the copy upgrades itself.
+
+## If application emails arrive with blank fields
+
+The site sends every variable listed above (verified by
+`tests/email-templates.test.mjs`). Blank fields in the received email mean the
+copy in the EmailJS dashboard is older than these files and uses different
+variable names — EmailJS renders unknown `{{variables}}` as empty. Fix: open
+the template in the dashboard and re-paste the current file from this folder
+in **Code** view, then Save. Do the same for both templates; the dashboard
+copy is also where the footer domain comes from, so re-pasting keeps it at
+forensyra.in.
