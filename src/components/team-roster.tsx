@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { MapPin, User } from "lucide-react";
-import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { LinkedInIcon } from "@/components/brand-icons";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
 import type { Entry } from "@/lib/content";
@@ -39,18 +39,22 @@ function MemberSlot({
     );
   }
 
-  const github = member.links.find((link) => /github/i.test(link.label));
   const linkedin = member.links.find((link) => /linked/i.test(link.label));
 
   return (
-    <div className="flex flex-col items-center gap-2 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 p-4 text-center">
-      <div className="relative flex h-16 w-16 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent">
+    <div className="group/member flex flex-col items-center gap-2 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 p-4 text-center transition duration-300 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02] hover:border-accent/60 hover:bg-[#1a2029]/60 hover:shadow-[0_18px_40px_-18px] hover:shadow-accent/40 motion-safe:active:scale-[1.04]">
+      <div
+        tabIndex={0}
+        role="img"
+        aria-label={`Photo of ${member.title}. Hover or tap to enlarge.`}
+        className="relative z-10 flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent outline-none transition-all duration-500 ease-out motion-safe:hover:z-40 motion-safe:hover:scale-[2.6] motion-safe:hover:border-accent motion-safe:hover:shadow-[0_24px_60px_-12px] motion-safe:hover:shadow-accent/60 motion-safe:group-hover/member:border-accent/70 motion-safe:active:z-40 motion-safe:active:scale-[2.6] motion-safe:focus:z-40 motion-safe:focus:scale-[2.6] motion-safe:focus:border-accent motion-safe:focus:shadow-[0_24px_60px_-12px] motion-safe:focus:shadow-accent/60"
+      >
         {member.cover ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
             src={member.cover}
             alt={member.title}
-            className="h-full w-full object-cover"
+            className="h-full w-full object-cover transition-transform duration-300"
           />
         ) : (
           initials(member.title) || "FX"
@@ -68,32 +72,17 @@ function MemberSlot({
           {member.location}
         </span>
       ) : null}
-      {(github || linkedin) && (
-        <div className="flex items-center gap-2">
-          {github ? (
-            <a
-              href={github.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${member.title} on GitHub`}
-              className="rounded-full border border-border p-1 text-muted transition hover:border-accent/50 hover:text-accent"
-            >
-              <GitHubIcon className="h-3 w-3" />
-            </a>
-          ) : null}
-          {linkedin ? (
-            <a
-              href={linkedin.url}
-              target="_blank"
-              rel="noreferrer"
-              aria-label={`${member.title} on LinkedIn`}
-              className="rounded-full border border-border p-1 text-muted transition hover:border-accent/50 hover:text-accent"
-            >
-              <LinkedInIcon className="h-3 w-3" />
-            </a>
-          ) : null}
-        </div>
-      )}
+      {linkedin ? (
+        <a
+          href={linkedin.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`${member.title} on LinkedIn`}
+          className="rounded-full border border-border p-1.5 text-muted transition hover:border-accent/60 hover:text-accent"
+        >
+          <LinkedInIcon className="h-3.5 w-3.5" />
+        </a>
+      ) : null}
     </div>
   );
 }
