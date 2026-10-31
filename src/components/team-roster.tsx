@@ -42,8 +42,8 @@ function MemberSlot({
   const linkedin = member.links.find((link) => /linked/i.test(link.label));
 
   return (
-    <div className="group/member flex flex-col items-center gap-2 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 p-4 text-center transition duration-300 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.04] hover:border-accent/60 hover:bg-[#1a2029]/60 hover:shadow-[0_18px_40px_-18px] hover:shadow-accent/40 motion-safe:active:scale-[1.04]">
-      <div className="relative flex h-20 w-20 items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent transition duration-300 motion-safe:group-hover/member:scale-110 motion-safe:group-hover/member:border-accent/70 motion-safe:group-active/member:scale-110">
+    <div className="group/member flex flex-col items-center gap-2 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 p-4 text-center transition duration-300 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02] hover:border-accent/60 hover:bg-[#1a2029]/60 hover:shadow-[0_18px_40px_-18px] hover:shadow-accent/40 motion-safe:active:scale-[1.04]">
+      <div className="relative z-10 flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent transition-all duration-500 ease-out motion-safe:hover:z-40 motion-safe:hover:scale-[2.6] motion-safe:hover:border-accent motion-safe:hover:shadow-[0_24px_60px_-12px] motion-safe:hover:shadow-accent/60 motion-safe:group-hover/member:border-accent/70 motion-safe:active:z-40 motion-safe:active:scale-[2.6]">
         {member.cover ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img
