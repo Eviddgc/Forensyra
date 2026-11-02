@@ -46,6 +46,7 @@ export async function getSearchIndex(): Promise<SearchIndex> {
   }
 
   for (const entry of roles) {
+    if (entry.comingSoon) continue;
     docs.push({
       title: entry.title,
       description: entry.description ?? entry.work ?? "",
