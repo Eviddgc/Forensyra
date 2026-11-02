@@ -124,7 +124,9 @@ export default async function JoinPage() {
                   key={role.slug}
                   className="flex items-center justify-between gap-3 rounded-xl border border-[#d4af5f]/25 bg-[#151922]/50 px-4 py-3"
                 >
-                  <span className="text-sm text-foreground">{role.title}</span>
+                  <span className={role.comingSoon ? "text-sm text-muted" : "text-sm text-foreground"}>
+                    {role.comingSoon ? "Revealing soon" : role.title}
+                  </span>
                   {role.comingSoon ? (
                     <Badge variant="muted">Soon</Badge>
                   ) : filledRoles.has(role.slug) ? (
