@@ -56,7 +56,7 @@ export default async function RoleMatcherPage() {
         <Reveal>
           <div className="mx-auto max-w-2xl">
             <RoleMatcher
-              roles={roles.map((role) => ({
+              roles={roles.filter((role) => !role.comingSoon).map((role) => ({
                 slug: role.slug,
                 title: role.title,
                 description: role.description ?? "",
