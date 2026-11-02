@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MapPin, User } from "lucide-react";
+import { Lock, MapPin, User } from "lucide-react";
 import { LinkedInIcon } from "@/components/brand-icons";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
@@ -111,21 +111,38 @@ export function TeamRoster({
           return (
             <div
               key={role.slug}
-              className={cn(cardClass, "flex flex-col p-5 opacity-80")}
+              className={cn(
+                cardClass,
+                "relative flex flex-col overflow-hidden p-5 opacity-70 select-none",
+              )}
             >
+              {/* blurred content hint */}
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <span className="font-mono text-xs text-muted">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-1 text-base font-semibold text-foreground">
+                  <h3 className="mt-1 text-base font-semibold text-foreground blur-[3px]">
                     {role.title}
                   </h3>
-                  <p className="mt-1 text-xs text-muted">
+                  <p className="mt-1 text-xs text-muted blur-[2px]">
                     Revealing soon. This role opens in Phase 2.
                   </p>
                 </div>
                 <Badge variant="muted">Soon</Badge>
+              </div>
+
+              {/* lock overlay */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-[inherit] bg-background/60 backdrop-blur-[1px]">
+                <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent">
+                  <Lock className="h-4 w-4" />
+                </span>
+                <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-accent">
+                  Revealing soon
+                </p>
+                <p className="max-w-[16rem] text-center text-xs text-muted">
+                  This role is coming in Phase 2. Stay tuned.
+                </p>
               </div>
             </div>
           );
