@@ -58,7 +58,7 @@ const NAV: NavItem[] = [
     items: [
       { id: "team-roles", href: "/roles", label: "Roles", description: "Specialisations across DFIR" },
       { id: "team-members", href: "/team", label: "Members", description: "Current collective members" },
-      { id: "team-mentors", href: "/mentors", label: "Mentors", description: "Experienced practitioners guiding the collective" },
+      { id: "team-mentors", href: "/mentors", label: "Mentors", description: "Our mentor panel is forming" },
       { id: "team-join", href: "/join", label: "Join", description: "How to apply & what to expect" },
     ],
   },
