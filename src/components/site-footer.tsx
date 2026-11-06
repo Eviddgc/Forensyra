@@ -20,6 +20,7 @@ const EXPLORE = [
 
 const COLLECTIVE = [
   { href: "/team", label: "The Collective" },
+  { href: "/mentors", label: "Mentors" },
   { href: "/roles", label: "Roles" },
   { href: "/resources", label: "Resources" },
   { href: "/join", label: "Join us" },
