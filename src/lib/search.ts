@@ -84,6 +84,7 @@ export async function getSearchIndex(): Promise<SearchIndex> {
     { title: "Roles", description: "The fifteen specialisations across DFIR", href: "/roles" },
     { title: "Find your role", description: "A six-question role matcher", href: "/roles/matcher" },
     { title: "Members", description: "The people building the collective", href: "/team" },
+    { title: "Mentors", description: "Experienced practitioners guiding the collective", href: "/mentors" },
     { title: "Join", description: "How to apply and what to expect", href: "/join" },
     { title: "Apply", description: "Submit your application to join the team", href: "/apply" },
     { title: "Mentor / Advisor", description: "Guide the team as a subject expert", href: "/apply/mentor" },

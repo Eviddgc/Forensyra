@@ -4,7 +4,6 @@ import { Container } from "@/components/container";
 import { TeamHero } from "@/components/team-hero";
 import { Reveal } from "@/components/reveal";
 import { TeamRoster } from "@/components/team-roster";
-import { TeamMentors } from "@/components/team-mentors";
 import { EmptyState } from "@/components/empty-state";
 import { getEntries } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
@@ -53,11 +52,6 @@ export default async function TeamPage() {
             />
           )}
         </section>
-
-        {/* Mentors */}
-        <Reveal>
-          <TeamMentors />
-        </Reveal>
       </Container>
 
       {/* CTA banner */}
