@@ -19,11 +19,11 @@ const TURNSTILE_ORIGIN = "https://challenges.cloudflare.com";
 
 const siteContentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' ${TURNSTILE_ORIGIN}${isDev ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline' ${TURNSTILE_ORIGIN} https://va.vercel-scripts.com${isDev ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob:",
   "font-src 'self'",
-  `connect-src 'self' ${TURNSTILE_ORIGIN}${isDev ? " ws: wss:" : ""}`,
+  `connect-src 'self' ${TURNSTILE_ORIGIN} https://va.vercel-scripts.com${isDev ? " ws: wss:" : ""}`,
   `frame-src 'self' ${TURNSTILE_ORIGIN}`,
   "media-src 'self'",
   "worker-src 'self' blob:",
