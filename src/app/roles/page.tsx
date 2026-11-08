@@ -10,7 +10,7 @@ import { getEntries } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
-export const metadata: Metadata = pageMetadata("/roles", "Digital Forensics Roles", "Explore 13 open digital forensics roles and two upcoming specialities in the FORENSYRA collective.");
+export const metadata: Metadata = pageMetadata("/roles", "Digital Forensics Roles", "Explore the 13 digital forensics roles of the FORENSYRA collective — every member owns a defined specialisation.");
 
 export default async function RolesPage() {
   const [roles, team] = await Promise.all([
@@ -24,21 +24,21 @@ export default async function RolesPage() {
 
   return (
     <>
-      <RolesHero description="All fifteen specialisations, in one place — two more revealing soon. Every member owns a defined role — pick the one that fits you." />
+      <RolesHero description="All thirteen specialisations, in one place. Every member owns a defined role — pick the one that fits you." />
 
       <Container variant="wide" className="py-14 sm:py-20">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
-            All 15 Roles
+            All 13 Roles
           </p>
           <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             The full roster
           </h2>
           <p className="mt-2 max-w-xl text-[15px] text-muted">
-            Numbered 01 to 15. Roles are filled in phases — phase 1 builds the
-            core team, phase 2 grows the collective. Two new roles are coming
-            soon. Expand any role to see what the work involves, the key
-            responsibilities, and the skills and tools we look for.
+            Numbered 01 to 13. Roles are filled in phases — phase 1 builds the
+            core team, phase 2 grows the collective. Expand any role to see
+            what the work involves, the key responsibilities, and the skills
+            and tools we look for.
           </p>
         </Reveal>
 
@@ -53,7 +53,7 @@ export default async function RolesPage() {
                   Not sure which role is yours?
                 </p>
                 <p className="mt-0.5 text-sm text-muted">
-                  Six questions. We map your answers against all fifteen
+                  Six questions. We map your answers against all thirteen
                   specialisations.
                 </p>
               </div>
@@ -66,7 +66,9 @@ export default async function RolesPage() {
         </Reveal>
 
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {roles.map((role, index) => (
+          {roles
+            .filter((role) => !role.comingSoon)
+            .map((role, index) => (
             <div
               key={role.slug}
               id={`role-${role.slug}`}

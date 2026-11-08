@@ -122,8 +122,8 @@ export function TeamRoster({
                   <span className="font-mono text-xs text-muted">
                     {String(index + 1).padStart(2, "0")}
                   </span>
-                  <h3 className="mt-1 text-base font-semibold text-foreground blur-[3px]">
-                    {role.title}
+                  <h3 className="mt-1 text-base font-semibold text-foreground blur-[3px]" aria-hidden="true">
+                    Classified specialisation
                   </h3>
                   <p className="mt-1 text-xs text-muted blur-[2px]">
                     Revealing soon. This role opens in Phase 2.

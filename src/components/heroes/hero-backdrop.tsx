@@ -28,7 +28,7 @@ const THEMES: Record<HeroVariant, Theme> = {
     pattern: "linear-gradient(60deg, rgba(212,175,95,0.09) 1px, transparent 1px), linear-gradient(-60deg, rgba(212,175,95,0.07) 1px, transparent 1px)",
     patternSize: "34px 60px",
     patternOpacity: 0.55,
-    label: "Fifteen roles",
+    label: "Thirteen roles",
     artWidth: "md:w-[42rem] lg:w-[45rem]",
   },
   projects: {
