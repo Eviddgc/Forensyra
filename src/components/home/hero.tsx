@@ -13,7 +13,7 @@ const STATS: Array<{
   suffix?: string;
   label: string;
 }> = [
-  { value: 15, label: "Specialised Roles" },
+  { value: 13, label: "Specialised Roles" },
   { value: 2, label: "Active Projects" },
   { value: 1, label: "Flagship Case" },
   { value: 2, prefix: "~", suffix: "h", label: "Per Week" },

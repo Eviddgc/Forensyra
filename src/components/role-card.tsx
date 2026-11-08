@@ -33,15 +33,13 @@ export function RoleCard({
           <span className="font-mono text-xs text-muted">
             {String(index + 1).padStart(2, "0")}
           </span>
-          <div className="flex-1">
+          <div className="flex-1" aria-hidden="true">
             <h3 className="text-base font-semibold text-foreground blur-[3px]">
-              {role.title}
+              Classified specialisation
             </h3>
-            {role.description ? (
-              <p className="mt-1 text-sm text-muted blur-[2px]">
-                {role.description}
-              </p>
-            ) : null}
+            <p className="mt-1 text-sm text-muted blur-[2px]">
+              This specialisation stays classified until its Phase 2 reveal.
+            </p>
           </div>
           <div className="flex shrink-0 flex-wrap items-center justify-end gap-2">
             {role.phase !== undefined ? (
