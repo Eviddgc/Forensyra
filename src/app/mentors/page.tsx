@@ -44,6 +44,27 @@ export default async function MentorsPage() {
       </HeroSection>
 
       <Container variant="wide" className="space-y-8 py-8 sm:py-10">
+        <section aria-labelledby="confirmed-mentors-heading">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
+              Expert mentors
+            </p>
+            <h2 id="confirmed-mentors-heading" className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+              Meet our mentors
+            </h2>
+            <article className="mt-5 flex max-w-2xl items-start gap-4 rounded-2xl border border-accent/40 bg-[#151922]/70 p-5 sm:p-6">
+              <div aria-hidden="true" className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-accent/50 bg-accent/10 font-mono text-sm font-semibold text-accent">
+                SG
+              </div>
+              <div className="min-w-0">
+                <h3 className="text-xl font-semibold text-foreground">Sandeepraj Gatla</h3>
+                <p className="mt-1 text-xs uppercase tracking-[0.16em] text-muted">Expert Mentor</p>
+                <p className="mt-2 text-sm leading-relaxed text-accent-2">Incident Response and Security Investigations</p>
+              </div>
+            </article>
+          </Reveal>
+        </section>
+
         {/* How mentoring works + roles, compact */}
         <section id="mentor-roles-top" aria-labelledby="mentoring-heading" className="scroll-mt-24">
           <Reveal>
