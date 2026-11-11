@@ -1658,3 +1658,13 @@
   border-color: rgba(214, 176, 104, 0.75);
   box-shadow: 0 0 0 3px rgba(214, 176, 104, 0.14);
 }
+
+/* Mentors page: detail panel reveal */
+@keyframes mentor-rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.mentor-rise { animation: mentor-rise 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+@media (prefers-reduced-motion: reduce) {
+  .mentor-rise { animation: none; }
+}
