@@ -104,7 +104,7 @@ export default async function MentorsPage() {
                   Open a role to see the mentor&apos;s part
                 </h2>
                 <p className="mt-2 max-w-xl text-[15px] text-muted">
-                  Choose a role to see its mentor, what the mentor does, how they guide, and what students gain.
+                  Choose a role to see its mentor and what the mentor does, step by step.
                 </p>
               </div>
               <Badge variant="accent">Panel forming</Badge>
