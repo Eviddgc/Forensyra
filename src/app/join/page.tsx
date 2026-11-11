@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/badge";
 import { pageMetadata } from "@/lib/seo";
 import { btnPrimary } from "@/lib/ui";
+import { isRoleFilled } from "@/lib/role-capacity";
 import { getEntries } from "@/lib/content";
 
 
@@ -24,7 +25,11 @@ export default async function JoinPage() {
     getEntries("roles"),
     getEntries("team"),
   ]);
-  const filledRoles = new Set(team.map((member) => member.roleId));
+  const memberCounts = new Map<string, number>();
+  for (const member of team) {
+    if (!member.roleId) continue;
+    memberCounts.set(member.roleId, (memberCounts.get(member.roleId) ?? 0) + 1);
+  }
 
   return (
     <>
@@ -129,7 +134,7 @@ export default async function JoinPage() {
                   </span>
                   {role.comingSoon ? (
                     <Badge variant="muted">Soon</Badge>
-                  ) : filledRoles.has(role.slug) ? (
+                  ) : isRoleFilled(memberCounts.get(role.slug) ?? 0) ? (
                     <Badge variant="success">Filled</Badge>
                   ) : (
                     <Badge variant="accent">Open</Badge>

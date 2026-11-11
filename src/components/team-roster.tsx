@@ -4,6 +4,7 @@ import { LinkedInIcon } from "@/components/brand-icons";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
 import type { Entry } from "@/lib/content";
+import { isRoleFilled, ROLE_SEAT_CAPACITY } from "@/lib/role-capacity";
 import { cn } from "@/lib/utils";
 
 function initials(name: string) {
@@ -106,7 +107,8 @@ export function TeamRoster({
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {roles.map((role, index) => {
         const holders = membersByRole.get(role.slug) ?? [];
-        const slots = [holders[0], holders[1]];
+        const filled = isRoleFilled(holders.length);
+        const slots = Array.from({ length: ROLE_SEAT_CAPACITY }, (_, seat) => holders[seat]);
         if (role.comingSoon) {
           return (
             <div
@@ -164,8 +166,8 @@ export function TeamRoster({
                   <p className="mt-1 text-xs text-muted">{role.description}</p>
                 ) : null}
               </div>
-              <Badge variant={holders.length > 0 ? "success" : "accent"}>
-                {holders.length > 0 ? "Filled" : "Open"}
+              <Badge variant={filled ? "success" : "accent"}>
+                {filled ? "Filled" : "Open"}
               </Badge>
             </div>
 

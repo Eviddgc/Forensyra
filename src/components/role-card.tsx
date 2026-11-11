@@ -7,6 +7,7 @@ import { Lock, Plus } from "lucide-react";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
 import type { Entry } from "@/lib/content";
+import { isRoleFilled } from "@/lib/role-capacity";
 import { cn, phaseLabel } from "@/lib/utils";
 
 export function RoleCard({
@@ -18,7 +19,7 @@ export function RoleCard({
   index: number;
   holders?: Entry[];
 }) {
-  const filled = holders.length > 0;
+  const filled = isRoleFilled(holders.length);
 
   if (role.comingSoon) {
     return (
