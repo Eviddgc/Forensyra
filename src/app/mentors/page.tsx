@@ -79,8 +79,8 @@ export default async function MentorsPage() {
               Simple, light and clear
             </h2>
             <p className="mt-2 max-w-2xl text-[15px] text-muted">
-              Each mentor guides the students of one role. The lead gives the
-              cases. You review drafts, share tips and help when a student is
+              Each mentor guides the students of one role. FORENSYRA adds the
+              cases and the team works on them. You review drafts, share tips and help when a student is
               stuck, with nothing to chase.
             </p>
             <p className="mt-4 inline-flex rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm text-accent-2">
@@ -90,7 +90,7 @@ export default async function MentorsPage() {
         </section>
 
         {/* Roles - tree style, Filled only when a mentor seat is taken */}
-        <section aria-labelledby="mentors-heading">
+        <section id="mentor-roles-top" aria-labelledby="mentors-heading" className="scroll-mt-24">
           <Reveal>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
               <div>
@@ -104,8 +104,7 @@ export default async function MentorsPage() {
                   Open a role to see the mentor&apos;s part
                 </h2>
                 <p className="mt-2 max-w-xl text-[15px] text-muted">
-                  Every role shows what its mentor does, how they guide, what
-                  students learn, and the mentor card at the bottom.
+                  Choose a role to see its mentor first, then what the mentor does, how they guide, and what students learn.
                 </p>
               </div>
               <Badge variant="accent">Panel forming</Badge>

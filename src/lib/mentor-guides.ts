@@ -7,9 +7,9 @@ export type MentorGuide = {
 /** Mentor work per role, keyed by role slug. Content authored for the Mentors page. */
 export const MENTOR_GUIDES: Record<string, MentorGuide> = {
   "lead-forensic-investigator": {
-    does: ["Reviews how the lead scopes a case and splits it across the roles", "Challenges the case plan: is each task tied to evidence and a question?", "Checks that conclusions are supported before the report is approved"],
-    guides: ["Reviews the lead's case plan and task split", "Gives tips on validating findings and handling disagreement", "Short call before each report sign-off"],
-    learn: ["Scoping a case from a vague brief", "Validating findings before they are called facts", "Leading a team without taking over the work"],
+    does: ["Reviews how a case is scoped and split across the roles", "Challenges the case plan: is each task tied to evidence and a question?", "Checks that conclusions are supported before the report is approved"],
+    guides: ["Reviews the student's case plan and task split", "Gives tips on validating findings and handling disagreement", "Short call before a final report is approved"],
+    learn: ["Scoping a case from a vague brief", "Validating findings before they are called facts", "Guiding a team without taking over the work"],
   },
   "coordinator-operations": {
     does: ["Shares how real forensic teams track cases, owners and deadlines", "Reviews the team's task board and meeting notes", "Advises on keeping a volunteer team on schedule"],
@@ -48,7 +48,7 @@ export const MENTOR_GUIDES: Record<string, MentorGuide> = {
   },
   "timeline-forensic-reporting-analyst": {
     does: ["Reviews how the student builds a timeline from many sources", "Reviews report drafts for clarity, structure and evidence links", "Coaches on explaining findings to non-technical readers"],
-    guides: ["Reads the report draft and gives line-level tips", "Tips on timeline tools and report structure", "Short call before a final report goes to the lead"],
+    guides: ["Reads the report draft and gives line-level tips", "Tips on timeline tools and report structure", "Short call before a final report is shared"],
     learn: ["Building a clean, sourced timeline", "Writing a forensic report that stands up", "Presenting findings clearly"],
   },
   "cloud-forensics-analyst": {
@@ -74,7 +74,7 @@ export const MENTOR_GUIDES: Record<string, MentorGuide> = {
 };
 
 export const MENTOR_FLOW = [
-  { title: "Cases come from the lead", text: "Gopi, as lead, gives each case to the students. Mentors see the same case." },
+  { title: "Cases from FORENSYRA", text: "FORENSYRA adds the cases and the team members work on them. Mentors see the same case." },
   { title: "Drafts", text: "Students share drafts. The mentor reviews and clarifies them." },
   { title: "Tips and review", text: "Practical tips, and a review of the work when it is needed." },
   { title: "Short call", text: "A short call, booked around the mentor's free time." },
