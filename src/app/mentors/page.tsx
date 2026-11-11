@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ArrowUpRight, BookOpen, Compass, GraduationCap, ShieldCheck } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
@@ -7,6 +6,8 @@ import { HeroSection } from "@/components/heroes/hero-backdrop";
 import { Badge } from "@/components/badge";
 import { cardClass } from "@/lib/ui";
 import { pageMetadata } from "@/lib/seo";
+import { getEntries } from "@/lib/content";
+import { MentorRoles } from "@/components/mentor-roles";
 
 export const metadata: Metadata = pageMetadata(
   "/mentors",
@@ -35,7 +36,12 @@ const MENTOR_BRINGS = [
   },
 ];
 
-export default function MentorsPage() {
+export default async function MentorsPage() {
+  const roles = await getEntries("roles");
+  const sortedRoles = [...roles]
+    .filter((r) => !r.comingSoon)
+    .sort((a, b) => a.order - b.order)
+    .map((r) => ({ slug: r.slug, title: r.title, description: r.description }));
   return (
     <>
       {/* Hero - same round-table art and rhythm as the Team page */}
@@ -60,7 +66,30 @@ export default function MentorsPage() {
       </HeroSection>
 
       <Container variant="wide" className="space-y-16 py-14 sm:py-20">
-        {/* The panel - honestly forming, no fixed number of seats */}
+        {/* How mentoring works */}
+        <section aria-labelledby="mentoring-heading">
+          <Reveal>
+            <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
+              How mentoring works
+            </p>
+            <h2
+              id="mentoring-heading"
+              className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
+            >
+              Simple, light and clear
+            </h2>
+            <p className="mt-2 max-w-2xl text-[15px] text-muted">
+              Each mentor guides the students of one role. The lead gives the
+              cases. You review drafts, share tips and help when a student is
+              stuck, with nothing to chase.
+            </p>
+            <p className="mt-4 inline-flex rounded-full border border-accent/30 bg-accent/10 px-4 py-1.5 text-sm text-accent-2">
+              About 1 to 2 hours a month - Telugu or English - remote, no fixed schedule
+            </p>
+          </Reveal>
+        </section>
+
+        {/* Roles - tree style, Filled only when a mentor seat is taken */}
         <section aria-labelledby="mentors-heading">
           <Reveal>
             <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
@@ -72,40 +101,19 @@ export default function MentorsPage() {
                   id="mentors-heading"
                   className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl"
                 >
-                  Forming now
+                  Open a role to see the mentor&apos;s part
                 </h2>
                 <p className="mt-2 max-w-xl text-[15px] text-muted">
-                  Confirmed mentors will appear here with their profiles - in
-                  their own specialties, with no fixed number of seats.
+                  Every role shows what its mentor does, how they guide, what
+                  students learn, and the mentor card at the bottom.
                 </p>
               </div>
-
               <Badge variant="accent">Panel forming</Badge>
             </div>
           </Reveal>
-
-          <Reveal>
-            <div className="mt-8 rounded-3xl border border-dashed border-accent/30 bg-surface/40 p-8 text-center sm:p-12">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-dashed border-accent/30 bg-accent/5 text-accent/70">
-                <GraduationCap aria-hidden="true" className="h-7 w-7" />
-              </div>
-              <p className="font-display mt-5 text-2xl font-semibold text-foreground">
-                Our mentor panel is forming
-              </p>
-              <p className="mx-auto mt-2 max-w-lg text-sm leading-relaxed text-muted">
-                We are reaching out to experienced digital forensics
-                professionals to guide the team as it learns. There is no fixed
-                number of seats - every specialty is welcome, and each mentor
-                will be introduced here in their own field.
-              </p>
-              <Link
-                href="/apply/mentor"
-                className="mt-6 inline-flex items-center justify-center rounded-full bg-accent px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-accent-2"
-              >
-                Become a mentor
-              </Link>
-            </div>
-          </Reveal>
+          <div className="mt-8">
+            <MentorRoles roles={sortedRoles} />
+          </div>
         </section>
 
         {/* What a mentor brings */}
