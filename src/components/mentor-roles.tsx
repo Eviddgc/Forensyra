@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowLeft, ArrowRight, ChevronRight, MousePointerClick, TriangleAlert, User } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronRight, Clock, MousePointerClick, Repeat2, TriangleAlert, User, Wrench } from "lucide-react";
 import { Badge } from "@/components/badge";
 import { cn } from "@/lib/utils";
 import { MENTOR_GUIDES, MENTOR_INTRO, MENTORS_BY_ROLE, type MentorGuide } from "@/lib/mentor-guides";
@@ -11,7 +11,8 @@ type Role = { slug: string; title: string; description?: string };
 const TABS = [
   { id: "part", label: "Your part" },
   { id: "flow", label: "How you guide" },
-  { id: "review", label: "What you review" },
+  { id: "review", label: "Feedback and quality" },
+  { id: "tools", label: "Tools and rhythm" },
   { id: "growth", label: "Student growth" },
 ] as const;
 type TabId = (typeof TABS)[number]["id"];
@@ -72,6 +73,10 @@ function Flow({ guide }: { guide: MentorGuide }) {
           <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Stage {step + 1} of {guide.stages.length}</p>
           <h5 className="font-display mt-1 text-xl font-semibold text-foreground">{stage.t}</h5>
           <div className="mt-4 space-y-4">
+            <div className="rounded-xl border border-border p-3">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Starts from</p>
+              <p className="mt-1 text-sm leading-relaxed text-foreground">{stage.inputs}</p>
+            </div>
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted">Students do</p>
               <p className="mt-1 text-sm leading-relaxed text-foreground">{stage.students}</p>
@@ -81,7 +86,10 @@ function Flow({ guide }: { guide: MentorGuide }) {
               <p className="mt-1 text-sm leading-relaxed text-foreground">{stage.mentor}</p>
             </div>
             <p className="flex items-center gap-2 text-[13px] text-muted">
-              <ArrowRight className="h-4 w-4 text-accent" /> Produces: <span className="font-semibold text-accent-2">{stage.output}</span>
+              <ArrowRight className="h-4 w-4 shrink-0 text-accent" /> Produces: <span className="font-semibold text-accent-2">{stage.output}</span>
+            </p>
+            <p className="rounded-xl border border-success/30 bg-success/10 px-3 py-2 text-[13px] leading-relaxed text-foreground">
+              <span className="font-semibold text-success">Quality bar: </span>{stage.bar}
             </p>
           </div>
           <div className="mt-5 flex justify-between gap-3">
@@ -105,7 +113,7 @@ function Detail({ role, guide, onBack }: { role: Role; guide: MentorGuide; onBac
     <section
       id="mentor-detail"
       aria-live="polite"
-      className="mentor-rise fx-glass relative scroll-mt-24 overflow-hidden rounded-2xl border border-accent/40 p-5 shadow-[0_30px_80px_-40px_rgba(214,176,104,0.45)] sm:p-8"
+      className="mentor-rise fx-glass relative scroll-mt-24 overflow-hidden rounded-2xl border border-accent/40 p-4 shadow-[0_30px_80px_-40px_rgba(214,176,104,0.45)] sm:p-6"
     >
       <div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-accent/10 blur-3xl" />
       <button type="button" onClick={onBack} className="mb-4 inline-flex items-center gap-1.5 text-sm text-accent-2 lg:hidden">
@@ -122,7 +130,7 @@ function Detail({ role, guide, onBack }: { role: Role; guide: MentorGuide; onBac
       <p className="relative mt-3 max-w-2xl text-[15px] leading-relaxed text-muted">{guide.summary}</p>
 
       {/* Mentor card first */}
-      <div className="mentor-rise relative mt-6 flex flex-wrap gap-3" style={rise(1)}>
+      <div className="mentor-rise relative mt-4 flex flex-wrap gap-3" style={rise(1)}>
         {mentors.map((m) => (
           <div key={m.name} className="flex items-center gap-4 rounded-xl border border-accent/40 bg-[#151922]/70 p-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-accent/50 bg-accent/10 font-mono text-sm font-semibold text-accent">{initials(m.name)}</div>
@@ -148,7 +156,7 @@ function Detail({ role, guide, onBack }: { role: Role; guide: MentorGuide; onBac
       </div>
 
       {/* Tabs */}
-      <div role="tablist" aria-label="Role sections" className="relative mt-8 flex gap-1 overflow-x-auto rounded-full border border-border bg-background/50 p-1">
+      <div role="tablist" aria-label="Role sections" className="relative mt-5 flex gap-1 overflow-x-auto rounded-full border border-border bg-background/50 p-1">
         {TABS.map((t) => (
           <button
             key={t.id}
@@ -178,6 +186,15 @@ function Detail({ role, guide, onBack }: { role: Role; guide: MentorGuide; onBac
                 </div>
               </div>
             ))}
+            <p className="pt-3 font-mono text-xs uppercase tracking-[0.22em] text-accent">Decisions you will coach</p>
+            <div className="grid gap-3 md:grid-cols-3">
+              {guide.decisions.map((d) => (
+                <div key={d.q} className="rounded-xl border border-accent/20 bg-accent/[0.06] p-4">
+                  <p className="text-sm font-semibold text-foreground">{d.q}</p>
+                  <p className="mt-2 text-[13px] leading-relaxed text-muted">{d.c}</p>
+                </div>
+              ))}
+            </div>
             <div className="rounded-xl border border-accent/30 bg-accent/[0.07] p-4">
               <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-accent">{guide.unique.label}</p>
               <p className="mt-1 text-sm leading-relaxed text-foreground">{guide.unique.items}</p>
@@ -188,7 +205,31 @@ function Detail({ role, guide, onBack }: { role: Role; guide: MentorGuide; onBac
         {tab === "flow" ? <Flow guide={guide} /> : null}
 
         {tab === "review" ? (
-          <div className="space-y-5">
+          <div className="space-y-6">
+            <div>
+              <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-accent"><Repeat2 className="h-3.5 w-3.5" /> The feedback loop</p>
+              <ol className="mt-3 grid gap-2.5 sm:grid-cols-2 xl:grid-cols-4">
+                {guide.loop.map((l, i) => (
+                  <li key={l} className="relative rounded-xl border border-border bg-background/50 p-4 text-[13px] leading-relaxed text-foreground">
+                    <span className="font-mono text-xs text-accent">{String(i + 1).padStart(2, "0")}</span>
+                    <p className="mt-1">{l}</p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+            <div>
+              <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">Weak work and strong work</p>
+              <div className="mt-3 overflow-hidden rounded-xl border border-border">
+                {guide.vs.map((v, i) => (
+                  <div key={v.a} className={cn("grid gap-2 p-4 md:grid-cols-[0.6fr_1fr_1fr]", i > 0 && "border-t border-border")}>
+                    <p className="text-sm font-semibold text-accent-2">{v.a}</p>
+                    <p className="text-[13px] leading-relaxed text-muted"><span className="font-semibold text-danger">Weak: </span>{v.weak}</p>
+                    <p className="text-[13px] leading-relaxed text-foreground"><span className="font-semibold text-success">Strong: </span>{v.strong}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <p className="font-mono text-xs uppercase tracking-[0.22em] text-accent">What the mentor reviews</p>
             <div className="grid gap-3 sm:grid-cols-2">
               {guide.review.map((r) => (
                 <div key={r.t} className="rounded-xl border border-accent/20 bg-accent/[0.06] p-4">
@@ -209,6 +250,34 @@ function Detail({ role, guide, onBack }: { role: Role; guide: MentorGuide; onBac
                   </li>
                 ))}
               </ul>
+            </div>
+          </div>
+        ) : null}
+
+        {tab === "tools" ? (
+          <div className="space-y-6">
+            <div>
+              <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-accent"><Clock className="h-3.5 w-3.5" /> Time and rhythm</p>
+              <div className="mt-3 grid gap-3 md:grid-cols-3">
+                {guide.rhythm.map((r) => (
+                  <div key={r.w} className="rounded-xl border border-accent/20 bg-accent/[0.06] p-4">
+                    <p className="text-sm font-semibold text-accent-2">{r.w}</p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-muted">{r.d}</p>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-3 text-xs text-muted">About 1 to 2 hours a month in total. No fixed schedule. Telugu or English.</p>
+            </div>
+            <div>
+              <p className="flex items-center gap-2 font-mono text-xs uppercase tracking-[0.22em] text-accent"><Wrench className="h-3.5 w-3.5" /> Tools and artefacts in this role</p>
+              <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                {guide.tools.map((t) => (
+                  <div key={t.n} className="rounded-xl border border-border bg-background/50 p-4">
+                    <p className="text-sm font-semibold text-foreground">{t.n}</p>
+                    <p className="mt-1 text-[13px] text-muted">{t.u}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         ) : null}
@@ -275,7 +344,7 @@ export function MentorRoles({ roles }: { roles: Role[] }) {
       </nav>
 
       {!active || !guide ? (
-        <div className="fx-glass hidden min-h-[360px] flex-col items-center justify-center rounded-2xl border border-dashed border-accent/30 p-10 text-center lg:flex">
+        <div className="fx-glass hidden min-h-[300px] flex-col items-center justify-center rounded-2xl border border-dashed border-accent/30 p-10 text-center lg:flex">
           <span className="flex h-14 w-14 items-center justify-center rounded-full border border-accent/30 bg-accent/10 text-accent">
             <MousePointerClick aria-hidden="true" className="h-6 w-6" />
           </span>
