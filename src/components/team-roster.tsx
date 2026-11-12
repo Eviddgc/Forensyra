@@ -49,7 +49,7 @@ function MemberSlot({
         tabIndex={0}
         role="img"
         aria-label={`Photo of ${member.title}. Hover or tap to enlarge.`}
-        className="relative z-10 flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent outline-none transition-all duration-500 ease-out motion-safe:hover:z-40 motion-safe:hover:scale-[2.6] motion-safe:hover:border-accent motion-safe:hover:shadow-[0_24px_60px_-12px] motion-safe:hover:shadow-accent/60 motion-safe:group-hover/member:border-accent/70 motion-safe:active:z-40 motion-safe:active:scale-[2.6] motion-safe:focus:z-40 motion-safe:focus:scale-[2.6] motion-safe:focus:border-accent motion-safe:focus:shadow-[0_24px_60px_-12px] motion-safe:focus:shadow-accent/60"
+        className="relative z-10 flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent outline-none transition-all duration-500 ease-out motion-safe:hover:z-40 motion-safe:hover:scale-[2.6] motion-safe:hover:border-accent motion-safe:hover:shadow-[0_24px_60px_-12px] motion-safe:hover:shadow-accent/60 motion-safe:group-hover/member:border-accent/70 motion-safe:active:z-40 motion-safe:active:scale-[2.6] motion-safe:focus-visible:z-40 motion-safe:focus-visible:scale-[2.6] motion-safe:focus-visible:border-accent motion-safe:focus-visible:shadow-[0_24px_60px_-12px] motion-safe:focus-visible:shadow-accent/60"
       >
         {member.cover ? (
           <span
