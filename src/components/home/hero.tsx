@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, GraduationCap } from "lucide-react";
+import { ArrowRight, GraduationCap, Users } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { Counter } from "@/components/counter";
@@ -78,6 +78,13 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
                 className="fx-glass inline-flex items-center justify-center rounded-xl px-6 py-3.5 text-[14.5px] font-medium text-foreground transition hover:border-accent/50 hover:text-accent-2"
               >
                 Explore the Case Board
+              </Link>
+              <Link
+                href="/team"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-accent/50 bg-accent/10 px-6 py-3.5 text-[14.5px] font-semibold text-accent-2 transition hover:border-accent hover:bg-accent/20"
+              >
+                <Users className="h-4 w-4" aria-hidden="true" />
+                Team members
               </Link>
               <Link
                 href="/mentors"
