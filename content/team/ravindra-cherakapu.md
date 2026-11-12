@@ -1,8 +1,9 @@
 ---
-title: "Ravindra Cherakapu"
+title: "Ravindra ch"
 role: "AI Forensics & AI Security Analyst"
 roleId: "ai-forensics-ai-security-analyst"
 phase: 1
+cover: "/uploads/team/ravindra-cherakapu.webp"
 description: "Investigates AI misuse, prompt injection, AI API logs, synthetic-media risks, and AI-related data exposure."
 ---
 

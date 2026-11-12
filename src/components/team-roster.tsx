@@ -55,14 +55,14 @@ function MemberSlot({
           <img
             src={member.cover}
             alt={member.title}
-            className="h-full w-full object-cover transition-transform duration-300"
+            className="h-full w-full object-contain transition-transform duration-300"
           />
         ) : (
           initials(member.title) || "FX"
         )}
       </div>
       <div className="min-w-0">
-        <p className="truncate text-sm font-semibold text-foreground">
+        <p className="break-words text-sm font-semibold leading-snug text-foreground">
           {member.title}
         </p>
         <p className="text-[11px] text-accent">{roleTitle}</p>

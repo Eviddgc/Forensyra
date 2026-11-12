@@ -3,6 +3,7 @@ title: "B. Lasya Sree Reddy"
 role: "Evidence Custodian & Chain-of-Custody Lead"
 roleId: "evidence-custodian-chain-of-custody"
 phase: 1
+cover: "/uploads/team/lasya-sree-reddy.webp"
 description: "Owns evidence integrity from acquisition to verification: hashing every artefact, maintaining the chain-of-custody log, and protecting working copies."
 ---
 
