@@ -6,6 +6,7 @@ import { cardClass } from "@/lib/ui";
 import type { Entry } from "@/lib/content";
 import { isRoleFilled, ROLE_SEAT_CAPACITY } from "@/lib/role-capacity";
 import { cn } from "@/lib/utils";
+import { ProtectedArea } from "@/components/protected-area";
 
 function initials(name: string) {
   return name
@@ -51,11 +52,11 @@ function MemberSlot({
         className="relative z-10 flex h-20 w-20 cursor-pointer items-center justify-center overflow-hidden rounded-full border border-accent/40 bg-accent/10 font-mono text-sm font-semibold text-accent outline-none transition-all duration-500 ease-out motion-safe:hover:z-40 motion-safe:hover:scale-[2.6] motion-safe:hover:border-accent motion-safe:hover:shadow-[0_24px_60px_-12px] motion-safe:hover:shadow-accent/60 motion-safe:group-hover/member:border-accent/70 motion-safe:active:z-40 motion-safe:active:scale-[2.6] motion-safe:focus:z-40 motion-safe:focus:scale-[2.6] motion-safe:focus:border-accent motion-safe:focus:shadow-[0_24px_60px_-12px] motion-safe:focus:shadow-accent/60"
       >
         {member.cover ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={member.cover}
-            alt={member.title}
-            className="h-full w-full object-contain transition-transform duration-300"
+          <span
+            aria-hidden="true"
+            draggable={false}
+            style={{ backgroundImage: `url("${member.cover}")` }}
+            className="pointer-events-none block h-full w-full bg-contain bg-center bg-no-repeat"
           />
         ) : (
           initials(member.title) || "FX"
@@ -104,6 +105,7 @@ export function TeamRoster({
   }
 
   return (
+    <ProtectedArea>
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {roles.map((role, index) => {
         const holders = membersByRole.get(role.slug) ?? [];
@@ -184,5 +186,6 @@ export function TeamRoster({
         );
       })}
     </div>
+    </ProtectedArea>
   );
 }

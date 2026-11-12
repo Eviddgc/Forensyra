@@ -10,6 +10,7 @@ const expected = {
   'tejaswini-mukkamalla': 'Tejaswini Mukkamalla',
   'perumalla-anusha': 'Perumalla Anusha',
   'lasya-sree-reddy': 'B. Lasya Sree Reddy',
+  'vani-rayala': 'Vani Rayala',
 };
 test('requested members have exact display names and local photo assets', () => {
   for (const [slug, name] of Object.entries(expected)) {
@@ -22,5 +23,14 @@ test('requested members have exact display names and local photo assets', () => 
 test('privacy artwork is shared by the three supplied placeholder files', () => {
   for (const slug of ['gauri-bhasme', 'dokala-sreeja', 'perumalla-anusha']) {
     assert.match(readFileSync(`content/team/${slug}.md`, 'utf8'), /cover: "\/uploads\/team\/member-private.webp"/);
+  }
+});
+test('team roster blocks casual copying and uses protected background photos', () => {
+  const roster = readFileSync('src/components/team-roster.tsx', 'utf8');
+  const guard = readFileSync('src/components/protected-area.tsx', 'utf8');
+  assert.ok(roster.includes('<ProtectedArea>'));
+  assert.ok(!roster.includes('<img'));
+  for (const handler of ['onContextMenu', 'onDragStart', 'onCopy', 'onCut', 'select-none']) {
+    assert.ok(guard.includes(handler), handler);
   }
 });
