@@ -1,8 +1,9 @@
 ---
-title: "Gauri Bhasme"
+title: "Gauri B."
 role: "Threat Intelligence & OSINT Analyst"
 roleId: "threat-intelligence-osint-analyst"
 phase: 1
+cover: "/uploads/team/member-private.webp"
 description: "Researches and enriches suspicious IPs, domains, URLs, hashes, attacker methods, and related threat information."
 ---
 
