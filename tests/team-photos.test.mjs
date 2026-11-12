@@ -30,7 +30,7 @@ test('team roster blocks casual copying and uses protected background photos', (
   const guard = readFileSync('src/components/protected-area.tsx', 'utf8');
   assert.ok(roster.includes('<ProtectedArea>'));
   assert.ok(!roster.includes('<img'));
-  for (const handler of ['onContextMenu', 'onDragStart', 'onCopy', 'onCut', 'select-none']) {
+  for (const handler of ['onContextMenu', 'onDragStart', 'onCopy', 'onCut', 'select-none', 'visibilitychange', 'PrintScreen', 'blur']) {
     assert.ok(guard.includes(handler), handler);
   }
 });
