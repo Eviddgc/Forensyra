@@ -8,6 +8,7 @@ const expected = {
   'dokala-sreeja': 'DOKALA SREEJA',
   'gauri-bhasme': 'Gauri B.',
   'tejaswini-mukkamalla': 'Tejaswini Mukkamalla',
+  'deepthi-chaitanya-karella': 'Deepthi Chaitanya Karella',
   'perumalla-anusha': 'Perumalla Anusha',
   'lasya-sree-reddy': 'B. Lasya Sree Reddy',
   'vani-rayala': 'Vani Rayala',
