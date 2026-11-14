@@ -669,8 +669,8 @@ function FieldControl({
                   {field.placeholder ?? "Choose…"}
                 </option>
                 {field.options?.map((option) => (
-                  <option key={option.value} value={option.value}>
-                    {option.label}
+                  <option key={option.value} value={option.value} disabled={option.filled}>
+                    {option.filled ? `${option.label} - Filled` : option.label}
                   </option>
                 ))}
               </select>
@@ -691,6 +691,15 @@ function FieldControl({
                 onBlur={() => onBlur(field.name)}
               />
             )}
+            {field.kind === "select" && field.options?.some((option) => option.filled) ? (
+              <p className="mt-2 flex items-start gap-1.5 text-xs text-muted">
+                <Lock className="mt-0.5 h-3 w-3 shrink-0 text-accent-2" aria-hidden />
+                <span>
+                  Roles marked Filled have both seats taken for Phase 1, so they can&apos;t be
+                  chosen. Stay tuned for Phase 2 - or pick another open role above.
+                </span>
+              </p>
+            ) : null}
             <FieldError id={errorId} error={error} className="mt-2" />
           </div>
         </>

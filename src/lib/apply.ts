@@ -21,6 +21,8 @@ export interface ApplyOption {
   label: string;
   /** Short line shown under a choice card. */
   hint?: string;
+  /** Both seats are taken: the option renders locked and cannot be submitted. */
+  filled?: boolean;
 }
 
 export interface ApplyField {
@@ -63,18 +65,22 @@ export interface ApplySection {
 const ROLE_OPTIONS: ApplyOption[] = [
   { value: "Coordinator / Operations Coordinator", label: "Coordinator / Operations Coordinator" },
   { value: "Legal & Digital Evidence Advisor", label: "Legal & Digital Evidence Advisor" },
-  { value: "Evidence Custodian & Chain-of-Custody Lead", label: "Evidence Custodian & Chain-of-Custody Lead" },
-  { value: "Endpoint Forensics Analyst", label: "Endpoint Forensics Analyst" },
+  { value: "Evidence Custodian & Chain-of-Custody Lead", label: "Evidence Custodian & Chain-of-Custody Lead", filled: true },
+  { value: "Endpoint Forensics Analyst", label: "Endpoint Forensics Analyst", filled: true },
   { value: "Network Forensics Analyst", label: "Network Forensics Analyst" },
   { value: "Memory & Malware Analysis Analyst", label: "Memory & Malware Analysis Analyst" },
-  { value: "Threat Intelligence & OSINT Analyst", label: "Threat Intelligence & OSINT Analyst" },
+  { value: "Threat Intelligence & OSINT Analyst", label: "Threat Intelligence & OSINT Analyst", filled: true },
   { value: "Timeline & Forensic Reporting Analyst", label: "Timeline & Forensic Reporting Analyst" },
   { value: "Cloud Forensics Analyst", label: "Cloud Forensics Analyst" },
   { value: "Multimedia Forensics Analyst", label: "Multimedia Forensics Analyst" },
-  { value: "AI Forensics & AI Security Analyst", label: "AI Forensics & AI Security Analyst" },
+  { value: "AI Forensics & AI Security Analyst", label: "AI Forensics & AI Security Analyst", filled: true },
   { value: "Mobile Device Forensics Analyst", label: "Mobile Device Forensics Analyst" },
   { value: "I'm unsure and open to guidance", label: "I'm unsure and open to guidance" },
 ];
+
+/** Shown when someone picks (or submits) a role whose seats are both taken. */
+export const FILLED_ROLE_MESSAGE =
+  "This role is filled - stay tuned for Phase 2.";
 
 const TOOL_OPTIONS: ApplyOption[] = [
   { value: "Autopsy / FTK Imager", label: "Autopsy / FTK Imager" },
@@ -441,6 +447,9 @@ export function validateApply(input: ApplyValues): ApplyValidation {
     }
     if (field.options && !knownValues(field)?.has(value)) {
       errors[field.name] = "Please choose one of the options.";
+    } else if (field.options?.some((option) => option.value === value && option.filled)) {
+      // A filled role can never be submitted, even with a crafted request.
+      errors[field.name] = FILLED_ROLE_MESSAGE;
     }
     if (field.minLength && value.length < field.minLength) {
       errors[field.name] = `Please write at least ${field.minLength} characters.`;
