@@ -2191,4 +2191,8 @@ export const MENTOR_INTRO = "FORENSYRA adds the cases and the team members work 
  * Mentors confirmed per role slug. Filled/Open follows the Team page rule:
  * a role shows Filled only when a mentor seat is taken.
  */
-export const MENTORS_BY_ROLE: Record<string, { name: string; designation: string }[]> = {};
+export const MENTORS_BY_ROLE: Record<string, { name: string; designation: string }[]> = {
+  "lead-forensic-investigator": [
+    { name: "Sandeepraj Gatla", designation: "Expert Mentor - Incident Response and Security Investigations" },
+  ],
+};
