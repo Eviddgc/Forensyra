@@ -128,7 +128,7 @@ export default async function WriteupPage({
         </Container>
       </HeroSection>
 
-      <Container variant="reading" className="py-14 sm:py-16">
+      <Container variant="reading" className="py-10 sm:py-12">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_15rem] lg:gap-16">
           <div className="min-w-0">
             {toc.length > 1 ? (

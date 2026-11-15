@@ -41,7 +41,7 @@ export default async function AboutPage() {
           the root layout so every page shares them. */}
       <AboutHero name={site.name} subtitle={page.description ?? site.tagline} />
 
-      <Container variant="wide" className="space-y-16 py-14 sm:py-20">
+      <Container variant="wide" className="space-y-16 py-10 sm:py-12">
         <Reveal>
           <Collective
             name={site.name}

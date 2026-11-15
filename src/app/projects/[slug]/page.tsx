@@ -124,7 +124,7 @@ export default async function ProjectPage({
       </HeroSection>
 
       {/* Interactive workbench */}
-      <Container variant="wide" className="pt-14">
+      <Container variant="wide" className="pt-8">
         <Reveal>
           <CaseWorkbench
             evidence={entry.evidence}
@@ -135,7 +135,7 @@ export default async function ProjectPage({
         </Reveal>
       </Container>
 
-      <Container variant="reading" className="grid gap-12 py-14 lg:grid-cols-[minmax(0,1fr)_18rem]">
+      <Container variant="reading" className="grid gap-12 py-10 lg:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="min-w-0">
           {toc.length > 1 ? (
             <details className="mb-8 rounded-2xl border border-border bg-surface/40 px-5 py-4 lg:hidden">

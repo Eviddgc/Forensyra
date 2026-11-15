@@ -90,7 +90,7 @@ export default function SecurityPage() {
         </Container>
       </HeroSection>
 
-      <Container variant="wide" className="py-16 sm:py-20">
+      <Container variant="wide" className="py-10 sm:py-14">
         <div className="grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16">
           <div className="space-y-12">
             {/* Reporting */}
