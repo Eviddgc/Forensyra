@@ -940,6 +940,18 @@
   }
 }
 
+/* Notice strip: crossfade when the bar rotates between notices. */
+@keyframes fx-notice-fade {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* Announcement bar sweep animation. */
 @keyframes fx-announce-sweep {
   0%, 100% {

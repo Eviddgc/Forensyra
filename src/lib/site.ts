@@ -16,6 +16,8 @@ export interface SiteSettings {
     text: string;
     link: string;
     linkLabel: string;
+    /** Optional rotation: when 2+ notices are set, the bar cycles them. */
+    notices?: Array<{ text: string; link: string; linkLabel: string }>;
   };
   social: {
     github: string;

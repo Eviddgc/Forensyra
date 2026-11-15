@@ -128,6 +128,7 @@ export default async function RootLayout({
           text={site.announcement.text}
           link={site.announcement.link}
           linkLabel={site.announcement.linkLabel}
+          notices={site.announcement.notices}
         />
         <SiteHeader
           name={site.name}

@@ -11,7 +11,19 @@
     "enabled": true,
     "text": "Applications are open — join the founding team and help build the first student-led DFIR collective.",
     "link": "/join",
-    "linkLabel": "Apply now"
+    "linkLabel": "Apply now",
+    "notices": [
+      {
+        "text": "Applications are open — join the founding team and help build the first student-led DFIR collective.",
+        "link": "/join",
+        "linkLabel": "Apply now"
+      },
+      {
+        "text": "Case File 001 — solving begins 5 January 2027. The founding team opens its first investigation.",
+        "link": "/projects/case-file-001",
+        "linkLabel": "View case file"
+      }
+    ]
   },
   "social": {
     "github": "https://github.com/Eviddgc",
