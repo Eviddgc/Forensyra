@@ -28,7 +28,7 @@ const CARDS = [
 
 export function Benefits() {
   return (
-    <section className="py-20 text-foreground sm:py-28">
+    <section className="py-10 text-foreground sm:py-14">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           <Reveal>

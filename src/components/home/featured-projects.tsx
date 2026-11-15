@@ -38,7 +38,7 @@ export function FeaturedProjects({
   const active = items[Math.min(index, items.length - 1)];
 
   return (
-    <section className="pb-20 pt-10 text-foreground sm:pb-28 sm:pt-14">
+    <section className="pb-10 pt-10 text-foreground sm:pb-14 sm:pt-14">
       <Container>
         <div className="grid items-start gap-12 lg:grid-cols-[2fr_3fr] lg:gap-16">
           <Reveal>
