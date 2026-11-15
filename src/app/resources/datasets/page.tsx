@@ -64,7 +64,7 @@ export default function PracticeDatasetsPage() {
       </HeroSection>
 
       {/* Dataset list */}
-      <Container variant="dense" className="py-14 sm:py-20">
+      <Container variant="dense" className="py-10 sm:py-12">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
             Available datasets

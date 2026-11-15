@@ -34,7 +34,7 @@ export function WriteupsList({ writeups }: { writeups: Entry[] }) {
   }
 
   return (
-    <Container className="py-14 sm:py-20">
+    <Container className="py-10 sm:py-12">
       {/* Section heading */}
       <Reveal>
         <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">

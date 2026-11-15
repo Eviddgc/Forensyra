@@ -52,7 +52,7 @@ export default async function RoleMatcherPage() {
         </Container>
       </HeroSection>
 
-      <Container variant="narrow" className="pb-20 sm:pb-28">
+      <Container variant="narrow" className="pb-12 sm:pb-16">
         <Reveal>
           <div className="mx-auto max-w-2xl">
             <RoleMatcher

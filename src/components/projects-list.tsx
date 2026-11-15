@@ -137,7 +137,7 @@ export function ProjectsList({ projects }: { projects: Entry[] }) {
   }, [projects, query, filter]);
 
   return (
-    <Container className="py-14 sm:py-20">
+    <Container className="py-10 sm:py-12">
       {/* Section heading + search */}
       <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
         <Reveal>

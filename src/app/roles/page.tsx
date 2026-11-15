@@ -26,7 +26,7 @@ export default async function RolesPage() {
     <>
       <RolesHero description="All thirteen specialisations, in one place. Every member owns a defined role — pick the one that fits you." />
 
-      <Container variant="wide" className="py-14 sm:py-20">
+      <Container variant="wide" className="py-10 sm:py-12">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
             All 13 Roles
@@ -82,7 +82,7 @@ export default async function RolesPage() {
         </div>
       </Container>
 
-      <Container variant="wide" className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-12 sm:pb-16">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
             <div className="absolute inset-0 bg-[#0c1119]" />

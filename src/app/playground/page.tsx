@@ -56,7 +56,7 @@ export default function PlaygroundPage() {
         </Container>
       </HeroSection>
 
-      <Container variant="wide" className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-12 sm:pb-16">
         <Reveal>
           <TerminalPlayground />
         </Reveal>

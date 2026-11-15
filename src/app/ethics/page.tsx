@@ -25,7 +25,7 @@ export default async function EthicsPage() {
       </Container>
 
       {/* CTA banner */}
-      <Container variant="wide" className="pb-20 sm:pb-28">
+      <Container variant="wide" className="pb-12 sm:pb-16">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
             {/* Mountain sunset backdrop — pure SVG. */}
