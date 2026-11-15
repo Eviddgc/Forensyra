@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/home/hero";
-import { CaseStartNotice } from "@/components/home/case-start-notice";
 import { FeaturedProjects } from "@/components/home/featured-projects";
 import { EvidenceProcess } from "@/components/home/evidence-process";
 import { Benefits } from "@/components/home/benefits";
@@ -31,7 +30,6 @@ export default async function HomePage() {
       {/* Sections 1–2 (announcement + navigation) and 9 (footer) are part of
           the root layout so every page shares them. */}
       <Hero name={site.name} applyUrl={site.applyUrl} />
-      <CaseStartNotice />
       
 
       <Container variant="wide" className="space-y-16 py-14 sm:py-20">
