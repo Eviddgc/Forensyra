@@ -46,7 +46,7 @@ export function Approach() {
   return (
     <section className="relative isolate overflow-hidden">
 
-      <Container className="relative z-10 py-20 sm:py-28">
+      <Container className="relative z-10 py-12 sm:py-16">
         <Reveal className="max-w-2xl">
           <p className="fx-eyebrow text-accent">Our Approach</p>
           <h2 className="font-display mt-4 text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
@@ -54,7 +54,7 @@ export function Approach() {
           </h2>
         </Reveal>
 
-        <ol className="relative mt-14 grid gap-6 lg:grid-cols-4 lg:gap-8">
+        <ol className="relative mt-10 grid gap-6 lg:grid-cols-4 lg:gap-8">
           {STEPS.map((step, index) => (
             <li key={step.number} className="relative">
               <Reveal delay={index * 80} className="h-full">

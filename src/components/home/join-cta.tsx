@@ -29,7 +29,7 @@ export function JoinCta({
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/45" />
       <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-background via-background/25 to-background/70" />
 
-      <Container className="relative z-10 py-24 sm:py-32">
+      <Container className="relative z-10 py-14 sm:py-20">
         <div className="grid gap-14 lg:grid-cols-[1.25fr_0.75fr] lg:items-center">
           <Reveal>
             <p className="fx-eyebrow text-accent">{eyebrow}</p>

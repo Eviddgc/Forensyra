@@ -82,7 +82,7 @@ export function SiteFooter({
 
       <Container className="relative z-10 py-8 sm:py-10">
         {/* Top brand + contact row. */}
-        <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-16">
+        <div className="grid gap-10 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-12">
           {/* Brand block. */}
           <div>
             <div className="flex items-center gap-4">
@@ -142,7 +142,7 @@ export function SiteFooter({
         </div>
 
         {/* Divider. */}
-        <div className="fx-rule mt-14 mb-12" />
+        <div className="fx-rule mt-8 mb-8" />
 
         {/* Link columns. */}
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
@@ -211,7 +211,7 @@ export function SiteFooter({
         </div>
 
         {/* Bottom bar. */}
-        <div className="mt-14 flex flex-col gap-4 border-t border-border/50 pt-8 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-10 flex flex-col gap-4 border-t border-border/50 pt-6 text-xs text-muted sm:flex-row sm:items-center sm:justify-between">
           <div className="flex items-center gap-2">
             <ShieldCheck className="h-3.5 w-3.5 text-success" />
             <p>© {year} {name}. Proud to be a student collective.</p>

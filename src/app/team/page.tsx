@@ -24,7 +24,7 @@ export default async function TeamPage() {
     <>
       <TeamHero />
 
-      <Container variant="wide" className="space-y-16 py-8 sm:py-10">
+      <Container variant="wide" className="space-y-10 py-8 sm:py-10">
         {/* Roster */}
         <section>
           <Reveal>

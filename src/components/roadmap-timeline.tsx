@@ -207,7 +207,7 @@ export function RoadmapTimeline() {
       </div>
 
       <Reveal delay={120}>
-        <div className="mt-16 flex items-center gap-3 text-sm text-muted sm:mt-20">
+        <div className="mt-10 flex items-center gap-3 text-sm text-muted sm:mt-12">
           <Users className="h-4 w-4 text-accent" />
           <p>
             Dates are planned milestones, not guarantees — we publish updates as each

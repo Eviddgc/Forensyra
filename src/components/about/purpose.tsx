@@ -40,7 +40,7 @@ const CARDS: Array<{
 
 export function Purpose() {
   return (
-    <section className="bg-light py-20 text-light-ink sm:py-28">
+    <section className="bg-light py-12 text-light-ink sm:py-16">
       <Container>
         <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
           <Reveal>

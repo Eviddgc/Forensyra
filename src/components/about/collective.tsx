@@ -17,7 +17,7 @@ export function Collective({
   motto: string;
 }) {
   return (
-    <section className="py-10 sm:py-14">
+    <section className="py-6 sm:py-8">
       <Container>
         <div className="fx-glass-strong grid gap-10 rounded-[28px] p-7 sm:p-10 lg:grid-cols-[1.25fr_0.75fr] lg:items-stretch lg:gap-0 lg:p-12">
           <Reveal>

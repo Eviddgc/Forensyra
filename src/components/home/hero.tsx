@@ -28,7 +28,7 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
     <section id="top" className="relative isolate">
       <Container
         variant="wide"
-        className="grid items-center gap-12 pb-10 pt-16 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-12 lg:pt-24"
+        className="grid items-center gap-12 pb-8 pt-14 lg:grid-cols-[1.05fr_0.95fr] lg:gap-8 lg:pb-10 lg:pt-20"
       >
         <div className="max-w-2xl">
           <Reveal>

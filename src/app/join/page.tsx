@@ -113,7 +113,7 @@ export default async function JoinPage() {
 
         {/* Roles available */}
         <Reveal>
-          <div className="mt-16">
+          <div className="mt-10">
             <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
               Available Roles
             </p>

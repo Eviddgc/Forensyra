@@ -65,7 +65,7 @@ export default async function SearchPage({
         </Container>
       </HeroSection>
 
-      <Container className="py-12 sm:py-16">
+      <Container className="py-8 sm:py-10">
         <p className="text-sm text-muted" aria-live="polite">
           {query
             ? `${results.length} result${results.length === 1 ? "" : "s"} for “${query}”`

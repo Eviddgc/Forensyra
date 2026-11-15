@@ -47,7 +47,7 @@ export function Leadership({
   ];
 
   return (
-    <section className="bg-light-2 py-20 text-light-ink sm:py-28">
+    <section className="bg-light-2 py-12 text-light-ink sm:py-16">
       <Container>
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
           {/* Leadership */}

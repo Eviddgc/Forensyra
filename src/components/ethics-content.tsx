@@ -113,7 +113,7 @@ function EditorialSection({
   statement?: string;
 }) {
   return (
-    <section className="py-14 sm:py-16">
+    <section className="py-10 sm:py-12">
       <Container>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-12">
           <Reveal className="shrink-0">
@@ -154,7 +154,7 @@ export function EthicsContent() {
     <>
       {/* Introductory statement */}
       <section className="border-b border-border/50 bg-surface/40">
-        <Container className="py-12 sm:py-16">
+        <Container className="py-10 sm:py-12">
           <Reveal>
             <p className="max-w-3xl text-lg leading-relaxed text-foreground/90 sm:text-xl">
               These rules apply to every member and every activity.{" "}
@@ -165,7 +165,7 @@ export function EthicsContent() {
       </section>
 
       {/* Core commitments */}
-      <section className="py-16 sm:py-20">
+      <section className="py-12 sm:py-14">
         <Container>
           <SectionHeading
             eyebrow="The standard"
@@ -284,7 +284,7 @@ export function EthicsContent() {
       </section>
 
       {/* Contact guidance */}
-      <section className="pb-16 sm:pb-20">
+      <section className="pb-12 sm:pb-14">
         <Container>
           <Reveal>
             <div className="flex flex-col items-start gap-4 rounded-2xl border border-[#d4af5f]/30 bg-[#151922]/50 p-6 sm:flex-row sm:items-center sm:gap-6 sm:p-8">

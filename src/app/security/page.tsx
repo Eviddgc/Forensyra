@@ -90,9 +90,9 @@ export default function SecurityPage() {
         </Container>
       </HeroSection>
 
-      <Container variant="wide" className="py-10 sm:py-14">
+      <Container variant="wide" className="py-8 sm:py-10">
         <div className="grid gap-12 lg:grid-cols-[1fr_20rem] lg:gap-16">
-          <div className="space-y-12">
+          <div className="space-y-10">
             {/* Reporting */}
             <Reveal>
               <section aria-labelledby="reporting">

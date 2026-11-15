@@ -49,7 +49,7 @@ export function EvidenceProcess() {
     <section className="relative isolate overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-transparent" />
 
-      <Container className="relative z-10 py-10 sm:py-14">
+      <Container className="relative z-10 py-6 sm:py-8">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="fx-eyebrow text-accent">Latest Write-ups</p>
@@ -70,7 +70,7 @@ export function EvidenceProcess() {
           </Link>
         </Reveal>
 
-        <div className="relative mt-14">
+        <div className="relative mt-10">
           {/* Vertical connector — mobile / tablet */}
           <span
             aria-hidden="true"

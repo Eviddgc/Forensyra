@@ -15,7 +15,7 @@ export function AboutHero({
 }) {
   return (
     <HeroSection variant="about" id="top">
-      <Container className="relative z-10 flex min-h-[240px] items-center pb-6 pt-14 sm:min-h-[260px] sm:pt-16">
+      <Container className="relative z-10 flex min-h-[220px] items-center pb-4 pt-12 sm:min-h-[240px] sm:pt-14">
         <div className="max-w-2xl">
           <Reveal>
             <p className="fx-eyebrow text-accent">Who We Are</p>
