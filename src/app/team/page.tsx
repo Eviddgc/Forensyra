@@ -24,7 +24,7 @@ export default async function TeamPage() {
     <>
       <TeamHero />
 
-      <Container variant="wide" className="space-y-16 py-10 sm:py-12">
+      <Container variant="wide" className="space-y-16 py-8 sm:py-10">
         {/* Roster */}
         <section>
           <Reveal>
@@ -55,7 +55,7 @@ export default async function TeamPage() {
       </Container>
 
       {/* CTA banner */}
-      <Container variant="wide" className="pb-12 sm:pb-16">
+      <Container variant="wide" className="pb-8 sm:pb-10">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
             <div className="absolute inset-0 bg-[#0c1119]" />

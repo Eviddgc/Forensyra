@@ -17,7 +17,7 @@ export function PageHeader({
 }) {
   return (
     <HeroSection variant={variant}>
-      <Container className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
+      <Container className="relative z-10 flex min-h-[220px] items-center pb-4 pt-12 sm:min-h-[240px] sm:pt-14">
         <div className="max-w-3xl">
           {eyebrow ? (
             <p className="font-mono text-xs uppercase tracking-[0.32em] text-accent">

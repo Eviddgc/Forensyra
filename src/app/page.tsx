@@ -32,7 +32,7 @@ export default async function HomePage() {
       <Hero name={site.name} applyUrl={site.applyUrl} />
       
 
-      <Container variant="wide" className="space-y-10 py-10 sm:py-12">
+      <Container variant="wide" className="space-y-10 py-8 sm:py-10">
         <Reveal>
           <FeaturedProjects projects={featured} />
         </Reveal>

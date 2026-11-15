@@ -75,7 +75,7 @@ export default async function ProjectPage({
       />
       {/* Hero */}
       <HeroSection variant="case">
-        <Container variant="wide" className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
+        <Container variant="wide" className="relative z-10 flex min-h-[220px] items-center pb-4 pt-12 sm:min-h-[240px] sm:pt-14">
           <Reveal className="max-w-3xl">
             <Link
               href="/projects"
@@ -124,7 +124,7 @@ export default async function ProjectPage({
       </HeroSection>
 
       {/* Interactive workbench */}
-      <Container variant="wide" className="pt-8">
+      <Container variant="wide" className="pt-2">
         <Reveal>
           <CaseWorkbench
             evidence={entry.evidence}

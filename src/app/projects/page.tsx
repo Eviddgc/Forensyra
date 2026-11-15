@@ -27,7 +27,7 @@ export default async function ProjectsPage() {
       </Container>
 
       {/* CTA banner */}
-      <Container variant="wide" className="pb-12 sm:pb-16">
+      <Container variant="wide" className="pb-8 sm:pb-10">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
             <div className="absolute inset-0 bg-[#0c1119]" />

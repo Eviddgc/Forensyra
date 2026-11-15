@@ -44,7 +44,7 @@ export default function ToolsPage() {
     <>
       {/* Hero */}
       <HeroSection variant="tools">
-        <Container variant="dense" className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
+        <Container variant="dense" className="relative z-10 flex min-h-[220px] items-center pb-4 pt-12 sm:min-h-[240px] sm:pt-14">
           <Reveal>
             <div className="flex items-center gap-3">
               <Terminal className="h-5 w-5 text-accent" />
@@ -64,7 +64,7 @@ export default function ToolsPage() {
       </HeroSection>
 
       {/* Tool list */}
-      <Container variant="dense" className="py-10 sm:py-12">
+      <Container variant="dense" className="py-8 sm:py-10">
         <Reveal>
           <p className="font-mono text-xs uppercase tracking-[0.28em] text-accent">
             The toolkit
