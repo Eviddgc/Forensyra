@@ -9,7 +9,7 @@ import { HeroSection } from "@/components/heroes/hero-backdrop";
 export function JoinHero({ description }: { description: string }) {
   return (
     <HeroSection variant="join">
-      <Container className="relative z-10 flex min-h-[260px] items-center pb-8 pt-14 sm:min-h-[280px] sm:pt-16">
+      <Container className="relative z-10 flex min-h-[220px] items-center pb-4 pt-12 sm:min-h-[240px] sm:pt-14">
         <Reveal>
           <div className="flex items-center gap-3">
             <UserPlus className="h-5 w-5 text-accent" />

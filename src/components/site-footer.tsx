@@ -64,7 +64,7 @@ export function SiteFooter({
   ].filter((item) => item.href);
 
   return (
-    <footer className="relative mt-12 overflow-hidden border-t border-border-gold bg-surface">
+    <footer className="relative mt-6 overflow-hidden border-t border-border-gold bg-surface">
       {/* Background atmosphere. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0">
         <div className="bg-damask absolute inset-0 opacity-[0.15]" />
@@ -80,7 +80,7 @@ export function SiteFooter({
         />
       </div>
 
-      <Container className="relative z-10 py-12 sm:py-14">
+      <Container className="relative z-10 py-8 sm:py-10">
         {/* Top brand + contact row. */}
         <div className="grid gap-12 lg:grid-cols-[1.2fr_1fr] lg:items-start lg:gap-16">
           {/* Brand block. */}

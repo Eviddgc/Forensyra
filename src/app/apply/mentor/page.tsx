@@ -31,7 +31,7 @@ export default async function MentorApplyPage({
         variant="mentor"
       />
 
-      <Container variant="form" className="py-10 sm:py-12">
+      <Container variant="form" className="py-8 sm:py-10">
         {status === "invalid" || status === "error" ? (
           <div
             role="alert"

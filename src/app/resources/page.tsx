@@ -20,11 +20,11 @@ export default function ResourcesPage() {
     <>
       <ResourcesHero description="Starter tools, public sample evidence, and references for digital forensics — curated for our members." />
 
-      <Container variant="dense" className="py-10 sm:py-12">
+      <Container variant="dense" className="py-8 sm:py-10">
         <LearnExplorer nodes={nodes} />
       </Container>
 {/* CTA banner */}
-      <Container className="pb-12 sm:pb-16">
+      <Container className="pb-8 sm:pb-10">
         <Reveal>
           <section className="relative overflow-hidden rounded-3xl border border-[#d4af5f]/30">
             <div className="absolute inset-0 bg-[#0c1119]" />
