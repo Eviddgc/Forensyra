@@ -49,7 +49,7 @@ export function EvidenceProcess() {
     <section className="relative isolate overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-transparent" />
 
-      <Container className="relative z-10 py-20 sm:py-28">
+      <Container className="relative z-10 py-10 sm:py-14">
         <Reveal className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-2xl">
             <p className="fx-eyebrow text-accent">Latest Write-ups</p>
