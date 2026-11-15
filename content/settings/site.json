@@ -9,7 +9,7 @@
   "applyUrl": "/apply",
   "announcement": {
     "enabled": true,
-    "text": "Applications are open — join the founding team and help build the first student-led DFIR collective.",
+    "text": "Applications are open \u2014 join the founding team and help build the first student-led DFIR collective.",
     "link": "/join",
     "linkLabel": "Apply now"
   },
