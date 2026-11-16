@@ -67,7 +67,7 @@ const ROLE_OPTIONS: ApplyOption[] = [
   { value: "Legal & Digital Evidence Advisor", label: "Legal & Digital Evidence Advisor" },
   { value: "Evidence Custodian & Chain-of-Custody Lead", label: "Evidence Custodian & Chain-of-Custody Lead", filled: true },
   { value: "Endpoint Forensics Analyst", label: "Endpoint Forensics Analyst", filled: true },
-  { value: "Network Forensics Analyst", label: "Network Forensics Analyst" },
+  { value: "Network Forensics Analyst", label: "Network Forensics Analyst", filled: true },
   { value: "Memory & Malware Analysis Analyst", label: "Memory & Malware Analysis Analyst" },
   { value: "Threat Intelligence & OSINT Analyst", label: "Threat Intelligence & OSINT Analyst", filled: true },
   { value: "Timeline & Forensic Reporting Analyst", label: "Timeline & Forensic Reporting Analyst" },

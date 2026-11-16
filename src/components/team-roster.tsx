@@ -20,9 +20,11 @@ function initials(name: string) {
 function MemberSlot({
   member,
   roleTitle,
+  filled = false,
 }: {
   member?: Entry;
   roleTitle: string;
+  filled?: boolean;
 }) {
   if (!member) {
     return (
@@ -30,13 +32,13 @@ function MemberSlot({
         <div className="flex h-16 w-16 items-center justify-center rounded-full border border-dashed border-accent/30 bg-accent/5 text-accent/60">
           <User aria-hidden="true" className="h-6 w-6" />
         </div>
-        <p className="text-xs text-muted">Open seat</p>
-        <Link
+        <p className="text-xs text-muted">{filled ? "Seat filled" : "Open seat"}</p>
+        {filled ? <p className="text-[11px] text-muted">Member profile coming soon</p> : <Link
           href="/apply"
           className="text-[11px] font-medium text-accent-2 underline"
         >
           Apply
-        </Link>
+        </Link>}
       </div>
     );
   }
@@ -109,7 +111,7 @@ export function TeamRoster({
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
       {roles.map((role, index) => {
         const holders = membersByRole.get(role.slug) ?? [];
-        const filled = isRoleFilled(holders.length);
+        const filled = isRoleFilled(holders.length, role.slug);
         const slots = Array.from({ length: ROLE_SEAT_CAPACITY }, (_, seat) => holders[seat]);
         if (role.comingSoon) {
           return (
@@ -179,6 +181,7 @@ export function TeamRoster({
                   key={slotIndex}
                   member={member}
                   roleTitle={role.title}
+                  filled={filled}
                 />
               ))}
             </div>

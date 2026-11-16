@@ -19,7 +19,7 @@ export function RoleCard({
   index: number;
   holders?: Entry[];
 }) {
-  const filled = isRoleFilled(holders.length);
+  const filled = isRoleFilled(holders.length, role.slug);
 
   if (role.comingSoon) {
     return (
@@ -239,12 +239,12 @@ function ExpandCard({
 
               <div className="border-t border-border pt-3 text-xs text-muted">
                 {filled ? (
-                  <span>
+                  holders.length ? <span>
                     Filled by{" "}
                     <span className="text-foreground">
                       {holders.map((holder) => holder.title).join(", ")}
                     </span>
-                  </span>
+                  </span> : <span>Both seats filled. Stay tuned for Phase 2.</span>
                 ) : (
                   <Link
                     href="/apply"

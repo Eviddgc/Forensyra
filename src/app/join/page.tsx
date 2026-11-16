@@ -134,7 +134,7 @@ export default async function JoinPage() {
                   </span>
                   {role.comingSoon ? (
                     <Badge variant="muted">Soon</Badge>
-                  ) : isRoleFilled(memberCounts.get(role.slug) ?? 0) ? (
+                  ) : isRoleFilled(memberCounts.get(role.slug) ?? 0, role.slug) ? (
                     <Badge variant="success">Filled</Badge>
                   ) : (
                     <Badge variant="accent">Open</Badge>
