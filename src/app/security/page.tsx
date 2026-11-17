@@ -21,12 +21,6 @@ export const metadata: Metadata = pageMetadata("/security", "Security Policy", "
 function channels(email: string) {
   return [
     {
-      label: "GitHub private advisory",
-      value: "github.com/Eviddgc/Forensyra/security/advisories/new",
-      href: "https://github.com/Eviddgc/Forensyra/security/advisories/new",
-      external: true,
-    },
-    {
       label: "Email",
       value: email,
       href: `mailto:${email}`,

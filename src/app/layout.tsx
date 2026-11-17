@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   },
   description: site.description,
   applicationName: site.name,
-  authors: [{ name: site.name, url: site.social.github || site.url }],
+  authors: [{ name: site.name, url: site.url }],
   openGraph: {
     type: "website",
     siteName: site.name,

@@ -453,7 +453,7 @@
         },
         {
           "label": "Eric Zimmerman's Tools",
-          "href": "https://ericzimmerman.github.io/",
+          "href": "",
           "description": "The de-facto standard suite of Windows artefact parsers — MFTECmd, PECmd, JLECmd, Registry Explorer and more.",
           "tags": [
             "Windows",
@@ -534,7 +534,7 @@
         },
         {
           "label": "Volatility 3",
-          "href": "https://github.com/volatilityfoundation/volatility3",
+          "href": "https://volatilityfoundation.org/",
           "description": "Memory forensics framework for analysing RAM dumps, processes and artefacts.",
           "tags": [
             "Memory",
@@ -561,7 +561,7 @@
         },
         {
           "label": "MemProcFS",
-          "href": "https://github.com/ufrisk/MemProcFS",
+          "href": "",
           "description": "Present a memory dump as a virtual file system for fast, scriptable memory analysis.",
           "tags": [
             "Memory",
@@ -641,7 +641,7 @@
         },
         {
           "label": "CyberChef",
-          "href": "https://gchq.github.io/CyberChef/",
+          "href": "",
           "description": "The cyber swiss-army knife — decode, decrypt, parse and transform data in the browser.",
           "tags": [
             "Analysis",
@@ -721,7 +721,7 @@
         },
         {
           "label": "ALEAPP",
-          "href": "https://github.com/abrignoni/ALEAPP",
+          "href": "https://leapps.org/",
           "description": "Android Logs Events And Protobuf Parser for mobile app artefact extraction.",
           "tags": [
             "Mobile",
@@ -748,7 +748,7 @@
         },
         {
           "label": "MobSF",
-          "href": "https://mobsf.github.io/docs/",
+          "href": "",
           "description": "Mobile Security Framework — static and dynamic analysis of Android and iOS apps.",
           "tags": [
             "Mobile",
@@ -1268,7 +1268,7 @@
         },
         {
           "label": "Bulk Extractor",
-          "href": "https://github.com/simsong/bulk_extractor",
+          "href": "",
           "description": "Scan raw disk images for PII, documents, and other salient features without parsing the filesystem.",
           "tags": [
             "Case 001",
@@ -1295,7 +1295,7 @@
         },
         {
           "label": "RegRipper",
-          "href": "https://github.com/keydet89/RegRipper3.0",
+          "href": "",
           "description": "Parse Windows Registry hives for user activity, USB history and evidence of execution.",
           "tags": [
             "Case 001",
@@ -1322,7 +1322,7 @@
         },
         {
           "label": "libewf / ewfacquire",
-          "href": "https://github.com/libyal/libewf",
+          "href": "",
           "description": "Handle E01/Ex01 forensic image formats described in case briefs.",
           "tags": [
             "Case 001",

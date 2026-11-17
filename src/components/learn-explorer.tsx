@@ -484,7 +484,7 @@ function GuideView({
         </>
       ) : null}
 
-      <footer className="mt-8 border-t border-[#d4af5f]/20 pt-6">
+      {node.href ? <footer className="mt-8 border-t border-[#d4af5f]/20 pt-6">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <p className="text-sm font-medium text-foreground">
@@ -521,7 +521,7 @@ function GuideView({
             </Link>
           ) : null}
         </div>
-      </footer>
+      </footer> : null}
     </article>
   );
 }

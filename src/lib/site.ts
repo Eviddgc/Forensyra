@@ -20,7 +20,6 @@ export interface SiteSettings {
     notices?: Array<{ text: string; link: string; linkLabel: string }>;
   };
   social: {
-    github: string;
     linkedin: string;
     instagram: string;
     youtube: string;

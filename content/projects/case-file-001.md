@@ -22,7 +22,7 @@ plan:
   - label: "Week 3 — Timeline, report & review"
     detail: "Build the master incident timeline, write the report, and close with a 60-minute review where each role defends its findings."
 deliverables:
-  - "One final investigation report, planned for public release on GitHub"
+  - "One final investigation report, planned for public release on this website"
   - "Per-role analysis notes and artefacts"
   - "A reconstructed incident timeline"
   - "A short portfolio write-up for every member"
@@ -154,7 +154,7 @@ A three-week pilot. Week one: acquisition, hashing and endpoint analysis. Week t
 
 ## Output
 
-- One final investigation report, planned for public release on GitHub
+- One final investigation report, planned for public release on this website
 - Per-role analysis notes and artefacts
 - A reconstructed incident timeline
 - A short portfolio write-up for every member

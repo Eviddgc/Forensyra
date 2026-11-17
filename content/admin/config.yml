@@ -141,7 +141,7 @@ collections:
         label: Links
         widget: list
         required: false
-        hint: "Label LinkedIn / GitHub"
+        hint: "Label LinkedIn / portfolio"
         fields:
           - { name: label, label: Label, widget: string }
           - { name: url, label: URL, widget: string }
@@ -239,7 +239,6 @@ collections:
             name: social
             widget: object
             fields:
-              - { name: github, label: GitHub, widget: string, required: false }
               - { name: linkedin, label: LinkedIn, widget: string, required: false }
               - { name: instagram, label: Instagram, widget: string, required: false }
               - { name: youtube, label: YouTube, widget: string, required: false }

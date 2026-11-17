@@ -20,7 +20,7 @@ const docs = [
   {
     title: "Volatility 3",
     description: "Memory forensics framework.",
-    href: "https://github.com/volatilityfoundation/volatility3",
+    href: "https://volatilityfoundation.org/",
     kind: "Resource",
     tags: ["memory", "tools"],
   },
@@ -33,7 +33,7 @@ test("an empty query returns the first N docs", () => {
 
 test("an exact title match ranks first", () => {
   const [top] = searchDocs(docs, "volatility 3");
-  assert.equal(top.href, "https://github.com/volatilityfoundation/volatility3");
+  assert.equal(top.href, "https://volatilityfoundation.org/");
 });
 
 test("matching is case-insensitive and matches tags", () => {

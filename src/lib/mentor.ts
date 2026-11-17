@@ -132,7 +132,7 @@ export const MENTOR_SECTIONS: ApplySection[] = [
         name: "workLinks",
         number: 10,
         kind: "text",
-        label: "Link to your work: publications, GitHub, talks, blog",
+        label: "Link to your work: publications, portfolio, talks, blog",
         placeholder: "https://...",
         help: "Optional — share links to your public work.",
         inputMode: "url",

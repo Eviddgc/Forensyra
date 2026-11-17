@@ -8,7 +8,7 @@ type Ld = Record<string, unknown>;
  * and the roles list all describe FORENSYRA the same way to search engines.
  */
 
-const SOCIAL_KEYS = ["github", "linkedin", "instagram", "youtube"] as const;
+const SOCIAL_KEYS = ["linkedin", "instagram", "youtube"] as const;
 
 /**
  * `sameAs` wants identity URLs (profiles) rather than individual posts, so a

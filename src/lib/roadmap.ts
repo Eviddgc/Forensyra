@@ -42,7 +42,7 @@ export const MILESTONES: Milestone[] = [
     description:
       "Analyse public disk images, USB drive images and CD evidence as a team and publish one complete investigation report.",
     details:
-      "Execute Case File 001 end to end and release the report and supporting write-ups on GitHub.",
+      "Execute Case File 001 end to end and release the report and supporting write-ups on this website.",
     tags: ["Mock case", "Report"],
     visual: "evidence",
   },
