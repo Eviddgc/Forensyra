@@ -8,8 +8,6 @@ cover: "/uploads/gopi-chand.webp"
 links:
   - label: LinkedIn
     url: "https://www.linkedin.com/in/gopichand-dandimeni-269709287/"
-  - label: GitHub
-    url: "https://github.com/Eviddgc"
 ---
 
 Gopi Chand founded Forensyra to bring students and early-career professionals together around real, evidence-led digital forensics practice — learning in public and finishing what they start.

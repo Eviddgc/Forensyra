@@ -230,11 +230,11 @@ export const APPLY_SECTIONS: ApplySection[] = [
         maxLength: 300,
       },
       {
-        name: "github",
+        name: "portfolio",
         number: 10,
         kind: "text",
-        label: "GitHub, portfolio or write-up link",
-        placeholder: "github.com/your-handle",
+        label: "Portfolio or write-up link",
+        placeholder: "https://your-portfolio.example",
         inputMode: "url",
         maxLength: 300,
       },
@@ -352,7 +352,7 @@ export const APPLY_SECTIONS: ApplySection[] = [
         number: 18,
         kind: "radio",
         label:
-          "Do you agree not to upload personal, confidential, stolen, or unauthorised data to Forensyra or GitHub?",
+          "Do you agree not to upload personal, confidential, stolen, or unauthorised data to Forensyra or any public platform?",
         required: true,
         options: [
           { value: "Yes", label: "Yes" },
@@ -509,7 +509,7 @@ export function buildApplyEmailParams(values: ApplyValues, now = new Date()): Re
     background: v("background"),
     organization: v("organization"),
     linkedin: v("linkedin"),
-    github: v("github"),
+    github: v("portfolio"),
     // Role
     role_first: v("roleFirst"),
     role_why: v("roleWhy"),

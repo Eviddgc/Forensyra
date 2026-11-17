@@ -11,7 +11,7 @@ import {
 import { Container } from "@/components/container";
 import { ContactHero } from "@/components/contact-hero";
 import { Reveal } from "@/components/reveal";
-import { GitHubIcon, LinkedInIcon } from "@/components/brand-icons";
+import { LinkedInIcon } from "@/components/brand-icons";
 import { pageMetadata } from "@/lib/seo";
 import { getSite } from "@/lib/site";
 
@@ -21,15 +21,6 @@ export default function ContactPage() {
   const site = getSite();
 
   const channels = [
-    site.social.github
-      ? {
-          icon: GitHubIcon,
-          label: "GitHub",
-          value: "@Eviddgc",
-          href: site.social.github,
-          note: "All of our public work lives here.",
-        }
-      : null,
     site.social.linkedin
       ? {
           icon: LinkedInIcon,

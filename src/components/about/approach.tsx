@@ -37,7 +37,7 @@ const STEPS: Array<{
   {
     number: "04",
     title: "Open by default",
-    text: "Our work lives in a public GitHub organisation.",
+    text: "We share our reports and write-ups openly on this website.",
     Icon: GitBranch,
   },
 ];

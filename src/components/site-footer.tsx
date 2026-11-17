@@ -2,7 +2,6 @@ import Link from "next/link";
 import { Logo } from "@/components/logo";
 import { Container } from "@/components/container";
 import {
-  GitHubIcon,
   InstagramIcon,
   LinkedInIcon,
   YouTubeIcon,
@@ -48,7 +47,6 @@ export function SiteFooter({
   motto: string;
   email: string;
   social: {
-    github: string;
     linkedin: string;
     instagram: string;
     youtube: string;
@@ -57,7 +55,6 @@ export function SiteFooter({
   const year = new Date().getFullYear();
 
   const socials = [
-    { href: social.github, label: "GitHub", Icon: GitHubIcon },
     { href: social.linkedin, label: "LinkedIn", Icon: LinkedInIcon },
     { href: social.instagram, label: "Instagram", Icon: InstagramIcon },
     { href: social.youtube, label: "YouTube", Icon: YouTubeIcon },

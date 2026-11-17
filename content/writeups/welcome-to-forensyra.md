@@ -6,9 +6,7 @@ status: "Published"
 author: "Gopi Chand"
 pinned: true
 tags: ["Announcement", "DFIR"]
-links:
-  - label: Forensyra on GitHub
-    url: "https://github.com/Eviddgc"
+links: []
 ---
 
 Digital forensics is growing fast, but many students learn it alone — mostly theory, with no real case practice. Forensyra exists to change that.
