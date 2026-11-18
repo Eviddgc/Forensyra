@@ -6,11 +6,12 @@ const roleField = APPLY_FIELDS.find((field) => field.name === "roleFirst");
 const filledRoles = roleField.options.filter((option) => option.filled).map((option) => option.value);
 const openRoles = roleField.options.filter((option) => !option.filled).map((option) => option.value);
 
-test("the five filled roles are locked in the form schema", () => {
+test("the six filled roles are locked in the form schema", () => {
   assert.deepEqual(filledRoles.sort(), [
     "AI Forensics & AI Security Analyst",
     "Endpoint Forensics Analyst",
     "Evidence Custodian & Chain-of-Custody Lead",
+    "Mobile Device Forensics Analyst",
     "Network Forensics Analyst",
     "Threat Intelligence & OSINT Analyst",
   ]);
