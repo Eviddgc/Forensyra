@@ -12,10 +12,12 @@ for (const [count, filled] of [[0, false], [1, false], [2, true], [3, true]]) {
   });
 }
 
-test("confirmed Network and Mobile seats stay filled before member profiles are published", () => {
+test("confirmed Network, Mobile and Timeline seats stay filled before member profiles are published", () => {
   assert.equal(isRoleFilled(0, "network-forensics-analyst"), true);
   assert.equal(isRoleFilled(1, "network-forensics-analyst"), true);
   assert.equal(isRoleFilled(0, "mobile-device-forensics-analyst"), true);
   assert.equal(isRoleFilled(1, "mobile-device-forensics-analyst"), true);
+  assert.equal(isRoleFilled(0, "timeline-forensic-reporting-analyst"), true);
+  assert.equal(isRoleFilled(1, "timeline-forensic-reporting-analyst"), true);
   assert.equal(isRoleFilled(0, "cloud-forensics-analyst"), false);
 });

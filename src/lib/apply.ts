@@ -70,7 +70,7 @@ const ROLE_OPTIONS: ApplyOption[] = [
   { value: "Network Forensics Analyst", label: "Network Forensics Analyst", filled: true },
   { value: "Memory & Malware Analysis Analyst", label: "Memory & Malware Analysis Analyst" },
   { value: "Threat Intelligence & OSINT Analyst", label: "Threat Intelligence & OSINT Analyst", filled: true },
-  { value: "Timeline & Forensic Reporting Analyst", label: "Timeline & Forensic Reporting Analyst" },
+  { value: "Timeline & Forensic Reporting Analyst", label: "Timeline & Forensic Reporting Analyst", filled: true },
   { value: "Cloud Forensics Analyst", label: "Cloud Forensics Analyst" },
   { value: "Multimedia Forensics Analyst", label: "Multimedia Forensics Analyst" },
   { value: "AI Forensics & AI Security Analyst", label: "AI Forensics & AI Security Analyst", filled: true },
