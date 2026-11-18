@@ -74,7 +74,7 @@ const ROLE_OPTIONS: ApplyOption[] = [
   { value: "Cloud Forensics Analyst", label: "Cloud Forensics Analyst" },
   { value: "Multimedia Forensics Analyst", label: "Multimedia Forensics Analyst" },
   { value: "AI Forensics & AI Security Analyst", label: "AI Forensics & AI Security Analyst", filled: true },
-  { value: "Mobile Device Forensics Analyst", label: "Mobile Device Forensics Analyst" },
+  { value: "Mobile Device Forensics Analyst", label: "Mobile Device Forensics Analyst", filled: true },
   { value: "I'm unsure and open to guidance", label: "I'm unsure and open to guidance" },
 ];
 
