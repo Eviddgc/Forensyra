@@ -5,6 +5,7 @@ export const ROLE_SEAT_CAPACITY = 2;
 const CONFIRMED_FILLED_ROLES = new Set([
   "network-forensics-analyst",
   "mobile-device-forensics-analyst",
+  "timeline-forensic-reporting-analyst",
 ]);
 
 export function isRoleFilled(memberCount: number, roleSlug?: string): boolean {
