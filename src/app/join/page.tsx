@@ -6,7 +6,6 @@ import { JoinHero } from "@/components/join-hero";
 import { Reveal } from "@/components/reveal";
 import { Badge } from "@/components/badge";
 import { pageMetadata } from "@/lib/seo";
-import { btnPrimary } from "@/lib/ui";
 import { isRoleFilled } from "@/lib/role-capacity";
 import { getEntries } from "@/lib/content";
 
@@ -33,7 +32,7 @@ export default async function JoinPage() {
 
   return (
     <>
-      <JoinHero description="Applications are open for the founding team. Limited spots — pick a role and apply." />
+      <JoinHero description="Phase 1 applications are filled — the founding team is complete. Phase 2 opens later." />
 
       <Container variant="wide" className="py-8 sm:py-10">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr]">
@@ -70,13 +69,12 @@ export default async function JoinPage() {
                   Start here
                 </p>
                 <div className="mt-5 space-y-3">
-                  <Link
-                    href="/apply"
-                    className={`${btnPrimary} w-full`}
+                  <span
+                    aria-disabled="true"
+                    className="inline-flex w-full cursor-not-allowed items-center justify-center gap-2 rounded-full border border-accent/25 bg-accent/5 px-6 py-3 text-[15px] font-medium text-muted"
                   >
-                    Team Application
-                    <ArrowRight className="h-4 w-4" />
-                  </Link>
+                    Team Application — Phase 1 filled
+                  </span>
                   <Link
                     href="/apply/mentor"
                     className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#d4af5f]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"
@@ -86,7 +84,8 @@ export default async function JoinPage() {
                   </Link>
                 </div>
                 <p className="mt-3 text-center text-xs text-muted">
-                  Limited spots. Selected members will be contacted by email.
+                  All Phase 1 seats are filled. Phase 2 opens later — mentor
+                  applications are still open.
                 </p>
               </div>
             </Reveal>
@@ -121,7 +120,7 @@ export default async function JoinPage() {
               Specialisations
             </h2>
             <p className="mt-2 max-w-xl text-[15px] text-muted">
-              Choose the role that fits you best. You can change your mind later.
+              All Phase 1 roles are filled. New specialisations arrive with Phase 2.
             </p>
             <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {roles.map((role) => (

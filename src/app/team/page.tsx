@@ -7,7 +7,6 @@ import { TeamRoster } from "@/components/team-roster";
 import { EmptyState } from "@/components/empty-state";
 import { getEntries } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
-import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata("/team", "Team", "Meet the members of FORENSYRA and the roles they hold across the collective.");
 
@@ -16,7 +15,6 @@ export default async function TeamPage() {
     getEntries("team"),
     getEntries("roles"),
   ]);
-  const site = getSite();
 
   const sortedRoles = [...roles].sort((a, b) => a.order - b.order);
 
@@ -32,11 +30,10 @@ export default async function TeamPage() {
               The Roster
             </p>
             <h2 className="font-display mt-3 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-              Members & open seats
+              Members & seats
             </h2>
             <p className="mt-2 max-w-xl text-[15px] text-muted">
-              Each role has two member slots. Filled seats show
-              the member; empty seats are open to apply for.
+              Each role has two member slots. All Phase 1 seats are now filled.
             </p>
           </Reveal>
 
@@ -101,15 +98,15 @@ export default async function TeamPage() {
                   Build your DFIR portfolio with us
                 </h2>
                 <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
-                  Pick a role, practise on legal mock cases, and publish real work
-                  as part of a team.
+                  Phase 1 seats are filled. The team now practises on legal mock
+                  cases and publishes real work together — Phase 2 opens later.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href={site.applyUrl}
+                    href="/projects/case-file-001"
                     className="fx-shine inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2 hover:shadow-[0_18px_40px_-14px] hover:shadow-accent/70"
                   >
-                    Apply now
+                    See Case File 001
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                   <a
