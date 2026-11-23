@@ -274,15 +274,15 @@ export function RoadmapCta({
                 Be part of the plan
               </h2>
               <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
-                The founding team builds everything on this roadmap. Applications are
-                open.
+                The founding team builds everything on this roadmap. Phase 1 is
+                filled — Phase 2 opens later.
               </p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
                   href={applyUrl}
                   className="fx-shine inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2 hover:shadow-[0_18px_40px_-14px] hover:shadow-accent/70"
                 >
-                  Apply now
+                  Meet the team
                   <ArrowUpRight className="h-4 w-4" />
                 </a>
                 <a

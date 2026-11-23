@@ -22,6 +22,11 @@ export const dynamic = "force-dynamic";
 const EMAILJS_ENDPOINT =
   process.env.EMAILJS_ENDPOINT ?? "https://api.emailjs.com/api/v1.0/email/send";
 
+// Phase 1 team applications are filled (2026-11-23). Flip to true when Phase 2 opens.
+const APPLICATIONS_OPEN = false;
+const APPLICATIONS_CLOSED_MESSAGE =
+  "Team applications for Phase 1 are filled. Phase 2 opens later.";
+
 const RATE_LIMIT_MAX = 5;
 const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const MIN_FILL_MS = 2000;
@@ -140,6 +145,13 @@ export async function POST(request: Request): Promise<Response> {
           new URL(`/apply?status=${status === 400 ? "invalid" : "error"}`, request.url),
           303,
         );
+
+  // Applications are closed: never relay anything to EmailJS while filled.
+  if (!APPLICATIONS_OPEN) {
+    return isJson
+      ? Response.json({ error: APPLICATIONS_CLOSED_MESSAGE }, { status: 410 })
+      : Response.redirect(new URL("/apply", request.url), 303);
+  }
 
   // Guard the request size before parsing anything.
   const length = Number(request.headers.get("content-length") ?? "0");

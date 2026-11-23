@@ -338,10 +338,10 @@ export function RoleMatcher({ roles }: { roles: MatcherRole[] }) {
 
         <div className="mt-8 flex flex-wrap gap-3">
           <Link
-            href="/apply"
+            href="/team"
             className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2"
           >
-            Apply for a role
+            Meet the team
             <ArrowRight className="h-4 w-4" />
           </Link>
           <button

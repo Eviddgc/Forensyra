@@ -1,16 +1,15 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { EthicsHero } from "@/components/ethics-hero";
 import { EthicsContent } from "@/components/ethics-content";
 import { pageMetadata } from "@/lib/seo";
-import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata("/ethics", "Ethics & Legal", "How FORENSYRA works legally, ethically, and responsibly with digital evidence.");
 
 export default async function EthicsPage() {
-  const site = getSite();
 
   return (
     <>
@@ -72,17 +71,17 @@ export default async function EthicsPage() {
                   Build a responsible digital forensics community
                 </h2>
                 <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
-                  Join a team that values evidence integrity, ethical practice, and
+                  A team that values evidence integrity, ethical practice, and
                   collaborative learning.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href={site.applyUrl}
+                  <Link
+                    href="/team"
                     className="fx-shine inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2 hover:shadow-[0_18px_40px_-14px] hover:shadow-accent/70"
                   >
-                    Apply now
+                    Meet the team
                     <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                  </Link>
                   <a
                     href="/contact"
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d4af5f]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"

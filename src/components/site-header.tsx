@@ -68,7 +68,7 @@ const NAV: NavItem[] = [
   {
     label: "Apply",
     items: [
-      { id: "apply-team", href: "/apply", label: "Team Application", description: "Join the founding DFIR collective" },
+      { id: "apply-team", href: "/apply", label: "Team Application", description: "Phase 1 filled — Phase 2 opens later" },
       { id: "apply-mentor", href: "/apply/mentor", label: "Mentor / Advisor", description: "Guide the team as a subject expert" },
     ],
   },

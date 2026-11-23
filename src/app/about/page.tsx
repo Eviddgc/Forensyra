@@ -66,11 +66,11 @@ export default async function AboutPage() {
         </Reveal>
         <Reveal delay={240}>
           <JoinCta
-            applyUrl={site.applyUrl}
+            applyUrl="/team"
             eyebrow="Join the Collective"
             title="Build your DFIR portfolio with us"
-            description="Pick a role, practise on legal mock cases, and publish real work as part of a team."
-            applyLabel="Apply now"
+            description="Phase 1 seats are filled. The team now practises on legal mock cases and publishes real work together — Phase 2 opens later."
+            applyLabel="Meet the team"
           />
         </Reveal>
       </Container>
