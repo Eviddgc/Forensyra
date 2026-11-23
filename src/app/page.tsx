@@ -29,7 +29,7 @@ export default async function HomePage() {
     <>
       {/* Sections 1–2 (announcement + navigation) and 9 (footer) are part of
           the root layout so every page shares them. */}
-      <Hero name={site.name} applyUrl={site.applyUrl} />
+      <Hero name={site.name} />
       
 
       <Container variant="wide" className="space-y-10 py-8 sm:py-10">

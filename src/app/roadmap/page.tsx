@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import { RoadmapHero } from "@/components/roadmap-hero";
 import { RoadmapTimeline, RoadmapCta } from "@/components/roadmap-timeline";
 import { pageMetadata } from "@/lib/seo";
-import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata("/roadmap", "Roadmap", "Present and upcoming plans for FORENSYRA — the phases, milestones, and what we plan to publish next.");
 
 export default async function RoadmapPage() {
-  const site = getSite();
 
   return (
     <>
@@ -20,7 +18,7 @@ export default async function RoadmapPage() {
 
       <RoadmapTimeline />
 
-      <RoadmapCta applyUrl={site.applyUrl} />
+      <RoadmapCta applyUrl="/team" />
     </>
   );
 }

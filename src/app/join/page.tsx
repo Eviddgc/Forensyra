@@ -10,7 +10,7 @@ import { isRoleFilled } from "@/lib/role-capacity";
 import { getEntries } from "@/lib/content";
 
 
-export const metadata: Metadata = pageMetadata("/join", "Join", "Apply for a role in the FORENSYRA founding team and help build our first investigation.");
+export const metadata: Metadata = pageMetadata("/join", "Join", "Phase 1 applications are filled — the founding team is complete. Phase 2 opens later.");
 
 const STEPS = [
   "Open the application form (about 10 minutes).",

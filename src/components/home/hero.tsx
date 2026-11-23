@@ -19,7 +19,7 @@ const STATS: Array<{
   { value: 2, prefix: "~", suffix: "h", label: "Per Week" },
 ];
 
-export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
+export function Hero({ name }: { name: string }) {
   const split = Math.ceil(name.length * 0.5);
   const head = name.slice(0, split);
   const tail = name.slice(split);
@@ -67,10 +67,10 @@ export function Hero({ name, applyUrl }: { name: string; applyUrl: string }) {
           <Reveal delay={120}>
             <div className="mt-9 flex flex-wrap gap-3">
               <Link
-                href={applyUrl}
+                href="/team"
                 className="fx-gold-btn inline-flex items-center justify-center gap-3 rounded-xl px-6 py-3.5 text-[14.5px] font-semibold transition hover:brightness-110"
               >
-                Apply to Join
+                Meet the Team
                 <ArrowRight className="h-4 w-4" />
               </Link>
               <Link

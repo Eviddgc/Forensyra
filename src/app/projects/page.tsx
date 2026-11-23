@@ -1,17 +1,16 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/container";
 import { Reveal } from "@/components/reveal";
 import { ProjectsHero } from "@/components/projects-hero";
 import { ProjectsList } from "@/components/projects-list";
 import { pageMetadata } from "@/lib/seo";
-import { getSite } from "@/lib/site";
 import { getEntries } from "@/lib/content";
 
 export const metadata: Metadata = pageMetadata("/projects", "Digital Forensics Case Files", "Case files from FORENSYRA — complete mock investigations built from public sample evidence.");
 
 export default async function ProjectsPage() {
-  const site = getSite();
   const projects = await getEntries("projects");
 
   return (
@@ -73,17 +72,17 @@ export default async function ProjectsPage() {
                   Work a realistic investigation
                 </h2>
                 <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
-                  Join the team that will build Case File 001 from start to published
+                  The founding team now builds Case File 001 from start to published
                   report.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <a
-                    href={site.applyUrl}
+                  <Link
+                    href="/team"
                     className="fx-shine inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2 hover:shadow-[0_18px_40px_-14px] hover:shadow-accent/70"
                   >
-                    Apply now
+                    Meet the team
                     <ArrowUpRight className="h-4 w-4" />
-                  </a>
+                  </Link>
                   <a
                     href="/contact"
                     className="inline-flex items-center justify-center gap-2 rounded-full border border-[#d4af5f]/40 bg-background/40 px-6 py-3 text-[15px] font-medium text-foreground backdrop-blur-sm transition hover:border-accent hover:text-accent-2"

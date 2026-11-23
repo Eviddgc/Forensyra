@@ -11,7 +11,7 @@ export function JoinCta({
   applyUrl,
   eyebrow = "Join the Collective",
   title = "Help build the definitive student DFIR team",
-  description = "Applications are open. Bring your curiosity, pick a role, and work on a realistic investigation with us.",
+  description = "Phase 1 seats are filled. Bring your curiosity when Phase 2 opens — new roles are on the way.",
   applyLabel = "Apply Now",
 }: {
   applyUrl?: string;
