@@ -8,7 +8,6 @@ import { RoleCard } from "@/components/role-card";
 import { btnPrimary } from "@/lib/ui";
 import { getEntries } from "@/lib/content";
 import { pageMetadata } from "@/lib/seo";
-import { getSite } from "@/lib/site";
 
 export const metadata: Metadata = pageMetadata("/roles", "Digital Forensics Roles", "Explore the 13 digital forensics roles of the FORENSYRA collective — every member owns a defined specialisation.");
 
@@ -17,7 +16,6 @@ export default async function RolesPage() {
     getEntries("roles"),
     getEntries("team"),
   ]);
-  const site = getSite();
 
   const holdersFor = (roleSlug: string) =>
     team.filter((member) => member.roleId === roleSlug);
@@ -122,21 +120,21 @@ export default async function RolesPage() {
             <div className="relative grid gap-10 p-8 sm:p-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:p-16">
               <div>
                 <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent">
-                  Claim a Role
+                  Phase 1 Complete
                 </p>
                 <h2 className="font-display mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl lg:text-5xl">
-                  Claim a role
+                  Phase 1 complete
                 </h2>
                 <p className="mt-4 max-w-xl text-[15px] leading-relaxed text-muted sm:text-base">
-                  Applications are open for the founding team. Choose the
-                  specialisation that fits you best.
+                  Phase 1 applications are filled — the founding team is
+                  complete. Phase 2 opens later with new specialisations.
                 </p>
                 <div className="mt-8 flex flex-wrap gap-3">
                   <a
-                    href={site.applyUrl}
+                    href="/team"
                     className="fx-shine inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 text-[15px] font-semibold text-ink transition hover:bg-accent-2 hover:shadow-[0_18px_40px_-14px] hover:shadow-accent/70"
                   >
-                    Apply now
+                    Meet the team
                     <ArrowUpRight className="h-4 w-4" />
                   </a>
                   <a
