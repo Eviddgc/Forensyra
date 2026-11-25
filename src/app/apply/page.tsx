@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, Lock } from "lucide-react";
+import { ArrowRight, Lock, MessageCircle } from "lucide-react";
 import { Container } from "@/components/container";
 import { PageHeader } from "@/components/page-header";
 import { pageMetadata } from "@/lib/seo";
@@ -36,6 +36,27 @@ export default async function ApplyPage() {
           <p className="mx-auto mt-2 max-w-xl text-[15px] leading-relaxed text-muted">
             Mentor and advisor applications are still open.
           </p>
+          <div className="mt-8 rounded-2xl border border-[#25D366]/30 bg-[#25D366]/5 p-6 sm:p-7">
+            <span className="mx-auto inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#25D366]/40 bg-[#25D366]/10 text-[#25D366]">
+              <MessageCircle className="h-4 w-4" />
+            </span>
+            <h3 className="font-display mt-3 text-lg font-semibold tracking-tight text-foreground sm:text-xl">
+              Get Phase 2 updates first
+            </h3>
+            <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-muted">
+              Join our WhatsApp group for faster updates on Phase 2 roles,
+              dates and next steps.
+            </p>
+            <a
+              href="https://chat.whatsapp.com/K1wBMVZ4z2n0w6NA7Gbu4M"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-5 inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] px-6 py-3 text-[15px] font-semibold text-[#0b141a] transition hover:bg-[#1fbc59]"
+            >
+              Join the WhatsApp group
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
           <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
             <Link href="/apply/mentor" className={btnPrimary}>
               Mentor / Advisor
